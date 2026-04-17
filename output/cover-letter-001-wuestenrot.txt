@@ -1,0 +1,15 @@
+Dear Ms. Sattler,
+
+I am applying for the Full-Stack Developer position at Wüstenrot Technology GmbH. I am a software engineer based in Salzburg with over four years of professional experience building enterprise web applications with Angular and TypeScript, at my current employer and in my own commercial products.
+
+Angular is the frontend framework I have used across all of my professional roles and in my own commercial projects. At my current employer I work with it daily on enterprise applications. I have also used it as the frontend for a commercial AI and browser automation platform that I designed, built and shipped to production on my own (see elyt-ai.com). REST APIs, microservices, CI/CD pipelines and Docker are part of my regular work in both professional and personal projects. I have built a complete system from scratch as the sole developer, rearchitected a legacy monolith into domain-separated services with TDD, and designed an SSO/OAuth framework that is now the standard across two product lines.
+
+Java and Spring Boot are not part of my current stack. I do have a strong backend foundation with .NET, and I have previously picked up entirely new technology stacks for my own commercial projects, taking them from zero to production.
+
+What drew me to this position is that the team operates with ownership over a defined product area covering customer communication, CRM and data management. That kind of responsibility over a product, rather than isolated task work, is the environment where I do my best work. Details about my professional and personal projects are at www.ArshiaHemati.com.
+
+My notice period is six weeks. I am based in Salzburg and available for hybrid or remote work. I would welcome the opportunity to discuss this further.
+
+Kind regards
+Arshia Hemati
+www.ArshiaHemati.com
