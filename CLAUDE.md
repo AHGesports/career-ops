@@ -68,6 +68,7 @@ AI-powered job search automation built on Claude Code: pipeline tracking, offer 
 | `check-liveness.mjs` | Job posting liveness checker |
 | `liveness-core.mjs` | Shared liveness logic (expired signals win over generic Apply text) |
 | `reports/` | Evaluation reports (format: `{###}-{company-slug}-{YYYY-MM-DD}.md`). Blocks A-F + G (Posting Legitimacy). Header includes `**Legitimacy:** {tier}`. |
+| `dashboard/` | Go TUI (Bubbletea) for pipeline view. Run: `cd dashboard && go run . --path ..` |
 
 ### OpenCode Commands
 

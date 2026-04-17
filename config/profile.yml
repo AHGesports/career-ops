@@ -1,0 +1,77 @@
+# Career-Ops Profile Configuration
+# Source of truth for personal data across all modes.
+
+candidate:
+  full_name: "Arshia Hemati"
+  email: "arshia.hemati@gmail.com"
+  phone: "+436703535652"
+  location: "Salzburg, Austria"
+  dob: "02.06.2003"
+  plz: "5400"
+  anrede: "Herr"
+  linkedin: "https://www.linkedin.com/in/arshia-hemati-5358742ab/"
+  portfolio_url: "https://www.ArshiaHemati.com"
+  github: "github.com/AHGesports"
+  # twitter: ""
+  # canva_resume_design_id: "DAxxxxxxxxx"
+
+target_roles:
+  primary:
+    - "Full-stack Software Engineer"
+    - "Senior Software Engineer"
+    - "Backend Engineer"
+  archetypes:
+    - name: "Full-stack Engineer (.NET/Angular/Node.js)"
+      level: "Mid-Senior"
+      fit: "primary"
+    - name: "Backend Engineer (.NET/Node.js/Python)"
+      level: "Mid-Senior"
+      fit: "primary"
+    - name: "AI/Automation Engineer"
+      level: "Mid-Senior"
+      fit: "secondary"
+    - name: "Software Engineer (general)"
+      level: "Mid-Senior"
+      fit: "secondary"
+    - name: "DevOps / Platform Engineer"
+      level: "Mid"
+      fit: "adjacent"
+
+narrative:
+  headline: "Full-stack Software Engineer with enterprise .NET/Angular experience and a commercial AI automation platform built from scratch"
+  exit_story: "4+ years building enterprise systems (ticketing, POS, accreditation) at scale across 160+ venues in 53 countries. Sole developer and founder of Elyt, a production AI browser automation platform. Looking for a role where I can combine deep backend expertise with modern AI/automation skills."
+  superpowers:
+    - "End-to-end system delivery -- from architecture to production, solo or in a team"
+    - "Enterprise .NET + Angular: re-architectures, multi-tenant B2B, hardware integration"
+    - "AI automation engineering: LLM integration, browser automation, workflow orchestration"
+    - "Fast learner who ships -- built a full B2B POS from scratch as sole developer"
+    - "Cross-stack fluency: C#, TypeScript, Python, SQL/PL-SQL all at production level"
+  proof_points:
+    - name: "Elyt (AutoFlow)"
+      url: "https://www.ArshiaHemati.com"
+      hero_metric: "3-tier AI browser automation platform -- Angular + Node.js + FastAPI -- shipped to production as sole developer"
+    - name: "B2B POS System"
+      hero_metric: "Built from scratch, deployed to 20+ venue operators, 20,000+ monthly transactions"
+    - name: "Enterprise Re-architecture"
+      hero_metric: "Sole architect: legacy monolith to domain-separated services with TDD, doubling codebase to 447 files and 56 test files"
+    - name: "SSO/OAuth Framework"
+      hero_metric: "Custom enterprise SSO across 2 product lines, now standard for all new onboardings"
+    - name: "Real-time Middleware Sync"
+      hero_metric: "Bi-directional state sync between platform and customer middleware, deployed to 10+ enterprise customers"
+
+compensation:
+  target_range: "EUR 60K-70K"
+  currency: "EUR"
+  minimum: "EUR 60K"
+  location_flexibility: "On-site in Salzburg area, hybrid, or remote within Austria/EU or remote with occasional travel or remote from USA with timezone workable from my location"
+
+location:
+  country: "Austria"
+  city: "Salzburg"
+  timezone: "GMT+1 (CET)"
+  visa_status: "RWR+ Visa, no sponsorship required"
+
+languages:
+  - "English: Fluent"
+  - "German: Professional proficiency"
+  - "Persian: Native"

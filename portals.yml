@@ -1,0 +1,475 @@
+# Portal Scanner Configuration
+# Customized for: Arshia Hemati — Full-stack Engineer (.NET/Angular/Node/Python)
+# Priority: DACH market first, then EU remote, then UK/US/CA/AU remote
+
+# -- Title filter --
+# At least 1 positive must match AND 0 negatives must match (case-insensitive).
+
+title_filter:
+  positive:
+    # -- Core role titles --
+    - "Full Stack"
+    - "Full-Stack"
+    - "Fullstack"
+    - "Backend"
+    - "Back-End"
+    - "Back End"
+    - "Software Engineer"
+    - "Software Developer"
+    - "Web Developer"
+    - "Web Engineer"
+    - "Application Developer"
+    - "Application Engineer"
+    # -- Stack-specific --
+    - ".NET"
+    - "C#"
+    - "Angular"
+    - "Node.js"
+    - "NodeJS"
+    - "TypeScript"
+    - "Python"
+    - "ASP.NET"
+    - "FastAPI"
+    - "Express.js"
+    # -- Applied AI & Automation (NOT ML scientist/researcher) --
+    - "Applied AI"
+    - "AI Engineer"
+    - "AI Developer"
+    - "Automation Engineer"
+    - "Automation Developer"
+    - "Browser Automation"
+    - "Agentic"
+    - "AI Agent"
+    - "AI Application"
+    - "LLM Engineer"
+    - "AI Integration"
+    # -- German keywords (DACH market) --
+    - "Softwareentwickler"
+    - "Software-Entwickler"
+    - "Webentwickler"
+    - "Web-Entwickler"
+    - "Programmierer"
+    - "Applikationsentwickler"
+    - "Anwendungsentwickler"
+    - "Vollstack"
+    - "KI Entwickler"
+    - "KI-Entwickler"
+    # -- Broader engineering --
+    - "API Engineer"
+    - "API Developer"
+    - "Integration Engineer"
+    - "Systems Engineer"
+  negative:
+    # Only hard exclusions — keep it loose
+    - "Junior"
+    - "Intern"
+    - "Internship"
+    - "Praktikum"
+    - "Praktikant"
+    - "Werkstudent"
+    - "Lehrling"
+    - "Trainee"
+    - "Staff"
+    - "Staff Engineer"
+    - "Lead"
+    - "Lead Engineer"
+    - "Principal"
+    - "Head"
+    - "Director"
+    - "VP"
+    - "CTO"
+  seniority_boost:
+    - "Senior"
+    - "Mid"
+    - "Experienced"
+
+# -- Search queries --
+# Priority 1: DACH job boards (Austrian & German market)
+# Priority 2: EU remote boards
+# Priority 3: Global remote boards
+
+search_queries:
+
+  # =============================================
+  # PRIORITY 1: DACH MARKET (Austria & Germany)
+  # =============================================
+
+  # -- AMS (Austrian Public Employment Service) --
+  # Browse URL: https://jobs.ams.at/public/emps/jobs?query=Softwareentwickler&location=Salzburg&locationId=TOWN_13582&vicinity=20
+  # See data/portal-scraping-guide.md for full scraping instructions
+  - name: "AMS — Softwareentwickler Salzburg"
+    query: 'site:jobs.ams.at Softwareentwickler OR "Software Developer" OR "Full Stack" Salzburg'
+    enabled: true
+
+  # -- devjobs.at (Austrian dev-focused job board) --
+  # Direct browse URL (sorted by date): https://en.devjobs.at/jobs/search?osmState=salzburg-at&sort=date
+  - name: "devjobs.at — Full-stack / Backend"
+    query: 'site:devjobs.at "Full Stack" OR "Backend" OR "Software Engineer" OR "Softwareentwickler" Salzburg OR Wien OR remote'
+    enabled: true
+
+  - name: "devjobs.at — .NET / Angular / Python"
+    query: 'site:devjobs.at ".NET" OR "Angular" OR "C#" OR "TypeScript" OR "Python" OR "Node.js" Salzburg OR Wien OR remote'
+    enabled: true
+
+  - name: "devjobs.at — AI / Automation"
+    query: 'site:devjobs.at "AI" OR "Automation" OR "KI" "Engineer" OR "Entwickler" Salzburg OR Wien OR remote'
+    enabled: true
+
+  # -- karriere.at (Austria's #1 job board) --
+  - name: "karriere.at — Full-stack / Backend"
+    query: 'site:karriere.at "Full Stack" OR "Backend" OR "Software Engineer" OR "Softwareentwickler" Salzburg OR Wien OR remote'
+    enabled: true
+
+  - name: "karriere.at — .NET / Angular"
+    query: 'site:karriere.at ".NET" OR "Angular" OR "C#" OR "TypeScript" Salzburg OR Wien OR remote'
+    enabled: true
+
+  - name: "karriere.at — Python / Node.js"
+    query: 'site:karriere.at "Python" OR "Node.js" OR "FastAPI" OR "Express" Salzburg OR Wien OR remote'
+    enabled: true
+
+  - name: "karriere.at — AI / Automation"
+    query: 'site:karriere.at "AI" OR "Automation" OR "KI" "Engineer" OR "Entwickler" Salzburg OR Wien OR remote'
+    enabled: true
+
+  # -- metajob.at (Austrian meta-search aggregator) --
+  # Direct browse URL (sorted by date): https://www.metajob.at/Software%20Developer-Salzburg%20(Bundesland)
+  - name: "metajob.at — Full-stack / Backend"
+    query: 'site:metajob.at "Full Stack" OR "Backend" OR "Software Engineer" OR "Softwareentwickler" Salzburg OR Wien OR remote'
+    enabled: true
+
+  - name: "metajob.at — .NET / Angular / Python"
+    query: 'site:metajob.at ".NET" OR "Angular" OR "Python" OR "C#" OR "TypeScript" Salzburg OR Wien OR remote'
+    enabled: true
+
+  # -- StepStone.at --
+  - name: "StepStone.at — Full-stack / Backend"
+    query: 'site:stepstone.at "Full Stack" OR "Backend" OR "Software Engineer" OR "Softwareentwickler" Salzburg OR Wien OR remote'
+    enabled: true
+
+  - name: "StepStone.at — .NET / Angular / Python"
+    query: 'site:stepstone.at ".NET" OR "Angular" OR "Python" OR "C#" Salzburg OR Wien OR remote'
+    enabled: true
+
+  # -- willhaben.at/jobs --
+  - name: "willhaben — Software Engineer"
+    query: 'site:willhaben.at/jobs "Software" OR "Entwickler" OR "Full Stack" OR "Backend" Salzburg OR Wien'
+    enabled: true
+
+  # -- kununu jobs --
+  - name: "kununu — Software Engineer AT"
+    query: 'site:kununu.com "Software Engineer" OR "Softwareentwickler" OR "Full Stack" Salzburg OR Wien'
+    enabled: true
+
+  # -- jobs.at --
+  - name: "jobs.at — Software / .NET / Angular"
+    query: 'site:jobs.at "Software" OR ".NET" OR "Angular" OR "Full Stack" Salzburg OR Wien OR remote'
+    enabled: true
+
+  # -- hokify (Austria) --
+  - name: "hokify — Software Engineer AT"
+    query: 'site:hokify.at "Software" OR "Entwickler" OR "Backend" OR "Full Stack" Salzburg OR Wien'
+    enabled: true
+
+  # -- German market (remote-friendly or near Salzburg) --
+  - name: "StepStone.de — .NET / Angular remote"
+    query: 'site:stepstone.de ".NET" OR "Angular" OR "Full Stack" remote OR "Home Office"'
+    enabled: true
+
+  - name: "Indeed.de — Software Engineer remote"
+    query: 'site:de.indeed.com "Software Engineer" OR "Full Stack" OR "Backend" ".NET" OR "Angular" OR "Python" remote'
+    enabled: true
+
+  # -- XING (DACH professional network) --
+  - name: "XING — Software Engineer AT"
+    query: 'site:xing.com/jobs "Software Engineer" OR "Softwareentwickler" OR "Full Stack" Salzburg OR Wien OR remote Austria'
+    enabled: true
+
+  # -- LinkedIn (DACH-focused) --
+  - name: "LinkedIn — Full-stack AT"
+    query: 'site:linkedin.com/jobs "Full Stack" OR "Backend" OR "Software Engineer" ".NET" OR "Angular" OR "TypeScript" Austria OR Salzburg OR Wien remote'
+    enabled: true
+
+  # =============================================
+  # PRIORITY 2: EU REMOTE
+  # =============================================
+
+  # -- Greenhouse (EU-friendly companies) --
+  - name: "Greenhouse — Full-stack / Backend EU"
+    query: 'site:boards.greenhouse.io OR site:job-boards.greenhouse.io "Full Stack" OR "Backend" OR "Software Engineer" ".NET" OR "Angular" OR "Node.js" OR "Python" remote Europe OR EMEA'
+    enabled: true
+
+  - name: "Greenhouse — Applied AI / Automation"
+    query: 'site:boards.greenhouse.io OR site:job-boards.greenhouse.io "Applied AI" OR "AI Engineer" OR "Automation" OR "Agentic" remote Europe OR EMEA'
+    enabled: true
+
+  # -- Ashby --
+  - name: "Ashby — Full-stack / Backend EU"
+    query: 'site:jobs.ashbyhq.com "Full Stack" OR "Backend" OR "Software Engineer" ".NET" OR "Angular" OR "Node.js" OR "Python" remote Europe OR EMEA'
+    enabled: true
+
+  - name: "Ashby — Applied AI / Automation"
+    query: 'site:jobs.ashbyhq.com "Applied AI" OR "AI Engineer" OR "Automation" OR "Agentic" OR "AI Agent" remote'
+    enabled: true
+
+  # -- Lever --
+  - name: "Lever — Full-stack / Backend EU"
+    query: 'site:jobs.lever.co "Full Stack" OR "Backend" OR "Software Engineer" ".NET" OR "Angular" OR "Python" remote Europe OR EMEA'
+    enabled: true
+
+  # -- EU remote boards --
+  - name: "EU Remote Jobs — Software Engineer"
+    query: 'site:euremotejobs.com "Software Engineer" OR "Full Stack" OR "Backend" OR ".NET" OR "Angular" OR "Python"'
+    enabled: true
+
+  - name: "Remotive — Software Engineer EU"
+    query: 'site:remotive.com "Software Engineer" OR "Full Stack" OR "Backend" ".NET" OR "Angular" OR "Node.js" OR "Python" Europe'
+    enabled: true
+
+  - name: "WeWorkRemotely — Full-stack / Backend"
+    query: 'site:weworkremotely.com "Full Stack" OR "Backend" OR "Software Engineer" ".NET" OR "Angular" OR "Node.js" OR "Python"'
+    enabled: true
+
+  - name: "RemoteOK — Software Engineer"
+    query: 'site:remoteok.com "Full Stack" OR "Backend" OR "Software Engineer" ".NET" OR "Angular" OR "Python"'
+    enabled: true
+
+  - name: "Himalayas — Software Engineer EU"
+    query: 'site:himalayas.app "Software Engineer" OR "Full Stack" OR "Backend" ".NET" OR "Angular" OR "Python" Europe'
+    enabled: true
+
+  # -- Welcome to the Jungle (strong in DACH/EU) --
+  - name: "WTTJ — Software Engineer DACH"
+    query: 'site:welcometothejungle.com Austria OR Germany OR Switzerland "Software Engineer" OR "Full Stack" OR "Backend" OR ".NET" OR "Angular"'
+    enabled: true
+
+  # =============================================
+  # PRIORITY 3: GLOBAL REMOTE (UK/US/CA/AU only)
+  # =============================================
+
+  - name: "Greenhouse — Full-stack global remote"
+    query: 'site:boards.greenhouse.io "Full Stack" OR "Backend" OR "Software Engineer" ".NET" OR "Angular" OR "Node" OR "Python" remote worldwide'
+    enabled: false
+
+  - name: "Ashby — Applied AI global remote"
+    query: 'site:jobs.ashbyhq.com "Applied AI" OR "AI Agent" OR "Automation Engineer" OR "Agentic" remote worldwide'
+    enabled: false
+
+  - name: "YC Jobs — Full-stack / Applied AI"
+    query: 'site:workatastartup.com "Full Stack" OR "Backend" OR "Applied AI" OR "Automation" ".NET" OR "Angular" OR "Python" remote'
+    enabled: false
+
+  - name: "HN Who's Hiring — Software Engineer remote"
+    query: 'site:news.ycombinator.com "Full Stack" OR "Backend" OR ".NET" OR "Angular" OR "Python" remote'
+    enabled: false
+
+# -- Tracked companies --
+# Companies whose career pages are checked directly.
+# scan_method: playwright (default), websearch, greenhouse_api
+
+tracked_companies:
+
+  # =============================================
+  # DACH COMPANIES (Priority 1)
+  # =============================================
+
+  - name: Dynatrace
+    careers_url: https://careers.dynatrace.com
+    scan_method: websearch
+    scan_query: 'site:careers.dynatrace.com "Software Engineer" OR "Full Stack" OR "Backend" OR ".NET" OR "Angular"'
+    notes: "Linz/Vienna. Observability platform. Major Austrian tech employer."
+    enabled: true
+
+  - name: Red Bull (Media & Tech)
+    careers_url: https://jobs.redbull.com
+    scan_method: websearch
+    scan_query: 'site:jobs.redbull.com "Software" OR "Engineer" OR "Developer" OR "Backend" OR "Full Stack" Salzburg OR Fuschl'
+    notes: "Salzburg/Fuschl am See. Media & tech arm."
+    enabled: true
+
+  - name: Porsche Informatik
+    careers_url: https://www.porscheinformatik.com/en/career
+    scan_method: websearch
+    scan_query: 'site:porscheinformatik.com "Software" OR "Developer" OR "Engineer" OR ".NET" OR "Angular"'
+    notes: "Salzburg. Automotive IT for VW/Porsche/Audi dealers."
+    enabled: true
+
+  - name: Skidata
+    careers_url: https://www.skidata.com/careers
+    scan_method: websearch
+    scan_query: 'site:skidata.com/careers OR "skidata" "Software" OR "Engineer" OR "Developer"'
+    notes: "Salzburg. Access & ticketing (similar domain to Axess)."
+    enabled: true
+
+  - name: Palfinger
+    careers_url: https://www.palfinger.com/en/career
+    scan_method: websearch
+    scan_query: 'site:palfinger.com "Software" OR "Developer" OR "Engineer" OR ".NET" OR "Angular"'
+    notes: "Salzburg/Bergheim. Crane & lifting tech. Digital division."
+    enabled: true
+
+  - name: Eurofunk Kappacher
+    careers_url: https://eurofunk.com/karriere
+    scan_method: websearch
+    scan_query: 'site:eurofunk.com "Software" OR "Entwickler" OR "Developer" OR ".NET"'
+    notes: "St. Johann im Pongau (near Salzburg). Emergency systems."
+    enabled: true
+
+  - name: Messner Group
+    careers_url: https://www.2e-systems.com/careers
+    scan_method: websearch
+    scan_query: '"2e Systems" OR "Messner" "Software" OR "Developer" OR "Engineer" Salzburg'
+    notes: "Salzburg. Aviation tech."
+    enabled: true
+
+  - name: Catalysts (Cloudflight)
+    careers_url: https://www.cloudflight.io/careers
+    scan_method: websearch
+    scan_query: 'site:cloudflight.io/careers "Software" OR "Engineer" OR "Full Stack" OR ".NET" Austria OR Salzburg OR Linz'
+    notes: "Linz/Vienna/Salzburg. Custom software dev."
+    enabled: true
+
+  - name: Tricentis
+    careers_url: https://www.tricentis.com/careers
+    scan_method: websearch
+    scan_query: 'site:tricentis.com/careers "Software Engineer" OR "Full Stack" OR "Backend" Vienna OR Austria OR remote'
+    notes: "Vienna. Test automation platform."
+    enabled: true
+
+  - name: Bitpanda
+    careers_url: https://jobs.lever.co/bitpanda
+    notes: "Vienna. Fintech/crypto. Large engineering team."
+    enabled: true
+
+  - name: Adverity
+    careers_url: https://www.adverity.com/careers
+    scan_method: websearch
+    scan_query: 'site:adverity.com/careers "Software" OR "Engineer" OR "Developer" Vienna OR remote'
+    notes: "Vienna. Data/marketing analytics platform."
+    enabled: true
+
+  - name: Storyblok
+    careers_url: https://www.storyblok.com/jobs
+    scan_method: websearch
+    scan_query: 'site:storyblok.com/jobs "Software" OR "Engineer" OR "Full Stack" OR "Backend"'
+    notes: "Linz (remote-friendly). Headless CMS."
+    enabled: true
+
+  - name: Celonis
+    careers_url: https://www.celonis.com/careers
+    scan_method: websearch
+    scan_query: 'site:celonis.com/careers "Software Engineer" OR "Full Stack" OR "Backend" OR ".NET" Munich OR remote'
+    notes: "Munich. Process mining. Large EU tech."
+    enabled: true
+
+  - name: Personio
+    careers_url: https://job-boards.greenhouse.io/personio
+    api: https://boards-api.greenhouse.io/v1/boards/personio/jobs
+    notes: "Munich. HR SaaS unicorn. DACH-first."
+    enabled: true
+
+  - name: Wefox
+    careers_url: https://job-boards.greenhouse.io/wefox
+    api: https://boards-api.greenhouse.io/v1/boards/wefox/jobs
+    notes: "Vienna/Berlin. Insurtech."
+    enabled: true
+
+  # =============================================
+  # EU COMPANIES (Priority 2)
+  # =============================================
+
+  - name: n8n
+    careers_url: https://jobs.ashbyhq.com/n8n
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/n8n'
+    notes: "Berlin + remote EU. Workflow automation. Very relevant to Elyt experience."
+    enabled: true
+
+  - name: Retool
+    careers_url: https://retool.com/careers
+    scan_method: websearch
+    scan_query: 'site:retool.com/careers "Engineer" OR "Full Stack" OR "Backend"'
+    notes: "London/remote. Internal tools platform."
+    enabled: true
+
+  - name: Vercel
+    careers_url: https://job-boards.greenhouse.io/vercel
+    api: https://boards-api.greenhouse.io/v1/boards/vercel/jobs
+    notes: "Remote. Frontend/fullstack platform."
+    enabled: true
+
+  - name: Temporal
+    careers_url: https://job-boards.greenhouse.io/temporal
+    api: https://boards-api.greenhouse.io/v1/boards/temporal/jobs
+    notes: "Remote. Workflow orchestration — relevant to Elyt."
+    enabled: true
+
+  - name: Attio
+    careers_url: https://jobs.ashbyhq.com/attio
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/attio'
+    notes: "Remote EU. AI-native CRM."
+    enabled: true
+
+  - name: Factorial
+    careers_url: https://job-boards.greenhouse.io/factorial
+    scan_method: websearch
+    scan_query: 'site:job-boards.greenhouse.io/factorial'
+    notes: "Barcelona/remote. HR SaaS."
+    enabled: true
+
+  - name: Mistral AI
+    careers_url: https://jobs.lever.co/mistral
+    notes: "Paris. European AI lab."
+    enabled: true
+
+  - name: Zapier
+    careers_url: https://jobs.ashbyhq.com/zapier
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/zapier'
+    notes: "Remote-first. Automation platform."
+    enabled: true
+
+  - name: GitLab
+    careers_url: https://about.gitlab.com/jobs/all-jobs/
+    scan_method: websearch
+    scan_query: 'site:about.gitlab.com/jobs "Software Engineer" OR "Backend" OR "Full Stack" remote EMEA'
+    notes: "Remote-first. DevOps platform."
+    enabled: true
+
+  - name: Intercom
+    careers_url: https://job-boards.greenhouse.io/intercom
+    api: https://boards-api.greenhouse.io/v1/boards/intercom/jobs
+    notes: "Dublin. Customer messaging + AI."
+    enabled: true
+
+  # =============================================
+  # GLOBAL REMOTE — UK/US/CA/AU (Priority 3)
+  # =============================================
+
+  - name: Anthropic
+    careers_url: https://job-boards.greenhouse.io/anthropic
+    api: https://boards-api.greenhouse.io/v1/boards/anthropic/jobs
+    notes: "US. Claude maker."
+    enabled: false
+
+  - name: OpenAI
+    careers_url: https://openai.com/careers
+    scan_method: websearch
+    scan_query: 'site:openai.com/careers "Software Engineer" OR "Applied AI" OR "Full Stack"'
+    notes: "US. ChatGPT maker."
+    enabled: false
+
+  - name: Atlassian
+    careers_url: https://www.atlassian.com/company/careers
+    scan_method: websearch
+    scan_query: 'site:atlassian.com/company/careers "Software Engineer" OR "Full Stack" remote'
+    notes: "AU/remote. Jira, Confluence."
+    enabled: false
+
+  - name: Canva
+    careers_url: https://www.canva.com/careers
+    scan_method: websearch
+    scan_query: 'site:canva.com/careers "Software Engineer" OR "Full Stack" OR "Backend" remote'
+    notes: "AU/remote. Design platform."
+    enabled: false
