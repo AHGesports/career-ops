@@ -1,0 +1,37 @@
+scan	thread_id	sender	note
+2026-04-23	19dba6b2aabdcc77	donotreply@jobalert.indeed.com	2 URLs extracted
+2026-04-23	19dba575813e9d49	donotreply@jobalert.indeed.com	1 URL extracted
+2026-04-23	19dba4d1be743a7d	donotreply@jobalert.indeed.com	1 URL extracted
+2026-04-23	19dba2a85a15ffaf	donotreply@jobalert.indeed.com	1 URL extracted
+2026-04-23	19dba1ddd0ef5226	donotreply@jobalert.indeed.com	0 URLs (Junior filter)
+2026-04-23	19db9f84054cd35d	donotreply@jobalert.indeed.com	1 URL extracted
+2026-04-23	19db9f18a7c52232	donotreply@jobalert.indeed.com	0 URLs (non-dev role)
+2026-04-23	19db9dcfec1207e9	donotreply@jobalert.indeed.com	1 URL extracted
+2026-04-23	19db5864b4ae880c	donotreply@jobalert.indeed.com	0 URLs (all sponsored)
+2026-04-23	19db54876dd81495	donotreply@jobalert.indeed.com	0 URLs (dup Netformic)
+2026-04-23	19db53aec58ad336	donotreply@jobalert.indeed.com	0 URLs (all sponsored)
+2026-04-23	19db4e301fb2e837	donotreply@jobalert.indeed.com	1 URL extracted
+2026-04-23	19db4c04bbce7097	donotreply@jobalert.indeed.com	0 URLs (dup Junior)
+2026-04-23	19db4b46e83e17bc	donotreply@jobalert.indeed.com	0 URLs (non-dev)
+2026-04-23	19db4ad574d7d646	alerts@welcometothejungle.com	2 URLs (tracking-wrapped)
+2026-04-23	19db9313b8a07e3d	no-reply@justjoin.it	FALLBACK scrape (MCP body empty)
+2026-04-23	19db92d56171fc5c	no-reply@justjoin.it	FALLBACK scrape (MCP body empty)
+2026-04-23	19db92ce30a614ef	no-reply@justjoin.it	FALLBACK scrape (MCP body empty)
+2026-04-23	19db406d84fcb02d	no-reply@justjoin.it	FALLBACK scrape (MCP body empty)
+2026-04-23	19db400b06548d2c	no-reply@justjoin.it	FALLBACK scrape (MCP body empty)
+2026-04-23	19db3ff6b1d37a66	no-reply@justjoin.it	FALLBACK scrape (MCP body empty)
+2026-04-23	19db87555cf7810c	notifications@nofluffjobs.com	FALLBACK scrape (MCP body empty)
+2026-04-23	19db87555b2463ed	notifications@nofluffjobs.com	FALLBACK scrape (MCP body empty)
+2026-04-23	19db87555a562c54	notifications@nofluffjobs.com	FALLBACK scrape (MCP body empty)
+2026-04-23	19db326528e5d64d	notifications@nofluffjobs.com	FALLBACK scrape (MCP body empty)
+2026-04-23	19db326501062415	notifications@nofluffjobs.com	FALLBACK scrape (MCP body empty)
+2026-04-24	19dbabfea90a9b3f	donotreply@jobalert.indeed.com	0 URLs (only 1 non-sponsored jk=7ac9b004484b7c = already #035)
+2026-04-24	19dba54b77092b67	info@email.stepstone.de	0 URLs (registration confirmation email)
+2026-04-24	19dba5142a8f5657	info@email.stepstone.at	0 URLs (registration confirmation email)
+2026-04-24	19dba3fc1ea824dc	news@profil.karriere.at	0 URLs (welcome/account confirmation email)
+2026-04-24	19dbe52898869f2f	no-reply@justjoin.it	FALLBACK scrape JS remote (MCP body empty) — 10 URLs extracted
+2026-04-24	19dbe4e5bb3186c9	no-reply@justjoin.it	FALLBACK scrape NET remote (MCP body empty) — 15 URLs extracted
+2026-04-24	19dbe4de50d7fb24	no-reply@justjoin.it	FALLBACK scrape JS+Angular remote (MCP body empty) — 10 URLs extracted
+2026-04-24	19dbd88ff91df26d	notifications@nofluffjobs.com	FALLBACK scrape NFJ-angular-remote via Chrome DevTools — 10 URLs extracted
+2026-04-24	19dbd88fcf949eb3	notifications@nofluffjobs.com	FALLBACK scrape NFJ-csharp-fullstack-remote via Chrome DevTools — 5 URLs extracted
+2026-04-24	19dbd88fc92c341e	notifications@nofluffjobs.com	FALLBACK scrape NFJ-net-fullstack-remote via Chrome DevTools — 10 URLs extracted

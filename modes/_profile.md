@@ -89,6 +89,32 @@ Offer Elyt demo access in applications for AI/automation-relevant roles. Link po
 | POS / Retail tech | Built B2B POS from scratch with hardware integration |
 | DevTools / Developer platforms | Workflow engines, API design, cross-language type generation |
 
+## Hard Discard Filters (apply BEFORE scoring)
+
+If any of these match, mark the offer `SKIP` immediately. Do not run full A-G evaluation. Write a one-line discard reason in the report and TSV note.
+
+### Contract type — discard if:
+- Temp / fixed-term contract (any duration)
+- B2B-only (no UoP / employment option offered)
+- Freelance / per-project engagement
+- Internship / trainee / apprenticeship
+
+Keep if: permanent employment (UoP in Poland, unbefristeter Arbeitsvertrag in AT/DE, CDI in FR, etc.), or contract type not mentioned (evaluate, note unknown).
+
+### Salary — discard if:
+- Salary IS disclosed AND the top of the advertised range is below EUR 55K (minimum from `config/profile.yml`)
+- PLN conversion reference: EUR 55K ≈ 19,200 PLN/month gross B2B, ≈ 14,200 PLN/month gross UoP
+- Do NOT discard if salary is hidden / not disclosed — evaluate normally and note in Block D
+
+### Discard output format:
+```
+**DISCARDED — [contract type | salary below minimum]:** {one-line reason}
+Score: N/A
+```
+Write TSV with status `Discarded` and score `N/A`.
+
+---
+
 ## Your Comp Targets
 
 Read current targets from `config/profile.yml`. Additional guidance:

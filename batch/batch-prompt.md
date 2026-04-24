@@ -47,6 +47,43 @@ Eres un worker de evaluación de ofertas de empleo for the candidate (read name 
 2. Si el archivo está vacío o no existe, intenta obtener el JD desde `{{URL}}` con WebFetch
 3. Si ambos fallan, reporta error y termina
 
+### Paso 1.5 — Hard Discard Check (ANTES de evaluar)
+
+Leer `modes/_profile.md` sección "Hard Discard Filters". Aplicar en orden:
+
+**1. Contract type — DISCARD if:**
+- Temp / fixed-term contract
+- B2B-only (no employment/UoP option)
+- Freelance / per-project
+- Internship / trainee
+
+Keep if permanent employment OR contract type not mentioned (evaluate + note unknown).
+
+**2. Salary — DISCARD if:**
+- Salary IS disclosed AND top of range < EUR 55K (minimum target)
+- PLN reference: EUR 55K ≈ 19,200 PLN/month
+- Do NOT discard if salary hidden — evaluate normally
+
+**If discarded:** Write short report + TSV and STOP. Do not run Paso 2+.
+
+Discard report format:
+```markdown
+# Evaluación: {Company} — {Role}
+
+**Fecha:** {{DATE}}
+**Score:** N/A
+**Legitimacy:** N/A
+**URL:** {{URL}}
+**PDF:** ❌
+
+**DISCARDED — {contract type | salary below minimum}:** {one-line reason}
+```
+
+Discard TSV (col 5 = `Discarded`, col 6 = `N/A`):
+```
+{num}\t{{DATE}}\t{company}\t{role}\tDiscarded\tN/A\t❌\t[{{REPORT_NUM}}](reports/{{REPORT_NUM}}-{slug}-{{DATE}}.md)\t{discard reason}
+```
+
 ### Paso 2 — Evaluación A-G
 
 Read `cv.md`. Ejecuta TODOS los bloques:

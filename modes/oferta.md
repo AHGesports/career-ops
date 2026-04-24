@@ -2,7 +2,31 @@
 
 Cuando el candidato pega una oferta (texto o URL), entregar SIEMPRE los 7 bloques (A-F evaluation + G legitimacy):
 
-## Paso 0 — Detección de Arquetipo
+## Paso 0 — Hard Discard Check (ANTES de cualquier evaluación)
+
+Leer `modes/_profile.md` sección "Hard Discard Filters". Aplicar en orden:
+
+**1. Contract type — DISCARD if:**
+- Temp / fixed-term contract
+- B2B-only (no employment/UoP option)
+- Freelance / per-project
+- Internship / trainee
+
+Keep if permanent employment OR contract type not mentioned (evaluate + note unknown in Block A).
+
+**2. Salary — DISCARD if:**
+- Salary IS disclosed AND top of range < EUR 55K (candidate minimum)
+- PLN reference: EUR 55K ≈ 19,200 PLN/month
+- Do NOT discard if salary hidden — evaluate normally
+
+**If discarded:** output one-line verdict and stop:
+> **DISCARDED — [contract type | salary below minimum]:** {reason}. Not evaluating further.
+
+Register in tracker with status `Discarded`, score `N/A`.
+
+---
+
+## Paso 1 — Detección de Arquetipo
 
 Clasificar la oferta en uno de los 6 arquetipos (ver `_shared.md`). Si es híbrido, indicar los 2 más cercanos. Esto determina:
 - Qué proof points priorizar en bloque B
