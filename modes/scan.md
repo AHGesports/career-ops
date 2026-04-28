@@ -4,6 +4,11 @@ Escanea portales de empleo configurados, filtra por relevancia de título, y añ
 
 > **Nota (v1.5+):** El escáner por defecto (`scan.mjs` / `npm run scan`) es **zero-token** y sólo consulta directamente las APIs públicas de Greenhouse, Ashby y Lever. Los niveles con Playwright/WebSearch descritos abajo son el flujo **agente** (ejecutado por Claude/Codex), no lo que hace `scan.mjs`. Si una empresa no tiene API Greenhouse/Ashby/Lever, `scan.mjs` la ignorará; para esos casos, el agente debe completar manualmente el Nivel 1 (Playwright) o Nivel 3 (WebSearch).
 
+## Sub-comandos
+
+- `/career-ops scan` o `/career-ops scan portals` → este modo (escaneo de portales vía `scan.mjs`)
+- `/career-ops scan gmail [WINDOW]` → ver `modes/scan-gmail.md` (escaneo de alertas Gmail, subagente obligatorio)
+
 ## Ejecución recomendada
 
 Ejecutar como subagente para no consumir contexto del main:

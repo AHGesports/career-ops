@@ -54,8 +54,8 @@ AI-powered job search automation built on Claude Code: pipeline tracking, offer 
 | `data/pipeline.md` | Inbox of pending URLs |
 | `data/scan-history.tsv` | Scanner dedup history |
 | `data/gmail-scan-history.tsv` | Gmail-scan dedup tracker (message_id per scanned alert) |
-| `data/gmail-ingestion-setup.md` | User setup guide for subscribing to job-alert emails |
-| `modes/gmail-remote-scan.md` | Gmail inbox → pipeline.md flow |
+| `.claude/skills/scan-gmail/SKILL.md` | Standalone `scan-gmail` skill — full spec for `/career-ops scan gmail` and natural-language triggers |
+| `config/gmail-senders.yml` | Sender registry consumed by scan-gmail (email + body_type + regex + final_shape + noise filter) |
 | `portals.yml` | Query and company config |
 | `templates/cv-template.html` | HTML template for CVs |
 | `templates/cv-template.tex` | LaTeX/Overleaf template for CVs |
@@ -259,7 +259,7 @@ Default modes are in `modes/` (English). Additional language-specific modes are 
 | Asks about application status | `tracker` |
 | Fills out application form | `apply` |
 | Searches for new offers | `scan` |
-| Says `/career-ops gmail`, "scan gmail", "scan gmail for latest remote work", or wants Gmail job-alert ingestion | `gmail-remote-scan` — **ALWAYS delegated to subagent** per SKILL.md dispatch. Reads `hemati.arshia82@gmail.com` → appends `data/pipeline.md`. |
+| Says `/career-ops scan gmail [WINDOW]` or natural-language ("scan my gmail", "ingest job alerts") | `scan-gmail` standalone skill at `.claude/skills/scan-gmail/SKILL.md`. ALWAYS dispatches to subagent. Reads `config/gmail-senders.yml` for sender list. |
 | Processes pending URLs | `pipeline` |
 | Batch processes offers | `batch` |
 | Asks about rejection patterns or wants to improve targeting | `patterns` |

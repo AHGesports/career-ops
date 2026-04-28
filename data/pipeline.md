@@ -2,6 +2,241 @@
 
 ## Pendientes
 
+- [ ] https://justjoin.it/job-offer/codetwo---hrejterzy-developer-c-lub-asp-net-jelenia-gora-net | CodeTwo | Developer C# / ASP.NET     <!-- via Gmail:JJIT 2026-04-27 fallback scrape .NET -->
+- [ ] https://justjoin.it/job-offer/n-ix-senior-net-full-stack-engineer-krakow-net-26241463 | N-iX | Senior .NET Full Stack Engineer     <!-- via Gmail:JJIT 2026-04-27 fallback scrape .NET -->
+- [ ] https://justjoin.it/job-offer/angry-nerds-mid-net-developer-wroclaw-net-e97bb889 | Angry Nerds | Mid .NET Developer     <!-- via Gmail:JJIT 2026-04-27 fallback scrape .NET -->
+- [ ] https://justjoin.it/job-offer/etteplan-poland-sp-z-o-o--umbraco-net-developer-m-f-nb--wroclaw-net | Etteplan Poland | Umbraco .NET Developer     <!-- via Gmail:JJIT 2026-04-27 fallback scrape .NET -->
+- [ ] https://justjoin.it/job-offer/etteplan-poland-sp-z-o-o--crm-developer---dynamics-365-net-m-f-nb--wroclaw-net | Etteplan Poland | CRM Developer – Dynamics 365 (.NET)     <!-- via Gmail:JJIT 2026-04-27 fallback scrape .NET -->
+- [ ] https://justjoin.it/job-offer/n-ix-senior-net-full-stack-engineer-krakow-net-40939fce | N-iX | Senior .Net Full-stack Engineer     <!-- via Gmail:JJIT 2026-04-27 fallback scrape .NET -->
+- [ ] https://justjoin.it/job-offer/kamsoft-s-a--programista-programistka-net-react-katowice-net | KAMSOFT S.A. | Programista/Programistka .NET/React     <!-- via Gmail:JJIT 2026-04-27 fallback scrape .NET -->
+- [ ] https://justjoin.it/job-offer/upvanta-sp-z-o-o--senior-full-stack-developer--node-js-vue-js-ai-azure-m-k-n--poznan-javascript | Upvanta | Senior Full-Stack Developer (Node.js+Vue.js+AI+Azure)     <!-- via Gmail:JJIT 2026-04-27 fallback scrape JS -->
+- [ ] https://justjoin.it/job-offer/stx-next-senior-fullstack-developer-vue-js-focus-python--poznan-javascript | STX Next | Senior Fullstack Developer (Vue.js+Python)     <!-- via Gmail:JJIT 2026-04-27 fallback scrape JS -->
+- [ ] https://justjoin.it/job-offer/univio-fullstack-developer-wroclaw-javascript | Univio | Fullstack Developer     <!-- via Gmail:JJIT 2026-04-27 fallback scrape JS -->
+- [ ] https://justjoin.it/job-offer/univio-front-end-developer-hyva--wroclaw-javascript | Univio | Front-end Developer (Hyva)     <!-- via Gmail:JJIT 2026-04-27 fallback scrape JS -->
+- [ ] https://justjoin.it/job-offer/devsdata-llc-senior-fullstack-engineer-django-react-100-remote--warszawa-python | DevsData LLC | Senior Fullstack Engineer (Django+React)     <!-- via Gmail:JJIT 2026-04-27 fallback scrape Python -->
+- [ ] https://justjoin.it/job-offer/idea-commerce-s-a--python-developer-bydgoszcz-python-92a414d5 | Idea Commerce | Python Developer     <!-- via Gmail:JJIT 2026-04-27 fallback scrape Python -->
+- [ ] https://justjoin.it/job-offer/n-ix-senior-python-software-engineer-with-genai--krakow-python | N-iX | Senior Python Software Engineer (GenAI)     <!-- via Gmail:JJIT 2026-04-27 fallback scrape Python -->
+- [ ] https://nofluffjobs.com/pl/job/mid-angular-developer-link-group-remote-1 | Link Group | Mid Angular Developer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape Angular -->
+- [ ] https://nofluffjobs.com/pl/job/senior-angular-developer-remote-link-group-1 | Link Group | Senior Angular Developer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape Angular -->
+- [ ] https://nofluffjobs.com/pl/job/angular-developer-mid-senior-upvanta-remote | Upvanta | Angular Developer (mid/senior)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape Angular -->
+- [ ] https://nofluffjobs.com/pl/job/senior-frontend-developer-angular-devire-remote | Devire | Senior Frontend Developer (Angular)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape Angular -->
+- [ ] https://nofluffjobs.com/pl/job/frontend-fullstack-developer-angular-python-azure-upvanta-remote | Upvanta | Frontend / Fullstack Developer (Angular + Python + Azure)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape Angular -->
+- [ ] https://nofluffjobs.com/pl/job/angular-developer-sektor-publiczny-edge-one-solutions-remote | Edge One Solutions | Angular Developer (Public Sector)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape Angular -->
+- [ ] https://nofluffjobs.com/pl/job/software-engineer-roku-brightscript-streaming-qvc-group-global-business-services-remote | QVC GROUP | Software Engineer – Roku / BrightScript (Streaming)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape Angular -->
+- [ ] https://nofluffjobs.com/pl/job/senior-angular-developer-xm-remote | XM | Senior Angular Developer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape Angular -->
+- [ ] https://nofluffjobs.com/pl/job/frontend-developer-edge-one-solutions-remote | Edge One Solutions | Frontend Developer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape Angular -->
+- [ ] https://nofluffjobs.com/pl/job/senior-front-end-developer-chabre-remote | Chabre | Senior Front-end Developer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape Angular -->
+- [ ] https://nofluffjobs.com/pl/job/senior-frontend-engineer-design-system-frontend-platform-smartrecruiters-remote | SmartRecruiters | Senior Frontend Engineer, Design System & Frontend Platform     <!-- via Gmail:NFJ 2026-04-26 fallback scrape Angular -->
+- [ ] https://nofluffjobs.com/pl/job/senior-net-developer-ai-azure-solutions-chabre-remote | Chabre | Senior .NET Developer (AI + Azure Solutions)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/net-developer-sektor-publiczny-edge-one-solutions-remote | Edge One Solutions | .NET Developer (Public Sector)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-angular-net-stackmine-remote | Stackmine | Fullstack Developer (Angular + .NET)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-engineer-net-angular-with-data-ai-expertise-vecten-remote | Vecten | Fullstack Engineer (.NET & Angular) with Data & AI Expertise     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/full-stack-net-web-developer-ai-green-minds-remote | Green Minds | Full-Stack .NET Web Developer (AI)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/senior-net-developer-stx-next-remote | STX Next | Senior .NET Developer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/net-developer-antal-remote-4 | Antal | .NET Developer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/net-developer-with-azure-m-f-stackmine-remote | Stackmine | .NET Developer with Azure     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/backend-developer-net-application-security-scalo-remote | Scalo | Backend Developer (.NET + Application Security)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/programista-aplikacji-net-econsulting-remote | eConsulting | Programista .NET     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-net-react-diverse-cg-sp-k--remote | Diverse CG | Fullstack Developer (.NET + React)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/mid-net-developer-link-group-remote-1 | Link Group | Mid .NET Developer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/senior-net-developer-link-group-remote-4 | Link Group | Senior .NET Developer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack .NET -->
+- [ ] https://nofluffjobs.com/pl/job/senior-c-engineer-infoniqa-poland-remote-1 | Infoniqa Poland | Senior C# Engineer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack C# -->
+- [ ] https://nofluffjobs.com/pl/job/senior-software-engineer-react-typescript-python-c-aws-cdk-knowit-poland-remote | Knowit Poland | Senior Software Engineer (React, TypeScript, Python, C#, AWS CDK)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack C# -->
+- [ ] https://nofluffjobs.com/pl/job/starszy-a-programista-ka-net-c--nask-panstwowy-instytut-badawczy-remote | NASK | Starszy/a Programista/ka .NET / C#     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack C# -->
+- [ ] https://nofluffjobs.com/pl/job/net-c-developer-devire-remote | Devire | .NET/C# Developer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack C# -->
+- [ ] https://nofluffjobs.com/pl/job/senior-c-developer-xopero-software-remote | Xopero Software | Senior C# Developer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack C# -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-c-angular-node-js-antal-remote | Antal | Fullstack Developer (C# + Angular + Node.js)     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack C# -->
+- [ ] https://nofluffjobs.com/pl/job/senior-software-engineer-square-one-resources-remote-2 | Square One Resources | Senior Software Engineer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack C# -->
+- [ ] https://nofluffjobs.com/pl/job/developer-crm-dynamics-tc-dcg-remote | DCG | Developer CRM Dynamics     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack C# -->
+- [ ] https://nofluffjobs.com/pl/job/backend-developer-sienn-poland-remote-2 | Sienn Poland | Backend Developer     <!-- via Gmail:NFJ 2026-04-26 fallback scrape fullstack C# -->
+
+- [ ] https://www.xing.com/jobs/freiburg-breisgau-senior-full-stack-entwickler-remote-153699288 | Instaffo GmbH | Senior Full Stack Developer (remote)     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/wien-full-stack-software-engineer-all-genders-wien-153699251 | Instaffo GmbH | Full Stack Software Engineer (Wien)     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/aachen-sap-full-stack-development-experte-100-home-office-bzw-remote-taetigkeit-153703375 | Biber & Associates | SAP Full Stack Development Expert     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/wien-sap-fiori-entwickler-153703057 | duerenhoff GmbH | SAP Fiori Entwickler     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/wien-sap-job-sd-mm-consultant-raum-wien-153703055 | duerenhoff GmbH | SAP Job SD/MM Consultant     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/wien-sap-sd-berater-153703011 | duerenhoff GmbH | SAP SD Berater     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/fuerstenfeldbruck-software-engineer-153701018 | Güntner GmbH & Co. KG | Software Engineer     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/wien-senior-full-stack-software-engineer-all-genders-wien-153676732 | Instaffo GmbH | Senior Full Stack Software Engineer (Wien)     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/wien-devops-engineer-all-genders-wien-153676631 | Instaffo GmbH | DevOps Engineer (Wien)     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/berlin-fullstack-typescript-developer-angular-node-js-153676787 | Instaffo GmbH | Fullstack TypeScript Developer (Angular/Node.js)     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/wien-azure-platform-engineer-all-genders-wien-153676727 | Instaffo GmbH | Azure Platform Engineer (Wien)     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/duesseldorf-fullstack-developer-153676754 | Instaffo GmbH | Fullstack Developer (Düsseldorf)     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/germany-staff-fullstack-engineer-153686611 | Jupus | Staff Fullstack Engineer     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/freiburg-breisgau-senior-full-stack-entwickler-java-typescript-react-lexware-office-153676817 | Instaffo GmbH | Senior Full Stack Developer (Java/TypeScript/React)     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/biedenkopf-sales-development-representative-sdr-100-remote-153660870 | Vertrieb Bangert | Sales Development Representative (SDR) - Remote     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/braunschweig-fullstack-softwareentwickler-153641035 | TecFox GmbH | Fullstack Softwareentwickler     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/braunschweig-fullstack-softwareentwickler-153641034 | TecFox GmbH | Fullstack Softwareentwickler     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/deuschlandweit-java-full-stack-entwickler-gn-153640155 | Jungwild GmbH | Java Full Stack Entwickler     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/berlin-senior-full-stack-entwickler-mw-java-spring-boot-react-remote-153653078 | Instaffo GmbH | Senior Full Stack Developer (Java/Spring Boot/React)     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/konstanz-fullstack-developer-konstanz-berlin-remote-153636961 | SEITENBAU GmbH | Fullstack Developer (Konstanz/Berlin/remote)     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/nuernberg-fullstack-developer-web-ai-automation-153640471 | NeoBird Digital | Fullstack Developer (Web & AI Automation)     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://www.xing.com/jobs/fulda-senior-fullstack-entwickler-geschlechter-153640497 | it-novum | Senior Fullstack Entwickler     <!-- via Gmail:XING 2026-04-27 tracking redirect -->
+- [ ] https://de.indeed.com/viewjob?jk=14d2c04d79111ef2 | it-novum GmbH | Senior Fullstack Entwickler (alle Geschlechter)     <!-- via Gmail:indeed 2026-04-27 7d-rescan QP-decoded -->
+- [ ] https://de.indeed.com/viewjob?jk=2012676b43c0542c | Netformic GmbH | Senior Software Developer / Techlead PIM / Pimcore     <!-- via Gmail:indeed 2026-04-27 7d-rescan QP-decoded -->
+- [ ] https://www.stepstone.de/stellenangebote----13571346-inline.html | EvoLogics GmbH | Software Engineer - Distributed Backend Systems     <!-- via Gmail:stepstone 2026-04-27 7d-rescan Case B magiclink-returnUrl -->
+
+- [ ] https://linkedin.com/jobs/view/4405472005     <!-- via Gmail:linkedin 2026-04-27 -->
+- [ ] https://linkedin.com/jobs/view/4407182626     <!-- via Gmail:linkedin 2026-04-27 -->
+- [ ] https://linkedin.com/jobs/view/4404446176     <!-- via Gmail:linkedin 2026-04-27 -->
+- [ ] https://linkedin.com/jobs/view/4405985236     <!-- via Gmail:linkedin 2026-04-27 -->
+- [ ] https://linkedin.com/jobs/view/4405971588     <!-- via Gmail:linkedin 2026-04-27 -->
+- [ ] https://linkedin.com/jobs/view/4405080217     <!-- via Gmail:linkedin 2026-04-27 -->
+- [ ] https://de.indeed.com/viewjob?jk=0b6dff749c99a8ed     <!-- via Gmail:indeed 2026-04-27 -->
+- [ ] https://www.welcometothejungle.com/fr/companies/rail-europe/jobs/junior-software-engineer-java-angular-fullstack_paris     <!-- via Gmail:wtj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/senior-fullstack-developer-senior-fullstack-developerka-java-angular-decerto-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/senior-platform-engineer-xtb-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/full-stack-developer-unisystech-consulting-remote-1     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/mid-java-developer-praca-zdalna-moondigo-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/inzynier-inzynierka-danych-data-engineer-astek-polska-remote-1     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-java-angular-link-group-remote-1     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/senior-full-stack-developer-integrations-middleware-vsi-voice-script-international-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/ai-first-developer-sia-aa-projekts--remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-react-js-net-algoteque-innovation-hub-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-net-angular-m-f-stackmine-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/senior-fullstack-engineer-asp-net-react-esurance-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-node-js-net-azure-terraform-upvanta-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/senior-net-developer-remote-zawin-martin-engineering-ag     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://justjoin.it/offers/yard-corporate-senior-node-js-developer-warszawa-javascript-6295e74d     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/rits-professional-services-senior-node-js-developer-warszawa-javascript-5e85bc7b     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/link-group-fullstack-developer-go-react-node-js--gdansk-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/itds-senior-fullstack-engineer---react-and-kotlin-specialists-warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/connectis-fullstack-developer-net-react--gdansk-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/itds-senior-full-stack-react-and-python-developer---financial-technology-warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/stx-next-senior-fullstack-developer-vue-js-focus-python--poznan-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/speedapp-senior-full-stack-engineer-nodejs-react--warszawa-javascript-ff2a39ed     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/northmill--senior-backend-engineer-c-aws--katowice-net-7db2f0ec     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/itds-senior-net-developer---financial-systems-bpms-integration-wroclaw-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/harvey-nash-technology-c-net-developer-warszawa-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/antal-sp-z-o-o---net-developer-warszawa-net-36fe3d24     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/zaven-senior-azure-integration-developer-logic-apps-specialist-net--wroclaw-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/n-ix-senior-full-stack-engineer-net-react--krakow-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/upvanta-sp-z-o-o--senior-full-stack-developer-react-net-core-m-k-n--warszawa-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/zaven-azure-engineer-wroclaw-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/devapo--net-developer-krakw-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/clurgo-angular-developer-warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/trimetis-services-senior-frontend-developer-angular--krakow-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/net-software-developer-bms-remote-1     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-programista-programistka-praca-zdalna-astek-polska-remote-1     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/senior-full-stack-python-angular-engineer-matrix-global-services-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/solution-architect-ai-practices-sdlc-inteca-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/remote-full-stack-software-engineer-ledgebrook     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/net-software-development-engineer-akvelon-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/software-engineer-creatoriq-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/mid-senior-go-engineer-with-web-api-experience-codilime-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-he-she-astek-polska-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/full-stack-developer-java-angular-augmenta-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-net-react-connectis--remote-2     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/senior-fullstack-net-angular-developer-inwedo-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-he-she-full-remote-f-m-astek-polska     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-angular-net-80-20-stackmine-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://nofluffjobs.com/pl/job/senior-software-engineer-react-next-js-node-js-square-one-resources-remote     <!-- via Gmail:nfj 2026-04-27 -->
+- [ ] https://justjoin.it/offers/ciklum-senior-back-end-js-developer-gdansk-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/cyclad-servicenow-developer-sam-itom--warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/codetwo-sp-z-o-o-sp-k--web-developer-wroclaw-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/ness-solution-frontend-developer-angular--gdansk-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/kalepa-senior-full-stack-engineer---core-ux-europe--new-york-ai     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/ciklum-full-stack-engineer-gdansk-javascript-dc902140     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/emerge-soft-senior-software-engineering-manager-web-warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/n-ix-middle-fullstack-software-engineer-krakow-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/antal-sp-z-o-o---net-developer-warszawa-other     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/rits-professional-services-mid-senior-fullstack-developer-net-react-lub-angular--warszawa-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/sellintegro-ecommerce-integration-c-net-developer-wroclaw-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/codetwo-hrejterzy-senior-developer-c-lub-asp-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/cyclad-microsoft-dynamics-365-power-platform-developer-warszawa-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/pirxey-senior-backend-developer-z-c---part-time-full-time-gdansk-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/fujitsu-technology-solutions-sp-z-o-o--fullstack-developer-lodz-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/jit-team-fullstack-developer-flutter-angular-net--krakow-javascript-46860d45     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/code-and-pepper-fullstack-developer-angular-python--lodz-javascript-3b8b768a     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/chabre-it-services-sp-z-o-o-senior-frontend-engineer-angular-aws-integration--warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/neontri-senior-expert-angular-developer-wroclaw-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/code-and-pepper-fullstack-developer-angular-python--krakow-javascript-ab3addeb     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/pretius-react-developer-react-node-js--warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/randlab-frontend-angular-developer-k-m-n--warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://www.welcometothejungle.com/fr/companies/n2jsoft-fr/jobs/senior-software-developer-c-net-aws_lyon_N2JSO_Zr15by     <!-- via Gmail:wtj 2026-04-27 -->
+- [ ] https://www.welcometothejungle.com/fr/companies/n2jsoft-fr/jobs/developpeur-fullstack-confirme-h-f-c-net-angular_lyon_N2JSO_6djMP6W     <!-- via Gmail:wtj 2026-04-27 -->
+- [ ] https://theprotocol.it/szczegoly/praca/senior-fullstack-developer-net-angular-wroclaw,oferta,0a110000-02c3-2a30-bc17-08dea20a8b76     <!-- via Gmail:theprotocol 2026-04-27 -->
+- [ ] https://theprotocol.it/szczegoly/praca/senior-fullstack-developer-java-typescript-wroclaw,oferta,cb780000-1098-7a89-9e9a-08dea20a1a74     <!-- via Gmail:theprotocol 2026-04-27 -->
+- [ ] https://theprotocol.it/szczegoly/praca/frontend-developer-angular-wroclaw,oferta,cb780000-1098-7a89-3745-08dea1fa8d76     <!-- via Gmail:theprotocol 2026-04-27 -->
+- [ ] https://theprotocol.it/szczegoly/praca/fullstack-developer-javaangular-wroclaw-plac-teatralny-1,oferta,cb780000-1098-7a89-e6e6-08dea1e20efb     <!-- via Gmail:theprotocol 2026-04-27 -->
+- [ ] https://theprotocol.it/szczegoly/praca/net-developer-warszawa,oferta,88e60000-2ca1-929b-6f9f-08dea20a8168     <!-- via Gmail:theprotocol 2026-04-27 -->
+- [ ] https://theprotocol.it/szczegoly/praca/android-developer-lodz,oferta,cb780000-1098-7a89-5172-08dea20a81cc     <!-- via Gmail:theprotocol 2026-04-27 -->
+- [ ] https://theprotocol.it/szczegoly/praca/frontend-developer-warszawa,oferta,31ad0000-9520-9ebd-0434-08de9f81a6d3     <!-- via Gmail:theprotocol 2026-04-27 -->
+- [ ] https://theprotocol.it/szczegoly/praca/angular-developer-sektor-publiczny-warszawa,oferta,dc570000-1d37-3e55-c505-08de9bc09d72     <!-- via Gmail:theprotocol 2026-04-27 -->
+- [ ] https://theprotocol.it/szczegoly/praca/angular-developer-m-k-n-wroclaw-legnicka-70,oferta,04a20000-854a-dee6-04e3-08de955f3339     <!-- via Gmail:theprotocol 2026-04-27 -->
+- [ ] https://justjoin.it/offers/cyclad-frontend-engineer-angular--warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/craftware-fullstack-developer-aws-node-js-react--warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/experis-manpower-group-senior-salesforce-developer-experience-cloud--wroclaw-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/experis-manpower-group-fullstack-developer-node-js-react--warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/cyclad-servicenow-hrsd-developer-warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/the-codest-senior-react-developer-warszawa-javascript-019c1f27     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/coalition-technologies-remote-wordpress-developer-gdansk-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/upvanta-sp-z-o-o--fullstack-developer-node-js-net-azure-terraform--gdansk-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/ingenious-build-middle-frontend-developer-krakow-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/fabrity-s-a--starszy-programista-net-k-m--warszawa-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/ready4s--net-developer-krakow-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/happy-team-fullstack-developer-net-blazor--lodz-net-d144537a     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/antal-sp-z-o-o--senior-fullstack-net-developer-warszawa-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/n-ix-senior-net-engineer-krakow-net-52a2cc61     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/kubo--net-developer-katowice-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/harvey-nash-technology-c-net-developer-krakow-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/margo-fullstack-developer-net-angular-cloud-native-focus-lodz-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/upvanta-sp-z-o-o--fullstack-developer-node-js-net-azure-terraform--gdansk-net     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/people-more-p-s-a--senior-angular-developer-krakow-javascript-da62508c     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/centrum-e-zdrowia-administrator-systemow-it---z-funkcja-developera-frontend-k-m-w-wydziale-rozwoju-warszawa-javascript-bc5de195     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/p-p-solutions-senior-angular-developer-cat--warszawa-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/cshark-senior-angular-developer-gdansk-javascript-856de2a3     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/inspeerity-senior-frontend-developer-angular--warsaw-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://justjoin.it/offers/upvanta-sp-z-o-o--angular-developer-mid-senior--gdansk-javascript     <!-- via Gmail:jjit 2026-04-27 -->
+- [ ] https://de.indeed.com/viewjob?jk=ba39cf8115c4406e     <!-- via Gmail:indeed 2026-04-27 -->
+- [ ] https://nl.indeed.com/viewjob?jk=70f0c680ea4161f6     <!-- via Gmail:indeed 2026-04-27 -->
+- [ ] https://de.indeed.com/viewjob?jk=3ef7d9e5f391ceb3     <!-- via Gmail:indeed 2026-04-27 -->
+- [ ] https://de.indeed.com/viewjob?jk=9e5808e32c56efec     <!-- via Gmail:indeed 2026-04-27 -->
+- [ ] https://de.indeed.com/viewjob?jk=28641ff6f004bb21     <!-- via Gmail:indeed 2026-04-27 -->
+- [ ] https://de.indeed.com/viewjob?jk=0f3abcb17f1d7243     <!-- via Gmail:indeed 2026-04-27 -->
+- [ ] https://at.indeed.com/viewjob?jk=be7a2b58afd01565     <!-- via Gmail:indeed 2026-04-27 -->
+- [ ] https://at.indeed.com/viewjob?jk=d4571f82fa665c8c     <!-- via Gmail:indeed 2026-04-27 -->
+- [ ] https://at.indeed.com/viewjob?jk=f0acf5d3c07ebad1     <!-- via Gmail:indeed 2026-04-27 -->
+
+- [ ] https://justjoin.it/offers/advox-studio-frontend-developer-poznan-javascript     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://justjoin.it/offers/scalo-senior-frontend-software-engineer-krakow-javascript     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://justjoin.it/offers/bluebinary-io-senior-fullstack-developer-gdansk-javascript-005cdcac     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://justjoin.it/offers/juo-full-stack-engineer-gdansk-javascript-dcc65f5a     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://justjoin.it/offers/modivo-platform-senior-angular-frontend-developer-m-f--polkowice-other     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://justjoin.it/offers/be-in-it-shopify-developer-warszawa-javascript     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://justjoin.it/offers/youriteams-mid-senior-react-developer-mui-9-migration--warszawa-javascript     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://justjoin.it/offers/epam-systems--net-engineer-with-azure-and-react-poland-remote--net     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://justjoin.it/offers/cerebre--net-software-engineer---graph-database-engine-krakow-net     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://justjoin.it/offers/people-more-p-s-a---net-developer-senior-net-developer-krakow-net     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://justjoin.it/offers/epam-systems-senior-net-engineer-with-azure-and-react-poland-remote--net     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://justjoin.it/offers/big-blue-marble-backend-developer-net--gdansk-net     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://justjoin.it/offers/scalo-fullstack-developer-net-angular--warszawa-net-2eb3c1f2     <!-- via Gmail:jjit 2026-04-28 -->
+- [ ] https://nofluffjobs.com/pl/job/senior-fullstack-developer-java-angular-virtusa-remote     <!-- via Gmail:nfj 2026-04-28 -->
+- [ ] https://nofluffjobs.com/pl/job/fullstack-programista-programistka-praca-zdalna-astek-polska-remote     <!-- via Gmail:nfj 2026-04-28 -->
+- [ ] https://nofluffjobs.com/pl/job/digital-manufacturing-architect-link-group-remote     <!-- via Gmail:nfj 2026-04-28 -->
+- [ ] https://nofluffjobs.com/pl/job/engineering-team-leader-customer-care-xtb-remote     <!-- via Gmail:nfj 2026-04-28 -->
+- [ ] https://linkedin.com/jobs/view/4406836729     <!-- via Gmail:linkedin 2026-04-28 -->
+- [ ] https://linkedin.com/jobs/view/4406879503     <!-- via Gmail:linkedin 2026-04-28 -->
+- [ ] https://linkedin.com/jobs/view/4406851584     <!-- via Gmail:linkedin 2026-04-28 -->
+- [ ] https://linkedin.com/jobs/view/4384246253     <!-- via Gmail:linkedin 2026-04-28 -->
+- [ ] https://linkedin.com/jobs/view/4406852274     <!-- via Gmail:linkedin 2026-04-28 -->
+- [ ] https://linkedin.com/jobs/view/4406847456     <!-- via Gmail:linkedin 2026-04-28 -->
+- [ ] https://linkedin.com/jobs/view/4407108432     <!-- via Gmail:linkedin 2026-04-28 -->
+- [ ] https://linkedin.com/jobs/view/4405739683     <!-- via Gmail:linkedin 2026-04-28 -->
+- [ ] https://linkedin.com/jobs/view/4407107531     <!-- via Gmail:linkedin 2026-04-28 -->
+- [ ] https://linkedin.com/jobs/view/4406880541     <!-- via Gmail:linkedin 2026-04-28 -->
+- [ ] https://linkedin.com/jobs/view/4397396926     <!-- via Gmail:linkedin 2026-04-28 -->
+- [ ] https://linkedin.com/jobs/view/4384645320     <!-- via Gmail:linkedin 2026-04-28 -->
+
+
+- [ ] https://www.xing.com/jobs/steinheim-senior-developer-full-stack-react-moegl-ausbau-leitung-it-153714670     <!-- via Gmail:xing 2026-04-28 -->
+- [ ] https://www.xing.com/jobs/berlin-full-stack-engineer-153704850     <!-- via Gmail:xing 2026-04-28 -->
+- [ ] https://www.xing.com/jobs/freiburg-breisgau-senior-full-stack-entwickler-remote-153737336     <!-- via Gmail:xing 2026-04-28 -->
+- [ ] https://www.xing.com/jobs/heilbronn-senior-fullstack-engineer-153704058     <!-- via Gmail:xing 2026-04-28 -->
+- [ ] https://www.xing.com/jobs/berlin-lead-fullstack-developer-typescript-angular-node-js-153737323     <!-- via Gmail:xing 2026-04-28 -->
+- [ ] https://www.xing.com/jobs/frankfurt-main-senior-fullstack-developer-153733467     <!-- via Gmail:xing 2026-04-28 -->
+- [ ] https://www.xing.com/jobs/homeoffice-payroll-specialist-lead-serbia-153735353     <!-- via Gmail:xing 2026-04-28 -->
+- [ ] https://www.xing.com/jobs/wien-senior-net-entwickler-4-woche-homeoffice-153714559     <!-- via Gmail:xing 2026-04-28 -->
 
 ## Procesadas
 

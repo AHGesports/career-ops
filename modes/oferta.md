@@ -16,7 +16,10 @@ Keep if permanent employment OR contract type not mentioned (evaluate + note unk
 
 **2. Salary — DISCARD if:**
 - Salary IS disclosed AND top of range < EUR 55K (candidate minimum)
-- PLN reference: EUR 55K ≈ 19,200 PLN/month
+- PLN discard thresholds (NBP 4.25, validated April 2026):
+  - Permanent/UoP: top < 19,480 PLN/month gross (12-pay)
+  - B2B revenue: top < 19,100 PLN/month
+  - Hourly B2B: rate < 112 PLN/h
 - Do NOT discard if salary hidden — evaluate normally
 
 **If discarded:** output one-line verdict and stop:

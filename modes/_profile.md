@@ -103,7 +103,10 @@ Keep if: permanent employment (UoP in Poland, unbefristeter Arbeitsvertrag in AT
 
 ### Salary — discard if:
 - Salary IS disclosed AND the top of the advertised range is below EUR 55K (minimum from `config/profile.yml`)
-- PLN conversion reference: EUR 55K ≈ 19,200 PLN/month gross B2B, ≈ 14,200 PLN/month gross UoP
+- PLN discard thresholds (NBP 4.25, validated April 2026):
+  - Permanent/UoP: top of range < **19,480 PLN/month gross (12-pay)**
+  - B2B revenue: top of range < **19,100 PLN/month** (cash-parity floor)
+  - Hourly B2B: rate < **112 PLN/h** (absolute floor)
 - Do NOT discard if salary is hidden / not disclosed — evaluate normally and note in Block D
 
 ### Discard output format:
@@ -117,11 +120,57 @@ Write TSV with status `Discarded` and score `N/A`.
 
 ## Your Comp Targets
 
-Read current targets from `config/profile.yml`. Additional guidance:
+Read current targets from `config/profile.yml` (EUR 55K–80K, minimum EUR 55K). Additional guidance:
 - Austrian market: use Glassdoor AT, kununu.com, StepStone AT for comp data
 - For remote EU roles: comp may be higher, adjust accordingly
 - For UK/US/CA/AU remote roles: expect significantly higher ranges, convert to EUR for comparison
-- Contractor rates: typically 40-60% higher than employee base in Austrian market
+
+### Validated PLN/EUR Reference (NBP rate 4.25 PLN/EUR, April 2026)
+
+**Permanent via EOR — Austrian payroll, €55,000/year gross (14 pays):**
+
+| Metric | EUR | PLN |
+|--------|-----|-----|
+| Brutto / year | 55,000 | 233,750 |
+| Brutto / month (12-pay — Polish recruiter convention) | 4,583 | 19,479 |
+| Brutto / month (14-pay — Austrian standard) | 3,929 | 16,696 |
+| Brutto / hour (2,080h nominal paid) | 26.44 | 112 |
+| Brutto / hour (1,696h actually worked) | 32.43 | 138 |
+| **Netto / year** | **38,430** | **163,300** |
+| **Netto / month (12-pay)** | **3,203** | **13,612** |
+| **Netto / month (14-pay)** | **2,745** | **11,666** |
+
+When filling PLN salary field for permanent role: write **19,479 PLN/month gross (12-pay)**.
+
+---
+
+**B2B Einzelunternehmer — 15% Basispauschalierung (software dev, 2026):**
+
+| Metric | A: Cash-parity floor | B: Total-value parity ★ | C: Upper end |
+|--------|---------------------|-------------------------|--------------|
+| Revenue / year (EUR) | 54,000 | 76,000 | 88,800 |
+| Revenue / year (PLN) | 229,500 | 323,000 | 377,400 |
+| Revenue / month (PLN) | 19,125 | 26,917 | 31,450 |
+| Rate / hour @ 1,400h billable (PLN) | 164 | 231 | 270 |
+| Rate / hour @ 1,696h billable (PLN) | 135 | 191 | 223 |
+| Rate / hour @ 1,736h billable (PLN) | 132 | 186 | 217 |
+| **Cash net / year EUR (years 4+)** | **38,823** | **39,592** | **44,368** |
+| **Cash net / year PLN (years 4+)** | **165,000** | **168,300** | **188,566** |
+| **Cash net / month PLN (years 4+)** | **13,750** | **14,025** | **15,714** |
+| Cash net / year EUR (years 1–3, KV relief) | ≈41,160 | ≈41,700 | ≈46,700 |
+| Cash net / year PLN (years 1–3) | ≈174,930 | ≈177,200 | ≈198,500 |
+
+★ Recommended ask. Includes self-funded vacation, sick leave, pension top-up, admin, downtime buffer.
+Recommended B2B headline rate: **200–230 PLN/h (€47–54/h)**.
+
+---
+
+**Block D evaluation rules:**
+- Permanent PLN: floor = 19,479 PLN/month gross (12-pay) = EUR 55K
+- B2B PLN: floor = 19,125 PLN/month revenue (cash-parity); target = 26,917 PLN/month (total-value)
+- Hourly B2B: floor = 132 PLN/h; target = 200–230 PLN/h
+- Salary not disclosed: evaluate normally, note in Block D
+- Always convert PLN → EUR at 4.25; note rate used
 
 ## Your Negotiation Scripts
 

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "gmail-html": {
+      "command": "node",
+      "args": ["./mcp/gmail-html/index.mjs"],
+      "description": "Local Gmail MCP exposing full HTML message body (read-only). See mcp/gmail-html/README.md for setup."
+    }
+  }
+}

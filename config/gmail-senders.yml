@@ -1,0 +1,247 @@
+# Gmail job-alert senders — single source of truth for scan-gmail skill.
+#
+# Default email source for ALL senders is the local `gmail-html` MCP at
+# `mcp/gmail-html/` (call `mcp__gmail-html__get_message_full`). It returns
+# both `html` and `plain` fields. Most senders give plaintext-null but
+# always-populated HTML, so prefer `html` for regex extraction.
+#
+# extraction values (replaces old body_type letters):
+#   direct     — URLs in HTML are real, regex captures them straight. No Chrome.
+#   base64     — URLs in HTML are wrapped in a tracker; the target is base64url-encoded
+#                inside the tracker URL path. Decode locally. No Chrome.
+#   zlib       — Tracker is base64url-encoded zlib-compressed query string. Decode
+#                locally, parse the `l=` parameter for the URL. No Chrome.
+#   tracker    — Encrypted/opaque tracker. Must navigate via Chrome DevTools and
+#                grab the resolved URL via `evaluate_script("location.href")`.
+#                Use Case B procedure in SKILL.md.
+#   plaintext  — Older senders that put bare URLs in the plaintext body. Regex on `plain`.
+#   untested   — No real email yet inspected. The pattern/strategy below is a GUESS based
+#                on the sender's setup-doc URL or public email format. The scan-gmail skill
+#                MUST warn the user when it encounters a thread from an `untested` sender:
+#                "Sender X is marked untested in gmail-senders.yml. Confirm extraction
+#                strategy before processing — pull one thread, inspect HTML body, decide
+#                between direct/base64/zlib/tracker/plaintext, then update yaml."
+#                Do NOT auto-process untested-sender threads with the guessed pattern;
+#                log them in the summary's `Anomalies` block until verified.
+#
+# Adding a sender: choose the right `extraction`, write a regex that captures the
+# meaningful slug/id, write `final_shape` so the skill knows the canonical form.
+# If you've never inspected a real email, mark it `untested`.
+
+senders:
+
+  # ============== HTML-only senders, direct extraction ==============
+
+  - email: no-reply@justjoin.it
+    extraction: direct
+    pattern: 'justjoin\.it/(?:offers|job-offer)/[a-z0-9-]+'
+    final_shape: 'justjoin.it/{path}'
+    decoded_must_match: 'justjoin\.it/(?:offers|job-offer)/'
+    notes: |
+      HTML body has direct `justjoin.it/offers/<slug>` URLs. Strip `?utm_*` params.
+      Subject: `New jobs for you: <filter>, ... Check them out.` (no count in subject — JJIT typically lists 9-10 per email).
+
+  - email: jobalert@mailing.theprotocol.it
+    extraction: direct
+    pattern: 'theprotocol\.it/szczegoly/praca/[^,\s"<>]+,oferta,[a-f0-9-]+'
+    final_shape: 'theprotocol.it/szczegoly/praca/{slug},oferta,{uuid}'
+    decoded_must_match: 'theprotocol\.it/szczegoly/praca/'
+    notes: |
+      HTML body has direct theprotocol.it URLs of shape `/szczegoly/praca/<slug>,oferta,<uuid>`.
+      Strip `?utm_*` query.
+      Subject (Polish): `🔵🟢 Nowe oferty pracy: „<filter>; Praca: zdalna"` (no count in subject).
+
+  - email: app@germantechjobs.de
+    extraction: direct
+    pattern: 'talentportal\.germantechjobs\.de/api/job-redirect\?jobId=([^&]+)'
+    final_shape: 'talentportal.germantechjobs.de/api/job-redirect?jobId={jobId}'
+    subject_count_pattern: '^(\d+)\s+New\s+Job(?:s)?\s+Matching'
+    notes: |
+      HTML body has `talentportal.germantechjobs.de/api/job-redirect?jobId=<slug>`.
+      The jobId IS the canonical reference (company-title slug). Keep as-is, don't follow.
+      Subject: `N New Job Matching Your Alert ...`.
+
+  # ============== HTML-only senders, base64-decode tracker ==============
+
+  - email: notifications@nofluffjobs.com
+    extraction: base64
+    pattern: 'mail-link\.nofluffjobs\.com/click/[^/]+/([A-Za-z0-9_-]+)'
+    final_shape: 'nofluffjobs.com/pl/job/{slug}'
+    decoded_must_match: 'nofluffjobs\.com/(?:pl/)?job/'
+    subject_count_pattern: '(\d+)\s*dopasowane'
+    notes: |
+      HTML body. URLs wrapped in `mail-link.nofluffjobs.com/click/<id>/<base64url>/...`.
+      Decode capture group: `Buffer.from(captured, 'base64url').toString('utf8')` → real URL.
+      Filter decoded URLs: must match `decoded_must_match`.
+      Strip query string. Subject (Polish) `Nowe oferty pracy, N dopasowane do Twoich kryteriów: ...` — N = expected count.
+      Some weekly digests also use `Najlepsze oferty pracy z ostatniego tygodnia` (no count). Both formats land via the same regex.
+
+  # ============== HTML-only senders, zlib-decode tracker ==============
+
+  - email: news@profil.karriere.at
+    extraction: zlib
+    pattern: 'email\.karriere\.at/c/([A-Za-z0-9_-]+)'
+    final_shape: 'karriere.at/jobs/<id> (or whatever `l=` resolves to)'
+    decoded_must_match: 'karriere\.at/jobs/\d+'
+    notes: |
+      HTML body. URLs wrapped in `email.karriere.at/c/<base64url-of-zlib-deflated-querystring>`.
+      Decode: `zlib.inflateSync(Buffer.from(captured, 'base64url'))` → URL-encoded query string.
+      Parse query string, take the `l=` value, URL-decode it = real URL.
+      `decoded_must_match` keeps only `karriere.at/jobs/<id>`; homepage/profile/social/instagram URLs are dropped.
+
+  - email: no-reply@karriere.at
+    extraction: zlib
+    pattern: 'email\.karriere\.at/c/([A-Za-z0-9_-]+)'
+    final_shape: 'karriere.at/jobs/<id>'
+    decoded_must_match: 'karriere\.at/jobs/\d+'
+    notes: |
+      Same zlib-tracker decode as `news@profil.karriere.at`.
+      Bewerbung-bestätigung emails (subject `Deine Bewerbung auf das Stelleninserat ...`) are NOT
+      job alerts — they confirm an application you sent. Decoded `l=` URLs lead to /profil/bewerbungen/...
+      Those don't match `decoded_must_match`, so they get correctly filtered out (0 URLs).
+
+  # ============== Mixed plaintext + HTML, direct extraction from HTML ==============
+
+  - email: donotreply@jobalert.indeed.com
+    extraction: direct
+    pattern: '(?:de|at|nl|ie)\.indeed\.com/rc/clk(?:/dl)?\?[^"]*jk=([a-f0-9]+)'
+    final_shape: '{country}.indeed.com/viewjob?jk={jk}'
+    subject_count_pattern: '^(\d+)\s+(?:nieuwe\s+)?[A-Za-z0-9.+#-]+\s+(?:[Jj]obs?|[Vv]acatures?)\b'
+    sponsored_pattern: '(?:de|at|nl|ie)\.indeed\.com/pagead/clk'
+    notes: |
+      Use the HTML body, NOT plaintext. Plaintext suffers from quoted-printable corruption
+      where `=14`, `=20`, `=03` etc become control characters/spaces, mangling the jk hex.
+      HTML body preserves jk values intact.
+      Per-URL parse: keep every `/rc/clk?jk=X`. Skip individual `/pagead/clk` URLs (sponsored).
+      Thread = 0 URLs only when every URL is sponsored.
+      Country subdomain (de/at/nl/ie) preserved in final URL.
+
+  # ============== Untested senders — WARN USER, do not auto-process ==============
+  # No real email from these has been inspected yet. The pattern below is a GUESS.
+  # When the skill encounters one of these, it MUST stop and ask the user to confirm
+  # extraction strategy before processing. Add a one-liner to summary `Anomalies`:
+  #   "Untested sender <email>: pulled 1 sample thread <id>, recommend extraction=<X>
+  #    based on body inspection. Confirm before bulk processing."
+
+  - email: jobalerts-noreply@linkedin.com
+    extraction: direct
+    pattern: 'linkedin\.com/comm/jobs/view/\d+'
+    final_shape: 'linkedin.com/jobs/view/{id}'
+    decoded_must_match: 'linkedin\.com/(?:comm/)?jobs/view/\d+'
+    notes: |
+      LinkedIn job-alert digests. URL form in the body is `linkedin.com/comm/jobs/view/<id>`
+      (`/comm/` is the tracking prefix). The `canonicalize()` step in extract-urls.mjs already
+      rewrites `/comm/jobs/view/X` → `/jobs/view/X`, so the final URL becomes the bare LinkedIn
+      job page. First thread we inspected (19dcf468a7980fcb) was a "your job alert has been created"
+      confirmation — no listings. Real digest emails subject `N new jobs for "<query>"` will
+      contain ~25-100 job links and extract cleanly with this pattern.
+
+  - email: jobagent@arbeitsagentur.de
+    extraction: untested
+    pattern_guess: 'jobboerse\.arbeitsagentur\.de/.*refnr=([A-Z0-9-]+)'
+    final_shape_guess: 'jobboerse.arbeitsagentur.de/...refnr={id}'
+    notes: |
+      UNTESTED — no real email yet. German Bundesagentur. Likely plaintext with refnr,
+      but their email format is unverified. WARN USER and inspect first thread before bulk.
+
+  - email: notifications@ifttt.com
+    extraction: untested
+    pattern_guess: 'news\.ycombinator\.com/item\?id=(\d+)'
+    final_shape_guess: 'news.ycombinator.com/item?id={id}'
+    notes: |
+      UNTESTED — no real email yet. IFTTT applet for HN "Who is hiring" digest.
+      Likely plaintext, each URL = a HN hiring comment (not a single job posting).
+      WARN USER and inspect first thread before bulk. Note: HN comments are not
+      single-job URLs — each comment is a company's hiring blurb with multiple roles.
+
+  - email: alerts@himalayas.app
+    extraction: untested
+    pattern_guess: 'himalayas\.app/jobs/[a-z0-9-]+'
+    final_shape_guess: 'himalayas.app/jobs/{slug}'
+    notes: |
+      UNTESTED — no real email yet. Likely direct or tracker-wrapped.
+      WARN USER and inspect first thread before bulk.
+
+  # ============== Tracker-wrapped, Chrome DevTools required (Case B) ==============
+
+  - email: alerts@welcometothejungle.com
+    extraction: tracker
+    pattern: 't\.welcometothejungle\.com/ls/click\?upn=[^"\s)]+'
+    final_shape: 'welcometothejungle.com/{lang}/companies/{co}/jobs/{slug}'
+    decoded_must_match: 'welcometothejungle\.com/[a-z]+/companies/[^/]+/jobs/'
+    notes: |
+      Encrypted SendGrid-style `upn=` blob. Cannot decode locally.
+      Chrome navigate → wait for redirect → evaluate_script("location.href").
+      Each WTJ email contains ~18 trackers but most are footer/social/"manage alerts" — `decoded_must_match`
+      keeps only `/companies/<co>/jobs/<slug>` after resolution.
+      Reuse one Chrome page across thread's URLs.
+
+  - email: jobs@mail.xing.com
+    extraction: tracker
+    pattern: 'xing\.com/m/[A-Za-z0-9_-]+'
+    final_shape: 'xing.com/jobs/{loc-slug}-{title-slug}-{id}'
+    subject_count_pattern: '^(\d+)\s+new\s+job\s+ads?\b'
+    decoded_must_match: 'xing\.com/jobs/[^/]+-\d+'
+    notes: |
+      Short-link redirects `xing.com/m/<shortcode>`. Server-side resolution required.
+      Subject: `N new job ads for your search alert: ...`.
+      Chrome navigate → final URL appears immediately (no extra interstitial).
+      Reuse one page across many redirects; restart browser on ERR_INSUFFICIENT_RESOURCES.
+
+  - email: info@email.stepstone.at
+    extraction: tracker
+    pattern: 'click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
+    final_shape: 'stepstone.de/stellenangebote----{id}-inline.html'
+    decoded_must_match: 'stepstone\.(?:de|at)/(?:stellenangebote|jobs)/'
+    notes: |
+      Stepstone digest emails contain 8-10 jobs each, all wrapped in
+      `click.stepstone.de/f/a/<code>/AAAmIhA~/<base64-blob>` tracker URLs.
+      Chrome navigate → page lands at `stepstone.de/v2/magiclink/exchange?magicLink=...&returnUrl=%2Fstellenangebote----<ID>-inline.html`.
+      Decode the `returnUrl` query param — that's the canonical job path.
+      No need to wait for the magiclink to fully resolve; ID is in the URL.
+
+  - email: info@email.stepstone.de
+    extraction: tracker
+    pattern: 'click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
+    final_shape: 'stepstone.de/stellenangebote----{id}-inline.html'
+    decoded_must_match: 'stepstone\.(?:de|at)/(?:stellenangebote|jobs)/'
+    notes: 'Same Stepstone digest format — see info@email.stepstone.at.'
+
+  - email: info@jobagent.stepstone.de
+    extraction: tracker
+    pattern: 'click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
+    final_shape: 'stepstone.de/stellenangebote----{id}-inline.html'
+    decoded_must_match: 'stepstone\.(?:de|at)/(?:stellenangebote|jobs)/'
+    notes: |
+      Same Stepstone digest format. NEVER skip as "account confirmation" —
+      these are real job alerts with 8-10 listings each.
+
+# Noise-filter slugs (drop URL if final slug contains any of these)
+noise_filter_slugs:
+  - lead-
+  - principal-
+  - staff-
+  - junior-
+  - intern-
+  - trainee-
+  - werkstudent-
+  - praktikant-
+  - business-process
+  - bpm-consultant
+  - configurator
+  - ferryt-developer
+
+# URL params to strip during normalization
+strip_params:
+  - utm_*
+  - ref
+  - src
+  - trk
+  - mc_eid
+  - mc_cid
+  - lipi
+  - midToken
+  - midSig
+  - trackingId
+  - gh_src
+  - sp_*
