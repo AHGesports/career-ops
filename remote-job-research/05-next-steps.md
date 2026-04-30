@@ -78,9 +78,9 @@ Sources requiring free-tier signup, not yet verified live.
 
 **Acceptance**: per site, document `HTTP code`, `HTML hydration style` (SSR vs SPA), `selector hint` (which CSS path hits job cards), in [03-probes.md](03-probes.md).
 
-### [ ] 0.4 — Probe hidden-API targets via Chrome DevTools MCP (Tier B)
+### [ ] 0.4 — Probe hidden-API targets via Playwright (Tier B)
 
-Use `mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page` + `list_network_requests` + `get_network_request` tools.
+Use `browser_navigate` + `browser_snapshot` to render the page, then inspect network requests manually in browser DevTools once to capture API endpoints/headers. Hardcode discovered endpoints in `scan.mjs`.
 
 - [ ] **hiring.cafe** — navigate `https://hiring.cafe/?techStack=.NET`, observe XHRs, capture internal API URL + headers + body. Document auth tokens if any.
 - [ ] **LinkedIn job detail** — navigate `/jobs/view/{some-id}/`, extract `<script type="application/ld+json">`. Confirm `jobLocationType=TELECOMMUTE` + `applicantLocationRequirements` still embedded.

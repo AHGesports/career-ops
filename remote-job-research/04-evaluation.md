@@ -286,7 +286,7 @@ Ordered by EU .NET signal + scrape ease.
 - **The Hub** (`?countryCode=DE`) — ✅ 200 / 44KB. Nordic.
 - **SwissDevJobs.ch** — ✅ 200 / 4KB (SPA — DevTools capture needed for data).
 - **dotnetjobs.dev** — ✅ 200 / 28KB. .NET-specific. DevTools capture likely needed (SPA).
-- **Jobs.ch** `/api/v1/public/search` — CH focus, DevTools capture per [02-source-catalog.md#e](02-source-catalog.md#e--spa--hidden-api-captures-chrome-devtools-mcp-one-time-per-site).
+- **Jobs.ch** `/api/v1/public/search` — CH focus, API endpoint captured manually via browser DevTools once (see [02-source-catalog.md#e](02-source-catalog.md#e--spa--hidden-api-captures-chrome-devtools-mcp-one-time-per-site)); ongoing scraping via Playwright.
 - **TrueUp** `__NEXT_DATA__` scrape — probed TIMEOUT 2026-04-20. Retry or drop.
 - **GermanTechJobs.de** — probed 404 on `/en/jobs/remote`; find correct URL path.
 - **Relocate.me** — probed 404 on `/jobs`; find correct path.

@@ -53,7 +53,10 @@ function getArg(name, def) {
 }
 const inPath = getArg('--in', null);
 const concurrency = parseInt(getArg('--concurrency', '3'), 10);
-const timeoutMs = parseInt(getArg('--timeout', '15000'), 10);
+// Bumped 15000 → 30000: XING + Stepstone redirect chains often need 18-25s for the
+// final JS/meta-refresh hop. Earlier 15s timeout caused silent capture loss because
+// the page returned the still-on-tracker URL, which the regex filter then dropped.
+const timeoutMs = parseInt(getArg('--timeout', '30000'), 10);
 
 if (!inPath) {
   process.stderr.write('Missing --in <runs/*.json>\n');
@@ -99,15 +102,37 @@ const ctx = await browser.newContext({
   userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
 });
 
+// Hosts whose tracker URL = "no redirect happened, this is just the input still".
+// If we end up on one of these AFTER nav, treat as failure (not a real destination).
+const TRACKER_HOSTS = ['click.stepstone.de', 'click.stepstone.at'];
+function isStillOnTracker(inputUrl, finalUrl) {
+  try {
+    const a = new URL(inputUrl);
+    const b = new URL(finalUrl);
+    if (a.host === b.host && a.pathname === b.pathname) return true;
+    // XING m/<id> tracker that didn't redirect → still on /m/<id>
+    if (b.host.endsWith('xing.com') && b.pathname.startsWith('/m/')) return true;
+    // Stepstone click host without redirect
+    if (TRACKER_HOSTS.includes(b.host)) return true;
+    return false;
+  } catch {
+    return false;
+  }
+}
+
 async function followOne(url) {
   const page = await ctx.newPage();
   try {
-    // 'domcontentloaded' lets server-side redirect chains settle (XING goes
-    // tracker → login wall → final job page; 'commit' fires too early and we
-    // capture the intermediate). Stepstone magiclink also resolves fine here.
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: timeoutMs });
-    await page.waitForTimeout(1500);
+    // 'load' waits for the full document load including scripts. 'domcontentloaded'
+    // fires too early for senders that use JS/meta-refresh redirects (XING/Stepstone)
+    // — page.url() returned the still-on-tracker URL and we silently dropped real jobs.
+    await page.goto(url, { waitUntil: 'load', timeout: timeoutMs });
+    await page.waitForTimeout(2000);
     let finalUrl = page.url();
+    // If we never left the tracker host → mark as failure so the summary surfaces it.
+    if (isStillOnTracker(url, finalUrl)) {
+      return { ok: false, error: 'no-redirect (still on tracker after load)' };
+    }
     const stepstoneShort = shortCircuitStepstone(finalUrl);
     if (stepstoneShort) finalUrl = stepstoneShort;
     return { ok: true, url: postProcess(new URL(finalUrl).host, finalUrl) };
@@ -153,13 +178,47 @@ const results = await pool(tasks, concurrency, async (t) => {
 });
 await browser.close();
 
-// Merge back, applying decoded_must_match per sender (drops footer/social/login URLs)
-let resolved = 0, failed = 0, dropped = 0;
+// Per-sender "canonical brand domain" used to split a dropped URL into
+//   - lists/SERP on the SAME site (still meaningful — user can browse)
+//   - offsite navigation (social, app-store, login, surveys — pure noise)
+// We use a lookup table keyed by the sender domain root since regex-pattern
+// parsing is fragile (alternations like `(?:de|at)` defeat naive extraction).
+const CANONICAL_BRAND = {
+  'justjoin.it': 'justjoin.it',
+  'mailing.theprotocol.it': 'theprotocol.it',
+  'germantechjobs.de': 'germantechjobs.de',
+  'nofluffjobs.com': 'nofluffjobs.com',
+  'profil.karriere.at': 'karriere.at',
+  'karriere.at': 'karriere.at',
+  'jobalert.indeed.com': 'indeed.com',
+  'linkedin.com': 'linkedin.com',
+  'mail.xing.com': 'xing.com',
+  'email.stepstone.at': 'stepstone.de',  // .at and .de jobs both live on stepstone.de
+  'email.stepstone.de': 'stepstone.de',
+  'jobagent.stepstone.de': 'stepstone.de',
+  'welcometothejungle.com': 'welcometothejungle.com',
+};
+function canonicalBrandFor(senderEmail) {
+  const domain = (senderEmail.split('@')[1] || '').toLowerCase();
+  if (CANONICAL_BRAND[domain]) return CANONICAL_BRAND[domain];
+  // Fallback: SLD heuristic (second-to-last + last label)
+  const parts = domain.split('.');
+  if (parts.length >= 2) return parts.slice(-2).join('.');
+  return domain;
+}
+
+// Merge back, applying decoded_must_match per sender. Distinguish:
+//   - tracker_dropped_lists:  resolved URL on the SAME canonical host, but not a single-job shape
+//                             (search results / category / recommendations / homepage / profile)
+//   - tracker_dropped_offsite: resolved URL on a DIFFERENT host (social/app-store/survey/login)
+let resolved = 0, failed = 0, droppedLists = 0, droppedOffsite = 0;
 const failuresByThread = {};
-const droppedByThread = {};
 for (const r of data.results) {
   if (r.extraction === 'tracker') {
     r.tracker_failures = r.tracker_failures || [];
+    r.tracker_dropped_lists = r.tracker_dropped_lists || [];
+    r.tracker_dropped_offsite = r.tracker_dropped_offsite || [];
+    // Legacy field — keep so older runs don't break older readers; new code reads the split fields.
     r.tracker_dropped_non_job = r.tracker_dropped_non_job || [];
   }
 }
@@ -167,11 +226,23 @@ for (const res of results) {
   const thread = data.results[res.ri];
   const cfg = senderMap.get(thread.sender);
   const filter = cfg?.decoded_must_match ? new RegExp(cfg.decoded_must_match) : null;
+  const canonicalHost = canonicalBrandFor(thread.sender);
   if (res.ok) {
     if (filter && !filter.test(res.url)) {
-      thread.tracker_dropped_non_job.push(res.url);
-      droppedByThread[thread.thread_id] = (droppedByThread[thread.thread_id] || 0) + 1;
-      dropped++;
+      // Classify list vs offsite
+      let isOnSenderDomain = false;
+      try {
+        const h = new URL(res.url).host;
+        if (canonicalHost && (h === canonicalHost || h.endsWith('.' + canonicalHost))) isOnSenderDomain = true;
+      } catch {}
+      if (isOnSenderDomain) {
+        thread.tracker_dropped_lists.push(res.url);
+        droppedLists++;
+      } else {
+        thread.tracker_dropped_offsite.push(res.url);
+        droppedOffsite++;
+      }
+      thread.tracker_dropped_non_job.push(res.url); // legacy, keep populated
     } else if (!thread.urls.includes(res.url)) {
       thread.urls.push(res.url);
       resolved++;
@@ -188,7 +259,7 @@ for (const res of results) {
 writeFileSync(absIn, JSON.stringify(data, null, 2));
 
 process.stdout.write(
-  `gmail-follow: ${tasks.length} trackers in -> ${resolved} resolved (job-shape), ${dropped} dropped (non-job: footer/social/login), ${failed} failed\n` +
+  `gmail-follow: ${tasks.length} trackers in -> ${resolved} resolved (job-shape), ${droppedLists} lists/SERP, ${droppedOffsite} offsite, ${failed} failed\n` +
   `updated: ${inPath}\n`
 );
 if (failed) {

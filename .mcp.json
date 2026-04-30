@@ -4,6 +4,15 @@
       "command": "node",
       "args": ["./mcp/gmail-html/index.mjs"],
       "description": "Local Gmail MCP exposing full HTML message body (read-only). See mcp/gmail-html/README.md for setup."
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--browserUrl=http://localhost:9222"
+      ],
+      "description": "Chrome DevTools MCP attaches to user-launched Chrome on port 9222. Run launch-chrome.bat first to start Chrome with debug port + persistent profile (.chrome-profile). Manual launch avoids --enable-automation flag = Google login works."
     }
   }
 }

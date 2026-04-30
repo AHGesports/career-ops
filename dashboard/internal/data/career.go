@@ -496,6 +496,8 @@ func NormalizeStatus(raw string) string {
 	case strings.Contains(s, "discarded") || strings.Contains(s, "descartado") || s == "descartada" || s == "cerrada" || s == "cancelada" ||
 		strings.HasPrefix(s, "duplicado") || strings.HasPrefix(s, "dup"):
 		return "discarded"
+	case strings.Contains(s, "auto-match") || strings.Contains(s, "automatch") || strings.Contains(s, "auto match"):
+		return "evaluated"
 	case strings.Contains(s, "evaluated") || strings.Contains(s, "evaluada") || s == "condicional" || s == "hold" || s == "monitor" || s == "evaluar" || s == "verificar":
 		return "evaluated"
 	default:

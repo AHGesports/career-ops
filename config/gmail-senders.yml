@@ -192,7 +192,7 @@ senders:
     extraction: tracker
     pattern: 'click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
     final_shape: 'stepstone.de/stellenangebote----{id}-inline.html'
-    decoded_must_match: 'stepstone\.(?:de|at)/(?:stellenangebote|jobs)/'
+    decoded_must_match: 'stepstone\.(?:de|at)/stellenangebote----\d+'
     notes: |
       Stepstone digest emails contain 8-10 jobs each, all wrapped in
       `click.stepstone.de/f/a/<code>/AAAmIhA~/<base64-blob>` tracker URLs.
@@ -204,14 +204,14 @@ senders:
     extraction: tracker
     pattern: 'click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
     final_shape: 'stepstone.de/stellenangebote----{id}-inline.html'
-    decoded_must_match: 'stepstone\.(?:de|at)/(?:stellenangebote|jobs)/'
+    decoded_must_match: 'stepstone\.(?:de|at)/stellenangebote----\d+'
     notes: 'Same Stepstone digest format — see info@email.stepstone.at.'
 
   - email: info@jobagent.stepstone.de
     extraction: tracker
     pattern: 'click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
     final_shape: 'stepstone.de/stellenangebote----{id}-inline.html'
-    decoded_must_match: 'stepstone\.(?:de|at)/(?:stellenangebote|jobs)/'
+    decoded_must_match: 'stepstone\.(?:de|at)/stellenangebote----\d+'
     notes: |
       Same Stepstone digest format. NEVER skip as "account confirmation" —
       these are real job alerts with 8-10 listings each.

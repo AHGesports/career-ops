@@ -133,21 +133,18 @@ See [05-next-steps.md](05-next-steps.md) for extension plan.
 - No Staff/Principal/Lead/Head/Director/VP/CTO (too senior, user is Mid/Senior IC)
 - No Internship / Werkstudent / Lehrling / Praktikum
 
-## Chrome DevTools MCP availability
+## Playwright availability
 
-Chrome DevTools MCP plugin is connected in the Claude Code session this research is happening in. Relevant tools:
-- `mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page`
-- `mcp__plugin_chrome-devtools-mcp_chrome-devtools__list_network_requests`
-- `mcp__plugin_chrome-devtools-mcp_chrome-devtools__get_network_request`
-- `mcp__plugin_chrome-devtools-mcp_chrome-devtools__evaluate_script`
-- `mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_snapshot`
+Playwright is the browser automation tool used in this pipeline (`browser_navigate` + `browser_snapshot`). Relevant use cases:
 
 **Use cases in this research:**
-1. Capture hidden-API tokens (Algolia keys, GraphQL Client-Version headers) one-time per site
+1. Render SPAs and extract job listings (Greenhouse, Ashby, Lever, Workday)
 2. Verify HTML structure of SSR pages (theprotocol.it, bulldogjob, WeAreDevelopers)
-3. Extract `__NEXT_DATA__` from Next.js SPAs (TrueUp, JustJoin.IT post /api/offers death)
+3. Extract `__NEXT_DATA__` from Next.js SPAs (TrueUp, JustJoin.IT)
 4. Confirm LinkedIn guest endpoint behavior (HTML shape, rate limits)
-5. Log into Xing once on user's real profile, capture GraphQL calls, save for scan.mjs
+5. Navigate to Xing/Stepstone job pages and snapshot job cards
+
+**Note:** For hidden-API reverse engineering (capturing XHR tokens, GraphQL headers), do this manually in browser DevTools once, then hardcode the endpoint in `scan.mjs`. Playwright handles the ongoing scraping.
 
 **Not yet used in this research — flagged in [05-next-steps.md](05-next-steps.md) for phase 2.**
 

@@ -61,10 +61,10 @@ Frame profile as **"Enterprise engineer who ships production AI systems solo"** 
 
 ## Default CV PDFs (no customization for now)
 
-- **German:** `C:\Users\a.hemati\Downloads\C\de\CV_www.ArshiaHemati.com.pdf`
-- **English:** `C:\Users\a.hemati\Downloads\C\en\CV_Arshia_Hemati_EN.pdf`
+- **English (canonical, in repo):** `assets/cv/CV_Arshia_Hemati_EN.pdf` — use for ALL applications by default
+- **German (legacy):** `C:\Users\a.hemati\Downloads\C\de\CV_www.ArshiaHemati.com.pdf` (not yet copied to repo)
 
-Use German CV for DACH listings in German. English CV for English-language listings. Do NOT generate custom PDFs unless user explicitly asks.
+Use English CV by default. German CV only if DACH role explicitly requires German-language application. Do NOT generate custom PDFs unless user explicitly asks. Cover letters skipped for now.
 
 **Notice period:** 6 weeks
 **Cover letters:** Read `.claude/skills/cover-letter/SKILL.md` for all cover letter rules, structure, tone, and candidate-specific instructions. That skill file is the single source of truth for cover letter generation.
@@ -95,18 +95,15 @@ If any of these match, mark the offer `SKIP` immediately. Do not run full A-G ev
 
 ### Contract type — discard if:
 - Temp / fixed-term contract (any duration)
-- B2B-only (no UoP / employment option offered)
-- Freelance / per-project engagement
+- Freelance / per-project engagement (single-project, no ongoing commitment)
 - Internship / trainee / apprenticeship
 
 Keep if: permanent employment (UoP in Poland, unbefristeter Arbeitsvertrag in AT/DE, CDI in FR, etc.), or contract type not mentioned (evaluate, note unknown).
 
+**B2B-only is acceptable** provided the rate meets the B2B floor defined in the "Validated PLN/EUR Reference" section below. Apply the salary check from that section — do NOT auto-discard B2B-only roles. Candidate operates as Einzelunternehmer (AT) and B2B is a viable structure.
+
 ### Salary — discard if:
-- Salary IS disclosed AND the top of the advertised range is below EUR 55K (minimum from `config/profile.yml`)
-- PLN discard thresholds (NBP 4.25, validated April 2026):
-  - Permanent/UoP: top of range < **19,480 PLN/month gross (12-pay)**
-  - B2B revenue: top of range < **19,100 PLN/month** (cash-parity floor)
-  - Hourly B2B: rate < **112 PLN/h** (absolute floor)
+- Salary IS disclosed AND the top of the advertised range is below the floor defined in the "Validated PLN/EUR Reference" section below (Permanent / B2B / Hourly thresholds — single source of truth, do NOT duplicate numbers here)
 - Do NOT discard if salary is hidden / not disclosed — evaluate normally and note in Block D
 
 ### Discard output format:

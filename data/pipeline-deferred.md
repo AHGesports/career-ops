@@ -1,0 +1,100 @@
+# Pipeline — Deferred (Generic Software Roles)
+
+Generic SWE roles found by /scan-gmail that did NOT hit the auto-match keyword filter.
+Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using oferta.md A-G.
+
+## Pendientes
+- [ ] https://linkedin.com/jobs/view/4406947759 | DevOps Engineer Hardware & Locker @ Myflexbox at DEVjobs | linkedin.com | 2026-04-30
+- [ ] https://justjoin.it/offers/pretius-senior-frontend-engineer-game-platform--warszawa-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-04-30
+- [ ] https://justjoin.it/offers/dotlinkers-senior-frontend-enigneer-krakow-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-04-30
+- [ ] https://justjoin.it/offers/link-group-frontend-developer-lodz-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-04-30
+- [ ] https://www.xing.com/jobs/hamburg-shopify-backend-developer-api-java-graphql-spring-boot-3-gcp-azure-aws-remote-eu-153799415 | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-it-entwickler-sap-teilzeit-vollzeit-153789921 | 10+ new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949275-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949149-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949400-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949123-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949169-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949401-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13808873-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949420-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13958972-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13958333-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13960151-inline.html | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13962989-inline.html | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13961430-inline.html | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13948392-inline.html | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13962356-inline.html | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13958470-inline.html | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13923004-inline.html | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13954148-inline.html | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13958478-inline.html | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13902230-inline.html | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-ai-rpa-developer-intelligent-automation-153120005 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/bergheim-bei-salzburg-advanced-software-engineer-153669360 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/salzburg-senior-software-developer-153757550 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/salzburg-proalpha-anwendungsentwickler-4gl-erp-branchenloesung-100-home-office-mwd-153694208 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/salzburg-anwendungsentwickler-proalpha-erp-branchenloesung-100-remote-90-000-mwd-153583908 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-full-stack-engineer-java-and-react-153401235 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-games-logic-developer-153650628 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-software-engineer-ai-fokus-153477173 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-software-architect-all-genders-wien-153676728 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-senior-ai-engineer-153533784 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-operations-research-analyst-software-developer-153715206 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-machine-learning-engineer-gn-153516946 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-systems-engineer-microsoft-cloud-on-premise-152645613 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-test-and-devops-engineer-153586394 | PALFINGER Gruppe, COOR GmbH, Vesterling AG - Personalberatung für Technologie and other great companies are looking for candidates just like | mail.xing.com | 2026-04-30
+- [ ] https://at.indeed.com/viewjob?jk=0d54b4ff134ac052 | 1 Softwareentwickler Job in Salzburg | jobalert.indeed.com | 2026-04-30
+- [ ] https://at.indeed.com/viewjob?jk=796c531492d61870 | mehrWERT sucht Freelance Webentwickler (m/w/d) – Schwerpunkt WIX + 2 neue Entwickler Jobs in Remote  | jobalert.indeed.com | 2026-04-30
+- [ ] https://at.indeed.com/viewjob?jk=977adc0b13319610 | mehrWERT sucht Freelance Webentwickler (m/w/d) – Schwerpunkt WIX + 2 neue Entwickler Jobs in Remote  | jobalert.indeed.com | 2026-04-30
+- [ ] https://at.indeed.com/viewjob?jk=bb73c75062c3f3e0 | Keen Software House sucht Senior QA Tester / Future Deputy QA Lead - Space Engineers 2 + 6 neue Developer Jobs in Home Office | jobalert.indeed.com | 2026-04-30
+- [ ] https://at.indeed.com/viewjob?jk=5be4f2cb75be9cbf | Keen Software House sucht Senior QA Tester / Future Deputy QA Lead - Space Engineers 2 + 6 neue Developer Jobs in Home Office | jobalert.indeed.com | 2026-04-30
+- [ ] https://theprotocol.it/szczegoly/praca/ibm-bpm-engineer-warszawa-aleje-jerozolimskie-100,oferta,18c20000-3e56-427b-96b4-08dea5201c7b | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-04-30
+- [ ] https://theprotocol.it/szczegoly/praca/fullstack-developer-java-react-warszawa-aleje-jerozolimskie-100,oferta,cb780000-1098-7a89-62c0-08dea4f276af | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-04-30
+- [ ] https://theprotocol.it/szczegoly/praca/ai-engineer---freelancer-gdansk,oferta,cb780000-1098-7a89-754c-08dea521f602 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-04-30
+- [ ] https://theprotocol.it/szczegoly/praca/camunda-engineer-warszawa-aleje-jerozolimskie-100,oferta,cb780000-1098-7a89-1259-08dea52028db | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-04-30
+- [ ] https://theprotocol.it/szczegoly/praca/business---system-analyst-warszawa-aleje-jerozolimskie-100,oferta,88e60000-2ca1-929b-1c32-08dea5200dfb | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-04-30
+- [ ] https://theprotocol.it/szczegoly/praca/backend-developer-warszawa-jana-nowaka-jezioranskiego-53a,oferta,cb780000-1098-7a89-69cc-08dea520d9f1 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-04-30
+- [ ] https://theprotocol.it/szczegoly/praca/senior-java-developer-ai-integration-specialist-warszawa-nowowiejska-15-19,oferta,fae80000-410a-b632-8dd9-08dea46c6403 | 🔵🟢 Nowe oferty pracy: „.NET; Praca: zdalna” | mailing.theprotocol.it | 2026-04-30
+- [ ] https://justjoin.it/offers/dataart-senior-full-stack-developer-node-js-react-php---work-until-7-8-p-m--lodz-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-04-30
+- [ ] https://justjoin.it/offers/hays-poland-senior-frontend-developer-warszawa-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-04-30
+- [ ] https://justjoin.it/offers/photoaid-ai-first-senior-frontend-developer-warszawa-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-devops-engineer-all-genders-wien-153769837 | 6 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/augsburg-java-full-stack-entwickler-153771444 | 6 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-cloud-plattform-spezialist-145910202 | 6 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/wien-managed-service-sales-expert-all-genders-153746067 | 6 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-04-30
+- [ ] https://nofluffjobs.com/pl/job/software-engineer-java-angular-inteca-remote |  Nowe oferty pracy, 10 dopasowane do Twoich kryteriów: remote, Angular,  | nofluffjobs.com | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13958505-inline.html | ASMPT GmbH & Co. KG und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949507-inline.html | ASMPT GmbH & Co. KG und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13956911-inline.html | ASMPT GmbH & Co. KG und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13956926-inline.html | ASMPT GmbH & Co. KG und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13957099-inline.html | ASMPT GmbH & Co. KG und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949413-inline.html | ASMPT GmbH & Co. KG und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949112-inline.html | ASMPT GmbH & Co. KG und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13954607-inline.html | ASMPT GmbH & Co. KG und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949317-inline.html | ASMPT GmbH & Co. KG und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13821020-inline.html | ASMPT GmbH & Co. KG und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13958292-inline.html | efcom gmbh und 8 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949296-inline.html | efcom gmbh und 8 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13955928-inline.html | efcom gmbh und 8 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13456483-inline.html | efcom gmbh und 8 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13957748-inline.html | efcom gmbh und 8 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13901926-inline.html | efcom gmbh und 8 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949116-inline.html | efcom gmbh und 8 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949110-inline.html | efcom gmbh und 8 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13529123-inline.html | efcom gmbh und 8 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13949415-inline.html | efcom gmbh und 8 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13958665-inline.html | codefortynine GmbH und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13955278-inline.html | codefortynine GmbH und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13837764-inline.html | codefortynine GmbH und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13220527-inline.html | codefortynine GmbH und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13841319-inline.html | codefortynine GmbH und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----12493137-inline.html | codefortynine GmbH und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13742017-inline.html | codefortynine GmbH und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/stellenangebote----13806060-inline.html | codefortynine GmbH und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://nofluffjobs.com/pl/job/java-developer-m-f-stackmine-remote-4 | Your application for .NET Developer with Azure [M/F] @ Stackmine | nofluffjobs.com | 2026-04-30
+- [ ] https://nofluffjobs.com/pl/job/senior-java-developer-with-groovy-m-f-stackmine-remote | Your application for .NET Developer with Azure [M/F] @ Stackmine | nofluffjobs.com | 2026-04-30
+- [ ] https://nofluffjobs.com/pl/job/senior-java-developer-m-f-stackmine-poznan | Your application for .NET Developer with Azure [M/F] @ Stackmine | nofluffjobs.com | 2026-04-30
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-java-angular-devire-remote-3 | Your application for Fullstack Developer (Angular + .NET) @ Stackmine | nofluffjobs.com | 2026-04-30
+- [ ] https://nofluffjobs.com/pl/job/fullstack-java-angular-link-group-remote | Your application for Fullstack Developer (Angular + .NET) @ Stackmine | nofluffjobs.com | 2026-04-30
+- [ ] https://talentportal.germantechjobs.de/api/job-redirect?jobId=KLA-Local-IT-Site-Lead-mwd | 1 New Job Matching Your Alert - Software Engineering | germantechjobs.de | 2026-04-30

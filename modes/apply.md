@@ -2,6 +2,13 @@
 
 Interactive mode for when the candidate is filling out an application form in Chrome. It reads what is on the screen, loads the previous context of the job, and generates personalized responses for each form question.
 
+## Candidate-specific config (Arshia Hemati)
+
+- **CV upload (always):** `assets/cv/CV_Arshia_Hemati_EN.pdf` — use this file for ALL CV/resume upload fields. Do NOT generate a custom PDF.
+- **Cover letter:** SKIP for now. If form requires one, leave blank or note "optional — skipped per user instruction".
+- **Headful mode:** Use Playwright/Chrome DevTools MCP in visible (non-headless) mode so user sees every action.
+- **Submit policy:** NEVER click Submit. Stop one step before. User clicks.
+
 ## Requirements
 
 - **Best with Playwright in visible mode**: In visible mode, the candidate sees the browser and Claude can interact with the page.

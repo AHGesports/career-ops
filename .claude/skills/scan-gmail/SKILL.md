@@ -17,8 +17,13 @@ The skill is implemented as scripts under `mcp/gmail-html/scripts/`:
 
 1. `extract-urls.mjs` — fetches Gmail threads (via the `gmail-html` MCP's auth), reads `config/gmail-senders.yml`, decodes per-sender (direct / base64 / zlib / tracker / plaintext), dedups against scan-history + pipeline + tracker, writes a JSON run file to `mcp/gmail-html/runs/<timestamp>.json`. Stdout is a tight summary.
 2. `follow-trackers.mjs` — for `extraction: tracker` senders (WTJ, XING, Stepstone), follows redirects via headless Playwright, writes resolved URLs back into the same JSON. Skipped if Playwright not installed.
-3. `append-pipeline.mjs` — reads the JSON, appends new URLs to `data/pipeline.md` (under `## Pendientes`) and rows to `data/gmail-scan-history.tsv`. Dry-run by default; pass `--commit` to write.
-4. `scan.mjs` — orchestrator that chains 1 → 2 → 3 and prints the canonical Section 9 summary block.
+3. `classify.mjs` — tags each URL as `auto-match` or `deferred` using regex from `config/profile.yml` → `gmail_classifier.match_keywords` / `match_excludes` against URL slug + email subject + sender. Excludes win.
+4. `append-pipeline.mjs` — reads the JSON and routes:
+   - `auto-match` URLs → `data/pipeline.md` (`[x] AUTO-MATCH | 5.0/5 | URL`) + one TSV per URL into `batch/tracker-additions/<date>-gmail-automatch-NNN.tsv` (status `Auto-Match`, score `5.0/5`).
+   - `deferred` URLs → `data/pipeline-deferred.md` (`- [ ] URL | subject | sender | date`) — these await `/deeper-eval`.
+   - All threads → `data/gmail-scan-history.tsv` for dedup.
+   Dry-run by default; pass `--commit` to write.
+5. `scan.mjs` — orchestrator that chains 1 → 2 → 3 → 4 and, on `--commit`, runs `merge-tracker.mjs` so auto-match TSVs land in `data/applications.md` (which the dashboard reads). Prints the canonical summary block.
 
 ---
 
@@ -28,10 +33,31 @@ The skill is implemented as scripts under `mcp/gmail-html/scripts/`:
 
 ```bash
 cd mcp/gmail-html && node scripts/scan.mjs --window {WINDOW}            # dry run, agent reviews
-cd mcp/gmail-html && node scripts/scan.mjs --window {WINDOW} --commit   # writes to disk
+cd mcp/gmail-html && node scripts/scan.mjs --window {WINDOW} --commit   # writes to disk + merges into applications.md
 ```
 
-That's it. The script prints a summary block. Relay it to the user.
+That's it. The script prints a summary block including a `Classify: auto-match=X / deferred=Y` line. Relay it to the user.
+
+### What the user gets after a `--commit` scan
+
+Outputs split by URL shape so list/SERP/recommendation pages don't pollute applications.md:
+
+- **`data/pipeline.md`** — auto-match URLs (single-job postings). Marked `[x] AUTO-MATCH | 5.0/5`. No further action needed; user opens URL and applies.
+- **`data/applications.md`** — auto-match URLs as rows with status `Auto-Match`, score `5.0/5`. Dashboard reads this file.
+- **`data/pipeline-deferred.md`** — generic single-job postings awaiting `/deeper-eval`. User runs `/deeper-eval` to evaluate these via WebFetch (Chrome MCP fallback) using `modes/oferta.md`.
+- **`data/pipeline-lists.md`** — list / SERP / recommendation pages that resolved on a known job-board domain but are NOT single jobs (e.g. `stepstone.de/jobs/<query>`, `xing.com/jobs/find`). Open manually to discover more jobs; paste new findings into pipeline.md.
+
+### Capture-loss warnings
+
+The summary block raises `⚠️ CAPTURE-LOSS WARNINGS` when:
+- A thread's `subject_expected_count` is greater than what was captured (subject claims N jobs, only got M).
+- A tracker sender's drop-rate exceeds 50% (Playwright redirect chain failing or regex misfit).
+
+If warnings appear, **do not commit**. Inspect the run JSON, decide whether to re-run with longer timeout or fix the sender pattern.
+
+### Tuning the classifier
+
+Keyword lists live in `config/profile.yml` under `gmail_classifier.match_keywords` and `gmail_classifier.match_excludes`. Patterns are JS regex applied AFTER URL slug normalization (`-_/?=&` → space, lowercased), so use `\b` word boundaries. If the scan misclassifies a URL, edit those lists and re-run.
 
 ### Window arg parsing (pass through to `--window`)
 

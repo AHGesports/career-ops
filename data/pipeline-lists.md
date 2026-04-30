@@ -1,0 +1,25 @@
+# Pipeline — Lists / SERPs / Recommendations
+
+URLs that resolved on a known job-board domain but are NOT single job postings.
+These are search results, "recommended jobs", category pages, etc. Open them manually
+to discover more jobs; new findings can be pasted into pipeline.md.
+
+## Pendientes
+- [ ] https://www.xing.com | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/search | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/jobs/find | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/pages/xing | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-04-30
+- [ ] https://www.xing.com/support/contact | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-04-30
+- [ ] https://privacy.xing.com/en/privacy-policy | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-04-30
+- [ ] https://login.xing.com | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-04-30
+- [ ] https://www.stepstone.de/ | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/profile | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/jobs/(Software-Entwickler/in) OR (Software-Entwickler/in C | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/de-DE/candidate/login | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/de-DE/candidate/email/unsubscribe | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/e-recruiting/rechtliches/nutzungsbedingungen-bewerber/ | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/e-recruiting/rechtliches/datenschutzerklarung/ | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/Ueber-StepStone/kontakt | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/magazin | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/jobs/Software-Entwickler/in OR Software-Entwickler/in C | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.stepstone.de/jobs/Software-Entwickler/in/in-Home-Office | codefortynine GmbH und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30

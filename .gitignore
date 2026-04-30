@@ -26,6 +26,9 @@ modes/_profile.md
 # Secrets (never commit — use .env.example as template)
 .env
 
+# Chrome persistent profile for chrome-devtools-mcp (apply mode)
+.chrome-profile/
+
 # Generated
 .resolved-prompt-*
 node_modules/

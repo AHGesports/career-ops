@@ -90,17 +90,34 @@ if (trackerCount > 0 && !noFollow) {
   runData = JSON.parse(readFileSync(latestRun, 'utf8'));
 }
 
+// ---------- Step 2.5: classify URLs (auto-match vs deferred) ----------
+run('classify', [join(SCRIPT_DIR, 'classify.mjs'), '--in', latestRun]);
+runData = JSON.parse(readFileSync(latestRun, 'utf8'));
+
 // ---------- Step 3: append (dry or commit) ----------
 const appendArgs = [join(SCRIPT_DIR, 'append-pipeline.mjs'), '--in', latestRun];
 if (commit) appendArgs.push('--commit');
 run('append-pipeline' + (commit ? ' --commit' : ' (dry-run)'), appendArgs);
+
+// ---------- Step 3.5: merge auto-match TSVs into applications.md (commit only) ----------
+if (commit) {
+  const autoMatchCount = (runData.classifier?.auto_match) || 0;
+  if (autoMatchCount > 0) {
+    process.stdout.write(`\n--- merge-tracker (auto-match → applications.md) ---\n`);
+    const r = spawnSync(process.execPath, [join(PROJECT_ROOT, 'merge-tracker.mjs')],
+      { cwd: PROJECT_ROOT, stdio: 'inherit' });
+    if (r.status !== 0) {
+      process.stderr.write(`scan: merge-tracker failed (exit ${r.status}). Auto-match TSVs left in batch/tracker-additions/.\n`);
+    }
+  }
+}
 
 // ---------- Step 4: emit Section 9 summary ----------
 const pipeAfter = existsSync(PIPELINE_MD) ? readFileSync(PIPELINE_MD, 'utf8').split('\n').length : 0;
 const tsvAfter = existsSync(HISTORY_TSV) ? readFileSync(HISTORY_TSV, 'utf8').split('\n').length : 0;
 
 const stats = runData.stats;
-let urlsResolved = 0, trackersInput = 0, trackersResolved = 0, trackersFailed = 0;
+let urlsResolved = 0, trackersInput = 0, trackersResolved = 0, trackersFailed = 0, trackersLists = 0, trackersOffsite = 0;
 const bySender = {};
 for (const r of runData.results) {
   urlsResolved += r.urls.length;
@@ -108,18 +125,63 @@ for (const r of runData.results) {
     trackersInput += r.trackers_to_follow?.length || 0;
     trackersFailed += r.tracker_failures?.length || 0;
     trackersResolved += r.urls.length;
+    trackersLists += (r.tracker_dropped_lists?.length || 0);
+    trackersOffsite += (r.tracker_dropped_offsite?.length || 0);
   }
   if (!bySender[r.sender]) bySender[r.sender] = { threads: 0, urls: 0 };
   bySender[r.sender].threads++;
   bySender[r.sender].urls += r.urls.length;
 }
-const trackersUnresolved = trackersInput - trackersResolved - trackersFailed;
+const trackersUnresolved = trackersInput - trackersResolved - trackersFailed - trackersLists - trackersOffsite;
 
 process.stdout.write('\n=========================================================\n');
 process.stdout.write(`Gmail scan — ${window}\n`);
 process.stdout.write(`  Threads:  ${stats.seen} seen / ${stats.history_skip} skipped (history) / ${stats.giveup_rescan} rescan (prior giveup) / ${stats.processed} processed\n`);
 process.stdout.write(`  URLs:     ${urlsResolved} resolved (after dedup + noise + final-dup)\n`);
-process.stdout.write(`  Trackers: ${trackersInput} total / ${trackersResolved} resolved / ${trackersFailed} failed / ${trackersUnresolved} unresolved (no-follow)\n`);
+const cls = runData.classifier || {};
+process.stdout.write(`  Classify: auto-match=${cls.auto_match || 0} / deferred=${cls.deferred || 0}\n`);
+process.stdout.write(`  Trackers: ${trackersInput} total / ${trackersResolved} resolved / ${trackersLists} lists/SERP / ${trackersOffsite} offsite / ${trackersFailed} failed / ${trackersUnresolved} unresolved (no-follow)\n`);
+
+// Capture-loss audit: per-thread compare subject_expected_count vs (urls + pipeline_dup + noise).
+// Raises a WARNING line so the agent stops and asks before committing.
+const lossWarnings = [];
+for (const r of runData.results) {
+  const ec = r.metadata?.subject_expected_count;
+  if (!ec) continue;
+  const captured = (r.urls?.length || 0) + (r.metadata.pipeline_dup || 0) + (r.metadata.noise_filtered || 0);
+  const loss = ec - captured;
+  if (loss > 0) {
+    lossWarnings.push({ thread: r.thread_id.slice(0, 8), sender: r.sender.split('@')[1], expected: ec, captured, loss });
+  }
+}
+// Per-tracker-sender high-drop warning
+const trackerStats = {};
+for (const r of runData.results) {
+  if (r.extraction !== 'tracker') continue;
+  const key = r.sender.split('@')[1];
+  trackerStats[key] = trackerStats[key] || { in: 0, kept: 0, dropped: 0, failed: 0 };
+  trackerStats[key].in += r.trackers_to_follow?.length || 0;
+  trackerStats[key].kept += r.urls?.length || 0;
+  trackerStats[key].dropped += (r.tracker_dropped_non_job || []).length;
+  trackerStats[key].failed += (r.tracker_failures || []).length;
+}
+const trackerWarnings = [];
+for (const [s, v] of Object.entries(trackerStats)) {
+  const dropRate = v.in > 0 ? (v.dropped + v.failed) / v.in : 0;
+  if (dropRate > 0.5 && v.in >= 10) {
+    trackerWarnings.push({ sender: s, ...v, dropRate: (dropRate * 100).toFixed(0) + '%' });
+  }
+}
+if (lossWarnings.length || trackerWarnings.length) {
+  process.stdout.write(`\n  ⚠️  CAPTURE-LOSS WARNINGS:\n`);
+  for (const w of lossWarnings) {
+    process.stdout.write(`    [thread ${w.thread} ${w.sender}] subject claims ${w.expected} jobs, captured ${w.captured} (loss=${w.loss})\n`);
+  }
+  for (const w of trackerWarnings) {
+    process.stdout.write(`    [tracker ${w.sender}] ${w.in} in / ${w.kept} kept / ${w.dropped} dropped / ${w.failed} failed (drop-rate ${w.dropRate})\n`);
+  }
+  process.stdout.write(`  Inspect run JSON before --commit if losses look real.\n`);
+}
 process.stdout.write(`  Files:    pipeline.md ${pipeBefore} → ${pipeAfter} (+${pipeAfter - pipeBefore})\n`);
 process.stdout.write(`            gmail-scan-history.tsv ${tsvBefore} → ${tsvAfter} (+${tsvAfter - tsvBefore})\n`);
 process.stdout.write(`            run JSON: ${relative(PROJECT_ROOT, latestRun).replace(/\\/g, '/')}\n`);

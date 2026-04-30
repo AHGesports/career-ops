@@ -54,3 +54,15 @@ states:
     aliases: [no_aplicar, no aplicar, skip, monitor]
     description: Doesn't fit, don't apply
     dashboard_group: skip
+
+  - id: auto_match
+    label: Auto-Match
+    aliases: [auto-match, automatch, automatched]
+    description: Title regex matched primary/adjacent stack from Gmail scan; no evaluation done. Open URL, decide whether to apply.
+    dashboard_group: evaluated
+
+  - id: auto_apply_failed
+    label: AutoApplyFailed
+    aliases: [auto-apply-failed, autoapplyfailed]
+    description: gmail-apply-batch could not auto-submit; manual review required (see data/gmail-apply-errors.ndjson)
+    dashboard_group: rejected

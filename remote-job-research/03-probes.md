@@ -188,7 +188,7 @@ All probed 2026-04-20, live and returning expected URNs. **Bonus finding: DACH c
 - The JSON is embedded but not on line expected by `grep -oE`,
 - The build ID is not top-level.
 
-**Next action**: capture via `mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page` + `evaluate_script` to inspect DOM structure.
+**Next action**: capture via `browser_navigate` + `browser_snapshot` (Playwright) to inspect DOM structure, or manually open DevTools → Sources and search for `__NEXT_DATA__` once to identify the JSON path.
 
 ### Arbeitsagentur sample response
 

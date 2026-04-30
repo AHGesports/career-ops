@@ -26,6 +26,9 @@ Determine the mode from `{{mode}}`:
 | `tracker` | `tracker` |
 | `pipeline` | `pipeline` |
 | `apply` | `apply` |
+| `gmail-apply [URL]` | invoke `gmail-apply` skill (delegate, see below) |
+| `gmail-apply-batch [N] [--force]` | run batch orchestrator (delegate, see below) |
+| `explore-sender [URL]` | invoke `explore-sender` skill (delegate, see below) |
 | `scan` (no sub-arg) / `scan portals` | `scan` (portal scanner) |
 | `scan gmail [WINDOW]` | `scan-gmail` (ALWAYS subagent — see Dispatch) |
 | `batch` | `batch` |
@@ -63,6 +66,9 @@ Available commands:
   /career-ops batch            → Batch processing with parallel workers
   /career-ops patterns         → Analyze rejection patterns and improve targeting
   /career-ops followup         → Follow-up cadence tracker: flag overdue, generate drafts
+  /career-ops gmail-apply <URL> [--force] [--autofix]   → Auto-fill apply form via Playwright
+  /career-ops gmail-apply-batch [N] [--force] [--autofix] → Batch apply via Haiku workers
+  /career-ops explore-sender <URL>  → Inspect portal form, generate yaml recipe
 
 Inbox: add URLs to data/pipeline.md → /career-ops pipeline
 Or paste a JD directly to run the full pipeline.
@@ -96,6 +102,39 @@ Agent(
 ```
 
 Execute the instructions from the loaded mode file.
+
+---
+
+## `gmail-apply [URL]` — delegate to `gmail-apply` skill
+
+When `{{mode}}` starts with `gmail-apply` AND has a URL arg, invoke `Skill("gmail-apply", args="<URL>")`. Do NOT navigate, snapshot, or read the page first — the skill handles everything. Pass the URL through verbatim.
+
+## `explore-sender [URL]` — delegate to `explore-sender` skill
+
+When `{{mode}}` starts with `explore-sender`, invoke `Skill("explore-sender", args="<URL>")`. The skill handles MCP navigation, form mapping, yaml generation, and success_selector capture. Pass the URL verbatim.
+
+## `gmail-apply-batch [N] [--force]` — batch orchestrator
+
+When `{{mode}}` starts with `gmail-apply-batch`, do NOT spawn an Agent. Run the orchestrator script directly:
+
+```bash
+node scripts/gmail-apply-batch.mjs [N] [--force]
+```
+
+The script:
+- Reads `data/applications.md`, picks rows with status=`Evaluated` and a matching portal recipe
+- Skips URLs that have failed ≥3 times in the last 7 days
+- Spawns Haiku workers via `claude -p --bare --model haiku` (sequential, 2 URLs each)
+- Workers handle each URL via `scripts/gmail-apply.mjs` + chrome-devtools MCP escalation
+- Aggregates results, single-pass rewrites `applications.md` statuses (`Applied` or `AutoApplyFailed`)
+- Logs to `data/gmail-apply-batch-<date>.ndjson` and `data/gmail-apply-errors.ndjson`
+
+Args:
+- `N` (optional integer) — max URLs to process. Default: all eligible.
+- `--force` — auto-submit on every URL. Required for unattended runs.
+- `--dry-run` — preview queue, don't spawn workers.
+
+You only relay the JSON output — do not re-narrate per-URL details. Final summary message: counts + log paths.
 
 ---
 

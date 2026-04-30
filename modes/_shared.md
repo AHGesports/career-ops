@@ -120,7 +120,8 @@ After detecting archetype, read `modes/_profile.md` for the user's specific fram
 |------|-----|
 | WebSearch | Comp research, trends, company culture, LinkedIn contacts, fallback for JDs |
 | WebFetch | Fallback for extracting JDs from static pages |
-| Playwright | Verify offers (browser_navigate + browser_snapshot). **NEVER 2+ agents with Playwright in parallel.** |
+| chrome-devtools-mcp | Interactive browser automation (apply mode, JD verify, form fill). Tools: `new_page`, `navigate_page`, `take_snapshot`, `click`, `fill`, `upload_file`. Persistent Chrome profile at `.chrome-profile/` keeps logins across sessions. **NEVER 2+ agents using it in parallel.** |
+| Playwright (npm scripts only) | Used by `check-liveness.mjs` (URL liveness, zero-token) and `generate-pdf.mjs` (HTML→PDF). Do NOT use Playwright MCP for interactive — chrome-devtools-mcp replaces it. |
 | Read | cv.md, _profile.md, article-digest.md, cv-template.html |
 | Write | Temporary HTML for PDF, applications.md, reports .md |
 | Edit | Update tracker |

@@ -3,7 +3,7 @@
 
 ## Data Contract (CRITICAL)
 
-Two layers. Read `DATA_CONTRACT.md` for full list.
+There are two layers. Read `DATA_CONTRACT.md` for the full list.
 
 **User Layer (NEVER auto-updated, personalization goes HERE):**
 - `cv.md`, `config/profile.yml`, `modes/_profile.md`, `article-digest.md`, `portals.yml`
@@ -13,21 +13,20 @@ Two layers. Read `DATA_CONTRACT.md` for full list.
 - `modes/_shared.md`, `modes/oferta.md`, all other modes
 - `CLAUDE.md`, `*.mjs` scripts, `dashboard/*`, `templates/*`, `batch/*`
 
-**THE RULE: User asks customize anything (archetypes, narrative, negotiation scripts, proof points, location policy, comp targets) → ALWAYS write to `modes/_profile.md` or `config/profile.yml`. NEVER edit `modes/_shared.md` for user-specific content.** System updates won't overwrite customizations.
+**THE RULE: When the user asks to customize anything (archetypes, narrative, negotiation scripts, proof points, location policy, comp targets), ALWAYS write to `modes/_profile.md` or `config/profile.yml`. NEVER edit `modes/_shared.md` for user-specific content.** This ensures system updates don't overwrite their customizations.
 
 
 
 ## What is career-ops
 
-AI job search automation on Claude Code: pipeline tracking, offer evaluation, CV generation, portal scanning, batch processing.
+AI-powered job search automation built on Claude Code: pipeline tracking, offer evaluation, CV generation, portal scanning, batch processing.
 
 ### Main Files
 
 | File | Function |
 |------|----------|
-| `data/applications.md` | Application tracker (the dashboard reads this file) |
-| `data/pipeline.md` | Inbox of pending URLs (auto-match marked `[x] AUTO-MATCH | 5.0/5`) |
-| `data/pipeline-deferred.md` | Generic SWE roles parked by `/scan-gmail`, awaiting `/deeper-eval` |
+| `data/applications.md` | Application tracker |
+| `data/pipeline.md` | Inbox of pending URLs |
 | `data/scan-history.tsv` | Scanner dedup history |
 | `data/gmail-scan-history.tsv` | Gmail-scan dedup tracker (message_id per scanned alert) |
 | `.claude/skills/scan-gmail/SKILL.md` | Standalone `scan-gmail` skill — full spec for `/career-ops scan gmail` and natural-language triggers |
@@ -67,8 +66,7 @@ AI job search automation on Claude Code: pipeline tracking, offer evaluation, CV
 | Asks about application status | `tracker` |
 | Fills out application form | `apply` |
 | Searches for new offers | `scan` |
-| Says `/career-ops scan gmail [WINDOW]` or natural-language ("scan my gmail", "ingest job alerts") | `scan-gmail` standalone skill at `.claude/skills/scan-gmail/SKILL.md`. Classifies URLs via `config/profile.yml` → `gmail_classifier.match_keywords` / `match_excludes`: matches go to `pipeline.md` + `applications.md` with status `Auto-Match` and score `5.0/5`; non-matches go to `pipeline-deferred.md` for `/deeper-eval`. |
-| Says `/deeper-eval` or "evaluate deferred" | `deeper-eval` standalone skill at `.claude/skills/deeper-eval/SKILL.md`. Processes `pipeline-deferred.md` via WebFetch (Chrome MCP fallback for SPAs), runs `oferta.md` A-G, merges into `applications.md`. |
+| Says `/career-ops scan gmail [WINDOW]` or natural-language ("scan my gmail", "ingest job alerts") | `scan-gmail` standalone skill at `.claude/skills/scan-gmail/SKILL.md`. ALWAYS dispatches to subagent. Reads `config/gmail-senders.yml` for sender list. |
 | Processes pending URLs | `pipeline` |
 | Batch processes offers | `batch` |
 | Asks about rejection patterns or wants to improve targeting | `patterns` |
@@ -76,26 +74,26 @@ AI job search automation on Claude Code: pipeline tracking, offer evaluation, CV
 
 ### CV Source of Truth
 
-- `cv.md` in project root = canonical CV
-- `article-digest.md` = detailed proof points (optional)
-- **NEVER hardcode metrics** -- read from these files at evaluation time
+- `cv.md` in project root is the canonical CV
+- `article-digest.md` has detailed proof points (optional)
+- **NEVER hardcode metrics** -- read them from these files at evaluation time
 
 ---
 
 ## Stack and Conventions
 
 - Node.js (mjs modules), Playwright (PDF + scraping), YAML (config), HTML/CSS (template), Markdown (data), Canva MCP (optional visual CV)
-- Scripts in `.mjs`, config in YAML
+- Scripts in `.mjs`, configuration in YAML
 - Output in `output/` (gitignored), Reports in `reports/`
 - JDs in `jds/` (referenced as `local:jds/{file}` in pipeline.md)
 - Batch in `batch/` (gitignored except scripts and prompt)
 - Report numbering: sequential 3-digit zero-padded, max existing + 1
-- **RULE: After each batch of evaluations, run `node merge-tracker.mjs`** to merge tracker additions, avoid duplications.
-- **RULE: NEVER create new entries in applications.md if company+role already exists.** Update existing entry.
+- **RULE: After each batch of evaluations, run `node merge-tracker.mjs`** to merge tracker additions and avoid duplications.
+- **RULE: NEVER create new entries in applications.md if company+role already exists.** Update the existing entry.
 
 ### TSV Format for Tracker Additions
 
-Write one TSV per evaluation to `batch/tracker-additions/{num}-{company-slug}.tsv`. Single line, 9 tab-separated columns:
+Write one TSV file per evaluation to `batch/tracker-additions/{num}-{company-slug}.tsv`. Single line, 9 tab-separated columns:
 
 ```
 {num}\t{date}\t{company}\t{role}\t{status}\t{score}/5\t{pdf_emoji}\t[{num}](reports/{num}-{slug}-{date}.md)\t{note}
@@ -112,13 +110,13 @@ Write one TSV per evaluation to `batch/tracker-additions/{num}-{company-slug}.ts
 8. `report` -- markdown link `[num](reports/...)`
 9. `notes` -- one-line summary
 
-**Note:** In applications.md, score comes BEFORE status. Merge script handles column swap automatically.
+**Note:** In applications.md, score comes BEFORE status. The merge script handles this column swap automatically.
 
 ### Pipeline Integrity
 
-1. **NEVER edit applications.md to ADD new entries** -- Write TSV in `batch/tracker-additions/` and `merge-tracker.mjs` handles merge.
+1. **NEVER edit applications.md to ADD new entries** -- Write TSV in `batch/tracker-additions/` and `merge-tracker.mjs` handles the merge.
 2. **YES you can edit applications.md to UPDATE status/notes of existing entries.**
-3. All reports MUST include `**URL:**` in header (between Score and PDF). Include `**Legitimacy:** {tier}` (see Block G in `modes/oferta.md`).
+3. All reports MUST include `**URL:**` in the header (between Score and PDF). Include `**Legitimacy:** {tier}` (see Block G in `modes/oferta.md`).
 4. All statuses MUST be canonical (see `templates/states.yml`).
 5. Health check: `node verify-pipeline.mjs`
 6. Normalize statuses: `node normalize-statuses.mjs`
@@ -130,7 +128,7 @@ Write one TSV per evaluation to `batch/tracker-additions/{num}-{company-slug}.ts
 
 | State | When to use |
 |-------|-------------|
-| `Evaluated` | Report done, pending decision |
+| `Evaluated` | Report completed, pending decision |
 | `Applied` | Application sent |
 | `Responded` | Company responded |
 | `Interview` | In interview process |
@@ -138,9 +136,8 @@ Write one TSV per evaluation to `batch/tracker-additions/{num}-{company-slug}.ts
 | `Rejected` | Rejected by company |
 | `Discarded` | Discarded by candidate or offer closed |
 | `SKIP` | Doesn't fit, don't apply |
-| `Auto-Match` | Title regex matched primary/adjacent stack via `/scan-gmail`; no evaluation done. User opens URL and decides whether to apply. Dashboard groups with `Evaluated`. |
 
 **RULES:**
 - No markdown bold (`**`) in status field
-- No dates in status field (use date column)
-- No extra text (use notes column)
+- No dates in status field (use the date column)
+- No extra text (use the notes column)
