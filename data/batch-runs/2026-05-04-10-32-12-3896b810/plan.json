@@ -1,0 +1,592 @@
+{
+  "ts": "2026-05-04T10:32:12.491Z",
+  "opts": {
+    "mode": "plan",
+    "force": true,
+    "dryRun": false,
+    "verbose": false,
+    "experimental": true,
+    "experimentalSucc": true,
+    "autofix": false,
+    "chunkSize": 2,
+    "limit": null,
+    "runId": null,
+    "urls": []
+  },
+  "total_urls": 57,
+  "chunks": [
+    [
+      "https://theprotocol.it/szczegoly/praca/senior-fullstack-net-developer-warszawa,oferta,cb780000-1098-7a89-ca95-08dea5eac822",
+      "https://theprotocol.it/szczegoly/praca/ai-specialist-warszawa-zwirki-i-wigury-16a,oferta,4d2d0000-7494-aeb0-fe50-08dea5e4b674"
+    ],
+    [
+      "https://theprotocol.it/szczegoly/praca/senior-net-developer-with-ai-gdansk-aleja-grunwaldzka-472b,oferta,4d2d0000-7494-aeb0-6da1-08dea5ddec0e",
+      "https://theprotocol.it/szczegoly/praca/senior-frontend-engineer-game-platform-warszawa-zwirki-i-wigury-16a,oferta,cb780000-1098-7a89-a9dd-08dea5dd6ae2"
+    ],
+    [
+      "https://theprotocol.it/szczegoly/praca/senior-net-developer-fullstack-warszawa,oferta,88e60000-2ca1-929b-5c1b-08dea5adf295",
+      "https://theprotocol.it/szczegoly/praca/ai-engineer-warszawa-zwirki-i-wigury-16a,oferta,4d2d0000-7494-aeb0-3d1f-08dea5e5bf9c"
+    ],
+    [
+      "https://theprotocol.it/szczegoly/praca/ai-ml-developer-generative-ai-f-m-x-bialystok-jozefa-marjanskiego-3,oferta,4d2d0000-7494-aeb0-5546-08dea5f83797",
+      "https://www.xing.com/jobs/wien-senior-full-stack-software-engineer-all-genders-wien-153810637"
+    ],
+    [
+      "https://www.xing.com/jobs/frankfurt-main-full-stack-entwickler-net-100-remote-153783704",
+      "https://www.xing.com/jobs/frankfurt-main-full-stack-entwickler-net-100-remote-153783705"
+    ],
+    [
+      "https://www.xing.com/jobs/braunschweig-senior-fullstack-developer-it-berater-153785309",
+      "https://www.xing.com/jobs/berlin-senior-full-stack-entwickler-react-typescript-net-100-remote-ki-first-153784365"
+    ],
+    [
+      "https://www.xing.com/jobs/frankfurt-main-senior-fullstack-developer-it-berater-153785312",
+      "https://www.xing.com/jobs/duesseldorf-senior-fullstack-developer-it-berater-153795939"
+    ],
+    [
+      "https://www.xing.com/jobs/ratingen-senior-fullstack-developer-it-berater-153785311",
+      "https://www.xing.com/jobs/koblenz-full-stack-entwickler-kommunale-finanzmanagementsoftware-153810645"
+    ],
+    [
+      "https://www.xing.com/jobs/berlin-senior-fullstack-developer-8138-153810605",
+      "https://nofluffjobs.com/pl/job/senior-fullstack-developer-branza-energetyczna-edge-one-solutions-remote"
+    ],
+    [
+      "https://nofluffjobs.com/pl/job/technical-project-leader-scalo-remote",
+      "https://www.xing.com/jobs/wien-senior-fullstack-developer-cloud-management-platform-153745080"
+    ],
+    [
+      "https://www.xing.com/jobs/wien-net-backend-entwickler-153537618",
+      "https://www.xing.com/jobs/wien-senior-full-stack-entwickler-business-software-153563477"
+    ],
+    [
+      "https://www.xing.com/jobs/wien-principal-software-engineer-agentic-engineering-english-version-153319695",
+      "https://www.xing.com/jobs/wien-senior-intermediate-net-developer-government-153649624"
+    ],
+    [
+      "https://theprotocol.it/szczegoly/praca/senior-full-stack-net-web-developer-warszawa,oferta,18c20000-3e56-427b-a23b-08dea5102e74",
+      "https://theprotocol.it/szczegoly/praca/senior-angular-developer-warszawa-aleje-jerozolimskie-100,oferta,cb780000-1098-7a89-fdf5-08dea4f2a127"
+    ],
+    [
+      "https://theprotocol.it/szczegoly/praca/ai-first-full-stack-developer-angular-typescript-warszawa,oferta,cb780000-1098-7a89-78cf-08dea45e3e14",
+      "https://theprotocol.it/szczegoly/praca/frontend-developer-angular-warszawa,oferta,78b50000-17ad-320c-ac0c-08de9925971f"
+    ],
+    [
+      "https://theprotocol.it/szczegoly/praca/angular-developer-warszawa-hoza-86,oferta,04a20000-854a-dee6-0e1a-08dea08479e1",
+      "https://theprotocol.it/szczegoly/praca/net-developer-wielka-brytania,oferta,88e60000-2ca1-929b-626b-08dea50eebf2"
+    ],
+    [
+      "https://theprotocol.it/szczegoly/praca/senior-microsoft-ai-developer-warszawa,oferta,88e60000-2ca1-929b-7bd4-08dea5021ba9",
+      "https://theprotocol.it/szczegoly/praca/senior-databricks-genai-engineer-warszawa,oferta,cb780000-1098-7a89-9958-08dea4f69ba8"
+    ],
+    [
+      "https://theprotocol.it/szczegoly/praca/starszy-a-programista-ka-net-c-warszawa-stawki-40,oferta,cb780000-1098-7a89-abc7-08dea4f4fc5d",
+      "https://theprotocol.it/szczegoly/praca/architekt-rozwiazan-it-net-m-k-n-warszawa-prosta-70,oferta,18c20000-3e56-427b-44a3-08dea50df46e"
+    ],
+    [
+      "https://theprotocol.it/szczegoly/praca/senior-c-backend-developer-warszawa,oferta,18c20000-3e56-427b-c8e7-08dea52d58ce",
+      "https://theprotocol.it/szczegoly/praca/senior-full-stack-developer-react-angular-nodejs-m-k-n-warszawa-prosta-70,oferta,cb780000-1098-7a89-aacd-08dea506c6bc"
+    ],
+    [
+      "https://theprotocol.it/szczegoly/praca/fullstack-developer-netangular-warszawa-aleje-jerozolimskie-93,oferta,cb780000-1098-7a89-9424-08dea4630125",
+      "https://nofluffjobs.com/pl/job/senior-fullstack-engineer-c-react-aws-square-one-resources-remote"
+    ],
+    [
+      "https://nofluffjobs.com/pl/job/fullstack-developer-react-net-python-square-one-resources-remote",
+      "https://nofluffjobs.com/pl/job/senior-fullstack-net-web-developer-green-minds-remote"
+    ],
+    [
+      "https://nofluffjobs.com/pl/job/fullstack-developer-python-react-grape-up-remote-1",
+      "https://nofluffjobs.com/pl/job/software-developer-frontend-full-stack-crestt-remote"
+    ],
+    [
+      "https://nofluffjobs.com/pl/job/mid-fullstack-python-react-idego-group-remote-2",
+      "https://nofluffjobs.com/pl/job/software-developer-python-vue-ework-group-remote"
+    ],
+    [
+      "https://nofluffjobs.com/pl/job/senior-c-engineer-link-group-remote-3",
+      "https://nofluffjobs.com/pl/job/backend-engineer-devire-remote"
+    ],
+    [
+      "https://nofluffjobs.com/pl/job/net-developer-connectis--remote-7",
+      "https://nofluffjobs.com/pl/job/fullstack-developer-net-react-diverse-cg-sp-k--remote"
+    ],
+    [
+      "https://nofluffjobs.com/pl/job/developer-crm-dynamics-tc-dcg-remote",
+      "https://www.xing.com/jobs/freiburg-breisgau-senior-full-stack-entwickler-remote-153699288"
+    ],
+    [
+      "https://www.xing.com/jobs/wien-full-stack-software-engineer-all-genders-wien-153699251",
+      "https://nofluffjobs.com/pl/job/mid-angular-developer-link-group-remote-1"
+    ],
+    [
+      "https://nofluffjobs.com/pl/job/senior-angular-developer-remote-link-group-1",
+      "https://nofluffjobs.com/pl/job/angular-developer-mid-senior-upvanta-remote"
+    ],
+    [
+      "https://nofluffjobs.com/pl/job/frontend-developer-edge-one-solutions-remote",
+      "https://nofluffjobs.com/pl/job/senior-c-engineer-link-group-remote-2"
+    ],
+    [
+      "https://nofluffjobs.com/pl/job/full-stack-net-web-developer-ai-green-minds-remote"
+    ]
+  ],
+  "queue": [
+    {
+      "num": "136",
+      "company": "theprotocol.it",
+      "role": "Senior Fullstack Net Developer Warszawa",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/senior-fullstack-net-developer-warszawa,oferta,cb780000-1098-7a89-ca95-08dea5eac822",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "137",
+      "company": "theprotocol.it",
+      "role": "Ai Specialist Warszawa Zwirki I Wigury 16a",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/ai-specialist-warszawa-zwirki-i-wigury-16a,oferta,4d2d0000-7494-aeb0-fe50-08dea5e4b674",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "138",
+      "company": "theprotocol.it",
+      "role": "Senior Net Developer With Ai Gdansk Aleja Grunwaldzka 472b",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/senior-net-developer-with-ai-gdansk-aleja-grunwaldzka-472b,oferta,4d2d0000-7494-aeb0-6da1-08dea5ddec0e",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "140",
+      "company": "theprotocol.it",
+      "role": "Senior Frontend Engineer Game Platform Warszawa Zwirki I Wigury 16a",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/senior-frontend-engineer-game-platform-warszawa-zwirki-i-wigury-16a,oferta,cb780000-1098-7a89-a9dd-08dea5dd6ae2",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "141",
+      "company": "theprotocol.it",
+      "role": "Senior Net Developer Fullstack Warszawa",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/senior-net-developer-fullstack-warszawa,oferta,88e60000-2ca1-929b-5c1b-08dea5adf295",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "142",
+      "company": "theprotocol.it",
+      "role": "Ai Engineer Warszawa Zwirki I Wigury 16a",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/ai-engineer-warszawa-zwirki-i-wigury-16a,oferta,4d2d0000-7494-aeb0-3d1f-08dea5e5bf9c",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "143",
+      "company": "theprotocol.it",
+      "role": "Ai Ml Developer Generative Ai F M X Bialystok Jozefa Marjanskiego 3",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/ai-ml-developer-generative-ai-f-m-x-bialystok-jozefa-marjanskiego-3,oferta,4d2d0000-7494-aeb0-5546-08dea5f83797",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "149",
+      "company": "XING",
+      "role": "Wien Senior Full Stack Software Engineer All Genders Wien",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/wien-senior-full-stack-software-engineer-all-genders-wien-153810637",
+      "portal": "xing"
+    },
+    {
+      "num": "150",
+      "company": "XING",
+      "role": "Frankfurt Main Full Stack Entwickler Net 100 Remote",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/frankfurt-main-full-stack-entwickler-net-100-remote-153783704",
+      "portal": "xing"
+    },
+    {
+      "num": "151",
+      "company": "XING",
+      "role": "Frankfurt Main Full Stack Entwickler Net 100 Remote",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/frankfurt-main-full-stack-entwickler-net-100-remote-153783705",
+      "portal": "xing"
+    },
+    {
+      "num": "152",
+      "company": "XING",
+      "role": "Braunschweig Senior Fullstack Developer It Berater",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/braunschweig-senior-fullstack-developer-it-berater-153785309",
+      "portal": "xing"
+    },
+    {
+      "num": "153",
+      "company": "XING",
+      "role": "Berlin Senior Full Stack Entwickler React Typescript Net 100 Remote Ki First",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/berlin-senior-full-stack-entwickler-react-typescript-net-100-remote-ki-first-153784365",
+      "portal": "xing"
+    },
+    {
+      "num": "154",
+      "company": "XING",
+      "role": "Frankfurt Main Senior Fullstack Developer It Berater",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/frankfurt-main-senior-fullstack-developer-it-berater-153785312",
+      "portal": "xing"
+    },
+    {
+      "num": "155",
+      "company": "XING",
+      "role": "Duesseldorf Senior Fullstack Developer It Berater",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/duesseldorf-senior-fullstack-developer-it-berater-153795939",
+      "portal": "xing"
+    },
+    {
+      "num": "156",
+      "company": "XING",
+      "role": "Ratingen Senior Fullstack Developer It Berater",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/ratingen-senior-fullstack-developer-it-berater-153785311",
+      "portal": "xing"
+    },
+    {
+      "num": "157",
+      "company": "XING",
+      "role": "Koblenz Full Stack Entwickler Kommunale Finanzmanagementsoftware",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/koblenz-full-stack-entwickler-kommunale-finanzmanagementsoftware-153810645",
+      "portal": "xing"
+    },
+    {
+      "num": "158",
+      "company": "XING",
+      "role": "Berlin Senior Fullstack Developer 8138",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/berlin-senior-fullstack-developer-8138-153810605",
+      "portal": "xing"
+    },
+    {
+      "num": "159",
+      "company": "NoFluffJobs",
+      "role": "Senior Fullstack Developer Branza Energetyczna Edge One Solutions",
+      "status": "Auto-Match",
+      "url": "https://nofluffjobs.com/pl/job/senior-fullstack-developer-branza-energetyczna-edge-one-solutions-remote",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "160",
+      "company": "NoFluffJobs",
+      "role": "Technical Project Leader Scalo",
+      "status": "Auto-Match",
+      "url": "https://nofluffjobs.com/pl/job/technical-project-leader-scalo-remote",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "161",
+      "company": "XING",
+      "role": "Wien Senior Fullstack Developer Cloud Management Platform",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/wien-senior-fullstack-developer-cloud-management-platform-153745080",
+      "portal": "xing"
+    },
+    {
+      "num": "162",
+      "company": "XING",
+      "role": "Wien Net Backend Entwickler",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/wien-net-backend-entwickler-153537618",
+      "portal": "xing"
+    },
+    {
+      "num": "163",
+      "company": "XING",
+      "role": "Wien Senior Full Stack Entwickler Business Software",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/wien-senior-full-stack-entwickler-business-software-153563477",
+      "portal": "xing"
+    },
+    {
+      "num": "164",
+      "company": "XING",
+      "role": "Wien Principal Software Engineer Agentic Engineering English Version",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/wien-principal-software-engineer-agentic-engineering-english-version-153319695",
+      "portal": "xing"
+    },
+    {
+      "num": "165",
+      "company": "XING",
+      "role": "Wien Senior Intermediate Net Developer Government",
+      "status": "Auto-Match",
+      "url": "https://www.xing.com/jobs/wien-senior-intermediate-net-developer-government-153649624",
+      "portal": "xing"
+    },
+    {
+      "num": "179",
+      "company": "theprotocol.it",
+      "role": "Senior Full Stack Net Web Developer Warszawa",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/senior-full-stack-net-web-developer-warszawa,oferta,18c20000-3e56-427b-a23b-08dea5102e74",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "180",
+      "company": "theprotocol.it",
+      "role": "Senior Angular Developer Warszawa Aleje Jerozolimskie 100",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/senior-angular-developer-warszawa-aleje-jerozolimskie-100,oferta,cb780000-1098-7a89-fdf5-08dea4f2a127",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "181",
+      "company": "theprotocol.it",
+      "role": "Ai First Full Stack Developer Angular Typescript Warszawa",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/ai-first-full-stack-developer-angular-typescript-warszawa,oferta,cb780000-1098-7a89-78cf-08dea45e3e14",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "182",
+      "company": "theprotocol.it",
+      "role": "Frontend Developer Angular Warszawa",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/frontend-developer-angular-warszawa,oferta,78b50000-17ad-320c-ac0c-08de9925971f",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "183",
+      "company": "theprotocol.it",
+      "role": "Angular Developer Warszawa Hoza 86",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/angular-developer-warszawa-hoza-86,oferta,04a20000-854a-dee6-0e1a-08dea08479e1",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "184",
+      "company": "theprotocol.it",
+      "role": "Net Developer Wielka Brytania",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/net-developer-wielka-brytania,oferta,88e60000-2ca1-929b-626b-08dea50eebf2",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "185",
+      "company": "theprotocol.it",
+      "role": "Senior Microsoft Ai Developer Warszawa",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/senior-microsoft-ai-developer-warszawa,oferta,88e60000-2ca1-929b-7bd4-08dea5021ba9",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "186",
+      "company": "theprotocol.it",
+      "role": "Senior Databricks Genai Engineer Warszawa",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/senior-databricks-genai-engineer-warszawa,oferta,cb780000-1098-7a89-9958-08dea4f69ba8",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "187",
+      "company": "theprotocol.it",
+      "role": "Starszy A Programista Ka Net C Warszawa Stawki 40",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/starszy-a-programista-ka-net-c-warszawa-stawki-40,oferta,cb780000-1098-7a89-abc7-08dea4f4fc5d",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "188",
+      "company": "theprotocol.it",
+      "role": "Architekt Rozwiazan It Net M K N Warszawa Prosta 70",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/architekt-rozwiazan-it-net-m-k-n-warszawa-prosta-70,oferta,18c20000-3e56-427b-44a3-08dea50df46e",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "189",
+      "company": "theprotocol.it",
+      "role": "Senior C Backend Developer Warszawa",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/senior-c-backend-developer-warszawa,oferta,18c20000-3e56-427b-c8e7-08dea52d58ce",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "190",
+      "company": "theprotocol.it",
+      "role": "Senior Full Stack Developer React Angular Nodejs M K N Warszawa Prosta 70",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/senior-full-stack-developer-react-angular-nodejs-m-k-n-warszawa-prosta-70,oferta,cb780000-1098-7a89-aacd-08dea506c6bc",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "191",
+      "company": "theprotocol.it",
+      "role": "Fullstack Developer Netangular Warszawa Aleje Jerozolimskie 93",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/fullstack-developer-netangular-warszawa-aleje-jerozolimskie-93,oferta,cb780000-1098-7a89-9424-08dea4630125",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "209",
+      "company": "NoFluffJobs",
+      "role": "Senior Fullstack Engineer C React Aws Square One Resources",
+      "status": "Auto-Match",
+      "url": "https://nofluffjobs.com/pl/job/senior-fullstack-engineer-c-react-aws-square-one-resources-remote",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "210",
+      "company": "NoFluffJobs",
+      "role": "Fullstack Developer React Net Python Square One Resources",
+      "status": "Auto-Match",
+      "url": "https://nofluffjobs.com/pl/job/fullstack-developer-react-net-python-square-one-resources-remote",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "211",
+      "company": "NoFluffJobs",
+      "role": "Senior Fullstack Net Web Developer Green Minds",
+      "status": "Auto-Match",
+      "url": "https://nofluffjobs.com/pl/job/senior-fullstack-net-web-developer-green-minds-remote",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "212",
+      "company": "NoFluffJobs",
+      "role": "Fullstack Developer Python React Grape Up",
+      "status": "Auto-Match",
+      "url": "https://nofluffjobs.com/pl/job/fullstack-developer-python-react-grape-up-remote-1",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "213",
+      "company": "NoFluffJobs",
+      "role": "Software Developer Frontend Full Stack Crestt",
+      "status": "Auto-Match",
+      "url": "https://nofluffjobs.com/pl/job/software-developer-frontend-full-stack-crestt-remote",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "214",
+      "company": "NoFluffJobs",
+      "role": "Mid Fullstack Python React Idego Group",
+      "status": "Auto-Match",
+      "url": "https://nofluffjobs.com/pl/job/mid-fullstack-python-react-idego-group-remote-2",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "215",
+      "company": "NoFluffJobs",
+      "role": "Software Developer Python Vue Ework Group",
+      "status": "Auto-Match",
+      "url": "https://nofluffjobs.com/pl/job/software-developer-python-vue-ework-group-remote",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "216",
+      "company": "NoFluffJobs",
+      "role": "Senior C Engineer Link Group",
+      "status": "Auto-Match",
+      "url": "https://nofluffjobs.com/pl/job/senior-c-engineer-link-group-remote-3",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "217",
+      "company": "NoFluffJobs",
+      "role": "Backend Engineer Devire",
+      "status": "Auto-Match",
+      "url": "https://nofluffjobs.com/pl/job/backend-engineer-devire-remote",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "218",
+      "company": "NoFluffJobs",
+      "role": "Net Developer Connectis",
+      "status": "Auto-Match",
+      "url": "https://nofluffjobs.com/pl/job/net-developer-connectis--remote-7",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "124",
+      "company": "Diverse CG",
+      "role": "Fullstack Developer (.NET + React)",
+      "status": "Evaluated",
+      "url": "https://nofluffjobs.com/pl/job/fullstack-developer-net-react-diverse-cg-sp-k--remote",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "129",
+      "company": "DCG",
+      "role": "Developer CRM Dynamics",
+      "status": "Evaluated",
+      "url": "https://nofluffjobs.com/pl/job/developer-crm-dynamics-tc-dcg-remote",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "131",
+      "company": "Haufe-Lexware",
+      "role": "Senior Full Stack Entwickler:in (remote Freiburg)",
+      "status": "Evaluated",
+      "url": "https://www.xing.com/jobs/freiburg-breisgau-senior-full-stack-entwickler-remote-153699288",
+      "portal": "xing"
+    },
+    {
+      "num": "132",
+      "company": "PRODYNA SE",
+      "role": "Full Stack Software Engineer (Wien)",
+      "status": "Evaluated",
+      "url": "https://www.xing.com/jobs/wien-full-stack-software-engineer-all-genders-wien-153699251",
+      "portal": "xing"
+    },
+    {
+      "num": "82",
+      "company": "Link Group",
+      "role": "Mid Angular Developer",
+      "status": "Evaluated",
+      "url": "https://nofluffjobs.com/pl/job/mid-angular-developer-link-group-remote-1",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "83",
+      "company": "Link Group",
+      "role": "Senior Angular Developer",
+      "status": "Evaluated",
+      "url": "https://nofluffjobs.com/pl/job/senior-angular-developer-remote-link-group-1",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "84",
+      "company": "Upvanta",
+      "role": "Angular Developer (mid/senior)",
+      "status": "Evaluated",
+      "url": "https://nofluffjobs.com/pl/job/angular-developer-mid-senior-upvanta-remote",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "90",
+      "company": "Edge One Solutions",
+      "role": "Frontend Developer (Angular+React)",
+      "status": "Evaluated",
+      "url": "https://nofluffjobs.com/pl/job/frontend-developer-edge-one-solutions-remote",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "102",
+      "company": "Link Group",
+      "role": "Senior C# Engineer",
+      "status": "Evaluated",
+      "url": "https://nofluffjobs.com/pl/job/senior-c-engineer-link-group-remote-2",
+      "portal": "nofluffjobs"
+    },
+    {
+      "num": "55",
+      "company": "Green Minds",
+      "role": "Full-Stack .NET Web Developer (AI)",
+      "status": "Evaluated",
+      "url": "https://nofluffjobs.com/pl/job/full-stack-net-web-developer-ai-green-minds-remote",
+      "portal": "nofluffjobs"
+    }
+  ]
+}

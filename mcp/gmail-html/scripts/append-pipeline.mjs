@@ -45,6 +45,7 @@ if (!inPath) {
 }
 const data = JSON.parse(readFileSync(resolve(inPath), 'utf8'));
 const today = new Date().toISOString().slice(0, 10);
+const nowIso = new Date().toISOString().slice(0, 16) + 'Z'; // YYYY-MM-DDTHH:MMZ for pipeline comments
 
 // ---------- helpers ----------
 function senderShort(email) {
@@ -258,7 +259,7 @@ for (const r of data.results) {
       const { company, role } = deriveCompanyRole(c.url, subject);
       // pipeline.md row — pre-checked, no further processing needed, score 5.0
       newPipelineLines.push(
-        `- [x] AUTO-MATCH | 5.0/5 | ${c.url}     <!-- via Gmail:${tag} ${today} auto-match: ${c.matched.join(',')} -->`
+        `- [x] AUTO-MATCH | 5.0/5 | ${c.url}     <!-- via Gmail:${tag} ${nowIso} auto-match: ${c.matched.join(',')} -->`
       );
       // tracker-additions TSV row (9 cols: num\tdate\tcompany\trole\tstatus\tscore\tpdf\treport\tnotes)
       const noteUrl = c.url.replace(/\t/g, ' ');
@@ -271,7 +272,7 @@ for (const r of data.results) {
       // deferred — title from email subject + sender; URL kept verbatim
       const safeSubject = subject.replace(/\|/g, '/').replace(/\s+/g, ' ').slice(0, 140);
       newDeferredLines.push(
-        `- [ ] ${c.url} | ${safeSubject || '(no subject)'} | ${senderToHostHint(r.sender)} | ${today}`
+        `- [ ] ${c.url} | ${safeSubject || '(no subject)'} | ${senderToHostHint(r.sender)} | ${nowIso}`
       );
     }
   }
@@ -284,7 +285,7 @@ for (const r of data.results) {
     knownUrls.add(url);
     const safeSubject = subject.replace(/\|/g, '/').replace(/\s+/g, ' ').slice(0, 140);
     newListLines.push(
-      `- [ ] ${url} | ${safeSubject || '(no subject)'} | ${senderToHostHint(r.sender)} | ${today}`
+      `- [ ] ${url} | ${safeSubject || '(no subject)'} | ${senderToHostHint(r.sender)} | ${nowIso}`
     );
   }
 

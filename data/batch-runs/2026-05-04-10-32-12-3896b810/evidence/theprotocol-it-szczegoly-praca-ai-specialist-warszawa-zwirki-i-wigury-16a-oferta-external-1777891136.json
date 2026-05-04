@@ -1,0 +1,29 @@
+{
+  "ts": "2026-05-04T10:39:00.000Z",
+  "run_id": "2026-05-04-10-32-12-3896b810",
+  "phase": "external_ats_handover",
+  "original_url": "https://theprotocol.it/szczegoly/praca/ai-specialist-warszawa-zwirki-i-wigury-16a,oferta,4d2d0000-7494-aeb0-fe50-08dea5e4b674",
+  "external_ats_url": "https://pretiushr.traffit.com/public/form/a/4ecfb2d3e80d973ed1b93f68ee2e218753623254",
+  "portal": "theprotocol",
+  "redirect_detected": false,
+  "submission_method": "escalation_manual_apply_click",
+  "form_fields_filled": {
+    "first_name": "Arshia",
+    "last_name": "Hemati",
+    "email": "arshia.hemati@gmail.com",
+    "phone": "+436703535652",
+    "cv_uploaded": true,
+    "availability": "natychmiast",
+    "gdpr_consent": true
+  },
+  "success_verification": {
+    "href": "https://pretiushr.traffit.com/public/form/thankyou/329?application_timestamp=1777891121",
+    "url_changed": true,
+    "url_contains_thankyou": true,
+    "marker_match": "dziękujemy za przesłanie aplikacji",
+    "form_still_present": false,
+    "errors_visible": false
+  },
+  "status": "Applied",
+  "external_apply": true
+}

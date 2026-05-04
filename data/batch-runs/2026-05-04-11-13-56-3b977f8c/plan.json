@@ -1,0 +1,42 @@
+{
+  "ts": "2026-05-04T11:13:56.544Z",
+  "opts": {
+    "mode": "plan",
+    "force": true,
+    "dryRun": false,
+    "verbose": false,
+    "experimental": true,
+    "experimentalSucc": true,
+    "autofix": false,
+    "chunkSize": 2,
+    "limit": 2,
+    "runId": null,
+    "urls": [],
+    "chunkIndex": null
+  },
+  "total_urls": 2,
+  "chunks": [
+    [
+      "https://theprotocol.it/szczegoly/praca/senior-net-developer-with-ai-gdansk-aleja-grunwaldzka-472b,oferta,4d2d0000-7494-aeb0-6da1-08dea5ddec0e",
+      "https://theprotocol.it/szczegoly/praca/senior-frontend-engineer-game-platform-warszawa-zwirki-i-wigury-16a,oferta,cb780000-1098-7a89-a9dd-08dea5dd6ae2"
+    ]
+  ],
+  "queue": [
+    {
+      "num": "138",
+      "company": "theprotocol.it",
+      "role": "Senior Net Developer With Ai Gdansk Aleja Grunwaldzka 472b",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/senior-net-developer-with-ai-gdansk-aleja-grunwaldzka-472b,oferta,4d2d0000-7494-aeb0-6da1-08dea5ddec0e",
+      "portal": "theprotocol"
+    },
+    {
+      "num": "140",
+      "company": "theprotocol.it",
+      "role": "Senior Frontend Engineer Game Platform Warszawa Zwirki I Wigury 16a",
+      "status": "Auto-Match",
+      "url": "https://theprotocol.it/szczegoly/praca/senior-frontend-engineer-game-platform-warszawa-zwirki-i-wigury-16a,oferta,cb780000-1098-7a89-a9dd-08dea5dd6ae2",
+      "portal": "theprotocol"
+    }
+  ]
+}

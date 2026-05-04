@@ -1,267 +1,430 @@
 ---
 name: gmail-apply
-description: Per-portal application automation via Playwright. When user invokes /gmail-apply [URL], /apply-portal [URL], or /career-ops gmail-apply [URL] — run scripts/gmail-apply.mjs which connects to the user's Chrome (port 9222), matches URL to config/gmail-apply-portals.yml, fills the form, verifies state, and exits before submit. User clicks Submit. Falls back to modes/apply.md for unknown portals. Token-lean: zero LLM during fill, just one verification read at the end.
+description: Per-portal application automation via Playwright + Chrome DevTools MCP. Two modes — (1) SINGLE-URL when the user passes a job URL → run scripts/gmail-apply.mjs against that URL; (2) BATCH when no URL is passed (or --batch is set) → parent agent (this skill) drives a per-chunk loop calling scripts/gmail-apply-batch.mjs in --plan + --run-chunk modes, autofixing mid-batch when --autofix, retrying patched URLs at the end. Eligible rows status Evaluated or Auto-Match. Redirects to external ATS (greenhouse/lever/recruitify/etc) handed over to chrome-devtools MCP — application still completed, CV uploaded from assets/cv/CV_www.ArshiaHemati.com_EN.pdf. Triggers — single — /gmail-apply <URL>, /apply-portal <URL>, "apply to <URL>"; batch — /gmail-apply (no URL), "batch apply", "apply to all evaluated", "apply to auto-matched". No PDF or report generation.
 user_invocable: true
-args: url
-argument-hint: "<job URL> [--force] [--autofix]"
+argument-hint: "[<job URL>] [--force] [--autofix] [--experimental] [--experimental-succ] [--verbose] [--dry-run] [--batch] [N] [--chunk SIZE] [--submit]"
 ---
 
-# gmail-apply — Playwright-driven form fill
+# gmail-apply — single-URL & batch portal applies
 
-The work is done by `scripts/gmail-apply.mjs` (Node + Playwright). The skill's only job is invoke + relay JSON + verify.
+The work is done by Node scripts. Skill's job: pick the mode, drive the
+chunk loop in batch mode, validate Applieds, autofix yaml mid-batch, retry
+patched URLs.
 
-## Hard rules
+## Mode pick
 
-- **DO NOT** read `cv.md`, `config/profile.yml`, `modes/_profile.md`, or any `reports/*.md`.
-- **DO NOT** call `read_page`, `take_snapshot`, `take_screenshot`, `get_page_text`. They dump huge tokens + permission prompts.
-- `evaluate_script` is ALLOWED — but ONLY during the `--force` escalation ladder (see below). Never on the happy path.
-- **DO NOT** edit selectors or templates inline. Update `config/gmail-apply-portals.yml`.
+| User input | Mode | Driver |
+|---|---|---|
+| First positional arg starts with `http://` / `https://` | **single** | Direct script call |
+| No URL OR `--batch` flag | **batch** | Parent agent drives the chunk loop (see §Batch flow) |
 
-## Reading the script's JSON output — strict success rules
+## Flag matrix
 
-- `submitted: true` ALONE is NOT success. It only means click landed.
-- `submitted_unconfirmed: true` → **submit was NOT confirmed by portal** (success_selector never appeared within `success_timeout_ms`). Treat as FAILURE. Escalate per ladder. NEVER mark Applied based on `submitted: true` if `submitted_unconfirmed: true` is also present.
-- `submit_confirmation.kind === "success_selector_matched"` → real success. Mark Applied.
-- `submit_confirmation.kind === "success_selector_timeout"` → real failure. Escalate.
-- `submit_confirmation.kind === "no_success_selector_configured"` → portal yaml is incomplete. Escalate (probe DOM yourself) AND log `phase:"script_extension_needed"`.
+| Flag | Single | Batch | Behavior |
+|------|:---:|:---:|----------|
+| `<URL>` (positional) | required | n/a | Target URL (single). |
+| `[N]` (positional) | n/a | optional | Cap on URLs this batch run. |
+| `--chunk SIZE` |   | ✓ | URLs per worker spawn. Default 2 (safe baseline). Bump to 3 once a portal mix is proven (≥2 successful full runs at 2). Above 4 risks haiku context creep on multi-external chunks. Chunk = 1 only for single-URL debug — wastes spawn fixed cost. |
+| `--force` | ✓ | ✓ | Auto-submit + escalate failures. |
+| `--submit` | ✓ |   | Submit only if all steps OK (no escalation). |
+| `--experimental` | ✓ | ✓ | Per-step ndjson + DOM evidence to disk. Parent validates **failures** (autofix candidates). |
+| `--experimental-succ` | ✓ | ✓ | Implies `--experimental`. Parent ALSO validates every Applied via evidence — catches false positives (worker matched success_selector on wrong tab, ambiguous selector, external redirect mistaken for success). Invalid Applied → flipped to AutoApplyFailed + `phase:"applied_invalidated"`. |
+| `--autofix` | ✓ | ✓ | Patch yaml on yaml-fixable failures. Implies `--experimental`. Mid-batch in batch mode (see §Batch flow). |
+| `--verbose` |   | ✓ | Tail worker tool_use events to stderr (zero LLM cost). |
+| `--dry-run` |   | ✓ | --plan only, no work. |
+| `--batch` |   | ✓ | Force batch even with stray positional arg. |
 
-When in doubt → FAIL, not Applied. Better to flag a real success as failed than mark a fail as success.
+Prereq for both modes: Chrome on port 9222 via `launch-chrome.bat`.
 
-## Flow
+---
 
-1. Resolve URL — from arg or active tab.
-2. Run:
-   ```bash
-   node scripts/gmail-apply.mjs <URL>
-   ```
-   Prerequisite: Chrome must be running via `launch-chrome.bat` (port 9222 CDP).
+## Hard rules (both modes)
 
-   **If user passed `--force`** in their invocation → run instead:
-   ```bash
-   node scripts/gmail-apply.mjs <URL> --force
-   ```
-   This fills AND clicks Submit in one go. Skip the "say send it" handoff. Update `data/pipeline.md` status → `Applied` after the script returns `submitted:true`.
-3. Parse the single-line JSON output. Apply the strict success rules above:
-   - `{ok:true, submitted:false}` (no `--force` mode) → form filled, awaiting user. Show verification + submit selector. Say `say "send it" to submit`. Do NOT update pipeline.md.
-   - `{ok:true, submitted:true}` AND NOT `submitted_unconfirmed` AND `submit_confirmation.kind === "success_selector_matched"` → real success. Tell user the application was confirmed by the portal (cite the matched selector). Update pipeline.md → `Applied`.
-   - `{submitted:true, submitted_unconfirmed:true}` → SUBMIT WAS NOT CONFIRMED. Click landed but no success indicator appeared. Run the escalation ladder. Do NOT mark Applied yet. Do NOT update pipeline.md.
-   - `{ok:false, ...}` → run escalation ladder if `--force`, otherwise report which step failed. If `no portal matched` → fall back to `modes/apply.md`.
-4. **On user "send it"** (only if not already auto-submitted) → re-run with `--submit`:
-   ```bash
-   node scripts/gmail-apply.mjs <URL> --submit
-   ```
-   Then update `data/pipeline.md` row → status `Applied`.
+- **DO NOT** read `cv.md`, `config/profile.yml`, `modes/_profile.md`, or
+  `reports/*.md` from the parent agent. The orchestrator script reads
+  profile.yml once and writes a small subset to `data/batch-runs/<run_id>/profile.json`;
+  workers receive the same data inline in their task prompt.
+- **DO NOT** call `read_page`, `take_snapshot`, `take_screenshot`,
+  `get_page_text`. `evaluate_script` only.
+- **DO NOT** edit selectors / templates inline. Update
+  `config/gmail-apply-portals.yml` via the autofix flow.
+- **DO NOT** spawn an `Agent` subagent. Batch mode spawns its own
+  `claude -p` workers from inside the Node script.
+- **CV file** for external-ATS uploads: `assets/cv/CV_www.ArshiaHemati.com_EN.pdf`
+  (orchestrator computes absolute path; workers use
+  `mcp__chrome-devtools__upload_file`).
 
-## Flags
+---
 
-| Flag | Behavior |
-|------|----------|
-| (none) | Fill form, verify, stop before submit. User clicks. |
-| `--submit` | Fill form, then click Submit ONLY if every step succeeded. |
-| `--force` | **Contract: the application MUST be submitted.** Script keeps going on step failures, attempts submit anyway, logs all errors. Agent must escalate if script returns `submitted:false`. |
-| `--autofix` | After a SUCCESSFUL escalation, agent MUST update `config/gmail-apply-portals.yml` so the next run handles this case without escalation. Only applies to yaml-fixable causes (see below). Combine with `--force`. |
+## SINGLE-URL flow
 
-## `--autofix` contract
+### Run
 
-When user passes `--autofix` AND escalation produced a real Applied (success_selector matched on the right tab), agent MUST update the yaml so this issue never resurfaces.
-
-### Yaml-fixable causes (DO autofix)
-
-- **Missing required step** → add a new step (`fill`, `check`, `select_dropdown`, etc.) to the portal's `steps` array
-- **Wrong selector** that timed out but a different selector worked → replace selector value in the relevant step
-- **Missing `label_aliases`** for a localized label → append the encountered locale variant
-- **Wrong/missing `success_selector` candidate** → append the actually-observed selector to the array
-- **Wrong `submit_selector`** → replace with the working one
-- **Missing `data:` key** (e.g. portal asks for a field never seen before) → add a sensible default OR a `{{key}}` placeholder + add to `data` block
-
-### NOT yaml-fixable (DO NOT autofix, log only)
-
-- Redirect to a different domain (portal forwarded to greenhouse/lever/recruitify) — that's the portal's choice for THIS listing, not a recipe defect
-- Server-side validation specific to one job (e.g. cover letter required on this listing only) — fixing yaml would hurt other jobs on same portal
-- Login/auth issues, account-incomplete errors
-- Captcha / rate limiting
-- Network errors / timeouts (transient)
-- File upload requirement when no upload action exists yet — log `script_extension_needed` instead
-
-When unsure → DO NOT autofix. Log `phase:"autofix_skipped"` with reason. Better to under-fix than corrupt the recipe for other jobs.
-
-### Autofix workflow (post-successful-escalation)
-
-1. Identify the yaml-fixable root cause from your escalation steps. If none → skip autofix, log reason, done.
-2. Read `config/gmail-apply-portals.yml`.
-3. Compute the minimal diff. Show it to the user before writing.
-4. Validate the resulting yaml: `node -e "require('js-yaml').load(require('fs').readFileSync('config/gmail-apply-portals.yml','utf8'))"`. If parse fails → revert.
-5. Append a single line to `data/gmail-apply-errors.ndjson` with `phase:"yaml_autofix"`, fields: `url`, `portal`, `change_type` (`add_step`/`replace_selector`/`add_alias`/`add_success_candidate`/`add_data_key`), `before`, `after`, `reason`.
-6. Tell user: "yaml autofix applied: [one-line summary]. Test on a fresh URL to confirm."
-
-### Selector quality (autofix MUST pick the most durable selector available)
-
-When patching yaml, you MUST pick the most stable selector you can verify in the live DOM. Cheap text-based selectors break on locale changes, copy edits, or A/B variants. Walk this priority list and pick the highest tier that uniquely identifies the element on this portal:
-
-**Tier 1 — durable, prefer always:**
-- `[data-cy='value']`, `[data-test='value']`, `[data-testid='value']` (test IDs survive redesigns)
-- `[formcontrolname=fieldName]` (Angular reactive form binding — stable as long as form schema unchanged)
-- `[name=fieldName]` (HTML form field name)
-- `id` if the id is hand-authored (`#applyButton`, `#sendApplicationButton`) — NOT auto-generated like `#checkbox_84` / `#mat-input-3`
-
-**Tier 2 — acceptable when no Tier 1 exists:**
-- semantic + attribute (`button[type=submit]`, `input[type=tel]`, `aria-label='...'`)
-- custom-element tag (`nfj-apply-success`, `nfj-multiselect-dropdown`)
-- combination of Tier 1 ancestor + Tier 2 child (`#apply-modal nfj-apply-known-languages input[type=checkbox]`)
-
-**Tier 3 — last resort, always provide a fallback alongside:**
-- `:has-text("...")` — locale-fragile, MUST include localized aliases via `label_aliases`
-- generic class selectors that look stable (avoid Tailwind-generated, avoid `_ngcontent-*`)
-
-**Forbidden:**
-- Auto-generated Angular hashes (`_ngcontent-serverapp-c123`, `_nghost-...`)
-- `:nth-child(N)` / `:nth-of-type(N)` unless absolutely no alternative — and even then add a TODO comment for `/explore-sender` revisit
-- Selectors based on UI-displayed text in a single language (`button:has-text("Aplikuj")` alone). Either wrap with locale-agnostic anchor (`#applyButton, button:has-text("Aplikuj"), button:has-text("Apply")`) OR put text variants under `label_aliases`.
-- Visible-text class names from Tailwind (`tw-bg-teal-veryLight`) — they change with theme tokens.
-
-**Verify before committing:**
-Before writing the new selector to yaml, run one MCP `evaluate_script` on the locked tab to confirm the selector resolves to exactly the element you want — `document.querySelectorAll(SEL).length` should be 1, and the element's tag/role/text should match. If multiple elements match, refine the selector. If zero match, abort autofix + log `phase:"autofix_skipped"` (`reason: "selector verification failed"`).
-
-For success_selector in particular, prefer `[data-cy='post apply survey button']` over `aside:has-text('Aplikacja została wysłana')` — same DOM, but the data-cy survives translation.
-
-### Hard rules
-
-- DO NOT autofix when escalation FAILED (still AutoApplyFailed). Only on real success.
-- DO NOT autofix on cross-domain redirects.
-- **DO NOT create NEW portal entries via autofix.** Autofix only modifies the entry whose `match` triggered for the URL the user invoked. If the form lives on a different domain (recruitify.ai, greenhouse.io, lever.co, ATS partners), that's a separate portal — needs `/explore-sender` to map it deliberately, not silent autofix.
-- **DO NOT touch other portals' entries.** Only the originally-matched portal.
-- **DO NOT use the external domain's selectors to patch the original portal's recipe.** If success_selector was matched on `*.recruitify.ai` while the original URL was `nofluffjobs.com/...`, that selector belongs to recruitify (an external ATS), not to nofluffjobs. Logging the cross-domain success is fine; writing it into the nofluffjobs yaml entry is wrong — it would corrupt future nofluffjobs single-page submits.
-- DO NOT modify the recipe's `match` field via autofix.
-- DO NOT autofix the `submit_selector` based on a one-off observation if the existing selector worked on prior runs — only when prior runs also failed.
-- Always show diff first.
-
-## `--force` contract — agent obligation
-
-When the user invokes with `--force` (or says "force apply", "just submit it", "do it anyway"), the **task is not done until something was actually submitted**. The agent CANNOT stop after the script returns `ok:false` and leave the application unsent. Script failures are signals to escalate, not abort.
-
-Escalation ladder when `submitted:false` OR `submitted_unconfirmed:true` after `--force` run. **Steps 0, 1, 2, 3 in order. Skipping = contract violation.**
-
-### Step 0 — TAB SAFETY (do this FIRST every time)
-
-Chrome usually has multiple tabs. `chrome-devtools` MCP evaluates against the SELECTED page, which may be a stale `/thanks` from a previous URL. Evaluating success on the wrong tab = false positive = catastrophic.
-
-Before EVERY `evaluate_script` during escalation:
-
-1. `mcp__chrome-devtools__list_pages` — see all tabs.
-2. Find the page whose URL matches the URL you are processing (same job slug).
-3. `mcp__chrome-devtools__select_page` with its `pageId`.
-4. ONLY THEN run `evaluate_script`.
-
-Every JS function MUST return `location.href`. If it doesn't match the URL you are applying to → DISCARD the result, re-select correct page, retry. Do NOT interpret data from the wrong page as success on the right page.
-
-If no tab matches the target URL → log `phase:"escalation"` (`reason: target_tab_missing`) and stop. Don't pick another tab.
-
-### Step 1 — Probe + fix selectors via MCP
-
-Inspect the failed step's selector. Find the real one (`formcontrolname`, `name`, `id`, `aria-label`, `placeholder`, `type`, sibling structure). Re-fill via JS on the LOCKED tab. Have JS return both `location.href` AND any visible validation errors (`[...modal.querySelectorAll('.invalid-field, nfj-error, .ng-invalid')]`). If form has validation errors → log + AutoApplyFailed (don't claim success, don't click submit). Log `phase:"selector_fix"` with working selector.
-
-### Step 2 — Verify confirmation via MCP
-
-After any submit click (script's or yours), run JS that returns:
-```js
-{
-  href: location.href,
-  success: !!document.querySelector(SUCCESS_SEL),
-  modal_open: !!document.querySelector('#apply-modal'),
-  invalid_fields: [...document.querySelectorAll('#apply-modal .invalid-field')].map(e => e.querySelector('label')?.innerText)
-}
+```bash
+node scripts/gmail-apply.mjs <URL> [--force] [--autofix] [--experimental] [--experimental-succ]
 ```
 
-Decision:
-- `href` doesn't match target URL → wrong tab. Re-do step 0.
-- `invalid_fields` non-empty → submit failed validation. Log + AutoApplyFailed. NEVER mark Applied.
-- `success: true` AND `modal_open: false` AND `href` correct → real success. Mark Applied with `escalated: true`.
-- Anything else → continue to step 3.
+### Read the script's JSON
 
-### Step 3 — Direct submit via MCP
+| Script output | Action |
+|---|---|
+| `redirect.detected: true` | External ATS handover via `scripts/escalation-ladder.md` § "External ATS handover". Read the ladder doc, follow the steps. CV path is `assets/cv/CV_www.ArshiaHemati.com_EN.pdf` (absolute). |
+| `submitted_unconfirmed: true` OR `ok:false` (no redirect) | Run escalation ladder per `scripts/escalation-ladder.md`. |
+| `ok:true, submitted:false` (no `--force`) | Form filled, awaiting user. Show verification + submit selector. Say `say "send it" to submit`. Do NOT update `data/pipeline.md`. |
+| `ok:true, submitted:true` AND `success_selector_matched` | If `--experimental-succ` → read `evidence_path`, verify dom.href matches target + dom.success_match set + dom.modal_open false. Invalid → AutoApplyFailed. Valid → mark Applied; update `data/pipeline.md` row. |
 
-Only if validation passed (no `invalid_fields`) AND modal still open. Click `submit_selector` via JS on the LOCKED tab. Re-verify per step 2. Still no success → log `phase:"escalation"` with the full step-2 JSON, mark AutoApplyFailed.
+### Single-mode autofix
 
-### Last resort
+After a real Applied via escalation AND `--autofix` is set: probe
+alternative selectors via chrome-devtools MCP (Tier-1 per
+`scripts/selector-quality-rules.md`), patch
+`config/gmail-apply-portals.yml` minimally, validate parse, log
+`phase:"yaml_autofix"`. Show diff first. NEVER autofix on cross-domain
+redirects (worker handed over to external ATS — different portal).
 
-After steps 0-3 all failed: tell user "could not auto-submit. Last observed: [step-2 JSON]. Browser open at [target URL] — please complete manually." Counts as task-done. User unblocked.
-
-**Hard rule: when in doubt → AutoApplyFailed, never Applied.**
-
-At every escalation step, errors are appended to `data/gmail-apply-errors.ndjson` (script does this automatically; agent appends one entry per escalation it performed). NDJSON, one JSON object per line. Format:
-```json
-{"ts":"2026-04-28T...","phase":"escalation","url":"...","step":"manual_click","err":"..."}
-```
-
-### When the script itself needs to be extended
-
-If the escalation reveals that the script/yaml as-is **cannot** handle this portal even with a selector fix — e.g. the form needs a new action type (file upload, dropdown, iframe switch, captcha, multi-step wizard, dynamic field add/remove) — log it explicitly so future runs can be improved:
-
-```json
-{"ts":"...","phase":"script_extension_needed","url":"...","portal":"...","missing_capability":"file_upload","details":"resume upload field requires multipart/form-data, current script has no upload action","suggested_change":"add `upload {selector, path}` action in scripts/gmail-apply.mjs and yaml schema"}
-```
-
-Also log this when:
-- A selector fix worked but is fragile (e.g. relies on `:nth-child` or generated class names) — flag for yaml hardening
-- The portal's match string was too broad and matched the wrong recipe — flag for `match` refinement
-- A new portal was encountered with no entry — flag for adding to yaml
-
-This way `data/gmail-apply-errors.ndjson` doubles as a backlog for script/yaml improvements.
-
-## After a successful submit (any path)
-
-- Update `data/pipeline.md` row → status `Applied`.
-- Tell user: `submitted via [path: recipe/manual_click/modes-apply/user]. errors: N (see data/gmail-apply-errors.ndjson)`.
-
-## Error log
-
-Path: `data/gmail-apply-errors.ndjson` (NDJSON, append-only). One line per error. Phases: `step`, `verify`, `submit`, `escalation`. Use `data/gmail-apply-errors.ndjson` for later forensic review — no need to surface it during the run beyond a one-line count.
-
-## Output you give the user
-
-Two lines, like:
+### Output to user (single mode)
 
 ```
 nofluffjobs: phone=ok, English=ok. submit selector: #sendApplicationButton button.
 say "send it" to submit.
 ```
 
-If verification reports a mismatch, surface it: `phone=MISMATCH (expected +43..., got empty)`.
-
-## Adding a portal
-
-User says "add {portal} to apply recipes". Inspect the form in Chrome, capture stable selectors, append entry to `config/gmail-apply-portals.yml`. Skill + script unchanged.
-
-## Errors
-
-- `cdp connect failed` → tell user to run `launch-chrome.bat`.
-- `no portal matched` → load `modes/apply.md`.
-- `step failed` with selector → likely DOM changed. Tell user the step + selector, ask whether to update yaml.
+Mismatch → `phone=MISMATCH (expected +43..., got empty)`.
 
 ---
 
-## Batch mode (`/career-ops gmail-apply-batch [N] [--force]`)
+## BATCH flow — parent drives a per-chunk loop
 
-For applying to many URLs at once, use the batch orchestrator instead of single-URL flow:
+The parent agent (this skill) runs an explicit loop. Each iteration
+processes ONE chunk (default 2 URLs). Mid-batch autofix means later chunks
+benefit from yaml patches the parent applied during earlier chunks.
+
+### Step 1 — Plan
 
 ```bash
-node scripts/gmail-apply-batch.mjs [N] [--force] [--dry-run]
+node scripts/gmail-apply-batch.mjs --plan [N] [--chunk SIZE] [--force] \
+  [--experimental | --experimental-succ] [--autofix] [--verbose]
 ```
 
-What it does:
-- Reads `data/applications.md`, picks rows with status=`Evaluated` and a matching portal recipe in `config/gmail-apply-portals.yml`.
-- Skips URLs failed ≥3 times in last 7 days (per `data/gmail-apply-errors.ndjson`).
-- Slices to `N` (default: all).
-- Spawns Haiku workers via `claude -p --bare --model haiku` — one worker per 2 URLs, sequential (not parallel). Each worker uses the static system prompt at `scripts/gmail-apply-worker-prompt.md` (same prompt across spawns → 5-min prompt cache hits).
-- Workers run `scripts/gmail-apply.mjs <URL> --force` per URL, escalate failures via chrome-devtools MCP, return JSON.
-- Orchestrator aggregates, single-pass rewrites `applications.md` statuses (`Applied` or `AutoApplyFailed`).
-- Logs: `data/gmail-apply-batch-<date>.ndjson` (per-chunk results), `data/gmail-apply-errors.ndjson` (per-failure forensics).
+Reads `data/applications.md`, filters to status `Evaluated` ∨ `Auto-Match`
+with a matching portal, dedups URLs, slices to N, chunks by SIZE. Writes
+`data/batch-runs/<run_id>/{plan.json, profile.json}` and an `evidence/`
+dir. Stdout JSON:
 
-**Token budget**: ~3-5k Haiku tokens per chunk × ~25 chunks for 50 URLs = ~100k input cost (cached) + ~25k output. Orchestrator itself costs ~0 LLM tokens.
-
-**The agent's job in batch mode**: just run the bash command and relay the final JSON summary. Do NOT narrate per-URL details. Do NOT spawn an Agent — the script spawns workers itself.
-
-Final summary message format:
+```json
+{
+  "ok": true, "mode": "plan",
+  "run_id": "2026-05-04-...",
+  "run_dir": "data/batch-runs/...",
+  "total_urls": 50, "chunk_count": 25, "chunk_size": 2,
+  "chunks": [["url1","url2"], ["url3","url4"], ...],
+  "preview": [...],
+  "cv_path": "C:\\...\\assets\\cv\\CV_www.ArshiaHemati.com_EN.pdf",
+  "flags": { "force":true, "experimental":true, "experimental_succ":true, "autofix":true }
+}
 ```
-batch: 47/50 Applied, 3 AutoApplyFailed. log: data/gmail-apply-batch-2026-04-28.ndjson
+
+`--dry-run` returns the plan without creating run_dir. Stop here, surface
+the preview.
+
+### Step 2 — Loop chunks
+
+Hold a **retry queue** (initially empty). For each chunk in `chunks` (in
+order):
+
+1. Run (preferred — uses `plan.json` as source of truth, immune to URL
+   delimiter bugs):
+   ```bash
+   node scripts/gmail-apply-batch.mjs --run-chunk \
+     --chunk-index=<i> --run-id=<run_id> \
+     [--force] [--experimental | --experimental-succ] [--verbose]
+   ```
+
+   Fallback for retry-pass URLs not present in `plan.json` (e.g. URLs
+   pulled from `autofix_candidates`): use `--urls=<csv>`. **Critical:**
+   some portals (theprotocol.it, others) put commas inside their URL
+   path. Default CSV split breaks them — pass `--urls-sep='|'` (or any
+   other char that doesn't appear in your URLs) and join URLs with that
+   separator instead.
+
+   ```bash
+   node scripts/gmail-apply-batch.mjs --run-chunk \
+     --urls-sep='|' --urls='<u1>|<u2>' --run-id=<run_id> \
+     [flags]
+   ```
+2. Read the chunk's stdout JSON:
+   ```json
+   {
+     "ok": true, "mode": "run-chunk", "run_id": "...",
+     "chunk_urls": [...], "applied": N, "failed": M,
+     "results": [...],
+     "applied_candidates": [...],   // only when --experimental-succ
+     "autofix_candidates": [...],   // only when --autofix
+     "token_telemetry_summary": {
+       "turns": ..., "peak_input": ..., "peak_pct": ...,
+       "near_limit": false, "compactions_observed": 0, "total_output": ...,
+       "details_in_ledger": "data/batch-runs/<run_id>/ledger.ndjson (event:chunk_token_telemetry)"
+     }
+   }
+   ```
+   `data/applications.md` already updated for this chunk's URLs.
+
+   **Telemetry triage (do NOT read full ledger by default — context-saving rule):**
+   - `near_limit: false` AND `compactions_observed: 0` → ignore. No action.
+   - `near_limit: true` → tell user "chunk N peaked at <pct>% of haiku window — drop --chunk size next batch" + log to your reply. Do NOT auto-restart.
+   - `compactions_observed: > 0` → real warning. Read the ledger entry (`grep chunk_token_telemetry` line) to get per-URL spans. Likely the URL whose span ended at peak input is the one that pushed over the budget — flag it to user.
+   - Only when investigating, read `data/batch-runs/<run_id>/ledger.ndjson` (full per-URL spans + compaction details). Do NOT load it on every chunk.
+
+   **Per-chunk improvement suggestion (use the LLM — your reasoning):**
+   The stdout includes a `chunk_signals` block — small structured facts like
+   `failure_kinds_histogram`, `external_apply_count`, `escalated_applied_count`,
+   `chunk_ms`, `peak_pct_of_window`, `worker_output_tokens`. Use these (plus
+   any `applied_candidates` / `autofix_candidates` you already have) to write
+   ONE short suggestion line to the user, ONLY when something actionable shows
+   up. Skip silently if everything looks normal.
+
+   Trigger ideas (not exhaustive — use judgment):
+   - `external_apply_count` > 0 on a portal that should be native → "portal X recipe sent N URLs to external ATS; recipe's apply-button selector likely points to a redirect — review."
+   - `failure_kinds_histogram.success_selector_timeout` > 0 → "portal X's success_selector probably stale — autofix candidate present."
+   - `failure_kinds_histogram.selector_not_found` > 0 → "portal X's recipe selectors drifted — autofix candidate present."
+   - `escalated_applied_count` > 0 → "N URLs only succeeded after escalation; if `--autofix` is on, yaml will be patched."
+   - `chunk_ms` > 240000 (4 min) for chunk_size=2 → "slow chunk — likely lots of MCP probing on external ATS."
+   - `worker_output_tokens` > 15000 → "worker emitted unusually high output; check whether External ATS handover macros (Tier 2.6) are being honored."
+   - `near_limit` true → "raise concern about chunk size."
+
+   Format the per-chunk suggestion as ONE LINE: `→ suggestion: <text>`. Don't
+   over-explain. If multiple signals are noisy, pick the strongest one. The
+   user can always ask for more.
+
+3. **If `--experimental-succ`** → for each entry in `applied_candidates`:
+   - Read `evidence_path` (small JSON).
+   - Verify ALL: `dom.href` matches target URL (or same-origin same-job),
+     `dom.success_match` is non-null, `dom.modal_open === false`. For
+     `external_apply: true`, instead verify `dom.url_changed === true` OR
+     `dom.marker_match` non-null.
+   - **Invalid** → flip status: rewrite `data/applications.md` row to
+     `AutoApplyFailed`. Log
+     `{"phase":"applied_invalidated","run_id","url","portal","reason","evidence_path"}`.
+     If the failure is yaml-fixable (e.g. wrong success_selector),
+     synthesize an autofix candidate and push to step 4's queue.
+
+4. **If `--autofix`** → for each entry in `autofix_candidates`:
+   - Read `evidence_path`. Re-classify; trust evidence over worker's
+     `failure_kind`.
+   - Skip if cross-domain redirect / external_apply / login wall / captcha
+     / per-job validation / transient network. Log `phase:"autofix_skipped"`.
+   - Otherwise: tab safety + probe alternatives + patch yaml minimally per
+     `scripts/escalation-ladder.md` and `scripts/selector-quality-rules.md`.
+     Show diff to user, validate parse, log `phase:"yaml_autofix"`.
+   - **Push the candidate's URL to retry queue** if a yaml patch landed.
+
+5. Move to next chunk. Mid-batch yaml patches benefit all later chunks.
+
+### Step 3 — Retry pass
+
+If retry queue is non-empty AND `--autofix` was on:
+
+```bash
+node scripts/gmail-apply-batch.mjs --retry-chunk \
+  --urls=<csv-of-retry-urls> --run-id=<run_id> \
+  [--force] [--experimental | --experimental-succ]
 ```
+
+Same flow as Step 2 (parse JSON, validate Applieds under
+`--experimental-succ`, but **do NOT autofix again** — that would loop). If
+URLs still fail → surface to user as final failures.
+
+### Step 4 — Final summary + system-improvement suggestions
+
+```
+batch <run_id>: 47/50 Applied (3 escalated, 5 external_apply via MCP), 3 AutoApplyFailed.
+yaml autofixes: 2 (replace_selector, add_alias). retry pass: 5/5 Applied.
+log: data/batch-runs/<run_id>/ledger.ndjson
+
+Improvements (suggested):
+- theprotocol: 4 of 7 URLs went via external_apply — apply-button selector likely opens the wrong popup. Re-explore the recipe.
+- xing: 2 success_selector_timeout failures patched by autofix — confirm the new selector survives a retry next batch.
+- chunks 12 + 17 hit 72% peak input — drop --chunk to 1 for nofluffjobs URLs that need external handover.
+```
+
+After all chunks (and the retry pass, if any), aggregate the per-chunk
+`chunk_signals` you already saw across the whole run. Synthesize 2-5 short
+bullet points under "Improvements (suggested):". Each bullet = one concrete
+system change the user could make. No filler. Focus on:
+- portal recipe issues that recur across chunks (multiple URLs hitting same
+  failure_kind on same portal),
+- chunk-size signals from telemetry,
+- `script_extension_needed` patterns (file upload, dropdown, etc — visible
+  in the error log if you grep for the run_id),
+- worker output bloat trends (high `worker_output_tokens` consistently → the
+  External ATS macros aren't being followed, or the recipe's escalation
+  ladder is too long).
+
+Skip the "Improvements" section entirely if nothing actionable came up.
+
+`--verbose` adds live `[worker]` lines to stderr while each chunk runs.
+Costs no LLM tokens (Node tails stream-json events itself).
+
+---
+
+## Tab safety + escalation ladder
+
+Canonical rules at **`scripts/escalation-ladder.md`** — tab safety,
+4-step ladder, JS templates, success determination, generic external-ATS
+success markers. Read it once when escalation OR external handover OR
+applied-invalidation autofix is needed.
+
+In **single mode**, the parent agent runs the ladder.
+In **batch mode**, the worker runs the ladder; the parent runs the
+external-ATS handover and post-batch autofix loops.
+
+**Hard rule: when in doubt → AutoApplyFailed, never Applied.**
+
+---
+
+## Autofix rules (shared)
+
+### Yaml-fixable causes (DO autofix)
+
+- Missing required step → add a new step.
+- Wrong selector that timed out + a different selector worked → replace.
+- Missing `label_aliases` for a localized label → append.
+- Wrong/missing `success_selector` candidate → append.
+- Wrong `submit_selector` → replace (only when prior runs also failed —
+  check `data/gmail-apply-errors.ndjson` history).
+- Missing `data:` key → add sensible default OR `{{key}}` placeholder.
+
+### NOT yaml-fixable (skip + log `autofix_skipped`)
+
+- External_apply: true (worker handed over to external ATS — different portal).
+- Cross-domain redirect.
+- Per-job server-side validation.
+- Login / auth / captcha / rate-limit / transient network.
+- File-upload requirement when no upload action exists yet — log
+  `script_extension_needed` instead.
+
+### Selector quality
+
+`scripts/selector-quality-rules.md` is the single source of truth. Read
+once per session. Tier 1 preferred always.
+
+### Verify before yaml write
+
+```js
+function() { return { href: location.href, count: document.querySelectorAll("SEL").length }; }
+```
+
+Required: exactly 1 match AND `href` matches target URL. Multiple →
+refine. Zero → abort + log `autofix_skipped` (`reason: "selector verification failed"`).
+
+### Patch flow
+
+1. Read `config/gmail-apply-portals.yml`.
+2. Compute minimal diff (single field replace OR single step add).
+3. Show diff to user.
+4. Validate parse: `node -e "require('js-yaml').load(require('fs').readFileSync('config/gmail-apply-portals.yml','utf8'))"`. Parse fail → revert + log `phase:"autofix_failed"`.
+5. Append `phase:"yaml_autofix"` to `data/gmail-apply-errors.ndjson`:
+   `{url, portal, change_type, before, after, reason}`.
+6. Tell user: `yaml autofix applied: [one-line summary]. Test on a fresh URL to confirm.`
+
+### Hard rules for autofix
+
+- DO NOT autofix when escalation FAILED. Only on real Applied.
+- DO NOT autofix on cross-domain redirects or `external_apply: true`.
+- DO NOT create NEW portal entries via autofix. For first-party portals (the ones we apply to repeatedly), use `/explore-sender`. For EXTERNAL ATS reached via redirect, do NOT create a recipe at all — they are one-time applications, MCP fill is sufficient.
+- DO NOT touch other portals' entries. Only the originally-matched one.
+- DO NOT use external-domain selectors in the original portal's recipe.
+- DO NOT modify the recipe's `match` field.
+- Always show diff first.
+
+---
+
+## External ATS handover (single mode parity)
+
+In single mode, when the script returns `redirect.detected: true`:
+
+1. Read `scripts/escalation-ladder.md` § "External ATS handover".
+2. Tab-safety on `redirect.final_url`. Verify `location.href` matches.
+3. Probe generic form fields, fill from your in-context knowledge of the
+   user's profile (in single mode you can read `config/profile.yml` once
+   if needed — though prefer values the user already mentioned in chat).
+4. Upload CV via `mcp__chrome-devtools__upload_file` —
+   path: `assets/cv/CV_www.ArshiaHemati.com_EN.pdf` (absolute).
+5. Click submit, verify generic success markers, mark Applied with
+   `external_apply: true` if confirmed.
+
+**No autofix on external_apply** — and do NOT add a yaml recipe for
+external ATS either. External pages are one-time applications, DOM not
+stable across runs, MCP fill is the right tool every time.
+
+---
+
+## Logging & artifacts
+
+### Error log: `data/gmail-apply-errors.ndjson`
+
+NDJSON, append-only, one line per error. Phases:
+`step`, `verify`, `submit`, `submit_unconfirmed`, `escalation`,
+`selector_fix`, `script_extension_needed`, `worker_chunk_failure`,
+`yaml_autofix`, `autofix_skipped`, `autofix_failed`,
+`redirect_to_external`, `applied_invalidated`.
+
+### Per-run artifacts: `data/batch-runs/<run_id>/`
+
+- `plan.json` — what the run was meant to do.
+- `profile.json` — small subset of `config/profile.yml` for worker task prompts.
+- `ledger.ndjson` — orchestrator events (plan, chunk_done, chunk_fail).
+- `steps.ndjson` — per-step records from the Playwright script.
+- `evidence/<slug>-<ts>.json` — DOM signal at final state per URL.
+- `evidence/<slug>-redirect-<ts>.json` — DOM at redirect detection.
+- `evidence/<slug>-external-<ts>.json` — DOM after external-ATS submit.
+
+---
+
+## Errors
+
+| Situation | Action |
+|---|---|
+| `cdp connect failed` | Tell user to run `launch-chrome.bat`. |
+| `no portal matched` (single) | Fall back to `modes/apply.md`. |
+| `no eligible URLs` (batch --plan) | Confirm queue is empty, suggest user check status filter / portal coverage. |
+| Worker spawn failure (chunk) | Logged to ledger + error log. URLs marked `AutoApplyFailed`. Surface count. |
+| Worker output not JSON | Diagnostic in ledger; URLs treated as `AutoApplyFailed`. Re-run with `--verbose`. |
+| Redirect detected | External ATS handover (worker in batch / parent in single). |
+| Script `redirect.target_portal_match` set (matched a known different portal) | Likely the URL belongs to a different portal in our yaml. Re-invoke single-URL `gmail-apply.mjs` with the redirected URL, or surface to user to add a portal. |
+| `step failed` with selector | Likely DOM changed. Tell user step + selector, ask whether to update yaml. |
+
+---
+
+## Caveats
+
+- **Caveman SessionStart hook** prepends ~40 k tokens to every worker
+  spawn. Cache stays warm (byte-identical content). Workers see contradictory
+  voice instructions; "JSON only" rule wins for haiku in practice.
+- **No worker timeout / `--max-turns` cap**. Removed for now; reintroduce
+  once we observe real runs.
+- **MCP server warm-up**: first `mcp__chrome-devtools__list_pages` may take
+  ~2 s.
+- **Mid-flow redirects** (after the apply button click) are NOT detected —
+  only at startup. Most external-ATS redirects happen at page load
+  (theprotocol.it → greenhouse, xing → recruitify), so this covers the
+  common case. Mid-flow redirects after click would currently fail step
+  verification → escalation ladder kicks in.
+
+---
+
+## Cross-references
+
+- `scripts/gmail-apply.mjs` — Playwright applier. Detects redirect at
+  startup, exits early with `redirect` block when the URL leaves the
+  matched portal's domain. Accepts `--force --submit --autofix
+  --experimental --run-id=<id>`.
+- `scripts/gmail-apply-batch.mjs` — orchestrator script. Modes `--plan`,
+  `--run-chunk`, `--retry-chunk`. Loads profile.yml + CV path, injects
+  into worker task prompt.
+- `scripts/gmail-apply-worker-prompt.md` — static worker system prompt
+  (cached). Includes External ATS handover.
+- `scripts/escalation-ladder.md` — canonical tab safety + 4-step ladder +
+  generic external-ATS success markers.
+- `scripts/selector-quality-rules.md` — selector hygiene.
+- `gmail-apply-architecture.md` — high-level architecture map.

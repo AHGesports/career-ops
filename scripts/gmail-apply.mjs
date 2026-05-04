@@ -13,7 +13,7 @@
 
 import { chromium } from 'playwright';
 import yaml from 'js-yaml';
-import { readFileSync, appendFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, appendFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -23,11 +23,72 @@ const CONFIG_PATH = resolve(REPO_ROOT, 'config/gmail-apply-portals.yml');
 const ERROR_LOG = resolve(REPO_ROOT, 'data/gmail-apply-errors.ndjson');
 const CDP_ENDPOINT = process.env.CHROME_CDP || 'http://localhost:9222';
 
+// --run-id support: when supplied, all per-run artifacts live under
+// data/batch-runs/<run_id>/{steps.ndjson, evidence/}. Without it we only write
+// the legacy ERROR_LOG.
+function runDirFor(runId) {
+  return runId ? resolve(REPO_ROOT, 'data/batch-runs', runId) : null;
+}
+
 function logError(entry) {
   try {
     mkdirSync(dirname(ERROR_LOG), { recursive: true });
     appendFileSync(ERROR_LOG, JSON.stringify({ ts: new Date().toISOString(), ...entry }) + '\n');
   } catch { /* logging is best-effort */ }
+}
+
+function logStep(runDir, entry) {
+  if (!runDir) return;
+  try {
+    mkdirSync(runDir, { recursive: true });
+    appendFileSync(resolve(runDir, 'steps.ndjson'), JSON.stringify({ ts: new Date().toISOString(), ...entry }) + '\n');
+  } catch { /* best-effort */ }
+}
+
+function urlSlug(url) {
+  return url.replace(/^https?:\/\//, '').replace(/[^a-zA-Z0-9]+/g, '-').slice(0, 80).replace(/-+$/, '');
+}
+
+// Compact DOM evidence — small enough that an orchestrator can read many
+// without context bloat (~1.5 KB target). Captures href + title + invalid
+// fields + visible buttons + truncated body text + modal state.
+async function captureEvidence(page, portal) {
+  return page.evaluate(({ successCandidates, modalSel }) => {
+    const visibleButtons = [...document.querySelectorAll('button:not([disabled])')]
+      .slice(0, 30)
+      .map(b => (b.innerText || '').trim().slice(0, 80))
+      .filter(Boolean);
+    const invalidFields = [...document.querySelectorAll('.invalid-field, .ng-invalid, [aria-invalid="true"]')]
+      .slice(0, 20)
+      .map(e => {
+        const label = e.querySelector('label')?.innerText
+          || e.getAttribute('aria-label')
+          || e.getAttribute('placeholder')
+          || e.getAttribute('formcontrolname')
+          || e.getAttribute('name')
+          || '';
+        return (e.tagName + ':' + label).slice(0, 100);
+      });
+    let success_match = null;
+    for (const sel of (successCandidates || [])) {
+      if (document.querySelector(sel)) { success_match = sel; break; }
+    }
+    return {
+      href: location.href,
+      pathname: location.pathname,
+      title: document.title.slice(0, 120),
+      success_match,
+      modal_open: modalSel ? !!document.querySelector(modalSel) : null,
+      invalid_fields: invalidFields,
+      visible_buttons: visibleButtons,
+      body_text_head: (document.body?.innerText || '').replace(/\s+/g, ' ').slice(0, 1500),
+    };
+  }, {
+    successCandidates: Array.isArray(portal.success_selector)
+      ? portal.success_selector
+      : (portal.success_selector ? [portal.success_selector] : []),
+    modalSel: portal.modal_selector || '#apply-modal, [role="dialog"]',
+  }).catch(e => ({ capture_error: e.message }));
 }
 
 function out(obj) {
@@ -247,11 +308,16 @@ async function main() {
   const args = process.argv.slice(2);
   const url = args.find(a => a.startsWith('http'));
   const force = args.includes('--force');
-  // --autofix is consumed by the AGENT (post-success yaml patching), not the
-  // script. Script just accepts the flag so callers can pass it uniformly.
+  // --autofix is consumed by the orchestrator (parent agent of the batch
+  // skill), not the script. Script just accepts the flag so callers can pass
+  // it uniformly.
   const autofix = args.includes('--autofix');
+  const experimental = args.includes('--experimental');
+  const runIdArg = args.find(a => a.startsWith('--run-id='));
+  const runId = runIdArg ? runIdArg.slice('--run-id='.length) : null;
   const autoSubmit = args.includes('--submit') || force;
-  if (!url) fail('usage: gmail-apply.mjs <URL> [--submit|--force] [--autofix]');
+  if (!url) fail('usage: gmail-apply.mjs <URL> [--submit|--force] [--autofix] [--experimental] [--run-id=ID]');
+  const runDir = runDirFor(runId);
 
   let config;
   try {
@@ -277,10 +343,73 @@ async function main() {
   // from the prior URL) so the apply button is click-ready. No-op if clean.
   await settlePage(page);
 
+  // Redirect detection: portals like theprotocol.it / xing sometimes redirect
+  // to an external ATS (greenhouse, lever, recruitify, ...) where our recipe's
+  // selectors don't apply. Emit a `redirect` block + bail BEFORE running the
+  // recipe so the caller (worker / single-mode parent) can take over via the
+  // chrome-devtools MCP handover (selectors differ per run on those ATS).
+  const currentUrl = page.url();
+  const stillMatches = (portal.match || []).some(m => currentUrl.includes(m));
+  if (!stillMatches) {
+    const redirectedPortal = matchPortal(currentUrl, config);
+    const redirectInfo = {
+      detected: true,
+      original_url: url,
+      final_url: currentUrl,
+      target_portal_match: redirectedPortal ? redirectedPortal.name : null,
+    };
+    logError({
+      phase: 'redirect_to_external',
+      url,
+      portal: portal.name,
+      run_id: runId,
+      original_url: url,
+      final_url: currentUrl,
+      target_portal_match: redirectInfo.target_portal_match,
+    });
+
+    let evidencePath = null;
+    if (experimental && runDir) {
+      try {
+        const ev = await captureEvidence(page, portal);
+        const slug = urlSlug(url);
+        const ts = new Date().toISOString().replace(/[:.]/g, '-');
+        const evDir = resolve(runDir, 'evidence');
+        mkdirSync(evDir, { recursive: true });
+        evidencePath = resolve(evDir, `${slug}-redirect-${ts}.json`);
+        writeFileSync(evidencePath, JSON.stringify({
+          ts: new Date().toISOString(),
+          run_id: runId,
+          url,
+          portal: portal.name,
+          redirect: redirectInfo,
+          dom: ev,
+        }, null, 2));
+      } catch { /* best-effort */ }
+    }
+
+    out({
+      ok: false,
+      portal: portal.name,
+      url,
+      run_id: runId,
+      experimental,
+      redirect: redirectInfo,
+      submitted: false,
+      force,
+      autofix,
+      evidence_path: evidencePath,
+      error_log: ERROR_LOG,
+    });
+    await browser.close().catch(() => {});
+    process.exit(2);
+  }
+
   // In --force mode: keep going on step failures (log + try next).
   // In normal mode: stop at first failure (caller can fix and retry).
   const stepResults = [];
   let firstFailure = null;
+  let midFlowRedirect = null;
   for (let i = 0; i < portal.steps.length; i++) {
     const step = portal.steps[i];
     let res;
@@ -290,11 +419,92 @@ async function main() {
       res = { ok: false, err: e.message };
     }
     stepResults.push({ i, action: step.action, ...res });
+    logStep(runDir, {
+      run_id: runId,
+      url,
+      portal: portal.name,
+      step_idx: i,
+      action: step.action,
+      selector: step.selector || step.container || null,
+      ok: res.ok === true,
+      skipped: res.skipped === true,
+      err: res.err || null,
+    });
     if (!res.ok) {
       if (firstFailure === null) firstFailure = i;
-      logError({ phase: 'step', url, portal: portal.name, force, step_index: i, action: step.action, err: res.err });
+      logError({ phase: 'step', url, portal: portal.name, force, step_index: i, action: step.action, err: res.err, run_id: runId });
       if (!force) break;
     }
+
+    // Mid-flow redirect detection: a step (typically a click) may have
+    // navigated us to an external ATS (theprotocol → traffit, etc).
+    // If page.url() no longer matches any of the original portal's
+    // `match` strings, bail out the same way startup-redirect detection
+    // does — caller's External ATS handover takes over. Skip the rest of
+    // the recipe; selectors won't apply on the new domain.
+    let postUrl;
+    try { postUrl = page.url(); } catch { postUrl = null; }
+    if (postUrl && !(portal.match || []).some(m => postUrl.includes(m))) {
+      const redirectedPortal = matchPortal(postUrl, config);
+      midFlowRedirect = {
+        detected: true,
+        mid_flow: true,
+        last_step_index: i,
+        original_url: url,
+        final_url: postUrl,
+        target_portal_match: redirectedPortal ? redirectedPortal.name : null,
+      };
+      logError({
+        phase: 'redirect_to_external',
+        url, portal: portal.name, run_id: runId,
+        mid_flow: true, last_step_index: i,
+        original_url: url, final_url: postUrl,
+        target_portal_match: midFlowRedirect.target_portal_match,
+      });
+      break;
+    }
+  }
+
+  // Mid-flow redirect: emit the redirect block and exit BEFORE verify/submit
+  // (those would chase selectors on the wrong domain). Same JSON shape as
+  // startup-redirect — caller already handles it.
+  if (midFlowRedirect) {
+    let evidencePath = null;
+    if (experimental && runDir) {
+      try {
+        const ev = await captureEvidence(page, portal);
+        const slug = urlSlug(url);
+        const ts = new Date().toISOString().replace(/[:.]/g, '-');
+        const evDir = resolve(runDir, 'evidence');
+        mkdirSync(evDir, { recursive: true });
+        evidencePath = resolve(evDir, `${slug}-redirect-midflow-${ts}.json`);
+        writeFileSync(evidencePath, JSON.stringify({
+          ts: new Date().toISOString(),
+          run_id: runId,
+          url,
+          portal: portal.name,
+          redirect: midFlowRedirect,
+          steps_attempted: stepResults,
+          dom: ev,
+        }, null, 2));
+      } catch { /* best-effort */ }
+    }
+    out({
+      ok: false,
+      portal: portal.name,
+      url,
+      run_id: runId,
+      experimental,
+      redirect: midFlowRedirect,
+      steps: stepResults,
+      submitted: false,
+      force,
+      autofix,
+      evidence_path: evidencePath,
+      error_log: ERROR_LOG,
+    });
+    await browser.close().catch(() => {});
+    process.exit(2);
   }
 
   const verification = await verify(page, portal).catch(e => ({ verify_error: e.message }));
@@ -311,6 +521,8 @@ async function main() {
     ok: allStepsOk,
     portal: portal.name,
     url,
+    run_id: runId,
+    experimental,
     submit_selector: portal.submit_selector,
     steps: stepResults,
     verification,
@@ -394,6 +606,35 @@ async function main() {
   // Caveat: if submit was unconfirmed (no confirmation indicator), keep ok=false
   // so the caller can choose to escalate via MCP or treat as AutoApplyFailed.
   if (force && result.submitted && !result.submitted_unconfirmed) result.ok = true;
+
+  // --experimental: capture compact DOM evidence at the FINAL state (post-submit
+  // or post-failure). Saved to disk; only the path is in the JSON output to
+  // keep orchestrator context lean. Orchestrator reads the file ONLY when
+  // adjudicating ambiguous results or running --autofix.
+  if (experimental && runDir) {
+    try {
+      const ev = await captureEvidence(page, portal);
+      const slug = urlSlug(url);
+      const ts = new Date().toISOString().replace(/[:.]/g, '-');
+      const evDir = resolve(runDir, 'evidence');
+      mkdirSync(evDir, { recursive: true });
+      const evPath = resolve(evDir, `${slug}-${ts}.json`);
+      writeFileSync(evPath, JSON.stringify({
+        ts: new Date().toISOString(),
+        run_id: runId,
+        url,
+        portal: portal.name,
+        submitted: result.submitted,
+        submitted_unconfirmed: result.submitted_unconfirmed === true,
+        submit_confirmation: result.submit_confirmation || null,
+        first_failure_step: firstFailure,
+        dom: ev,
+      }, null, 2));
+      result.evidence_path = evPath;
+    } catch (e) {
+      result.evidence_capture_error = e.message;
+    }
+  }
 
   out(result);
   // Do NOT call browser.close() — that kills the user's Chrome. Just disconnect.

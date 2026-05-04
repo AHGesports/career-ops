@@ -1,0 +1,34 @@
+{
+  "ts": "2026-05-04T10:35:31.491Z",
+  "run_id": "2026-05-04-10-32-12-3896b810",
+  "url": "https://theprotocol.it/szczegoly/praca/senior-fullstack-net-developer-warszawa,oferta,cb780000-1098-7a89-ca95-08dea5eac822",
+  "portal": "theprotocol",
+  "submitted": true,
+  "submitted_unconfirmed": false,
+  "submit_confirmation": {
+    "kind": "success_selector_matched",
+    "selector": "[data-test='thankYouView']"
+  },
+  "first_failure_step": null,
+  "dom": {
+    "href": "https://theprotocol.it/szczegoly/praca/senior-fullstack-net-developer-warszawa,oferta,cb780000-1098-7a89-ca95-08dea5eac822?view=thankyou-apply",
+    "pathname": "/szczegoly/praca/senior-fullstack-net-developer-warszawa,oferta,cb780000-1098-7a89-ca95-08dea5eac822",
+    "title": "Praca Senior Fullstack .NET Developer, GOLDENORE ITC sp. z o.o., Warszawa - theprotocol.it",
+    "success_match": "[data-test='thankYouView']",
+    "modal_open": false,
+    "invalid_fields": [],
+    "visible_buttons": [
+      "Dla kandydatów",
+      "Dla pracodawców",
+      "A",
+      "Pokaż więcej",
+      "lista ofert IT",
+      "powrót do ofert",
+      "więcej ofert",
+      "kopiuj link",
+      "daj feedback",
+      "Ustawienia plików cookies"
+    ],
+    "body_text_head": "Dodaj ogłoszenie 5 A Praca IT Oferty pracy Senior Fullstack .NET Developer Praca w miastach:Praca IT Warszawa•Praca IT Kraków•Praca IT Wrocław•Praca IT Szczecin•Praca IT Poznań•Praca IT Lublin•Praca IT Katowice•Praca IT Bydgoszcz•Praca IT Łódź•Praca IT Białystok•Praca IT Toruń•Praca IT Gdańsk Stanowiska:Grafik komputerowy praca•Tester gier praca•Programista praca•Tester oprogramowania praca•Frontend Developer praca•Data scientist praca•Tester manualny praca•Tester praca•Analytics praca•Tester aplikacji praca•Programista java praca•Web developer praca Technologie i narzędzia:Python praca•Cyberbezpieczeństwo praca•Java praca•Bazy danych praca•Cisco praca•C++ praca•Javascript praca•SQL praca•Business Intelligence praca•Delphi praca•Wordpress praca•Testowanie aplikacji praca•C# praca•PHP praca Specjalizacje:Backend praca•Devops praca•Frontend praca•Full-stack praca•GameDev praca•Mobile praca•Embedded praca•Architecture praca•QA/Testing praca•Security praca•AI/ML praca•Big data science praca•Helpdesk praca•IT admin praca•Agile praca•Product Management praca•Project Management praca•UX/UI praca•Business analytics praca•SAP & ERP praca•System analytics praca•PO/PM praca•Scrum master praca•Analityka praca•Data analytics & BI praca Pokaż więcej lista ofert IT Udało się! Pracodawca otrzymał Twoje zgłoszenie. Wysłaliśmy Ci e‑mail z potwierdzeniem i dodaliśmy tę ofertę do Twojej historii aplikacji. Trzymamy kciuki za Twoją rekrutację. powrót do ofert Podsumowanie Aplikuj na podobne ofert"
+  }
+}
