@@ -98,3 +98,38 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://nofluffjobs.com/pl/job/fullstack-developer-java-angular-devire-remote-3 | Your application for Fullstack Developer (Angular + .NET) @ Stackmine | nofluffjobs.com | 2026-04-30
 - [ ] https://nofluffjobs.com/pl/job/fullstack-java-angular-link-group-remote | Your application for Fullstack Developer (Angular + .NET) @ Stackmine | nofluffjobs.com | 2026-04-30
 - [ ] https://talentportal.germantechjobs.de/api/job-redirect?jobId=KLA-Local-IT-Site-Lead-mwd | 1 New Job Matching Your Alert - Software Engineering | germantechjobs.de | 2026-04-30
+- [ ] https://de.indeed.com/viewjob?jk=c13fe3774678a36f | 1 Softwareentwickler Job in Remote | jobalert.indeed.com | 2026-05-04
+- [ ] https://linkedin.com/jobs/view/4329202328 | Senior Frontend Lead Vue.js​ (m/w/d) at SPAR ICS - Information & Communication Services | linkedin.com | 2026-05-04
+- [ ] https://linkedin.com/jobs/view/4409869310 | Senior Frontend Lead Vue.js​ (m/w/d) at SPAR ICS - Information & Communication Services | linkedin.com | 2026-05-04
+- [ ] https://linkedin.com/jobs/view/4409883143 | Senior Frontend Lead Vue.js​ (m/w/d) at SPAR ICS - Information & Communication Services | linkedin.com | 2026-05-04
+- [ ] https://nofluffjobs.com/pl/job/programista-programistka-fullstack-java-react-angular-dcg-remote |  Nowy tydzień, nowa praca – sprawdź oferty spełniające Twoje kryteria: remote, Angular,  | nofluffjobs.com | 2026-05-04
+- [ ] https://www.xing.com/jobs/berlin-senior-full-stack-entwickler-mw-java-spring-boot-react-remote-153942516 | 5 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-04
+- [ ] https://www.xing.com/jobs/dortmund-senior-technical-cloud-customer-success-engineer-all-genders-100-remote-de-153953114 | 5 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-04
+- [ ] https://nofluffjobs.com/pl/job/senior-fullstack-developer-java-typescript-m-f-stackmine-remote |  Najlepsze oferty pracy z ostatniego tygodnia spełniające Twoje kryteria: remote, Angular,  | nofluffjobs.com | 2026-05-04
+- [ ] https://nofluffjobs.com/pl/job/fullstack-java-developer-with-german-experis-polska-remote |  Najlepsze oferty pracy z ostatniego tygodnia spełniające Twoje kryteria: remote, Angular,  | nofluffjobs.com | 2026-05-04
+- [ ] https://linkedin.com/jobs/view/4407264775 | “software developer”: Haystack - Software Developer posted on 5/2/26 | linkedin.com | 2026-05-04
+- [ ] https://linkedin.com/jobs/view/4407243151 | “software developer”: Haystack - Software Developer posted on 5/2/26 | linkedin.com | 2026-05-04
+- [ ] https://linkedin.com/jobs/view/4409596485 | “software developer”: Haystack - Software Developer posted on 5/2/26 | linkedin.com | 2026-05-04
+- [ ] https://linkedin.com/jobs/view/4409590634 | “software developer”: Haystack - Software Developer posted on 5/2/26 | linkedin.com | 2026-05-04
+- [ ] https://linkedin.com/jobs/view/4409589017 | “software developer”: Haystack - Software Developer posted on 5/2/26 | linkedin.com | 2026-05-04
+- [ ] https://linkedin.com/jobs/view/4407273891 | “software developer”: Haystack - Software Developer posted on 5/2/26 | linkedin.com | 2026-05-04
+- [ ] https://at.indeed.com/viewjob?jk=a1f24d4605707c74 | 1 Developer Job in Home Office | jobalert.indeed.com | 2026-05-04
+- [ ] https://linkedin.com/jobs/view/4362477693 | Specialist, IT DevOps at BMW Group | linkedin.com | 2026-05-04
+- [ ] https://theprotocol.it/szczegoly/praca/staz-fullstack-developer-java-angular-m-f-poznan-krysiewicza-9,oferta,88e60000-2ca1-929b-0824-08dea896538d | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-05-04
+- [ ] https://theprotocol.it/szczegoly/praca/sap-btp-cpi-consultant---integration-architect-warszawa,oferta,4d2d0000-7494-aeb0-d858-08dea896538b | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-05-04
+- [ ] https://theprotocol.it/szczegoly/praca/senior-business---system-analyst-warszawa-nowowiejska-15-19,oferta,cb780000-1098-7a89-ae60-08dea6b0b158 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-05-04
+- [ ] https://theprotocol.it/szczegoly/praca/frontend-software-developer-react-branza-e-commerce-warszawa,oferta,88e60000-2ca1-929b-2ae2-08dea6bc1a8b | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-05-04
+- [ ] https://theprotocol.it/szczegoly/praca/program-stazy-letnich-katowice-mikolowska-100,oferta,4d2d0000-7494-aeb0-decd-08dea69cc89e | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-05-04
+- [ ] https://linkedin.com/jobs/view/4402357703 | SPS Programmierer m/w/d at MECHATRONIK AUSTRIA: up to €4.6K/month | linkedin.com | 2026-05-04
+- [ ] https://www.xing.com/jobs/muenchen-senior-python-java-softwareentwickler-projekte-devops-big-data-flutter-100-ho-mwd-153911767 | 3 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-04
+- [ ] https://www.xing.com/jobs/stuttgart-senior-python-java-softwareentwickler-projekte-devops-big-data-flutter-100-ho-mwd-153911760 | 3 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-04
+- [ ] https://www.xing.com/jobs/wien-sales-manager-recruiting-hr-background-ats-saas-152182526 | 8 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-04
+- [ ] https://www.xing.com/jobs/hamburg-software-engineer-data-analytics-administration-instellix-nitrobox-gmbh-153880402 | 8 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-04
+- [ ] https://www.xing.com/jobs/wien-sap-fiori-ui5-entwickler-sap-developer-fiori-ui5-153861870 | 8 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-04
+- [ ] https://www.xing.com/jobs/fully-devops-engineer-ai-100-ho-153886865 | 8 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-04
+- [ ] https://www.xing.com/jobs/muenchen-teamleitung-mobile-entwicklung-android-flutter-security-fokus-152177561 | 9 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-05-04
+- [ ] https://www.xing.com/jobs/deggendorf-finance-manager-controlling-saas-reporting-153362756 | 9 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-05-04
+- [ ] https://www.xing.com/jobs/zuerich-sap-mobile-developer-153886528 | 9 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-05-04
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-java-angular-scalo-remote-9 |  Nowe oferty pracy, 5 dopasowane do Twoich kryteriów: remote, Angular,  | nofluffjobs.com | 2026-05-04
+- [ ] https://talentportal.germantechjobs.de/api/job-redirect?jobId=Plansee-Group-Functions-Austria-GmbH-Senior-Developer-Microsoft-Dynamics-MFX | 1 New Job Matching Your Alert - Software Engineering | germantechjobs.de | 2026-05-04
+- [ ] https://de.indeed.com/viewjob?jk=16cc4d1108c3f438 | Sensory-Minds sucht QA Engineer + 4 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-05-04

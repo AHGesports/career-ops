@@ -148,7 +148,7 @@ const lossWarnings = [];
 for (const r of runData.results) {
   const ec = r.metadata?.subject_expected_count;
   if (!ec) continue;
-  const captured = (r.urls?.length || 0) + (r.metadata.pipeline_dup || 0) + (r.metadata.noise_filtered || 0);
+  const captured = (r.urls?.length || 0) + (r.metadata.pipeline_dup || 0) + (r.metadata.noise_filtered || 0) + (r.metadata.sponsored_count || 0);
   const loss = ec - captured;
   if (loss > 0) {
     lossWarnings.push({ thread: r.thread_id.slice(0, 8), sender: r.sender.split('@')[1], expected: ec, captured, loss });

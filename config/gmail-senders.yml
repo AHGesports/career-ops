@@ -107,13 +107,19 @@ senders:
     pattern: '(?:de|at|nl|ie)\.indeed\.com/rc/clk(?:/dl)?\?[^"]*jk=([a-f0-9]+)'
     final_shape: '{country}.indeed.com/viewjob?jk={jk}'
     subject_count_pattern: '^(\d+)\s+(?:nieuwe\s+)?[A-Za-z0-9.+#-]+\s+(?:[Jj]obs?|[Vv]acatures?)\b'
-    sponsored_pattern: '(?:de|at|nl|ie)\.indeed\.com/pagead/clk'
+    sponsored_pattern: '(?:(?:de|at|nl|ie)\.)?indeed\.com/(?:pagead/clk|jobs\?)'
     notes: |
       Use the HTML body, NOT plaintext. Plaintext suffers from quoted-printable corruption
       where `=14`, `=20`, `=03` etc become control characters/spaces, mangling the jk hex.
       HTML body preserves jk values intact.
       Per-URL parse: keep every `/rc/clk?jk=X`. Skip individual `/pagead/clk` URLs (sponsored).
       Thread = 0 URLs only when every URL is sponsored.
+      FORMAT CHANGE (confirmed 2026-05-04): Indeed no longer includes rc/clk direct job links
+      in alert emails. Emails now contain only pagead/clk sponsored links and jobs?q= SERP
+      search pages. The sponsored_pattern now covers both so subject_count_warning is suppressed
+      correctly (both pagead and SERP links are "accounted for" even though neither is a direct
+      job URL). Until Indeed restores rc/clk links, zero organic jobs will be captured from
+      Indeed emails.
       Country subdomain (de/at/nl/ie) preserved in final URL.
 
   # ============== Untested senders — WARN USER, do not auto-process ==============
@@ -178,7 +184,7 @@ senders:
 
   - email: jobs@mail.xing.com
     extraction: tracker
-    pattern: 'xing\.com/m/[A-Za-z0-9_-]+'
+    pattern: "(?<=href=[\"'])https?://(?:www\\.)?xing\\.com/m/[A-Za-z0-9_-]+"
     final_shape: 'xing.com/jobs/{loc-slug}-{title-slug}-{id}'
     subject_count_pattern: '^(\d+)\s+new\s+job\s+ads?\b'
     decoded_must_match: 'xing\.com/jobs/[^/]+-\d+'
@@ -187,6 +193,8 @@ senders:
       Subject: `N new job ads for your search alert: ...`.
       Chrome navigate → final URL appears immediately (no extra interstitial).
       Reuse one page across many redirects; restart browser on ERR_INSUFFICIENT_RESOURCES.
+      Pattern requires href= context (lookbehind) to exclude img src tracking pixels that
+      also match xing.com/m/<id> — those caused 2 phantom failures per thread.
 
   - email: info@email.stepstone.at
     extraction: tracker
