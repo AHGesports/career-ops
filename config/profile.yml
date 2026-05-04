@@ -65,6 +65,41 @@ compensation:
   minimum: "EUR 55K"
   location_flexibility: "On-site in Salzburg area, hybrid, or remote within Austria/EU or remote with occasional travel or remote from USA with timezone workable from my location"
 
+# Used by gmail-apply workers when external ATS forms ask follow-up fields
+# beyond the basic identity block (phone/email/CV). Worker should pick the
+# variant matching the form's currency / unit. PLN values from
+# modes/_profile.md (NBP rate 4.25, validated April 2026).
+availability:
+  notice_period: "6 weeks"
+  earliest_start_text: "6 weeks notice from offer"
+  short: "6 weeks"
+
+salary_expectations:
+  default_text: "EUR 55,000-80,000 / year gross (target range)"
+  eur:
+    annual_gross_min: 55000
+    annual_gross_target: 70000
+    annual_gross_max: 80000
+    monthly_gross_12pay: 4583
+    monthly_gross_14pay: 3929
+    hourly_gross: 32
+  pln:
+    # Permanent / UoP — write the 12-pay number when Polish recruiter asks
+    monthly_gross_uop_12pay: 19479
+    monthly_gross_uop_14pay: 16696
+    annual_gross: 233750
+    # B2B Einzelunternehmer — total-value parity floor
+    b2b_monthly_revenue: 19125
+    b2b_hourly_rate: 135
+  usd:
+    annual_gross_target: 75000
+  notes: |
+    - For PL job forms asking PLN/month gross (UoP): 19,479 PLN.
+    - For PL B2B rate fields (PLN/hour): 135-191 PLN/hour.
+    - For EUR gross/year fields: 55,000 minimum, 70,000 target.
+    - When form forces single number, use the target (mid-range).
+    - When form forces a range, write min-max from this block.
+
 location:
   country: "Austria"
   city: "Salzburg"

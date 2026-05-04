@@ -49,46 +49,118 @@ function urlSlug(url) {
   return url.replace(/^https?:\/\//, '').replace(/[^a-zA-Z0-9]+/g, '-').slice(0, 80).replace(/-+$/, '');
 }
 
+// Known framework-protected ATS hosts. When the script detects a redirect
+// to one of these, it tags the redirect block with framework_hint so the
+// worker can skip its own framework-detection probe and go straight to MCP
+// fill (the only strategy that works on these). DO NOT auto-create a yaml
+// recipe for these hosts — they remain one-time MCP applications per
+// design (DOM not stable across runs).
+const KNOWN_ATS_HINTS = [
+  { match: 'myworkdayjobs.com',         framework: { workday: true,  any: true } },
+  { match: 'boards.greenhouse.io',      framework: { react: true,    any: true } },
+  { match: 'jobs.lever.co',             framework: { react: true,    any: true } },
+  { match: 'recruitify.ai',             framework: { angular: true,  any: true } },
+  { match: 'recruitify.pl',             framework: { angular: true,  any: true } },
+  { match: 'traffit.com',               framework: { angular: true,  any: true } },
+  { match: 'smartrecruiters.com',       framework: { react: true,    any: true } },
+  { match: 'workable.com',              framework: { react: true,    any: true } },
+  { match: 'jobvite.com',               framework: { angular: true,  any: true } },
+  { match: 'icims.com',                 framework: { angular: true,  any: true } },
+  { match: 'taleo.net',                 framework: { angular: true,  any: true } },
+  { match: 'successfactors.com',        framework: { angular: true,  any: true } },
+];
+
+function frameworkHintFor(url) {
+  if (!url) return null;
+  for (const h of KNOWN_ATS_HINTS) {
+    if (url.includes(h.match)) {
+      return {
+        host_pattern: h.match,
+        framework_detected: { angular: false, react: false, vue: false, workday: false, ...h.framework },
+        source: 'known_ats_registry',
+      };
+    }
+  }
+  return null;
+}
+
 // Compact DOM evidence — small enough that an orchestrator can read many
 // without context bloat (~1.5 KB target). Captures href + title + invalid
 // fields + visible buttons + truncated body text + modal state.
+//
+// Two-phase capture so portal yaml's Playwright-pseudo selectors (e.g.
+// `aside:has-text('Aplikacja została wysłana')`) can't kill the entire
+// evidence file:
+//
+//   Phase A — probe portal-supplied selectors (success_selector candidates,
+//   modal_selector) via page.locator().count() which is Playwright-native
+//   and handles :has-text(...) etc.
+//
+//   Phase B — collect static DOM signals (href, title, body, buttons,
+//   invalid_fields) via a single page.evaluate that does NOT touch any
+//   user-supplied selector. So a bad yaml selector can never throw inside
+//   the evaluate.
+//
+// Each per-selector probe is independently try/catch'd. capture_error is
+// reserved for catastrophic CDP failures (page closed, etc).
 async function captureEvidence(page, portal) {
-  return page.evaluate(({ successCandidates, modalSel }) => {
-    const visibleButtons = [...document.querySelectorAll('button:not([disabled])')]
-      .slice(0, 30)
-      .map(b => (b.innerText || '').trim().slice(0, 80))
-      .filter(Boolean);
-    const invalidFields = [...document.querySelectorAll('.invalid-field, .ng-invalid, [aria-invalid="true"]')]
-      .slice(0, 20)
-      .map(e => {
-        const label = e.querySelector('label')?.innerText
-          || e.getAttribute('aria-label')
-          || e.getAttribute('placeholder')
-          || e.getAttribute('formcontrolname')
-          || e.getAttribute('name')
-          || '';
-        return (e.tagName + ':' + label).slice(0, 100);
-      });
-    let success_match = null;
-    for (const sel of (successCandidates || [])) {
-      if (document.querySelector(sel)) { success_match = sel; break; }
-    }
-    return {
-      href: location.href,
-      pathname: location.pathname,
-      title: document.title.slice(0, 120),
-      success_match,
-      modal_open: modalSel ? !!document.querySelector(modalSel) : null,
-      invalid_fields: invalidFields,
-      visible_buttons: visibleButtons,
-      body_text_head: (document.body?.innerText || '').replace(/\s+/g, ' ').slice(0, 1500),
-    };
-  }, {
-    successCandidates: Array.isArray(portal.success_selector)
-      ? portal.success_selector
-      : (portal.success_selector ? [portal.success_selector] : []),
-    modalSel: portal.modal_selector || '#apply-modal, [role="dialog"]',
-  }).catch(e => ({ capture_error: e.message }));
+  const successCandidates = Array.isArray(portal.success_selector)
+    ? portal.success_selector
+    : (portal.success_selector ? [portal.success_selector] : []);
+  const modalSel = portal.modal_selector || '#apply-modal, [role="dialog"]';
+
+  // Phase A — Playwright-locator probes (handles pseudo selectors).
+  let success_match = null;
+  const success_probes = [];
+  for (const sel of successCandidates) {
+    let n = -1, err = null;
+    try { n = await page.locator(sel).count(); }
+    catch (e) { err = e.message?.slice(0, 120) || 'unknown'; }
+    success_probes.push({ sel, count: n, err });
+    if (n > 0 && success_match === null) success_match = sel;
+  }
+  let modal_open = null;
+  try { modal_open = (await page.locator(modalSel).count()) > 0; }
+  catch { modal_open = null; }
+
+  // Phase B — static DOM signals via plain page.evaluate (no user selectors).
+  let domSignals;
+  try {
+    domSignals = await page.evaluate(() => {
+      const visibleButtons = [...document.querySelectorAll('button:not([disabled])')]
+        .slice(0, 30)
+        .map(b => (b.innerText || '').trim().slice(0, 80))
+        .filter(Boolean);
+      const invalidFields = [...document.querySelectorAll('.invalid-field, .ng-invalid, [aria-invalid="true"]')]
+        .slice(0, 20)
+        .map(e => {
+          const label = e.querySelector('label')?.innerText
+            || e.getAttribute('aria-label')
+            || e.getAttribute('placeholder')
+            || e.getAttribute('formcontrolname')
+            || e.getAttribute('name')
+            || '';
+          return (e.tagName + ':' + label).slice(0, 100);
+        });
+      return {
+        href: location.href,
+        pathname: location.pathname,
+        title: (document.title || '').slice(0, 120),
+        invalid_fields: invalidFields,
+        visible_buttons: visibleButtons,
+        body_text_head: (document.body?.innerText || '').replace(/\s+/g, ' ').slice(0, 1500),
+      };
+    });
+  } catch (e) {
+    return { capture_error: e.message, success_match, success_probes, modal_open };
+  }
+
+  return {
+    ...domSignals,
+    success_match,
+    modal_open,
+    success_probes,
+  };
 }
 
 function out(obj) {
@@ -352,11 +424,13 @@ async function main() {
   const stillMatches = (portal.match || []).some(m => currentUrl.includes(m));
   if (!stillMatches) {
     const redirectedPortal = matchPortal(currentUrl, config);
+    const hint = frameworkHintFor(currentUrl);
     const redirectInfo = {
       detected: true,
       original_url: url,
       final_url: currentUrl,
       target_portal_match: redirectedPortal ? redirectedPortal.name : null,
+      framework_hint: hint, // null OR { host_pattern, framework_detected, source }
     };
     logError({
       phase: 'redirect_to_external',
@@ -410,6 +484,33 @@ async function main() {
   const stepResults = [];
   let firstFailure = null;
   let midFlowRedirect = null;
+
+  // New-tab redirect detection. Some portals (Experis on nofluffjobs, etc.)
+  // open the apply form in a NEW TAB rather than navigating in place.
+  // page.url() on the original tab won't change → our post-step URL check
+  // would never see the redirect. Hook every context's page-creation event
+  // and remember the most recent off-portal new tab so we can bail with the
+  // same redirect block as the in-place case.
+  let newTabRedirect = null;
+  const handleNewPage = (newPage) => {
+    // Wait for the new page to settle so URL is meaningful, then test.
+    Promise.resolve()
+      .then(() => newPage.waitForLoadState('domcontentloaded', { timeout: 10000 }).catch(() => {}))
+      .then(() => {
+        try {
+          const u = newPage.url();
+          if (!u || u === 'about:blank') return;
+          const matchesOrig = (portal.match || []).some(m => u.includes(m));
+          if (!matchesOrig && !newTabRedirect) {
+            newTabRedirect = { final_url: u, page: newPage };
+          }
+        } catch { /* best-effort */ }
+      });
+  };
+  for (const ctx of browser.contexts()) {
+    ctx.on('page', handleNewPage);
+  }
+
   for (let i = 0; i < portal.steps.length; i++) {
     const step = portal.steps[i];
     let res;
@@ -442,23 +543,40 @@ async function main() {
     // `match` strings, bail out the same way startup-redirect detection
     // does — caller's External ATS handover takes over. Skip the rest of
     // the recipe; selectors won't apply on the new domain.
+    // (a) Same-tab navigation away from portal domain.
     let postUrl;
     try { postUrl = page.url(); } catch { postUrl = null; }
+    let detectedFinalUrl = null;
+    let detectedKind = null; // 'same_tab' | 'new_tab'
     if (postUrl && !(portal.match || []).some(m => postUrl.includes(m))) {
-      const redirectedPortal = matchPortal(postUrl, config);
+      detectedFinalUrl = postUrl;
+      detectedKind = 'same_tab';
+    }
+    // (b) New-tab navigation — captured by the context page-listener above.
+    //     Wins over same_tab detection when both are present (newTab is the
+    //     more-actionable target for the worker's MCP handover).
+    if (newTabRedirect && newTabRedirect.final_url) {
+      detectedFinalUrl = newTabRedirect.final_url;
+      detectedKind = 'new_tab';
+    }
+    if (detectedFinalUrl) {
+      const redirectedPortal = matchPortal(detectedFinalUrl, config);
+      const hint = frameworkHintFor(detectedFinalUrl);
       midFlowRedirect = {
         detected: true,
         mid_flow: true,
+        new_tab: detectedKind === 'new_tab',
         last_step_index: i,
         original_url: url,
-        final_url: postUrl,
+        final_url: detectedFinalUrl,
         target_portal_match: redirectedPortal ? redirectedPortal.name : null,
+        framework_hint: hint,
       };
       logError({
         phase: 'redirect_to_external',
         url, portal: portal.name, run_id: runId,
-        mid_flow: true, last_step_index: i,
-        original_url: url, final_url: postUrl,
+        mid_flow: true, new_tab: midFlowRedirect.new_tab, last_step_index: i,
+        original_url: url, final_url: detectedFinalUrl,
         target_portal_match: midFlowRedirect.target_portal_match,
       });
       break;

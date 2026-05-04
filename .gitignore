@@ -44,3 +44,4 @@ bun.lock
 .claude/memory/
 career-dashboard
 package-lock.json
+data/batch-runs/

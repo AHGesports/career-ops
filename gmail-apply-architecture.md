@@ -487,11 +487,49 @@ No screenshots — text DOM signals only.
 - **No worker turn/timeout cap**. Parent process waits indefinitely if a
   worker hangs. Acceptable for first iteration; reintroduce caps once
   observed.
-- **Mid-flow redirects** are now detected: after every step
-  `gmail-apply.mjs` checks `page.url()` against the portal's `match`
-  strings and bails with `redirect.detected:true, mid_flow:true` when
-  the page leaves the portal's domain. theprotocol.it → traffit.com
-  click-time redirect is the canonical case this catches.
+- **Redirects detected in 3 places** (v2 hardening):
+  - **Startup** — page URL after navigation no longer matches portal `match`.
+  - **Mid-flow same-tab** — after any step, `page.url()` left the portal.
+  - **Mid-flow new-tab** — `context.on('page')` listener catches a popup
+    opened by a recipe step (e.g. nofluffjobs Experis apply button →
+    Pretius traffit popup). Tagged with `redirect.new_tab:true`.
+
+  All three emit the same `redirect` JSON shape; worker handover is
+  identical. The script's `browser.close()` only DISCONNECTS Playwright
+  from CDP — Chrome and the redirected tab stay open, ready for the
+  worker's MCP handover.
+
+- **Known-ATS framework hints.** When the redirect's `final_url` matches
+  a known framework-protected ATS host (Workday, Greenhouse, Lever,
+  Recruitify, Traffit, SmartRecruiters, Workable, Jobvite, iCIMS, Taleo,
+  SuccessFactors), the script populates `redirect.framework_hint` with
+  `{ host_pattern, framework_detected, source: 'known_ats_registry' }`.
+  Worker uses this verbatim, skipping its own framework probe. No yaml
+  recipe is ever auto-created for these hosts — they remain one-time MCP
+  applications.
+
+- **External-ATS write rule (v2).** WRITES on external ATS forms MUST
+  use chrome-devtools MCP write tools (`fill`, `fill_form`, `type_text`,
+  `click`, `upload_file`). `evaluate_script` for writes is FORBIDDEN —
+  framework-bound inputs (Angular `FormControl`, React controlled inputs,
+  Vue `v-model`) silently reject DOM `.value=` + synthetic events because
+  Zone.js and React's synthetic event chain only respond to real CDP
+  keystrokes. `evaluate_script` is correct for READS only. Canonical
+  rule lives in `scripts/escalation-ladder.md`; worker prompt enforces.
+
+- **3-strike per field.** External-ATS fills cap at 3 strategies per
+  field, 12 MCP write attempts per URL total. Prevents the 60+ turn
+  loops we saw before this rule (Experis Angular form, batch
+  `2026-05-04-11-44-53-795743c8`). Failures are structured:
+  `failed_field_name`, `framework_detected`, `last_mcp_tool_used`,
+  `validator_error_text_observed`, `external_ats_host`.
+
+- **Evidence capture is now portal-yaml-safe.** `captureEvidence` no
+  longer pipes `success_selector` candidates through native
+  `document.querySelector` — they probe via Playwright's
+  `page.locator(sel).count()` (handles `:has-text(...)` etc). Each probe
+  is independently try/catch'd. A single bad pseudo-selector can no
+  longer kill the entire evidence file.
 
 - **Chunk-size rule of thumb.** Default 2 is the safe baseline. After
   2-3 successful full runs, you can bump to `--chunk 3` for ~30% fewer

@@ -107,7 +107,12 @@ node scripts/gmail-apply-batch.mjs --plan [N] [--chunk SIZE] [--force] \
 ```
 
 Reads `data/applications.md`, filters to status `Evaluated` ∨ `Auto-Match`
-with a matching portal, dedups URLs, slices to N, chunks by SIZE. Writes
+with a matching portal, **sorts by row `#` descending so newest-added URLs
+apply first** (the `#` column is a monotonically-increasing add counter
+maintained by merge-tracker, so desc == reverse-chronological insertion
+order — newest entries from `/scan-gmail` are processed before older
+backlog), dedups URLs (keeps the newer occurrence), slices to N, chunks
+by SIZE. Writes
 `data/batch-runs/<run_id>/{plan.json, profile.json}` and an `evidence/`
 dir. Stdout JSON:
 
@@ -343,15 +348,33 @@ refine. Zero → abort + log `autofix_skipped` (`reason: "selector verification 
 
 In single mode, when the script returns `redirect.detected: true`:
 
-1. Read `scripts/escalation-ladder.md` § "External ATS handover".
+1. Read `scripts/escalation-ladder.md` § "External ATS handover" — it has
+   the canonical hard rules including the **MCP-for-writes /
+   evaluate_script-for-reads** rule. Do NOT use `evaluate_script` to set
+   `.value` or dispatch synthetic events on external ATS forms — they
+   silently fail on framework-bound inputs (Angular/React/Vue).
 2. Tab-safety on `redirect.final_url`. Verify `location.href` matches.
-3. Probe generic form fields, fill from your in-context knowledge of the
-   user's profile (in single mode you can read `config/profile.yml` once
-   if needed — though prefer values the user already mentioned in chat).
-4. Upload CV via `mcp__chrome-devtools__upload_file` —
-   path: `assets/cv/CV_www.ArshiaHemati.com_EN.pdf` (absolute).
-5. Click submit, verify generic success markers, mark Applied with
-   `external_apply: true` if confirmed.
+   The redirected tab survives Playwright disconnect — it stays open in
+   Chrome with the form already loaded.
+3. **If `redirect.framework_hint` is non-null** → use its
+   `framework_detected` directly; skip your own framework probe.
+4. Probe selectors via ONE `evaluate_script`. Then fill via
+   `mcp__chrome-devtools__fill` / `fill_form` / `type_text` / `click`.
+   Single mode parent reads `config/profile.yml` once for values.
+5. Upload CV via `mcp__chrome-devtools__upload_file` —
+   path: `assets/cv/CV_www.ArshiaHemati.com_EN.pdf` (absolute). Requires
+   one `take_snapshot` first (the only legal use of take_snapshot).
+6. Click submit via `mcp__chrome-devtools__click`. Verify success markers
+   via `evaluate_script`. Mark Applied with `external_apply: true` if
+   confirmed.
+
+**Mid-flow + new-tab redirects.** The script now detects redirects in
+THREE places: at startup (URL changed during navigation), mid-flow (any
+step that navigated the same tab off-portal), AND new-tab (any step that
+opened a NEW tab whose URL doesn't match portal — common pattern on
+Experis/Pretius via nofluffjobs). All three emit the same `redirect`
+JSON shape with `mid_flow:true` / `new_tab:true` flags. Worker handover
+is identical in all three cases.
 
 **No autofix on external_apply** — and do NOT add a yaml recipe for
 external ATS either. External pages are one-time applications, DOM not

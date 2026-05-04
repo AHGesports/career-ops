@@ -51,21 +51,51 @@ you do NOT need to read either file — the happy path doesn't touch them.
 
 The Playwright recipe cannot apply the original portal's selectors to the
 redirected URL. Switch to chrome-devtools MCP and complete the application
-manually using the `EXTERNAL_PROFILE` block from the task message.
+using the `EXTERNAL_PROFILE` block from the task message.
+
+### CRITICAL — read this rule before doing ANY external fill
+
+**WRITES on external ATS forms MUST use chrome-devtools MCP write tools:
+`fill`, `fill_form`, `type_text`, `click`, `upload_file`. NEVER use
+`evaluate_script` to set `.value`, `.checked`, dispatch synthetic
+`input/change` events, or otherwise mutate the DOM directly to fill
+fields.**
+
+Why: most external ATS forms (Workday, Greenhouse, Lever, Recruitify,
+Traffit, Pretius/Experis Angular, SmartRecruiters, etc.) bind inputs to
+JS-framework state (Angular `FormControl`, React controlled inputs, Vue
+`v-model`). Setting `.value` via `evaluate_script` updates the DOM but
+does NOT fire the framework's change-detection chain — Zone.js / React
+synthetic event system / Vue reactivity require keyboard-level events
+that come from CDP `Input.dispatchKeyEvent`. The MCP `fill` / `type_text`
+tools simulate real keystrokes; `evaluate_script` cannot. Last batch run
+spent 68 turns on an Experis Angular form with `evaluate_script` fills
+that the validator silently rejected — never again.
+
+`evaluate_script` is fine for **READS** (probing selectors, verifying
+success markers, inspecting validator errors). Just not for writes.
 
 ### Steps
 
 1. **Tab safety** — `list_pages` → find the tab whose URL matches
    `redirect.final_url` (not `redirect.original_url`!) → `select_page`.
-   Verify `evaluate_script(() => location.href)` matches `final_url`.
+   Verify with `evaluate_script(() => location.href)`.
 
 2. **Wait for form to render**. External ATS pages are SPA-heavy. Run an
-   async wait for `input, textarea, button[type=submit]` to appear.
+   async `evaluate_script` wait for `input, textarea, button[type=submit]`
+   to appear (~5s max).
 
-3. **Probe + fill in TWO macros** (token-efficient — one tool call each).
+**Shortcut — `redirect.framework_hint` set?** The script may have
+recognized the redirect target as a known framework-protected ATS
+(Workday, Greenhouse, Lever, Recruitify, Traffit, SmartRecruiters, etc).
+If `redirect.framework_hint` is non-null, use its `framework_detected`
+verbatim and SKIP the framework-detection portion of the probe in step 3.
+Save 1 turn. (You still need to probe SELECTORS — only the framework
+question is pre-answered.)
 
-   **Macro A — single-pass probe.** Returns one map of `{field_kind →
-   selector}` for everything we know how to fill. Don't probe per-field:
+3. **PROBE — single `evaluate_script` (READ).** Return a map of
+   `{field_kind → selector + meta}` plus framework detection. This is the
+   only big `evaluate_script` call you make:
 
    ```js
    function() {
@@ -99,68 +129,84 @@ manually using the `EXTERNAL_PROFILE` block from the task message.
        const btn = $a('button, input[type=button]').find(b => re.test((b.innerText || b.value || '').trim()));
        if (btn) found.submit = { selector: btn.tagName + (btn.id ? '#' + btn.id : ''), tag: btn.tagName, id: btn.id || null, name: btn.getAttribute('name') || null, label: (btn.innerText || btn.value || '').slice(0, 60) };
      }
-     return { href: location.href, found, all_required: $a('[required]').length };
-   }
-   ```
-
-   **Macro B — single-pass fill.** Pass the probe result + your
-   EXTERNAL_PROFILE values to one `evaluate_script`. Fills everything
-   that has a known mapping in one shot. Skip unknown fields, don't
-   invent values:
-
-   ```js
-   function({ map, p }) {
-     const setVal = (sel, v) => {
-       const el = document.querySelector(sel);
-       if (!el || v == null || v === '') return false;
-       el.focus();
-       const tag = el.tagName.toLowerCase();
-       if (tag === 'select') { el.value = v; }
-       else if (el.type === 'checkbox') { el.checked = !!v; }
-       else { el.value = v; }
-       el.dispatchEvent(new Event('input',  { bubbles: true }));
-       el.dispatchEvent(new Event('change', { bubbles: true }));
-       el.blur();
-       return true;
+     // Framework detection — pick the right write strategy.
+     const fw = {
+       angular:  !!document.querySelector('[ng-version], [_nghost-], [_ngcontent-]'),
+       react:    !!document.querySelector('[data-reactroot], #__next, #root[data-reactroot]') || !!window.React,
+       vue:      !!document.querySelector('[data-v-app], [data-v-]') || !!window.Vue,
+       workday:  location.hostname.endsWith('myworkdayjobs.com'),
+       any:      false,
      };
-     const filled = [], skipped = [], errors = [];
-     const plan = [
-       ['email',        p.email],
-       ['phone',        p.phone],
-       ['first_name',   p.first_name],
-       ['last_name',    p.last_name],
-       ['full_name',    p.full_name],
-       ['linkedin',     p.linkedin],
-       ['portfolio',    p.portfolio_url],
-       ['location',     p.location],
-       ['gdpr',         true],
-     ];
-     for (const [kind, val] of plan) {
-       const m = map[kind];
-       if (!m) { skipped.push(kind); continue; }
-       try { setVal(m.selector, val) ? filled.push(kind) : skipped.push(kind); }
-       catch (e) { errors.push({ kind, err: e.message }); }
-     }
-     return { href: location.href, filled, skipped, errors };
+     fw.any = fw.angular || fw.react || fw.vue || fw.workday;
+     return { href: location.href, found, all_required: $a('[required]').length, framework_detected: fw };
    }
    ```
 
-   Pass payload as `{ map: <found-from-Macro-A>, p: <EXTERNAL_PROFILE> }`.
+   Capture the result; you'll reuse `found` and `framework_detected`
+   below.
 
-   Per-field fallback (only if Macro B reports a field as `skipped` and
-   the form lists it as required): a single follow-up `evaluate_script`
-   per missing required field. Don't go field-by-field on the happy path.
+4. **FILL — chrome-devtools MCP write tools, NOT `evaluate_script`.**
+   Strategy depends on `framework_detected.any`:
 
-5. **Upload CV** (if a `input[type=file]` field exists) via
-   `mcp__chrome-devtools__upload_file` with the `cv_path_absolute` from the
-   EXTERNAL_PROFILE block. If upload tool unavailable or fails →
-   log `phase:"script_extension_needed"` (`missing_capability:"file_upload"`)
-   and AutoApplyFailed for this URL.
+   - **`framework_detected.any === true`** (Angular/React/Vue/Workday):
+     MANDATORY use of `mcp__chrome-devtools__fill` (per field) or
+     `mcp__chrome-devtools__fill_form` (bulk if your MCP version
+     supports it). These dispatch real CDP key events that the framework
+     hooks into. `evaluate_script`-based fills are FORBIDDEN here — they
+     will silently fail validation and waste turns.
 
-6. **Submit**. Click the submit button via `evaluate_script`. Wait briefly
-   (1–2 s).
+   - **`framework_detected.any === false`** (rare static HTML form):
+     MCP `fill` is still preferred; an `evaluate_script` fallback that
+     sets `.value` + dispatches `input/change` is acceptable IF MCP fill
+     fails AND the form is confirmed non-framework.
 
-7. **Verify success via generic markers**. Run `evaluate_script` returning:
+   Tool usage notes (consult each tool's runtime schema for exact arg
+   shape):
+   - `mcp__chrome-devtools__fill` — pass the CSS selector from the probe
+     result. If your version requires a UID, call
+     `mcp__chrome-devtools__take_snapshot` once first (the take_snapshot
+     exception in Hard Rules), then use the matching uid.
+   - For checkboxes (`gdpr`): use `mcp__chrome-devtools__click` on the
+     input, not `fill`. Read state back with a tiny `evaluate_script`.
+   - For native `<select>`: `mcp__chrome-devtools__fill` with the option
+     value. For custom dropdowns rendered as `<div role="listbox">`:
+     `click` the trigger, then `click` the matching option.
+   - For `input[type=file]`: `mcp__chrome-devtools__upload_file` with
+     `cv_path_absolute` from EXTERNAL_PROFILE. Snapshot first if
+     required.
+   - As a last resort when `fill` rejects a field (rare):
+     `mcp__chrome-devtools__type_text` to type characters one-by-one.
+
+   Fill plan (in order — skip kinds the probe didn't find):
+
+   | kind | value source | tool |
+   |---|---|---|
+   | `first_name` | `EXTERNAL_PROFILE.first_name` | `fill` |
+   | `last_name`  | `EXTERNAL_PROFILE.last_name`  | `fill` |
+   | `full_name`  | `EXTERNAL_PROFILE.full_name`  | `fill` (only if no first+last) |
+   | `email`      | `EXTERNAL_PROFILE.email`      | `fill` |
+   | `phone`      | `EXTERNAL_PROFILE.phone`      | `fill` |
+   | `linkedin`   | `EXTERNAL_PROFILE.linkedin`   | `fill` |
+   | `portfolio`  | `EXTERNAL_PROFILE.portfolio_url` | `fill` |
+   | `location`   | `EXTERNAL_PROFILE.location`   | `fill` |
+   | `file_cv`    | `EXTERNAL_PROFILE.cv_path_absolute` | `take_snapshot` then `upload_file` |
+   | `gdpr`       | (true)                        | `click` |
+   | `cover_letter` | (skip unless explicitly required) | `fill` |
+
+5. **3-strike per-field cap.** If a single field still verifies as empty
+   after **3 distinct strategies tried** (e.g. fill → type_text → click+fill),
+   STOP retrying that field. Record it in
+   `failed_field_name` + `last_mcp_tool_used` + `validator_error_text_observed`
+   and proceed to AutoApplyFailed for this URL with
+   `failure_kind: "external_unconfirmed_field"`. Total per-URL budget for
+   this strategy loop: 12 MCP write attempts max across all fields. This
+   exists so framework-rejection cases don't burn 60+ worker turns.
+
+6. **SUBMIT via `mcp__chrome-devtools__click`** on the submit selector
+   (not `evaluate_script`). Wait briefly (1–2 s) via `evaluate_script`
+   async wait.
+
+7. **VERIFY (`evaluate_script` — READ).** Generic success markers:
    ```js
    function() {
      const t = (document.body?.innerText || '').toLowerCase();
@@ -172,10 +218,7 @@ manually using the `EXTERNAL_PROFILE` block from the task message.
      ];
      return {
        href: location.href,
-       url_changed: location.href.indexOf('thanks') >= 0
-         || location.href.indexOf('success') >= 0
-         || location.href.indexOf('submitted') >= 0
-         || location.href.indexOf('confirmation') >= 0,
+       url_changed: /thanks|success|submitted|confirmation/i.test(location.href),
        marker_match: markers.find(m => t.includes(m)) || null,
        form_still_present: !!document.querySelector('button[type=submit], input[type=submit]'),
        errors_visible: [...document.querySelectorAll('[role=alert], .error, .invalid-field, .ng-invalid, [aria-invalid=true]')]
@@ -186,30 +229,60 @@ manually using the `EXTERNAL_PROFILE` block from the task message.
 
    Decision:
    - `errors_visible` non-empty AND `form_still_present` → submit failed
-     validation. AutoApplyFailed (`failure_kind: "validation_failed"`).
+     validation. AutoApplyFailed (`failure_kind: "validation_failed"`,
+     populate `validator_error_text_observed` with the visible errors).
    - `marker_match` set OR `url_changed` true → real success.
      `{status: "Applied", external_apply: true, evidence_path: "..."}`.
-   - Otherwise → ambiguous. AutoApplyFailed (`failure_kind: "external_unconfirmed"`,
-     `autofix_eligible: false`).
+   - Otherwise ambiguous → AutoApplyFailed (`failure_kind:
+     "external_unconfirmed"`).
 
-8. **Save evidence** (when `--experimental` was on) — write the verify-step
-   JSON to `data/batch-runs/<run_id>/evidence/<slug>-external-<ts>.json`.
-   Reference the path in your result's `evidence_path`.
+8. **Save evidence** (when `--experimental`) — write the verify-step JSON
+   PLUS the framework_detected, fields filled, and any failed_field
+   to `data/batch-runs/<run_id>/evidence/<slug>-external-<ts>.json`.
+   Reference path in your result's `evidence_path`.
 
 ### Hard rules for external handover
 
+- **WRITES via MCP, READS via evaluate_script.** Repeating because it's
+  the most-violated rule: `evaluate_script` for `.value=` / `dispatchEvent`
+  is FORBIDDEN on external ATS. MCP `fill` / `fill_form` / `type_text` /
+  `click` / `upload_file` ARE the write surface.
 - DO NOT autofix `config/gmail-apply-portals.yml` and DO NOT create a new
-  yaml entry for the external ATS. External ATS pages are one-time
-  applications — their DOM is not stable across runs and not worth a
-  recipe. Just complete this application via chrome-devtools MCP and move
-  on.
-- DO NOT call `take_screenshot`, `take_snapshot`, `read_page`,
-  `get_page_text`. Use `evaluate_script` only. Token bloat otherwise.
-- DO check `location.href` matches `redirect.final_url` before every fill /
-  click / verify. Tab drift on multi-tab Chrome remains catastrophic here.
-- DO NOT invent values for fields you don't recognize. Skip them. Required
-  unknown fields → AutoApplyFailed (`failure_kind: "external_unknown_required_field"`,
-  `autofix_eligible: false`).
+  yaml entry for the external ATS. External ATS pages are one-time —
+  DOM not stable across runs, not worth a recipe.
+- DO check `location.href` matches `redirect.final_url` before every
+  write / verify. Tab drift remains catastrophic.
+- For fields covered by the EXTERNAL_PROFILE block (identity, CV,
+  AVAILABILITY, SALARY_EXPECTATIONS) → answer directly using those values.
+  Do NOT bail on availability or salary fields — they ARE mapped.
+- For fields NOT covered (e.g. "Why do you want this role?", references,
+  drug-test consent, security clearance, very specific custom questions):
+  - If the field is OPTIONAL → leave blank.
+  - If the field is REQUIRED and a conservative, generic, human-sounding
+    answer fits without making bold claims → answer briefly. Examples:
+    "Why us?" → 1-2 plain sentences referencing the role title and stack
+    fit. "Years of experience with X" → use only what the CV/profile
+    supports; never inflate. "Notice period in days" → derive from
+    AVAILABILITY (6 weeks ≈ 42 days). Tone: plain, lower-case-ish, short
+    sentences, no marketing language, no superlatives. Never invent
+    certifications, clearances, citizenships, or numeric metrics.
+  - If the field is REQUIRED and CANNOT be answered safely from profile →
+    AutoApplyFailed with `failure_kind: "external_unknown_required_field"`,
+    set `failed_field_name` to the visible label.
+- **Field-answer logging — MANDATORY.** Every time you fill a field that
+  is NOT a basic identity field (i.e. anything beyond first/last name,
+  email, phone, CV upload, location/PLZ, LinkedIn, portfolio, GitHub),
+  append ONE line to `data/gmail-apply-errors.ndjson` via Bash + `>>`
+  redirection (single line, JSON):
+  `{"ts":"<iso>","phase":"external_field_answered","run_id":"<id>","url":"<url>","portal":"<portal>","external_ats_host":"<host>","field_label":"<label as shown to user>","field_name":"<name/id attr if any>","answer":"<value typed>","source":"profile_availability|profile_salary|derived|generic"}`.
+  This is the only way the orchestrator learns which fields recur and
+  whether our answers got the application accepted. Failures to answer
+  ALSO log: same line but `phase:"external_unmapped_field_required"` and
+  `answer:""`. Do NOT batch — one line per field.
+- DO populate the structured failure schema (see Output) on AutoApplyFailed
+  — `failed_field_name`, `framework_detected`, `last_mcp_tool_used`,
+  `validator_error_text_observed`, `external_ats_host`. Free-text "all
+  failed" messages are forbidden — they teach us nothing.
 
 ## You do NOT autofix yaml
 
@@ -248,23 +321,53 @@ Single JSON object on stdout (NO surrounding prose, NO code fence):
       "status": "Applied",
       "external_apply": false,
       "evidence_path": "data/batch-runs/.../evidence/...json",
-      "portal": "<original portal name from script JSON>"
+      "portal": "<original portal name from script JSON>",
+      "external_fill_strategy_used": null,
+      "framework_detected": null
+    },
+    {
+      "url": "<url>",
+      "status": "Applied",
+      "external_apply": true,
+      "evidence_path": "data/batch-runs/.../evidence/...-external-...json",
+      "portal": "<original portal name>",
+      "external_ats_host": "pretiushr.traffit.com",
+      "external_fill_strategy_used": "mcp_fill | mcp_fill_form | mcp_type_text | dom_fallback | mixed",
+      "framework_detected": { "angular": true, "react": false, "vue": false, "workday": false, "any": true }
     },
     {
       "url": "<url>",
       "status": "AutoApplyFailed",
-      "reason": "submit timeout after escalation",
-      "failure_kind": "selector_not_found | success_selector_timeout | validation_failed | cross_domain_redirect | login_required | captcha | network_error | submit_failed | external_unconfirmed | external_unknown_required_field | unknown",
+      "reason": "<short>",
+      "failure_kind": "selector_not_found | success_selector_timeout | validation_failed | cross_domain_redirect | login_required | captcha | network_error | submit_failed | external_unconfirmed | external_unconfirmed_field | external_unknown_required_field | unknown",
       "failed_step": "<action name or null>",
       "failed_selector": "<the selector that did not work, or null>",
       "evidence_path": "data/batch-runs/.../evidence/...json",
       "autofix_eligible": true,
-      "external_apply": false
+      "external_apply": false,
+      "external_ats_host": null,
+      "external_fill_strategy_used": null,
+      "framework_detected": null,
+      "failed_field_name": null,
+      "last_mcp_tool_used": null,
+      "validator_error_text_observed": null
     }
   ],
   "errors_logged": <number of lines appended to gmail-apply-errors.ndjson>
 }
 ```
+
+Field rules:
+
+- `external_apply: true` results MUST also populate `external_ats_host`
+  (URL hostname of `redirect.final_url`), `external_fill_strategy_used`,
+  and `framework_detected` (the object from the probe step).
+- AutoApplyFailed results inside External ATS handover MUST populate the
+  `failed_field_name`, `last_mcp_tool_used`, `validator_error_text_observed`
+  fields (use `null` only when truly N/A — e.g. `failure_kind:
+  cross_domain_redirect` from the script bailout has no field context).
+- Recipe-path (non-external) results may leave the external_* and
+  failed_field_* fields as `null`.
 
 `autofix_eligible` rules (set per result, opt-in only):
 

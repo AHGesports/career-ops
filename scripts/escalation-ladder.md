@@ -228,15 +228,46 @@ Decision:
 
 ### Hard rules for external handover
 
+- **WRITES via MCP, READS via `evaluate_script`.** This is the most-violated
+  rule and the canonical statement of it. On external ATS forms, you MUST
+  use chrome-devtools MCP write tools — `mcp__chrome-devtools__fill`,
+  `fill_form`, `type_text`, `click`, `upload_file` — for every value
+  setting. NEVER use `evaluate_script` to set `.value`, `.checked`,
+  dispatch synthetic `input/change` events, or otherwise mutate DOM to
+  fill fields.
+  - **Why** (so you don't "optimize" back to evaluate_script under turn
+    pressure): most external ATS forms are JS-framework-bound (Angular
+    `FormControl`, React controlled inputs, Vue `v-model`). Synthetic
+    events from `evaluate_script` do NOT trigger Zone.js / React synthetic
+    event chains / Vue reactivity — the framework's validators see empty
+    fields and reject. CDP keystroke events from MCP write tools DO
+    trigger them.
+  - `evaluate_script` is correct for READS ONLY: probing selectors,
+    success markers, validator error text, framework detection.
+  - The previous Experis batch run wasted 68 worker turns trying
+    `.value=` + `dispatchEvent('input')` on an Angular form before
+    giving up. Don't repeat.
+- Always run a framework-detection probe in the same `evaluate_script`
+  call as the field probe (see worker prompt for the canonical probe).
+  If `framework_detected.any === true`, MCP fill is mandatory; no
+  evaluate_script-fill fallback is allowed.
+- 3-strike per field: if a field still verifies as empty after 3 distinct
+  write strategies (e.g. `fill` → `type_text` → `click` then `fill`),
+  STOP and AutoApplyFailed with structured reason
+  (`failed_field_name`, `last_mcp_tool_used`,
+  `validator_error_text_observed`).
 - DO NOT autofix `config/gmail-apply-portals.yml` for external_apply
   results. DO NOT create new yaml entries for external ATS either —
   external pages are one-time applications, DOM not stable across runs,
   not worth a recipe. Complete via chrome-devtools MCP and move on.
-- Tab safety: every JS function returns `location.href`; verify it matches
-  `redirect.final_url` before trusting the result.
+- Tab safety: every JS function returns `location.href`; verify it
+  matches `redirect.final_url` before trusting the result.
 - File upload (CV) → `mcp__chrome-devtools__upload_file` with the
-  `cv_path_absolute` from the EXTERNAL_PROFILE block. If the tool fails,
-  log `phase:"script_extension_needed"`
+  `cv_path_absolute` from the EXTERNAL_PROFILE block. The chrome-devtools
+  MCP requires a `take_snapshot` immediately before `upload_file` (it
+  throws `"No snapshot found for page X"` otherwise). This is the only
+  permitted use of `take_snapshot` in batch flow. If upload fails, log
+  `phase:"script_extension_needed"`
   (`missing_capability: "file_upload"`) + AutoApplyFailed.
 - DO NOT invent values for unknown required fields. Skip → AutoApplyFailed
   (`failure_kind: "external_unknown_required_field"`).

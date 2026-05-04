@@ -26,7 +26,7 @@
 //   data/gmail-apply-errors.ndjson appended (cross-run forensic)
 
 import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { randomUUID } from 'node:crypto';
@@ -65,17 +65,32 @@ function parseArgs(argv) {
     has('--retry-chunk') ? 'retry-chunk' :
     'plan'; // default: be helpful, show queue
 
-  const force = has('--force');
+  // Load plan.flags early so run-chunk/retry-chunk inherit the original
+  // batch's flags even if the operator omits them on later invocations.
+  // CLI flags still win (presence-only flags can only enable, not disable).
+  let planFlags = null;
+  const earlyRunId = valOf('--run-id');
+  if (earlyRunId) {
+    const planPath = resolve(REPO_ROOT, 'data/batch-runs', earlyRunId, 'plan.json');
+    if (existsSync(planPath)) {
+      try { planFlags = (JSON.parse(readFileSync(planPath, 'utf8')).flags) || null; }
+      catch { /* ignore */ }
+    }
+  }
+  const planF = planFlags || {};
+
+  const force = has('--force') || planF.force === true;
   const dryRun = has('--dry-run');
   const verbose = has('--verbose');
-  const experimentalSucc = has('--experimental-succ');
-  const experimental = experimentalSucc || has('--experimental');
-  const autofix = has('--autofix');
+  const experimentalSucc = has('--experimental-succ') || planF.experimental_succ === true;
+  const experimental = experimentalSucc || has('--experimental') || planF.experimental === true;
+  const autofix = has('--autofix') || planF.autofix === true;
   if (autofix && !experimental) {
     // autofix needs evidence files
     log('--autofix without --experimental: enabling --experimental implicitly');
   }
   const experimentalEffective = experimental || autofix;
+  if (planFlags) log(`plan-flags merged: force=${force} experimental=${experimental} experimentalSucc=${experimentalSucc} autofix=${autofix}`);
 
   const chunkSize = (() => {
     const v = valOf('--chunk');
@@ -198,6 +213,8 @@ function loadProfileForWorker() {
   const fullName = c.full_name || '';
   const [firstName, ...rest] = fullName.split(' ');
   const lastName = rest.join(' ');
+  const av = cfg.availability || {};
+  const sx = cfg.salary_expectations || {};
   return {
     full_name: fullName,
     first_name: firstName || '',
@@ -211,6 +228,8 @@ function loadProfileForWorker() {
     github: c.github || '',
     cv_path_relative: CV_REL,
     cv_path_absolute: CV_PATH,
+    availability: av,
+    salary_expectations: sx,
   };
 }
 
@@ -224,6 +243,10 @@ async function spawnWorker({ urls, force, experimental, experimentalSucc, runId,
   ].filter(Boolean).join(' ');
   const taskList = urls.map((u, i) => `${i + 1}. ${u}`).join('\n');
 
+  const av = profile.availability || {};
+  const sx = profile.salary_expectations || {};
+  const eur = sx.eur || {};
+  const pln = sx.pln || {};
   const profileBlock = `EXTERNAL_PROFILE (use these values when redirected to an external ATS):
 - full_name: ${profile.full_name}
 - first_name: ${profile.first_name}
@@ -234,7 +257,28 @@ async function spawnWorker({ urls, force, experimental, experimentalSucc, runId,
 - linkedin: ${profile.linkedin}
 - portfolio_url: ${profile.portfolio_url}
 - github: ${profile.github}
-- CV file (absolute path, use with mcp__chrome-devtools__upload_file): ${profile.cv_path_absolute}`;
+- CV file (absolute path, use with mcp__chrome-devtools__upload_file): ${profile.cv_path_absolute}
+
+AVAILABILITY (when form asks notice period / earliest start / availability):
+- notice_period: ${av.notice_period || '6 weeks'}
+- earliest_start_text: ${av.earliest_start_text || '6 weeks notice from offer'}
+- short_form: ${av.short || '6 weeks'}
+
+SALARY_EXPECTATIONS (when form asks expected salary; pick by form's currency/unit):
+- default_text: ${sx.default_text || 'EUR 55,000-80,000 / year gross (target range)'}
+- EUR annual gross: min=${eur.annual_gross_min || 55000}, target=${eur.annual_gross_target || 70000}, max=${eur.annual_gross_max || 80000}
+- EUR monthly gross: 12-pay=${eur.monthly_gross_12pay || 4583}, 14-pay=${eur.monthly_gross_14pay || 3929}
+- EUR hourly gross: ${eur.hourly_gross || 32}
+- PLN monthly gross UoP (Polish recruiter convention, 12-pay): ${pln.monthly_gross_uop_12pay || 19479}
+- PLN monthly B2B revenue (Einzelunternehmer floor): ${pln.b2b_monthly_revenue || 19125}
+- PLN B2B hourly rate: ${pln.b2b_hourly_rate || 135}
+- Single-number form → use target. Range form → use min-max. Polish PLN form → 19479 PLN/month gross UoP unless form is B2B/hourly.
+
+Use these values to answer the field directly. Do NOT bail on availability /
+salary fields just because they are not mapped in the recipe — they ARE
+mapped here. Only bail (\`external_unknown_required_field\`) when the form
+asks something genuinely outside this profile (e.g. references, cover
+letter custom prompt, drug-test consent, security-clearance code).`;
 
   const experimentalNote = experimental
     ? `EXPERIMENTAL: per-step ndjson + DOM evidence are written by the script automatically under data/batch-runs/${runId}/. Echo evidence_path in each result. ${experimentalSucc ? 'experimental-succ is on — orchestrator will validate every Applied via evidence; do not lie about success, log doubts via phase:"escalation" and downgrade to AutoApplyFailed when in doubt.' : ''}`
@@ -532,6 +576,79 @@ async function spawnWorker({ urls, force, experimental, experimentalSucc, runId,
 
 // -- statuses rewrite (per-chunk, idempotent) -------------------------------
 
+function urlSlug(url) {
+  return url.replace(/^https?:\/\//, '').replace(/[^a-zA-Z0-9]+/g, '-').slice(0, 80).replace(/-+$/, '');
+}
+
+// Read the redirect-midflow evidence file (script-written) to recover the
+// final external-tab URL. Worker only emits external_ats_host, not full URL.
+function findFinalUrlFromRedirectEvidence(runDir, slug) {
+  const evDir = resolve(runDir, 'evidence');
+  if (!existsSync(evDir)) return null;
+  const candidates = readdirSync(evDir).filter(f => f.startsWith(`${slug}-redirect`) && f.endsWith('.json'));
+  if (candidates.length === 0) return null;
+  // newest wins
+  candidates.sort();
+  const file = resolve(evDir, candidates[candidates.length - 1]);
+  try {
+    const j = JSON.parse(readFileSync(file, 'utf8'));
+    return j?.redirect?.final_url || null;
+  } catch { return null; }
+}
+
+// Mutates results in-place: for each Applied + external_apply where the
+// claimed evidence file is missing, run scripts/verify-external-tab.mjs
+// against the matching tab and either confirm (write a verify evidence
+// file + keep Applied) or demote to AutoApplyFailed.
+function verifyExternalApplieds(results, runDir, runId) {
+  for (const res of results) {
+    if (res.status !== 'Applied' || res.external_apply !== true) continue;
+    const claimed = res.evidence_path || null;
+    if (claimed && existsSync(claimed)) continue; // worker did its job
+
+    const slug = urlSlug(res.url);
+    const finalUrl = findFinalUrlFromRedirectEvidence(runDir, slug);
+    if (!finalUrl) {
+      // Cannot verify without final tab URL. Treat as unconfirmed.
+      log(`verify: no redirect-evidence for ${slug}; demoting`);
+      mutateToAutoApplyFailed(res, 'no redirect evidence to derive final tab URL', { runId });
+      continue;
+    }
+
+    const proc = spawnSync(process.execPath, [
+      resolve(__dirname, 'verify-external-tab.mjs'),
+      `--tab-url=${finalUrl}`,
+      `--slug=${slug}`,
+      `--run-dir=${runDir}`,
+      `--original-url=${res.url}`,
+    ], { encoding: 'utf8', timeout: 30000 });
+
+    let v = null;
+    try { v = JSON.parse((proc.stdout || '').trim()); } catch { /* */ }
+    if (!v || v.ok !== true) {
+      log(`verify: helper failed for ${slug}: ${v?.reason || proc.stderr || 'no output'}`);
+      mutateToAutoApplyFailed(res, `verifier helper failed: ${v?.reason || 'unknown'}`, { runId });
+      continue;
+    }
+    if (v.verified === true) {
+      res.evidence_path = v.evidence_path;
+      res.verified_post_hoc = true;
+      appendErrorLog({ ts: new Date().toISOString(), phase: 'external_post_hoc_verified', run_id: runId, url: res.url, portal: res.portal || null, reason: v.reason, evidence_path: v.evidence_path });
+    } else {
+      mutateToAutoApplyFailed(res, `post-hoc verify rejected: ${v.reason}`, { runId, evidencePath: v.evidence_path });
+    }
+  }
+}
+
+function mutateToAutoApplyFailed(res, reason, { runId, evidencePath } = {}) {
+  res.status = 'AutoApplyFailed';
+  res.failure_kind = 'external_unconfirmed_post_hoc';
+  res.reason = reason;
+  res.autofix_eligible = false;
+  if (evidencePath) res.evidence_path = evidencePath;
+  appendErrorLog({ ts: new Date().toISOString(), phase: 'applied_invalidated', run_id: runId, url: res.url, portal: res.portal || null, reason, evidence_path: evidencePath || null });
+}
+
 function rewriteAppsForUrls(urlToStatus) {
   const md = readFileSync(APPS_PATH, 'utf8');
   const lines = md.split('\n');
@@ -628,7 +745,12 @@ function modePlan(opts) {
       status: row.status, url, portal: portal.name,
     });
   }
-  // Dedup
+  // Order: newest-added first. The `#` column in applications.md is a
+  // monotonically-increasing add counter (set by merge-tracker on each new
+  // row), so descending num == reverse-chronological insertion order. This
+  // is what the user wants: process latest-arrived URLs before older ones.
+  candidates.sort((a, b) => parseInt(b.num, 10) - parseInt(a.num, 10));
+  // Dedup (preserves first occurrence — i.e. newest, since we just sorted desc)
   const seen = new Set();
   const dedup = [];
   for (const c of candidates) {
@@ -825,6 +947,13 @@ async function modeRunChunk(opts) {
 
   appendLedger(runDir, { event: 'chunk_done', is_retry: opts.mode === 'retry-chunk', ms, usage: r.usage, telemetry: r.telemetry || null, results: r.result.results });
 
+  // Post-spawn verification of external_apply Applieds.
+  // Worker prompt requires writing evidence/<slug>-external-<ts>.json on
+  // success; haiku occasionally skips that write and fabricates the path.
+  // Programmatic enforcement: if claimed evidence file does not exist,
+  // attach via CDP and verify the tab DOM ourselves. Demote on failure.
+  verifyExternalApplieds(r.result.results || [], runDir, opts.runId);
+
   const urlIndex = buildUrlRowIndex();
   const applied = [];
   const failed = [];
@@ -870,9 +999,13 @@ async function modeRunChunk(opts) {
   const updated = rewriteAppsForUrls(urlToStatus);
 
   // chunk_signals — small, deterministic facts the parent LLM uses to
-  // synthesize a 1-3 line system-improvement suggestion. Stays under ~400
-  // bytes so it doesn't grow parent context per chunk.
+  // synthesize a 1-3 line system-improvement suggestion. Stays small
+  // (~600 bytes) so it doesn't grow parent context per chunk.
   const failureKinds = {};
+  const fillStrategies = {};
+  const frameworksSeen = {};
+  const failedFields = [];
+  const externalAtsHosts = new Set();
   let externalApplyCount = 0;
   let escalatedAppliedCount = 0;
   const portalsTouched = new Set();
@@ -883,7 +1016,18 @@ async function modeRunChunk(opts) {
     if (res.status === 'AutoApplyFailed') {
       const k = res.failure_kind || 'unknown';
       failureKinds[k] = (failureKinds[k] || 0) + 1;
+      if (res.failed_field_name) failedFields.push({ field: res.failed_field_name, last_tool: res.last_mcp_tool_used || null });
     }
+    if (res.external_fill_strategy_used) {
+      const s = res.external_fill_strategy_used;
+      fillStrategies[s] = (fillStrategies[s] || 0) + 1;
+    }
+    if (res.framework_detected && typeof res.framework_detected === 'object') {
+      for (const fw of ['angular', 'react', 'vue', 'workday']) {
+        if (res.framework_detected[fw]) frameworksSeen[fw] = (frameworksSeen[fw] || 0) + 1;
+      }
+    }
+    if (res.external_ats_host) externalAtsHosts.add(res.external_ats_host);
   }
   const chunkSignals = {
     chunk_ms: ms,
@@ -892,6 +1036,10 @@ async function modeRunChunk(opts) {
     failed_count: failed.length,
     escalated_applied_count: escalatedAppliedCount,
     external_apply_count: externalApplyCount,
+    external_ats_hosts: [...externalAtsHosts],
+    external_fill_strategies: fillStrategies,
+    frameworks_detected_histogram: frameworksSeen,
+    failed_fields: failedFields,
     failure_kinds_histogram: failureKinds,
     peak_pct_of_window: r.telemetry?.peak_pct_of_window ?? null,
     compactions_observed: r.telemetry?.compactions?.length ?? 0,
