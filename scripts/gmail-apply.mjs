@@ -13,6 +13,7 @@
 
 import { chromium } from 'playwright';
 import yaml from 'js-yaml';
+import { runSimplifyAutofillOnPage } from './simplify-autofill.mjs';
 import { readFileSync, writeFileSync, appendFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
@@ -69,6 +70,40 @@ const KNOWN_ATS_HINTS = [
   { match: 'taleo.net',                 framework: { angular: true,  any: true } },
   { match: 'successfactors.com',        framework: { angular: true,  any: true } },
 ];
+
+// Best-effort Simplify Copilot autofill on the redirected tab. Always runs
+// on every detected redirect; gracefully no-ops when the extension panel
+// isn't injected (= unsupported framework, e.g. Workday, iCIMS). Result is
+// attached to the redirect block as `simplify`. Errors do NOT fail the
+// caller — agent handover continues regardless.
+async function trySimplifyOnPage(targetPage, runId, originalUrl, portalName) {
+  try {
+    const r = await runSimplifyAutofillOnPage(targetPage);
+    logError({
+      phase: 'simplify_autofill',
+      url: originalUrl,
+      portal: portalName,
+      run_id: runId,
+      supported: r.supported,
+      clicked: r.clicked,
+      already_filled: r.alreadyFilled,
+      filled_field_count: r.filledFieldCount,
+      cv_uploaded: r.cvUploaded,
+      duration_ms: r.durationMs,
+      err: r.error || null,
+    });
+    return r;
+  } catch (err) {
+    logError({
+      phase: 'simplify_autofill',
+      url: originalUrl,
+      portal: portalName,
+      run_id: runId,
+      err: err?.message || String(err),
+    });
+    return { supported: false, clicked: false, alreadyFilled: false, error: err?.message || String(err) };
+  }
+}
 
 function frameworkHintFor(url) {
   if (!url) return null;
@@ -188,6 +223,52 @@ function matchPortal(url, config) {
   return null;
 }
 
+// Stale external-ATS tabs accumulate from prior failed redirect runs and
+// confuse downstream MCP work (wrong tab focused, double-submits). Source of
+// truth: past `redirect_to_external` entries in data/gmail-apply-errors.ndjson.
+// Any host we've redirected to before is fair game to close at startup if it
+// isn't the current target. No hardcoded list — self-learning from our own logs.
+function loadKnownExternalHosts() {
+  const hosts = new Set();
+  try {
+    const path = resolve(REPO_ROOT, 'data/gmail-apply-errors.ndjson');
+    const text = readFileSync(path, 'utf8');
+    for (const line of text.split('\n')) {
+      if (!line.trim()) continue;
+      let rec;
+      try { rec = JSON.parse(line); } catch { continue; }
+      if (rec.phase !== 'redirect_to_external' || !rec.final_url) continue;
+      try { hosts.add(new URL(rec.final_url).host); } catch { /* skip bad url */ }
+    }
+  } catch { /* file may not exist yet */ }
+  return hosts;
+}
+
+async function closeStaleExternalTabs(browser, currentUrl) {
+  const closed = [];
+  const knownHosts = loadKnownExternalHosts();
+  if (knownHosts.size === 0) return closed;
+  const currentHost = (() => { try { return new URL(currentUrl).host; } catch { return ''; } })();
+  try {
+    for (const ctx of browser.contexts()) {
+      for (const page of ctx.pages()) {
+        try {
+          const u = page.url();
+          if (!u || u === 'about:blank') continue;
+          let host = '';
+          try { host = new URL(u).host; } catch { continue; }
+          if (host === currentHost) continue;
+          if (knownHosts.has(host)) {
+            closed.push(u);
+            await page.close().catch(() => {});
+          }
+        } catch { /* dead page */ }
+      }
+    }
+  } catch { /* best-effort */ }
+  return closed;
+}
+
 async function getOrOpenPage(browser, url) {
   const contexts = browser.contexts();
   for (const ctx of contexts) {
@@ -257,14 +338,30 @@ async function runStep(page, step, portal) {
   // `optional: true`. Missing selector → skip + return ok with `skipped:true`.
   if (step.optional) {
     const probeSel = step.selector || step.container;
-    if (probeSel && !(await selectorExists(page, probeSel))) {
+    const grace = Number(step.timeout_ms) > 0 ? Number(step.timeout_ms) : 1500;
+    if (probeSel && !(await selectorExists(page, probeSel, grace))) {
       return { ok: true, skipped: true, reason: 'optional selector not present' };
     }
   }
   switch (step.action) {
     case 'click': {
-      await page.locator(step.selector).first().click({ timeout: 5000 });
-      return { ok: true };
+      // Resilient click: scrollIntoView first (sticky headers / sidebar buttons
+      // can be off-screen), bumped default timeout (Chrome under stress can
+      // take >5s to settle), one retry on timeout. Honors step.timeout_ms.
+      const tmo = Number(step.timeout_ms) > 0 ? Number(step.timeout_ms) : 8000;
+      const loc = page.locator(step.selector).first();
+      try {
+        await loc.scrollIntoViewIfNeeded({ timeout: 2000 }).catch(() => {});
+        await loc.click({ timeout: tmo });
+        return { ok: true };
+      } catch (e) {
+        // Single retry — covers transient hydration/animation/CPU-pressure
+        // misses without masking a genuinely missing selector.
+        await page.waitForTimeout(750);
+        await loc.scrollIntoViewIfNeeded({ timeout: 2000 }).catch(() => {});
+        await loc.click({ timeout: tmo, force: !!step.force });
+        return { ok: true, retried: true };
+      }
     }
     case 'fill': {
       const value = resolveTemplate(step.value, data);
@@ -304,11 +401,77 @@ async function runStep(page, step, portal) {
           return { ok: true, matched: alias };
         }
       }
+      if (step.optional) return { ok: true, skipped: true, reason: `no alias matched (optional): ${aliases.join('|')}` };
       return { ok: false, err: `no alias matched: ${aliases.join('|')}` };
     }
     case 'wait_selector': {
-      await page.locator(step.selector).first().waitFor({ state: 'visible', timeout: 5000 });
+      const tmo = Number(step.timeout_ms) > 0 ? Number(step.timeout_ms) : 5000;
+      await page.locator(step.selector).first().waitFor({ state: 'visible', timeout: tmo });
       return { ok: true };
+    }
+    case 'select_multiselect': {
+      // Open a custom multiselect dropdown (e.g. Angular nfj-multiselect-dropdown)
+      // and pick the first option whose visible text matches one of step.match
+      // patterns (case-insensitive). Falls back to first visible item unless
+      // step.require_match is true. Many Angular multiselect impls render the
+      // option list OUTSIDE the originating form-field (CDK overlay / portal),
+      // so when in-scope item search yields nothing we widen to document scope.
+      const root = page.locator(step.selector).first();
+      await root.waitFor({ state: 'visible', timeout: 5000 });
+      const trigger = root.locator(step.trigger_selector || '.multiselect-dropdown, [class*="dropdown-btn"]').first();
+      // Real CDP click: synthetic .dispatchEvent('click') is ignored by some
+      // Angular handlers. Playwright's .click() uses a trusted event sequence.
+      await trigger.click({ timeout: 5000 });
+      await page.waitForTimeout(400); // small settle for dropdown render
+      // Item selectors restricted to dropdown internals only — avoid leaking
+      // into page-level <li> (job listings, nav menus, etc.) which would let
+      // a stray "Warsaw" / "Senior" element be picked when patterns don't
+      // match the actual options. Default scope: known dropdown containers.
+      const itemSel = step.item_selector || '.multiselect-item, [class*="dropdown-list"] li, [class*="dropdown-list"] [class*="item"], [role="option"]';
+      // Try local scope first (item rendered inside the form-field).
+      let items = root.locator(itemSel);
+      let count = await items.count();
+      if (count === 0) {
+        // Fall back to dropdown-only document scope. Strictly the multiselect
+        // and CDK overlay panes — never plain `li` at document scope.
+        items = page.locator(
+          `nfj-multiselect-dropdown ${itemSel}, [class*="multiselect-dropdown"] ${itemSel}, .cdk-overlay-pane ${itemSel}`
+        );
+        count = await items.count();
+      }
+      if (count === 0) {
+        await page.keyboard.press('Escape').catch(() => {});
+        return { ok: false, err: 'multiselect did not open (0 options visible)' };
+      }
+      const patterns = (step.match || []).map(p => new RegExp(p, 'i'));
+      let chosen = null;
+      for (let i = 0; i < count && i < 200; i++) {
+        const it = items.nth(i);
+        if (!(await it.isVisible().catch(() => false))) continue;
+        const txt = ((await it.innerText().catch(() => '')) || '').trim();
+        if (!txt) continue;
+        if (patterns.length === 0 || patterns.some(re => re.test(txt))) {
+          chosen = { idx: i, text: txt };
+          await it.click({ timeout: 3000 });
+          break;
+        }
+      }
+      if (!chosen && !step.require_match) {
+        // Fallback: first visible non-empty item
+        for (let i = 0; i < count && i < 50; i++) {
+          const it = items.nth(i);
+          if (!(await it.isVisible().catch(() => false))) continue;
+          const txt = ((await it.innerText().catch(() => '')) || '').trim();
+          if (!txt) continue;
+          await it.click({ timeout: 3000 });
+          chosen = { idx: i, text: txt, fallback: true };
+          break;
+        }
+      }
+      // Close dropdown best-effort.
+      await page.keyboard.press('Escape').catch(() => {});
+      if (!chosen) return { ok: false, err: `no multiselect option matched: ${(step.match || []).join('|')}` };
+      return { ok: true, chosen };
     }
     case 'wait_ms': {
       await page.waitForTimeout(step.ms);
@@ -408,6 +571,11 @@ async function main() {
     fail(`cdp connect failed: ${e.message}`, { hint: 'run launch-chrome.bat first' });
   }
 
+  const closedStale = await closeStaleExternalTabs(browser, url);
+  if (closedStale.length) {
+    logError({ phase: 'stale_tabs_closed', url, portal: portal.name, run_id: runId, count: closedStale.length, urls: closedStale });
+  }
+
   const page = await getOrOpenPage(browser, url);
   await page.bringToFront().catch(() => {});
 
@@ -441,6 +609,12 @@ async function main() {
       final_url: currentUrl,
       target_portal_match: redirectInfo.target_portal_match,
     });
+
+    // Best-effort Simplify Copilot autofill on the redirected tab. Pre-fills
+    // identity + (often) uploads CV before the agent takes over via MCP. On
+    // unsupported frameworks (Workday/iCIMS/...) panel doesn't inject and
+    // this no-ops in <1s.
+    redirectInfo.simplify = await trySimplifyOnPage(page, runId, url, portal.name);
 
     let evidencePath = null;
     if (experimental && runDir) {
@@ -532,6 +706,15 @@ async function main() {
       err: res.err || null,
     });
     if (!res.ok) {
+      // Optional steps coerce internal failures (selector missing, dropdown
+      // wouldn't open, alias didn't match, etc.) into skipped. Per-listing
+      // form variants can have fields that don't exist on most jobs — failing
+      // the whole recipe over them would block applies that don't need them.
+      if (step.optional) {
+        const last = stepResults[stepResults.length - 1];
+        if (last) { last.ok = true; last.skipped = true; last.optional_swallowed_err = res.err || null; }
+        continue;
+      }
       if (firstFailure === null) firstFailure = i;
       logError({ phase: 'step', url, portal: portal.name, force, step_index: i, action: step.action, err: res.err, run_id: runId });
       if (!force) break;
@@ -587,6 +770,13 @@ async function main() {
   // (those would chase selectors on the wrong domain). Same JSON shape as
   // startup-redirect — caller already handles it.
   if (midFlowRedirect) {
+    // Pick the right page for Simplify: same_tab → main page, new_tab → the
+    // popup page captured by the page-listener.
+    const simplifyPage = midFlowRedirect.new_tab && newTabRedirect && newTabRedirect.page
+      ? newTabRedirect.page
+      : page;
+    midFlowRedirect.simplify = await trySimplifyOnPage(simplifyPage, runId, url, portal.name);
+
     let evidencePath = null;
     if (experimental && runDir) {
       try {

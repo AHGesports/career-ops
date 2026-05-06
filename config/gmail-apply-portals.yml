@@ -70,12 +70,43 @@ portals:
         container: "#apply-modal nfj-apply-known-languages"
         label: "English"
         label_aliases: ["English", "Englisch", "Anglais", "Inglés", "Inglese", "Angielski"]
-      # STOP. Script exits before submit_selector. User clicks Submit.
+      # B2B-agency variants (e.g. Square One Resources) inject extra required
+      # fields — handled as optional so they no-op on jobs that don't have them.
+      # Location is a custom Angular nfj-multiselect-dropdown (no native select),
+      # so it needs the dedicated select_multiselect action with real CDP click.
+      - action: select_multiselect
+        selector: "#apply-modal nfj-form-field:has(label:has-text('lokalizacj'))"
+        # Remote-only — Salzburg-based candidate. NEVER fall back to a city
+        # (e.g. Warsaw) on patterns miss; require_match=true forces fail-stop.
+        # Polish ("Praca zdalna" / "zdalna") + EN/DE Remote variants covered.
+        match: ["^Praca zdalna$", "^Zdalnie$", "^Remote$", "Praca zdalna", "Zdalnie", "(?:^|\\W)Remote(?:$|\\W)"]
+        require_match: true
+        optional: true
+        timeout_ms: 2000
+      # Some variants require an "I want to receive new offers" subscription
+      # consent checkbox (NFJ-CHECKBOX). Optional — skipped when not present.
+      - action: check
+        container: "#apply-modal"
+        label: "Chcę otrzymywać nowe oferty"
+        label_aliases:
+          - "Chcę otrzymywać nowe oferty"
+          - "I want to receive new offers"
+        optional: true
+      # STOP. Script exits before submit_selector. User/worker clicks Submit.
 
   # =========================================================================
-  # theprotocol.it — React/Next.js. INLINE apply form (sidebar).
-  # Form starts collapsed. Must click button-expandApplyForm first to reveal
-  # phone input and submit button. Name/email pre-filled from profile.
+  # theprotocol.it — DUAL-MODE. Sidebar Aplikuj button (data-test='anchor-apply',
+  # carries data-isexternal="true|false") routes to one of two flows:
+  #   external (data-isexternal=true): opens new tab to recruiter form
+  #     (erecruiter.pl etc) → script's redirect/new-page detection fires →
+  #     worker handles via External ATS handover (mcp_fill_form).
+  #   inline   (data-isexternal=false): reveals sidebar form on same page
+  #     with [data-test='button-sendApplication'] submit + input-phoneNumber.
+  # We click the unified anchor-apply (same selector for both modes) and rely
+  # on optional follow-up steps that no-op when the inline form does not appear
+  # (i.e. external path was taken). This makes the recipe self-healing across
+  # both variants without per-listing branching.
+  # Verified 2026-05-05: legacy data-test='button-expandApplyForm' no longer in DOM.
   # =========================================================================
   - name: theprotocol
     match:
@@ -88,13 +119,15 @@ portals:
     data:
       phone: "+436703535652"
     steps:
-      - { action: click, selector: "[data-test='button-expandApplyForm']" }
-      - { action: wait_selector, selector: "[data-test='button-sendApplication']" }
-      - { action: wait_ms, ms: 500 }
+      - { action: click, selector: "[data-test='section-sidebar-apply'] [data-test='anchor-apply']" }
+      # Inline-mode follow-ups. Skipped silently if external mode took us to a
+      # new tab (sendApplication never appears on this page).
+      - { action: wait_selector, selector: "[data-test='button-sendApplication']", timeout_ms: 4000, optional: true }
       - action: fill
         selector: "input[data-test='input-phoneNumber']"
         value: "{{phone}}"
-      # STOP. Script exits before submit_selector. User clicks Submit.
+        optional: true
+      # STOP. Inline: user/script clicks Submit. External: worker takes over.
 
   # =========================================================================
   # xing.com — React SPA. Multi-step wizard (4 pages, no modal).
@@ -113,7 +146,11 @@ portals:
       - "h2:has-text('Application submitted')"
     success_timeout_ms: 15000
     data:
-      phone: "+436703535652"
+      # phoneNumber input takes BARE digits (no +43, no leading 0). The
+      # countryCode select is filled separately with "43". Validators reject
+      # the field if a "+43" or "0043" prefix is in the digits — the form
+      # double-prefixes and shows "Please check your phone number again".
+      phone: "6703535652"
       german_level: "Verhandlungssicher"
       english_level: "Muttersprache oder zweisprachig"
     steps:

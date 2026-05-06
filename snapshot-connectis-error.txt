@@ -1,0 +1,630 @@
+uid=1_0 RootWebArea "Connectis Hub" url="https://hub.connectis.pl/offer/f6df8bc4-81ff-496f-afff-98f318c2d4fe"
+  uid=7_0 ignored
+    uid=7_1 ignored
+      uid=7_2 generic
+        uid=1_1 main
+          uid=7_3 sectionheader
+            uid=7_4 ignored
+              uid=1_2 link url="https://hub.connectis.pl/"
+                uid=7_5 image
+          uid=7_6 ignored
+            uid=7_7 ignored
+              uid=7_8 ignored
+                uid=7_9 ignored
+                  uid=7_10 ignored
+                    uid=1_3 heading "Backend developer .NET" level="1"
+                      uid=7_11 StaticText "Backend developer .NET"
+                        uid=7_12 InlineTextBox
+                    uid=7_13 list
+                      uid=7_14 listitem level="1"
+                        uid=7_15 image
+                        uid=7_16 ignored
+                          uid=1_4 StaticText "Leeds, Wielka Brytania"
+                            uid=7_12 InlineTextBox
+                      uid=7_17 listitem level="1"
+                        uid=7_18 image
+                        uid=7_19 ignored
+                          uid=1_5 StaticText "Zdalnie"
+                            uid=7_12 InlineTextBox
+                      uid=7_20 listitem level="1"
+                        uid=7_21 image
+                        uid=7_22 ignored
+                          uid=1_6 StaticText "Senior"
+                            uid=7_12 InlineTextBox
+                      uid=7_23 listitem level="1"
+                        uid=7_24 image
+                        uid=7_25 ignored
+                          uid=1_7 StaticText "Angielski B2"
+                            uid=7_12 InlineTextBox
+                      uid=7_26 listitem level="1"
+                        uid=7_27 ignored
+                          uid=7_28 paragraph
+                            uid=1_8 StaticText "90-140 PLN/h"
+                              uid=7_12 InlineTextBox
+                  uid=7_29 ignored
+                    uid=7_30 ignored
+                      uid=7_31 ignored
+                        uid=7_32 ignored
+                          uid=7_33 paragraph
+                            uid=1_9 StaticText "Kompetencje wymagane"
+                              uid=7_12 InlineTextBox
+                          uid=7_34 list
+                            uid=7_35 listitem level="1"
+                              uid=7_36 ignored
+                                uid=1_10 StaticText ".NET"
+                                  uid=7_12 InlineTextBox
+                              uid=7_37 list
+                                uid=7_38 listitem level="2"
+                                uid=7_39 listitem level="2"
+                                uid=7_40 listitem level="2"
+                                uid=7_41 listitem level="2"
+                                uid=7_42 listitem level="2"
+                            uid=7_43 listitem level="1"
+                              uid=7_44 ignored
+                                uid=1_11 StaticText "C#"
+                                  uid=7_12 InlineTextBox
+                              uid=7_45 list
+                                uid=7_46 listitem level="2"
+                                uid=7_47 listitem level="2"
+                                uid=7_48 listitem level="2"
+                                uid=7_49 listitem level="2"
+                                uid=7_50 listitem level="2"
+                            uid=7_51 listitem level="1"
+                              uid=7_52 ignored
+                                uid=1_12 StaticText "Wpf"
+                                  uid=7_12 InlineTextBox
+                              uid=7_53 list
+                                uid=7_54 listitem level="2"
+                                uid=7_55 listitem level="2"
+                                uid=7_56 listitem level="2"
+                                uid=7_57 listitem level="2"
+                                uid=7_58 listitem level="2"
+                            uid=7_59 listitem level="1"
+                              uid=7_60 ignored
+                                uid=1_13 StaticText "SQL"
+                                  uid=7_12 InlineTextBox
+                              uid=7_61 list
+                                uid=7_62 listitem level="2"
+                                uid=7_63 listitem level="2"
+                                uid=7_64 listitem level="2"
+                                uid=7_65 listitem level="2"
+                                uid=7_66 listitem level="2"
+                            uid=7_67 listitem level="1"
+                              uid=7_68 ignored
+                                uid=1_14 StaticText "Cosmos DB"
+                                  uid=7_12 InlineTextBox
+                              uid=7_69 list
+                                uid=7_70 listitem level="2"
+                                uid=7_71 listitem level="2"
+                                uid=7_72 listitem level="2"
+                                uid=7_73 listitem level="2"
+                                uid=7_74 listitem level="2"
+                            uid=7_75 listitem level="1"
+                              uid=7_76 ignored
+                                uid=1_15 StaticText "Solid"
+                                  uid=7_12 InlineTextBox
+                              uid=7_77 list
+                                uid=7_78 listitem level="2"
+                                uid=7_79 listitem level="2"
+                                uid=7_80 listitem level="2"
+                                uid=7_81 listitem level="2"
+                                uid=7_82 listitem level="2"
+                            uid=7_83 listitem level="1"
+                              uid=7_84 ignored
+                                uid=1_16 StaticText "Clean Code"
+                                  uid=7_12 InlineTextBox
+                              uid=7_85 list
+                                uid=7_86 listitem level="2"
+                                uid=7_87 listitem level="2"
+                                uid=7_88 listitem level="2"
+                                uid=7_89 listitem level="2"
+                                uid=7_90 listitem level="2"
+                        uid=7_91 ignored
+                          uid=7_92 paragraph
+                            uid=1_17 StaticText "Kompetencje mile widziane"
+                              uid=7_12 InlineTextBox
+                          uid=7_93 list
+                            uid=7_94 listitem level="1"
+                              uid=7_95 ignored
+                                uid=1_18 StaticText "Azure"
+                                  uid=7_12 InlineTextBox
+                            uid=7_96 listitem level="1"
+                              uid=7_97 ignored
+                                uid=1_19 StaticText "Entity framework"
+                                  uid=7_12 InlineTextBox
+                            uid=7_98 listitem level="1"
+                              uid=7_99 ignored
+                                uid=1_20 StaticText "MVVM"
+                                  uid=7_12 InlineTextBox
+                            uid=7_100 listitem level="1"
+                              uid=7_101 ignored
+                                uid=1_21 StaticText "CI/CD"
+                                  uid=7_12 InlineTextBox
+                            uid=7_102 listitem level="1"
+                              uid=7_103 ignored
+                                uid=1_22 StaticText "Git"
+                                  uid=7_12 InlineTextBox
+                  uid=7_104 ignored
+                    uid=7_105 ignored
+                      uid=7_106 paragraph
+                        uid=1_23 StaticText "Opis stanowiska"
+                          uid=7_12 InlineTextBox
+                      uid=7_107 ignored
+                        uid=7_108 paragraph
+                          uid=7_109 strong
+                            uid=1_24 StaticText "❗Projekt na 6 miesięcy ❗"
+                              uid=7_12 InlineTextBox
+                        uid=1_25 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=1_26 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=7_110 paragraph
+                          uid=1_27 StaticText "Wraz z naszym partnerem, liderem w branży financial services, poszukujemy osoby na stanowisko "
+                            uid=7_12 InlineTextBox
+                            uid=7_12 InlineTextBox
+                          uid=7_111 strong
+                            uid=1_28 StaticText ".NET Developer"
+                              uid=7_12 InlineTextBox
+                          uid=1_29 StaticText ". "
+                            uid=7_12 InlineTextBox
+                          uid=7_112 strong
+                            uid=1_30 StaticText "Projekt obejmuje implementację nowych funkcjonalności oraz rozbudowę istniejących modułów systemu. Aplikacja jest tworzona w technologii .NET z wykorzystaniem WinUI oraz usług Microsoft Azure"
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                          uid=1_31 StaticText "."
+                            uid=7_12 InlineTextBox
+                        uid=1_32 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=1_33 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=7_113 paragraph
+                          uid=7_114 strong
+                            uid=1_34 StaticText "💡 TWOJA ROLA:"
+                              uid=7_12 InlineTextBox
+                        uid=1_35 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=7_115 list
+                          uid=7_116 listitem level="1"
+                            uid=7_117 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_36 StaticText "Praca z bazami danych: projektowanie i implementacja logiki biznesowej z wykorzystaniem SQL oraz Cosmos DB."
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                          uid=7_118 listitem level="1"
+                            uid=7_119 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_37 StaticText "Rozwój aplikacji desktopowej CRM: implementacja nowych funkcjonalności i rozbudowa istniejących modułów."
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                          uid=7_120 listitem level="1"
+                            uid=7_121 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_38 StaticText "Współpraca w międzynarodowym zespole: udział w spotkaniach, sprintach, code review, dzielenie się wiedzą."
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                          uid=7_122 listitem level="1"
+                            uid=7_123 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_39 StaticText "Dbałość o jakość kodu: stosowanie wzorców projektowych, zasad SOLID oraz praktyk Clean Code."
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                          uid=7_124 listitem level="1"
+                            uid=7_125 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_40 StaticText "Integracja i praca z Azure: wykorzystanie usług chmurowych Microsoft Azure w architekturze aplikacji."
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                          uid=7_126 listitem level="1"
+                            uid=7_127 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_41 StaticText "Testowanie: tworzenie i utrzymanie testów jednostkowych, dbanie o stabilność rozwiązania."
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                          uid=7_128 listitem level="1"
+                            uid=7_129 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_42 StaticText "Dokumentacja: przygotowywanie dokumentacji technicznej zgodnie ze standardami zespołu."
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                          uid=7_130 listitem level="1"
+                            uid=7_131 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_43 StaticText "Komunikacja w języku angielskim: codzienna współpraca w środowisku międzynarodowym."
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                        uid=1_44 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=1_45 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=7_132 paragraph
+                          uid=7_133 strong
+                            uid=1_46 StaticText "🔍 CZEGO OCZEKUJEMY OD CIEBIE?"
+                              uid=7_12 InlineTextBox
+                        uid=1_47 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=7_134 list
+                          uid=7_135 listitem level="1"
+                            uid=7_136 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_48 StaticText "Minimum 5 lat doświadczenia na stanowisku "
+                              uid=7_12 InlineTextBox
+                            uid=7_137 strong
+                              uid=1_49 StaticText ".NET Devoper"
+                                uid=7_12 InlineTextBox
+                            uid=1_50 StaticText "."
+                              uid=7_12 InlineTextBox
+                          uid=7_138 listitem level="1"
+                            uid=7_139 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_51 StaticText "Bardzo dobra znajomość "
+                              uid=7_12 InlineTextBox
+                            uid=7_140 strong
+                              uid=1_52 StaticText ".NET"
+                                uid=7_12 InlineTextBox
+                            uid=1_53 StaticText " (praktyczne doświadczenie z "
+                              uid=7_12 InlineTextBox
+                            uid=7_141 strong
+                              uid=1_54 StaticText ".NET Framework/.NET Core"
+                                uid=7_12 InlineTextBox
+                                uid=7_12 InlineTextBox
+                            uid=1_55 StaticText ")."
+                              uid=7_12 InlineTextBox
+                          uid=7_142 listitem level="1"
+                            uid=7_143 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_56 StaticText "Bardzo dobra znajomość "
+                              uid=7_12 InlineTextBox
+                            uid=7_144 strong
+                              uid=1_57 StaticText "WinUI "
+                                uid=7_12 InlineTextBox
+                            uid=1_58 StaticText "lub "
+                              uid=7_12 InlineTextBox
+                            uid=7_145 strong
+                              uid=1_59 StaticText "WPF "
+                                uid=7_12 InlineTextBox
+                            uid=1_60 StaticText "(doświadczenie w tworzeniu aplikacji desktopowych)."
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                          uid=7_146 listitem level="1"
+                            uid=7_147 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_61 StaticText "Znajomość "
+                              uid=7_12 InlineTextBox
+                            uid=7_148 strong
+                              uid=1_62 StaticText "SQL"
+                                uid=7_12 InlineTextBox
+                            uid=1_63 StaticText ": pisanie zapytań, optymalizacja, projektowanie baz danych."
+                              uid=7_12 InlineTextBox
+                          uid=7_149 listitem level="1"
+                            uid=7_150 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=7_151 strong
+                              uid=1_64 StaticText "Znajomość języka angielskiego na poziomie komunikatywnym (B2"
+                                uid=7_12 InlineTextBox
+                            uid=1_65 StaticText ")."
+                              uid=7_12 InlineTextBox
+                          uid=7_152 listitem level="1"
+                            uid=7_153 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_66 StaticText "Znajomość "
+                              uid=7_12 InlineTextBox
+                            uid=7_154 strong
+                              uid=1_67 StaticText "Cosmos DB"
+                                uid=7_12 InlineTextBox
+                            uid=1_68 StaticText ": doświadczenie w pracy z bazą "
+                              uid=7_12 InlineTextBox
+                            uid=7_155 strong
+                              uid=1_69 StaticText "NoSQL"
+                                uid=7_12 InlineTextBox
+                            uid=1_70 StaticText "."
+                              uid=7_12 InlineTextBox
+                          uid=7_156 listitem level="1"
+                            uid=7_157 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_71 StaticText "Znajomość i stosowanie zasad "
+                              uid=7_12 InlineTextBox
+                            uid=7_158 strong
+                              uid=1_72 StaticText "SOLID "
+                                uid=7_12 InlineTextBox
+                            uid=1_73 StaticText "oraz "
+                              uid=7_12 InlineTextBox
+                            uid=7_159 strong
+                              uid=1_74 StaticText "Clean Code"
+                                uid=7_12 InlineTextBox
+                            uid=1_75 StaticText "."
+                              uid=7_12 InlineTextBox
+                        uid=1_76 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=1_77 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=7_160 paragraph
+                          uid=7_161 strong
+                            uid=1_78 StaticText "✨ OFERUJEMY:"
+                              uid=7_12 InlineTextBox
+                        uid=1_79 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=7_162 list
+                          uid=7_163 listitem level="1"
+                            uid=7_164 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_80 StaticText "🤖 Nowoczesny proces rekrutacji z AI Rekruterem (AIR) – podczas aplikacji możesz odbyć rozmowę z wirtualnym rekruterem 24/7, bez czekania na telefon, z natychmiastowym feedbackiem i możliwością powtórzenia rozmowy (liczy się ostatnia wersja). "
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                            uid=7_165 strong
+                              uid=1_81 StaticText "Finalną decyzję zawsze podejmuje Rekruter Connectis."
+                                uid=7_12 InlineTextBox
+                          uid=7_166 listitem level="1"
+                            uid=7_167 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_82 StaticText "Możliwość uczestnictwa w spotkaniach integracyjnych oraz meetupach technologicznych, umożliwiających dzielenie się wiedzą i doświadczeniem."
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                          uid=7_168 listitem level="1"
+                            uid=7_169 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_83 StaticText "Wsparcie dedykowanej osoby kontaktowej z Connectis, dostępnej w celu pomocy w sprawach związanych z projektem."
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                          uid=7_170 listitem level="1"
+                            uid=7_171 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_84 StaticText "Pracę w zespole ekspertów, w środowisku sprzyjającym wymianie wiedzy."
+                              uid=7_12 InlineTextBox
+                          uid=7_172 listitem level="1"
+                            uid=7_173 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_85 StaticText "5000 PLN za polecenie znajomych do naszych projektów."
+                              uid=7_12 InlineTextBox
+                          uid=7_174 listitem level="1"
+                            uid=7_175 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_86 StaticText "Stabilną, długofalową współpracę w oparciu B2B."
+                              uid=7_12 InlineTextBox
+                          uid=7_176 listitem level="1"
+                            uid=7_177 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=7_178 strong
+                              uid=1_87 StaticText "Pracę 100% zdaną."
+                                uid=7_12 InlineTextBox
+                          uid=7_179 listitem level="1"
+                            uid=7_180 ListMarker "• "
+                              uid=7_12 ignored
+                            uid=1_88 StaticText "Proces zdalny."
+                              uid=7_12 InlineTextBox
+                        uid=1_89 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=1_90 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=7_181 paragraph
+                          uid=7_182 emphasis
+                            uid=1_91 StaticText "Dziękujemy za wszystkie zgłoszenia. Pragniemy poinformować że skontaktujemy się z wybranymi osobami."
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                        uid=1_92 LineBreak "
+"
+                          uid=7_12 InlineTextBox
+                        uid=7_183 paragraph
+                          uid=1_93 StaticText "12839/MP"
+                            uid=7_12 InlineTextBox
+                  uid=7_184 ignored
+                    uid=7_185 ignored
+                      uid=7_186 paragraph
+                        uid=1_94 StaticText "Nowy standard rozmów rekrutacyjnych"
+                          uid=7_12 InlineTextBox
+                      uid=7_187 paragraph
+                        uid=1_95 StaticText "Poznaj, jak wygląda nasz proces - szybki, przejrzysty i bez stresu."
+                          uid=7_12 InlineTextBox
+                      uid=7_188 ignored
+                        uid=7_189 generic
+                          uid=7_190 Video "Air session video"
+                            uid=7_191 ignored
+                              uid=7_192 ignored
+                              uid=7_193 ignored
+                                uid=7_194 ignored
+                              uid=7_195 ignored
+                                uid=7_196 ignored
+                                  uid=7_197 ignored
+                                  uid=7_198 ignored
+                                    uid=7_199 ignored
+                                      uid=7_200 ignored
+                                    uid=7_201 ignored
+                                    uid=7_202 ignored
+                                      uid=7_203 ignored
+                                      uid=7_204 ignored
+                                      uid=7_205 ignored
+                                    uid=7_206 ignored
+                                      uid=7_207 ignored
+                                    uid=7_208 ignored
+                                      uid=7_209 ignored
+                                  uid=7_210 ignored
+                              uid=7_211 ignored
+                              uid=7_212 ignored
+                              uid=7_213 ignored
+                              uid=7_214 ignored
+                              uid=7_215 ignored
+                                uid=7_216 ignored
+                                uid=7_217 ignored
+                                uid=7_218 ignored
+                                uid=7_219 ignored
+                                uid=7_220 ignored
+                                uid=7_221 ignored
+                                uid=7_222 ignored
+                                uid=7_223 ignored
+                                uid=7_224 ignored
+                                uid=7_225 ignored
+                          uid=1_96 button
+                            uid=7_226 ignored
+                              uid=7_227 image
+                        uid=7_228 generic
+                          uid=7_229 Video "Air session video"
+                            uid=7_230 ignored
+                              uid=7_231 ignored
+                              uid=7_232 ignored
+                                uid=7_233 ignored
+                              uid=7_234 ignored
+                                uid=7_235 ignored
+                                  uid=7_236 ignored
+                                  uid=7_237 ignored
+                                    uid=7_238 ignored
+                                      uid=7_239 ignored
+                                    uid=7_240 ignored
+                                    uid=7_241 ignored
+                                      uid=7_242 ignored
+                                      uid=7_243 ignored
+                                      uid=7_244 ignored
+                                    uid=7_245 ignored
+                                      uid=7_246 ignored
+                                    uid=7_247 ignored
+                                      uid=7_248 ignored
+                                  uid=7_249 ignored
+                              uid=7_250 ignored
+                              uid=7_251 ignored
+                              uid=7_252 ignored
+                              uid=7_253 ignored
+                              uid=7_254 ignored
+                                uid=7_255 ignored
+                                uid=7_256 ignored
+                                uid=7_257 ignored
+                                uid=7_258 ignored
+                                uid=7_259 ignored
+                                uid=7_260 ignored
+                                uid=7_261 ignored
+                                uid=7_262 ignored
+                                uid=7_263 ignored
+                                uid=7_264 ignored
+                          uid=1_97 button
+                            uid=7_265 ignored
+                              uid=7_266 image
+                uid=7_267 ignored
+                  uid=7_268 generic
+                    uid=7_269 ignored
+                      uid=1_98 heading "Aplikuj na ofertę" level="2"
+                        uid=7_270 StaticText "Aplikuj na ofertę"
+                          uid=7_12 InlineTextBox
+                    uid=7_271 LabelText "email"
+                      uid=7_272 ignored
+                        uid=7_273 ignored
+                          uid=1_99 StaticText "Twój e-mail"
+                            uid=7_12 InlineTextBox
+                      uid=7_274 generic
+                        uid=1_100 textbox "email" value="arshia.hemati@gmail.com"
+                          uid=7_275 generic
+                            uid=7_276 StaticText "arshia.hemati@gmail.com"
+                              uid=7_12 InlineTextBox
+                        uid=7_277 generic
+                    uid=7_278 LabelText "name"
+                      uid=7_279 ignored
+                        uid=7_280 ignored
+                          uid=1_101 StaticText "Imię i nazwisko"
+                            uid=7_12 InlineTextBox
+                      uid=7_281 generic
+                        uid=1_102 textbox "name" value="Arshia Hemati"
+                          uid=7_282 generic
+                            uid=7_283 StaticText "Arshia Hemati"
+                              uid=7_12 InlineTextBox
+                        uid=7_284 generic
+                    uid=7_285 ignored
+                      uid=7_286 ignored
+                        uid=7_287 ignored
+                          uid=1_103 StaticText "Dodaj swoje CV"
+                            uid=7_12 InlineTextBox
+                      uid=7_288 ignored
+                      uid=7_289 paragraph
+                        uid=1_104 StaticText "Dozwolone formaty: PDF, DOCX. Maksymalny rozmiar 5 MB"
+                          uid=7_12 InlineTextBox
+                      uid=7_290 paragraph
+                        uid=6_0 StaticText "Dodanie pliku jest wymagane"
+                          uid=7_12 InlineTextBox
+                    uid=1_105 button "Dalej" focusable focused
+                      uid=7_291 StaticText "Dalej"
+                        uid=7_12 InlineTextBox
+                    uid=7_292 ignored
+                      uid=7_293 ignored
+                        uid=7_294 paragraph
+                          uid=1_106 StaticText "Klikając przycisk "Dalej” akceptujesz nasz "
+                            uid=7_12 InlineTextBox
+                          uid=1_107 link "Regulamin" url="https://connectis-legal.s3.eu-central-1.amazonaws.com/Connectis_Hub_Regulamin_od_2025_09_02.pdf"
+                            uid=1_108 StaticText "Regulamin"
+                              uid=7_12 InlineTextBox
+                          uid=1_109 StaticText " "
+                            uid=7_12 InlineTextBox
+                          uid=1_110 StaticText "i"
+                            uid=7_12 InlineTextBox
+                          uid=1_111 StaticText " "
+                            uid=7_12 InlineTextBox
+                          uid=1_112 link "Politykę Prywatności" url="https://connectis-legal.s3.eu-central-1.amazonaws.com/Connectis_Hub_Polityka_Prywatnosci_od_2025_09_02.pdf"
+                            uid=1_113 StaticText "Politykę Prywatności"
+                              uid=7_12 InlineTextBox
+                              uid=7_12 InlineTextBox
+                          uid=1_114 StaticText ". "
+                            uid=7_12 InlineTextBox
+                          uid=1_115 StaticText "Zakładając bezpłatne konto w Serwisie hub.connectis.pl, zawierasz z Connectis sp. z o. o. umowę o świadczenie usług Konta i związanych z nim funkcjonalności na zasadach określonych w Regulaminie."
+                            uid=7_12 InlineTextBox
+                            uid=7_12 InlineTextBox
+                            uid=7_12 InlineTextBox
+                            uid=7_12 InlineTextBox
+                      uid=7_295 paragraph
+                        uid=1_116 StaticText "Administratorem Twoich danych osobowych jest: Connectis sp. z o. o. z siedzibą w Warszawie, ul. Chmielna 71, 00-801 Warszawa; adres e-mail: "
+                          uid=7_12 InlineTextBox
+                          uid=7_12 InlineTextBox
+                          uid=7_12 InlineTextBox
+                        uid=1_117 link "office.pl@connectis.pl" url="mailto:office.pl@connectis.pl"
+                          uid=1_118 StaticText "office.pl@connectis.pl"
+                            uid=7_12 InlineTextBox
+                        uid=1_119 StaticText ". "
+                          uid=7_12 InlineTextBox
+                        uid=1_120 StaticText "W razie pytań skontaktuj się z nami: "
+                          uid=7_12 InlineTextBox
+                        uid=1_121 link "office.pl@connectis.pl" url="mailto:office.pl@connectis.pl"
+                          uid=1_122 StaticText "office.pl@connectis.pl"
+                            uid=7_12 InlineTextBox
+                        uid=1_123 StaticText " "
+                          uid=7_12 InlineTextBox
+                        uid=1_124 StaticText "lub naszym Inspektorem Ochrony Danych: "
+                          uid=7_12 InlineTextBox
+                        uid=1_125 link "iod@connectis.pl" url="mailto:iod@connectis.pl"
+                          uid=1_126 StaticText "iod@connectis.pl"
+                            uid=7_12 InlineTextBox
+                        uid=1_127 StaticText "."
+                          uid=7_12 InlineTextBox
+                  uid=7_296 ignored
+                    uid=7_297 ignored
+                      uid=7_298 paragraph
+                        uid=1_128 StaticText "Masz pytania?"
+                          uid=7_12 InlineTextBox
+                      uid=7_299 paragraph
+                        uid=1_129 StaticText "Nasz konsultant Ci pomoże"
+                          uid=7_12 InlineTextBox
+                    uid=7_300 ignored
+                      uid=7_301 listitem level="1"
+                        uid=7_302 image
+                        uid=1_130 StaticText "Natalia Szewczyk"
+                          uid=7_12 InlineTextBox
+                      uid=7_303 listitem level="1"
+                        uid=7_304 image
+                        uid=1_131 link "natalia.szewczyk@connectis.pl" url="mailto:natalia.szewczyk@connectis.pl"
+                          uid=1_132 StaticText "natalia.szewczyk@connectis.pl"
+                            uid=7_12 InlineTextBox
+      uid=7_305 generic
+      uid=7_306 ignored
+        uid=7_307 ignored
+          uid=7_308 ignored
+      uid=7_309 generic
+        uid=7_310 ignored

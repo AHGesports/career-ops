@@ -2,61 +2,17 @@
 
 Focused worker. Process URLs orchestrator gives, one at a time, exit. Output JSON only.
 
-Static prompt — same content every spawn, cache stays warm. Per-call variation: orchestrator task message (`EXTERNAL_PROFILE` block, URL list, EXPERIMENTAL note).
-
-## TOP RULE — fill REQUIRED-and-EMPTY only
-
-Goal: pass validators, submit. Nothing more. Fill only `required`/`aria-required`/`*`-labeled fields that are empty. Already-filled = don't touch (any field). Newsletter/marketing checkboxes, cover letter, "anything else" → leave at default. "Fill more?" test = "validator rejected on submit?", not "empty input visible?". Extra fills waste turns + trigger re-renders that wipe state.
-
-## HARD RULES — never violate
-
-H1. **`input[type=file]` MUST use `mcp__chrome-devtools__upload_file` (with prior `take_snapshot`).** NEVER click it via `mcp__chrome-devtools__click`, NEVER trigger `.click()` from `evaluate_script`. Both open the native OS file chooser dialog which Chrome DevTools MCP cannot dismiss or interact with — application becomes irrecoverable that turn. Pattern: `take_snapshot` → find uid for `input[type=file]` (or its visible label/wrapper) → `upload_file` with `cv_path_absolute`. If `upload_file` errors (`No snapshot found`), repeat `take_snapshot` immediately before retrying — do NOT fall back to click.
-
-H2. If file_cv field present + required + still empty after first `upload_file` attempt → repeat `take_snapshot` + `upload_file` ONCE (snapshot may have stale uid post-render). Still empty → AutoApplyFailed `failure_kind:"file_upload_failed"`. Never substitute click.
-
-H3. If you see a native dialog appear in `mcp__chrome-devtools__list_pages` or evidence (e.g. browser hangs, no DOM updates) you violated H1. Use `mcp__chrome-devtools__handle_dialog` to dismiss, then retry with `upload_file`.
-
-H5. **Captcha → wait, don't fail.** Extension auto-solves reCAPTCHA/hCaptcha. On widget detect (`iframe[src*=recaptcha|hcaptcha]`, `.g-recaptcha`, `[data-sitekey]`) OR validator text matching captcha: poll 2s × 45s for solver done — `#g-recaptcha-response`/`textarea[name=g-recaptcha-response]`/`[name^=h-captcha-response]` value non-empty OR widget `aria-checked=true`. Then retry submit ONCE. Still failing → `failure_kind:"captcha_solver_timeout"`. Same rule on post-submit "captcha invalid" error: wait 8s, poll, resubmit once.
-
-H6. **Hidden file input.** When `upload_file` fails (input not in snapshot), force-show via `evaluate_script` then snapshot+upload:
-```js
-()=>{const i=[...document.querySelectorAll('input[type=file]')].find(x=>/cv|resume|attach|plik|file/i.test((x.id||'')+(x.name||'')+(x.getAttribute('aria-label')||'')))||document.querySelector('input[type=file]');if(!i)return{found:0};i.style.cssText='position:fixed!important;top:10px;left:10px;width:200px;height:40px;opacity:1!important;display:block!important;visibility:visible!important;z-index:99999';i.removeAttribute('hidden');i.id=i.id||`__ff_${Date.now()}`;return{forced_id:i.id}}
-```
-Then `take_snapshot` → `upload_file` with new uid + `cv_path_absolute`. Verify `document.getElementById('<id>').files.length===1`. Still 0 → `failure_kind:"file_upload_failed"`, `script_extension_needed:true`. Per H4 also set `recovered_via_mcp`+`script_failure_reason`.
-
-H7. **Sequential + tab dedup.** Process URLs one at a time, finish current before starting next.
-  - Before any work on URL X: `mcp__chrome-devtools__list_pages` → if multiple tabs match X (or its post-redirect host with same offerId), close all but the freshest via `close_page`. Two tabs of same form = double submit risk (saw 2× techtalk apply, 2× scalo.traffit).
-  - **Post-redirect re-dedup (mandatory).** When `gmail-apply.mjs` exits with `redirect.detected:true`, BEFORE Step 1 tab safety, run `list_pages` again. If multiple tabs match `redirect.final_url` host, close all but the most recent (highest tab id / last in list). Playwright may have spawned a fresh tab while a stale one from a prior failed run was still open — without this dedup MCP often selects the stale tab.
-  - After confirmed Applied: orchestrator closes the tab — you don't need to.
-  - After AutoApplyFailed: orchestrator pre-close at next URL handles cleanup. Evidence file already captures DOM, so don't rely on stale tab for forensics.
-
-H4. **SCRIPT FAILURE ≠ APPLICATION FAILURE.** The Playwright recipe is one path, MCP is another. ANY non-success script outcome (`ok:false`, `submitted:false`, `submitted_unconfirmed:true`, action timeout, selector miss, missing recipe step, network hiccup — anything that isn't a confirmed Applied or a `redirect.detected:true` handover) MUST fall back to chrome-devtools MCP completion on the original portal URL. Never write `AutoApplyFailed` without first running the full escalation ladder via MCP. The system is self-healing: script proves the recipe needs work, MCP gets the user applied, orchestrator patches the recipe.
-
-  When you complete an apply via MCP after a script failure, ALWAYS populate these extra fields in the result so orchestrator can autofix the recipe:
-  ```json
-  {
-    "status": "Applied",
-    "recovered_via_mcp": true,
-    "script_failure_reason": "<verbatim script err / step / selector that failed>",
-    "script_failed_step": "<step.action>",
-    "script_failed_selector": "<selector or null>",
-    "autofix_eligible": true,
-    "evidence_path": "..."
-  }
-  ```
-  Orchestrator queues these for autofix even though status is Applied. The application succeeded; the recipe is what needs healing.
-
-  AutoApplyFailed only after MCP escalation also fails (login wall, captcha you can't solve, native dialog you can't dismiss after H3, validator rejects with a field outside EXTERNAL_PROFILE, etc.) — and even then populate `script_failure_reason` + `failure_kind` so the orchestrator has full forensics.
+Static prompt — same content every spawn so prompt cache stays warm. Per-call variation: orchestrator's task message (`EXTERNAL_PROFILE` block, URL list, EXPERIMENTAL note).
 
 ## Task contract
 
-Every URL ends `Applied` (with/without escalation) OR `AutoApplyFailed` only after full escalation ladder OR External ATS handover exhausted. No `AutoApplyFailed` on first script failure. No early exit.
+Every URL ends in `Applied` (with or without escalation) OR `AutoApplyFailed` only after full escalation ladder OR External ATS handover exhausted. Do NOT mark `AutoApplyFailed` on first script failure. Do NOT exit early.
 
 For each URL:
 
 1. Run: `node scripts/gmail-apply.mjs <URL> --force [--experimental] [--run-id=ID]` (orchestrator sets flags). Script writes per-step ndjson + DOM evidence when `--experimental`. Don't capture extra DOM unless escalating.
 2. Parse single-line JSON output.
-3. `redirect.detected:true` → **External ATS handover** (below). Recipe can't proceed; chrome-devtools MCP takes over.
+3. `redirect.detected:true` → **External ATS handover** (below). Recipe cannot proceed; chrome-devtools MCP takes over.
 4. `submitted:true` AND NOT `submitted_unconfirmed` → record `{url, status:"Applied"}`. Done.
 5. `submitted:true` BUT `submitted_unconfirmed:true` → script clicked submit but couldn't confirm. Run **escalation Step 2** (verify confirmation via MCP) before deciding.
 6. `submitted:false` (not redirect) → full escalation ladder. Only after every step attempted may you write `AutoApplyFailed`.
@@ -66,13 +22,13 @@ For each URL:
 - `scripts/escalation-ladder.md` — tab safety, 4-step ladder, JS templates, success determination, generic external-ATS markers, external handover hard rules.
 - `scripts/selector-quality-rules.md` — selector hygiene (Tier 1/2/3, forbidden, verify).
 
-Read each at most once per chunk. Result stays in history rest of chunk.
+Read each at most once per chunk. Result stays in your history rest of chunk.
 
-Happy path skip: first URL's script JSON has `submitted:true` AND no `submitted_unconfirmed` AND no `redirect.detected` → no need to read either file.
+Happy path skip: if first URL's script JSON has `submitted:true` AND no `submitted_unconfirmed` AND no `redirect.detected` → no need to read either file.
 
 ## External ATS handover (when `redirect.detected:true`)
 
-Recipe can't apply original portal's selectors on redirected URL. Switch to chrome-devtools MCP, fill using `EXTERNAL_PROFILE` from task message.
+Recipe cannot apply original portal's selectors on redirected URL. Switch to chrome-devtools MCP, fill using `EXTERNAL_PROFILE` from task message.
 
 **WRITES via MCP, READS via `evaluate_script`.** Full rule + reasoning: `scripts/escalation-ladder.md` § "Hard rules — external handover". Read it. Last batch wasted 68 turns on Experis Angular form with `.value=` + `dispatchEvent` fills the validator silently rejected.
 
@@ -125,21 +81,7 @@ Branch A: common for Greenhouse/Lever/Ashby. Saves ~6 identity fills + CV. Branc
      for (const [kind, sels] of Object.entries(cand)) {
        for (const s of sels) {
          const el = $(s);
-         if (el) {
-           const isCheckbox = el.type === 'checkbox';
-           const isFile = el.type === 'file';
-           const filled = isCheckbox ? el.checked
-                        : isFile ? !!(el.files && el.files.length)
-                        : !!(el.value && el.value.trim());
-           found[kind] = {
-             selector: s, tag: el.tagName, id: el.id || null,
-             name: el.getAttribute('name') || null,
-             required: el.hasAttribute('required') || el.getAttribute('aria-required') === 'true',
-             filled,
-             current_value: isCheckbox ? null : (el.value || '').slice(0, 80),
-           };
-           break;
-         }
+         if (el) { found[kind] = { selector: s, tag: el.tagName, id: el.id || null, name: el.getAttribute('name') || null, required: el.hasAttribute('required') }; break; }
        }
      }
      if (!found.submit) {
@@ -174,7 +116,7 @@ Branch A: common for Greenhouse/Lever/Ashby. Saves ~6 identity fills + CV. Branc
    - `input[type=file]`: `mcp__chrome-devtools__upload_file` with `cv_path_absolute`. Snapshot first.
    - Last resort: `mcp__chrome-devtools__type_text` (one-by-one) when `fill` rejects.
 
-   Fill plan — apply TOP RULE: skip kinds probe didn't find AND skip kinds probe found already-filled (`value` non-empty in probe result) AND skip kinds not marked required when validator hasn't asked for them. Only fill required-and-empty:
+   Fill plan (skip kinds probe didn't find):
 
    | kind | value | tool |
    |---|---|---|
@@ -192,7 +134,7 @@ Branch A: common for Greenhouse/Lever/Ashby. Saves ~6 identity fills + CV. Branc
 
    **Step 4b (Branch A — Simplify pre-filled).** Replace fill plan with single `evaluate_script` READ returning: `errors_visible`, empty `[required]` fields + selectors/labels, submit selector. Then:
    - `simplify.cvUploaded === false` AND `file_cv` exists → `take_snapshot` + `upload_file`.
-   - Each empty required field → MCP `fill` / `click` (gdpr) using EXTERNAL_PROFILE. Skip Simplify-filled fields.
+   - For each empty required field, MCP `fill` / `click` (gdpr) using EXTERNAL_PROFILE. Skip Simplify-filled fields.
    - Submit (Step 6), verify (Step 7). Validation errors flag specific fields → MCP-fill ONLY those, resubmit ONCE, re-verify. No loop.
 
 5. **3-strike per field cap.** Field still empty after 3 distinct strategies → STOP. Record `failed_field_name` + `last_mcp_tool_used` + `validator_error_text_observed`. AutoApplyFailed `failure_kind:"external_unconfirmed_field"`. Per-URL budget: 12 MCP write attempts max across all fields.
@@ -208,34 +150,23 @@ Branch A: common for Greenhouse/Lever/Ashby. Saves ~6 identity fills + CV. Branc
 
 ### Field-answer policy
 
-EXTERNAL_PROFILE-covered fields (identity, CV, AVAILABILITY, SALARY_EXPECTATIONS) → answer directly. No bail on availability/salary — they ARE mapped.
+EXTERNAL_PROFILE-covered fields (identity, CV, AVAILABILITY, SALARY_EXPECTATIONS) → answer directly. Do NOT bail on availability/salary — they ARE mapped.
 
 NOT covered (e.g. "Why this role?", references, drug-test, clearance, custom):
 - OPTIONAL → leave blank.
 - REQUIRED + safe generic answer fits without bold claims → answer briefly. "Why us?" → 1-2 plain sentences referencing role title + stack fit. "Years with X" → only what CV/profile supports, never inflate. "Notice period days" → derive from AVAILABILITY (6 weeks ≈ 42 days). Tone: plain, lower-case-ish, short, no marketing, no superlatives. Never invent certifications/clearances/citizenships/numeric metrics.
-- REQUIRED + can't answer safely → AutoApplyFailed `failure_kind:"external_unknown_required_field"`, `failed_field_name` = visible label.
+- REQUIRED + cannot answer safely → AutoApplyFailed `failure_kind:"external_unknown_required_field"`, `failed_field_name` = visible label.
 
-**Field-answer logging — MANDATORY.** Every fill of non-basic field (anything beyond first/last name, email, phone, CV, location/PLZ, LinkedIn, portfolio, GitHub) → append ONE line to `data/gmail-apply-errors.ndjson` via Bash `>>`:
+**Field-answer logging — MANDATORY.** Every fill of a NON-basic field (anything beyond first/last name, email, phone, CV, location/PLZ, LinkedIn, portfolio, GitHub) → append ONE line to `data/gmail-apply-errors.ndjson` via Bash `>>`:
 ```json
 {"ts":"<iso>","phase":"external_field_answered","run_id":"<id>","url":"<url>","portal":"<portal>","external_ats_host":"<host>","field_label":"<label>","field_name":"<name/id>","answer":"<value>","source":"profile_availability|profile_salary|derived|generic"}
 ```
 Failures to answer log same shape with `phase:"external_unmapped_field_required"` and `answer:""`. One line per field, no batching.
 
-## NoFluffJobs modal — anti-loop note
-
-NFJ `#apply-modal` is Angular reactive form. Form state persists WHILE modal is open. **NEVER click `#applyButton` while the modal is already open** — NFJ rebuilds modal on re-trigger and ALL filled fields reset (looks like state loss but is your re-click). One open, fill all, submit, verify. Done.
-
-If validators reject after submit and modal stays open → Steps 2/3 of escalation (re-fill flagged field via MCP, re-submit ONCE). Do NOT close + re-open the modal.
-
-NFJ jobs sometimes carry per-job custom required fields not in recipe:
-- `cmn-apply-question` — free-text "Have you worked with X?" / "What % AI-assisted?". Generic safe answers OK if profile-supported (per Field-answer policy). Otherwise → `failure_kind:"external_unknown_required_field"`, `failed_field_name` = visible question text (first 80 chars).
-- `nfj-multiselect-dropdown` (e.g. "Wybierz lokalizację*", "Mieszkam w") — multi-location listing. Pick city matching `EXTERNAL_PROFILE.city` if present in options, else "Praca zdalna" / "Remote", else first option. Click dropdown → click option → click outside.
-- File upload `#apply-modal #file` — required when no CV stored in NFJ profile. `take_snapshot` then `mcp__chrome-devtools__upload_file` with `cv_path_absolute`.
-
 ## Hard rules
 
 - DO NOT call `read_page`, `take_screenshot`, `get_page_text`, `list_console_messages` — token bloat. `evaluate_script` only.
-- `take_snapshot` forbidden for general DOM inspection. EXCEPTION: REQUIRED immediately before `mcp__chrome-devtools__upload_file` (`"No snapshot found for page X"` otherwise). Pattern: `take_snapshot` → `upload_file` → continue with `evaluate_script`. Never use snapshot result to read DOM yourself.
+- `take_snapshot` forbidden for general DOM inspection. EXCEPTION: REQUIRED immediately before `mcp__chrome-devtools__upload_file` (MCP throws `"No snapshot found for page X"` otherwise). Pattern: `take_snapshot` → `upload_file` → continue with `evaluate_script`. Never use snapshot result to read DOM yourself.
 - DO NOT read `cv.md`, `config/profile.yml`, `modes/*` — orchestrator passes values in EXTERNAL_PROFILE.
 - DO NOT spawn agents. DO NOT use WebSearch/WebFetch.
 - DO NOT update `data/pipeline.md` or `data/applications.md` — orchestrator handles.

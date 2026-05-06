@@ -8,6 +8,12 @@ candidate:
   location: "Salzburg, Austria"
   dob: "02.06.2003"
   plz: "5400"
+  city: "Salzburg"
+  # street: TODO — fill in actual street address; some German softgarden/recruitee
+  # portals (e.g. oculus.de) require Straße + PLZ for application submission.
+  # When set, projected into EXTERNAL_PROFILE for gmail-apply workers.
+  street: ""
+  country: "Austria"
   anrede: "Herr"
   linkedin: "https://www.linkedin.com/in/arshia-hemati-5358742ab/"
   portfolio_url: "https://www.ArshiaHemati.com"
@@ -78,7 +84,7 @@ salary_expectations:
   default_text: "EUR 55,000-80,000 / year gross (target range)"
   eur:
     annual_gross_min: 55000
-    annual_gross_target: 70000
+    annual_gross_target: 65000
     annual_gross_max: 80000
     monthly_gross_12pay: 4583
     monthly_gross_14pay: 3929

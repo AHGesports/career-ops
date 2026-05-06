@@ -62,7 +62,7 @@ Read script JSON. Decision:
 | `ok:true, submitted:false` (no `--force`) | Form filled, awaiting user. Show verification + submit selector. Say `say "send it" to submit`. Do NOT update `data/pipeline.md`. |
 | `ok:true, submitted:true` AND `success_selector_matched` | If `--experimental-succ` → read `evidence_path`, verify dom.href + dom.success_match + dom.modal_open false. Invalid → AutoApplyFailed. Valid → mark Applied; update `data/pipeline.md`. |
 
-Single-mode autofix: after real Applied via escalation AND `--autofix` set: probe alt selectors via MCP (Tier-1 per `scripts/selector-quality-rules.md`), patch yaml minimally, validate parse, log `phase:"yaml_autofix"`. Show diff. NEVER autofix on cross-domain or `external_apply:true`.
+Single-mode autofix: after real Applied via escalation AND `--autofix` set: probe alternative selectors via MCP (Tier-1 per `scripts/selector-quality-rules.md`), patch yaml minimally, validate parse, log `phase:"yaml_autofix"`. Show diff. NEVER autofix on cross-domain or `external_apply:true`.
 
 Output to user (single):
 ```
@@ -137,7 +137,7 @@ yaml autofixes: 2. retry pass: 5/5 Applied.
 log: data/batch-runs/<run_id>/ledger.ndjson
 ```
 
-Aggregate `chunk_signals` across run. 2-5 bullets under "Improvements (suggested):" — concrete system changes. Focus: recurring `failure_kind` × portal, chunk-size signals, `script_extension_needed` patterns, worker output bloat (External ATS macros not followed). Skip section if nothing actionable.
+Aggregate `chunk_signals` across run. 2-5 bullets under "Improvements (suggested):" — concrete system changes. Focus: recipe issues recurring across chunks (same `failure_kind` × portal), chunk-size signals, `script_extension_needed` patterns, worker output bloat (External ATS macros not followed). Skip section if nothing actionable.
 
 `--verbose` adds live `[worker]` lines to stderr. Zero LLM cost.
 
@@ -155,9 +155,9 @@ Single mode: parent runs ladder. Batch mode: worker runs ladder; parent runs ext
 
 ## Autofix rules
 
-**Yaml-fixable (DO autofix):** missing required step, wrong selector timed out + alt worked, missing `label_aliases`, missing/wrong `success_selector` candidate, wrong `submit_selector` (only if prior runs also failed — check `data/gmail-apply-errors.ndjson`), missing `data:` key.
+**Yaml-fixable (DO autofix):** missing required step, wrong selector that timed out + alt worked, missing `label_aliases`, missing/wrong `success_selector` candidate, wrong `submit_selector` (only if prior runs also failed — check `data/gmail-apply-errors.ndjson`), missing `data:` key.
 
-**NOT yaml-fixable (skip + log `autofix_skipped`):** external_apply:true, cross-domain redirect, per-job server validation, login/auth/captcha/rate-limit/transient, file-upload with no upload action (log `script_extension_needed` instead).
+**NOT yaml-fixable (skip + log `autofix_skipped`):** external_apply:true, cross-domain redirect, per-job server validation, login/auth/captcha/rate-limit/transient, file-upload requirement when no upload action exists (log `script_extension_needed` instead).
 
 Selector quality: `scripts/selector-quality-rules.md`. Tier 1 always preferred.
 
@@ -172,7 +172,7 @@ Patch flow: read yaml → minimal diff → show user → validate parse (`node -
 **Hard rules:**
 - DO NOT autofix when escalation FAILED. Only on real Applied.
 - DO NOT autofix on cross-domain or `external_apply:true`.
-- DO NOT create new portal entries via autofix. First-party → `/explore-sender`. External ATS via redirect → no recipe (one-time apps).
+- DO NOT create new portal entries via autofix. First-party → `/explore-sender`. External ATS reached via redirect → no recipe at all (one-time apps).
 - DO NOT touch other portals' entries.
 - DO NOT use external-domain selectors in original portal's recipe.
 - DO NOT modify `match` field.

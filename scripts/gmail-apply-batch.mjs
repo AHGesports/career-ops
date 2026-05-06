@@ -29,7 +29,7 @@ import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, rea
 import { spawn, spawnSync } from 'node:child_process';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { randomUUID } from 'node:crypto';
+import { randomUUID, createHash } from 'node:crypto';
 import { connect as netConnect } from 'node:net';
 import yaml from 'js-yaml';
 
@@ -223,6 +223,9 @@ function loadProfileForWorker() {
     phone: c.phone || '',
     location: c.location || '',
     plz: c.plz || '',
+    city: c.city || '',
+    street: c.street || '',
+    country: c.country || '',
     linkedin: c.linkedin || '',
     portfolio_url: c.portfolio_url || '',
     github: c.github || '',
@@ -231,6 +234,26 @@ function loadProfileForWorker() {
     availability: av,
     salary_expectations: sx,
   };
+}
+
+// -- worker prompt versioning ------------------------------------------------
+
+// Build a per-spawn system-prompt file that begins with a `# portals_yaml_version:`
+// header line containing the sha1 of config/gmail-apply-portals.yml. Anthropic's
+// prompt-cache keys on prefix bytes, so when yaml changes (e.g. mid-batch autofix),
+// the hash changes, the prefix differs, and the worker reloads with fresh yaml
+// instead of serving stale cached context. Without this, mid-batch yaml patches
+// can land but workers continue using the cached pre-patch recipe for ~1h.
+function buildVersionedPromptFile(runId) {
+  const yamlBytes = readFileSync(PORTALS_PATH);
+  const yamlHash = createHash('sha1').update(yamlBytes).digest('hex').slice(0, 12);
+  const original = readFileSync(WORKER_PROMPT_PATH, 'utf8');
+  const runDir = resolve(REPO_ROOT, 'data/batch-runs', runId);
+  if (!existsSync(runDir)) mkdirSync(runDir, { recursive: true });
+  const dest = resolve(runDir, 'worker-prompt.md');
+  const header = `<!-- portals_yaml_version: ${yamlHash} | run_id: ${runId} -->\n# portals_yaml_version: ${yamlHash}\n\n`;
+  writeFileSync(dest, header + original);
+  return { path: dest, hash: yamlHash };
 }
 
 // -- worker spawn ------------------------------------------------------------
@@ -254,6 +277,10 @@ async function spawnWorker({ urls, force, experimental, experimentalSucc, runId,
 - email: ${profile.email}
 - phone: ${profile.phone}
 - location: ${profile.location}
+- street: ${profile.street}
+- plz / postal_code: ${profile.plz}
+- city: ${profile.city}
+- country: ${profile.country}
 - linkedin: ${profile.linkedin}
 - portfolio_url: ${profile.portfolio_url}
 - github: ${profile.github}
@@ -297,12 +324,15 @@ letter custom prompt, drug-test consent, security-clearance code).`;
 
   // No --max-turns / no worker timeout; let the worker take as long as it
   // needs. Caps reintroduced after we observe real-run behavior.
+  // Build versioned worker prompt — yaml-hash header invalidates Anthropic's
+  // prompt cache when portals.yml changes mid-batch (autofix flow).
+  const versionedPrompt = buildVersionedPromptFile(runId);
   const args = [
     '-p',
     '--model', 'haiku',
     '--allowedTools', 'Bash,Read,Write,Edit,Grep,Glob,mcp__chrome-devtools__*',
     '--disallowedTools', 'Agent,WebSearch,WebFetch',
-    '--system-prompt-file', WORKER_PROMPT_PATH,
+    '--system-prompt-file', versionedPrompt.path,
     '--strict-mcp-config',
     '--mcp-config', MCP_CONFIG,
     '--output-format', 'stream-json',
@@ -594,6 +624,115 @@ function findFinalUrlFromRedirectEvidence(runDir, slug) {
     const j = JSON.parse(readFileSync(file, 'utf8'));
     return j?.redirect?.final_url || null;
   } catch { return null; }
+}
+
+// Force external_apply=true on results based on the script's own telemetry
+// (steps.ndjson, redirect/external evidence files, final-host comparison)
+// rather than trusting the worker's self-reported external_apply field.
+// Worker is haiku — it occasionally drops the flag even after a real
+// cross-host redirect. The script's redirect detection is host-agnostic
+// (no whitelist) so this stays generic across new external ATS hosts.
+function enforceExternalApplyFromTelemetry(results, runDir) {
+  if (!Array.isArray(results) || results.length === 0) return;
+  const stepsPath = resolve(runDir, 'steps.ndjson');
+  let stepEvents = [];
+  if (existsSync(stepsPath)) {
+    try {
+      stepEvents = readFileSync(stepsPath, 'utf8').trim().split('\n')
+        .map(l => { try { return JSON.parse(l); } catch { return null; } })
+        .filter(Boolean);
+    } catch { /* */ }
+  }
+  const evDir = resolve(runDir, 'evidence');
+  const evFiles = existsSync(evDir) ? readdirSync(evDir) : [];
+
+  for (const res of results) {
+    if (res.external_apply === true) continue;
+    if (!res.url) continue;
+    let originalHost;
+    try { originalHost = new URL(res.url).host; } catch { continue; }
+    const slug = urlSlug(res.url);
+
+    const sawRedirectEvent = stepEvents.some(e =>
+      e && e.url === res.url && (e.phase === 'redirect_to_external' || e.phase === 'redirect_midflow')
+    );
+
+    const hasRedirectEvidence = evFiles.some(f =>
+      (f.startsWith(`${slug}-redirect`) || f.startsWith(`${slug}-external`)) &&
+      f.endsWith('.json')
+    );
+
+    let finalHostDiff = false;
+    let finalHost = null;
+    if (res.evidence_path && existsSync(res.evidence_path)) {
+      try {
+        const ev = JSON.parse(readFileSync(res.evidence_path, 'utf8'));
+        const finalUrl = ev?.dom?.href || ev?.redirect_final_url || ev?.verification?.final_url || null;
+        if (finalUrl) {
+          finalHost = new URL(finalUrl).host;
+          if (finalHost !== originalHost) finalHostDiff = true;
+        }
+      } catch { /* */ }
+    }
+
+    if (sawRedirectEvent || hasRedirectEvidence || finalHostDiff) {
+      res.external_apply = true;
+      res._external_apply_inferred_from = sawRedirectEvent ? 'step_event'
+        : hasRedirectEvidence ? 'redirect_evidence_file'
+        : `final_host_diff(${finalHost || '?'} vs ${originalHost})`;
+      if (!res.external_ats_host && finalHostDiff && finalHost) {
+        res.external_ats_host = finalHost;
+      }
+    }
+  }
+}
+
+// Close Chrome tabs whose URL matches a verified-Applied result. Drops the
+// double-submit risk on retries (worker re-opening same URL into a second
+// tab) and trims context the next worker sees in list_pages. Only runs when
+// experimental flag is on (we have evidence to trust the verdict). Best-
+// effort — failure to close never demotes the result.
+async function closeAppliedTabs(results, opts) {
+  if (!(opts.experimental || opts.experimentalSucc)) return;
+  if (!Array.isArray(results) || results.length === 0) return;
+  const targets = new Set();
+  for (const res of results) {
+    if (res.status !== 'Applied') continue;
+    if (res.url) targets.add(res.url);
+    // Also add post-redirect external URL when known — that tab is the one
+    // worker actually filled and must be closed to avoid double-submit on
+    // a retry pass that hits the same redirect chain.
+    if (res.evidence_path && existsSync(res.evidence_path)) {
+      try {
+        const ev = JSON.parse(readFileSync(res.evidence_path, 'utf8'));
+        const finalUrl = ev?.redirect?.final_url || ev?.redirect_final_url || ev?.final_url || ev?.verification?.final_url;
+        if (finalUrl) targets.add(finalUrl);
+      } catch { /* */ }
+    }
+  }
+  if (targets.size === 0) return;
+  let tabs;
+  try {
+    const res = await fetch('http://localhost:9222/json/list').catch(() => null);
+    if (!res || !res.ok) return;
+    tabs = await res.json();
+  } catch { return; }
+  if (!Array.isArray(tabs)) return;
+  // Match by exact URL OR by tail-equivalence (fragments / sessionChange suffixes).
+  const norm = u => (u || '').replace(/[?#].*$/, '').replace(/\/+$/, '');
+  const targetNorms = new Set([...targets].map(norm));
+  for (const tab of tabs) {
+    if (tab.type !== 'page') continue;
+    const tu = tab.url || '';
+    if (!targetNorms.has(norm(tu))) continue;
+    try {
+      await fetch(`http://localhost:9222/json/close/${tab.id}`).catch(() => null);
+      appendLedger(resolve(REPO_ROOT, 'data/batch-runs', opts.runId), {
+        event: 'tab_closed_after_apply',
+        tab_id: tab.id, url: tu,
+      });
+    } catch { /* best-effort */ }
+  }
 }
 
 // Mutates results in-place: for each Applied + external_apply where the
@@ -947,12 +1086,24 @@ async function modeRunChunk(opts) {
 
   appendLedger(runDir, { event: 'chunk_done', is_retry: opts.mode === 'retry-chunk', ms, usage: r.usage, telemetry: r.telemetry || null, results: r.result.results });
 
+  // Force external_apply via script telemetry BEFORE post-hoc verification.
+  // Host-agnostic: no whitelist of ATS hosts; we trust the script's
+  // redirect/new-page detection (which compares hosts) and final-URL host
+  // comparison from evidence. This corrects worker mislabels (e.g. theprotocol
+  // round-trip via erecruiter.pl back to theprotocol's thankyou page).
+  enforceExternalApplyFromTelemetry(r.result.results || [], runDir);
+
   // Post-spawn verification of external_apply Applieds.
   // Worker prompt requires writing evidence/<slug>-external-<ts>.json on
   // success; haiku occasionally skips that write and fabricates the path.
   // Programmatic enforcement: if claimed evidence file does not exist,
   // attach via CDP and verify the tab DOM ourselves. Demote on failure.
   verifyExternalApplieds(r.result.results || [], runDir, opts.runId);
+
+  // Close tabs of verified-Applied URLs so retry passes / next chunks don't
+  // see duplicates in list_pages (double-submit risk + worker confusion).
+  // Best-effort, gated on experimental flag.
+  await closeAppliedTabs(r.result.results || [], opts);
 
   const urlIndex = buildUrlRowIndex();
   const applied = [];
@@ -984,6 +1135,38 @@ async function modeRunChunk(opts) {
           failed_selector: res.failed_selector || null,
           reason: res.reason || null,
         },
+        evidence_path: res.evidence_path || null,
+        recovered_via_mcp: false,
+      });
+    }
+    // Self-healing branch: Applied but ONLY because MCP recovered after a
+    // script failure. Application succeeded — but the recipe is broken and
+    // needs autofix so future runs skip MCP escalation overhead. Queue these
+    // alongside AutoApplyFailed candidates; orchestrator probes selectors and
+    // patches yaml the same way.
+    if (opts.autofix && res.status === 'Applied' && res.recovered_via_mcp === true && res.autofix_eligible !== false) {
+      autofixCandidates.push({
+        url: res.url, num: meta.num, portal: res.portal || null,
+        company: meta.company, role: meta.role,
+        failure: {
+          kind: res.failure_kind || 'recipe_drift',
+          failed_step: res.script_failed_step || null,
+          failed_selector: res.script_failed_selector || null,
+          reason: res.script_failure_reason || 'script failed; MCP recovered',
+        },
+        evidence_path: res.evidence_path || null,
+        recovered_via_mcp: true,
+      });
+      // Forensic log so cross-run analysis can spot recipe-drift patterns.
+      appendErrorLog({
+        ts: new Date().toISOString(),
+        phase: 'applied_via_mcp_recovery',
+        run_id: opts.runId,
+        url: res.url,
+        portal: res.portal || null,
+        script_failed_step: res.script_failed_step || null,
+        script_failed_selector: res.script_failed_selector || null,
+        script_failure_reason: res.script_failure_reason || null,
         evidence_path: res.evidence_path || null,
       });
     }

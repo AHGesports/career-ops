@@ -1,12 +1,15 @@
 # Apply escalation ladder — canonical
 
-Single truth: tab-safety, 4-step escalation, JS templates, success determination, external-ATS handover. Referenced by SKILL.md (parent agent single mode) + worker prompt (haiku batch).
+Single source of truth: tab-safety, 4-step escalation, JS templates, success
+determination, external-ATS handover rules. Referenced by SKILL.md (parent
+agent in single mode) + worker prompt (haiku in batch).
 
 ---
 
 ## CRITICAL: tab safety before any MCP eval
 
-Chrome has multiple tabs. `chrome-devtools` MCP evaluates against CURRENTLY SELECTED page — may be leftover `/thanks` from prior URL.
+Chrome usually has multiple tabs. `chrome-devtools` MCP evaluates against the
+CURRENTLY SELECTED page — may be a leftover `/thanks` from prior URL.
 **Wrong-tab eval = false positive = catastrophic** (Applied marked when nothing sent).
 
 Before EVERY `evaluate_script` during escalation OR autofix:
@@ -39,21 +42,6 @@ Inspect failed step's selector. Find real one (`formcontrolname`, `name`, `id`, 
 ```
 
 Validation errors → log + AutoApplyFailed. Don't claim success, don't click submit. Log `phase:"selector_fix"` with working selector.
-
-#### Phone-format retry ladder (MANDATORY before bailing on `failed_field_name:"phone"`)
-
-When validator rejects phone (`"check your phone number"`, `"invalid phone"`, `"ungültige Telefonnummer"`, `"numer telefonu"`, etc.), the bare-prefix combination is almost always the cause. **Try the WHOLE ladder before AutoApplyFailed:**
-
-| Try | Value | When |
-|-----|-------|------|
-| 1 | recipe value as-is (e.g. `+436703535652`) | first attempt |
-| 2 | digits only, no `+`, no `00` (e.g. `6703535652`) | when a separate countryCode select/input exists on the form |
-| 3 | digits with leading `0` (e.g. `06703535652`) | Austrian/German national format, when no countryCode field |
-| 4 | full E.164 `00` prefix (e.g. `00436703535652`) | when `+` is rejected |
-
-After each retry, refill via MCP `fill` (NOT `evaluate_script`), blur, re-read validator state. First clean retry wins. Only after ALL four fail → log `phase:"escalation"` (`reason: phone_format_exhausted`, log every value tried), AutoApplyFailed.
-
-Common pattern: form has `select[name='phone.value.countryCode']` + `input[name='phone.value.phoneNumber']` → countryCode is the prefix; phoneNumber must be bare digits. Pre-XING-2026 recipe filled `+436703535652` into bare-digit field → form prepended `+43` → server saw `+43+436703535652` → rejected. Strip prefix on retry.
 
 ### Step 2 — Verify confirmation via MCP
 
@@ -212,7 +200,7 @@ Decision:
 
 ### Hard rules — external handover
 
-- **WRITES via MCP, READS via `evaluate_script`.** Most external ATS forms JS-framework-bound (Angular `FormControl`, React controlled inputs, Vue `v-model`). Synthetic events from `evaluate_script` do NOT trigger Zone.js / React synthetic event chain / Vue reactivity — validators see empty fields, reject. CDP keystrokes from MCP DO trigger them. Use `mcp__chrome-devtools__fill` / `fill_form` / `type_text` / `click` / `upload_file` for every value set. NEVER use `evaluate_script` for `.value=`, `.checked=`, synthetic `input/change`. `evaluate_script` reads only — selectors, success markers, validator errors, framework detection.
+- **WRITES via MCP, READS via `evaluate_script`.** Most external ATS forms are JS-framework-bound (Angular `FormControl`, React controlled inputs, Vue `v-model`). Synthetic events from `evaluate_script` do NOT trigger Zone.js / React synthetic event chain / Vue reactivity — validators see empty fields, reject. CDP keystrokes from MCP DO trigger them. Use `mcp__chrome-devtools__fill` / `fill_form` / `type_text` / `click` / `upload_file` for every value setting. NEVER use `evaluate_script` for `.value=`, `.checked=`, synthetic `input/change`. `evaluate_script` reads only — selectors, success markers, validator errors, framework detection.
 - Framework-detection probe in same `evaluate_script` as field probe. `framework_detected.any === true` → MCP fill mandatory; no evaluate_script-fill fallback.
 - **3-strike per field**: field still empty after 3 distinct write strategies (e.g. `fill` → `type_text` → `click`+`fill`) → STOP. AutoApplyFailed with `failed_field_name`, `last_mcp_tool_used`, `validator_error_text_observed`.
 - DO NOT autofix yaml for `external_apply` results. DO NOT create new yaml entries for external ATS — one-time apps, DOM not stable.

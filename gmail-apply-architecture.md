@@ -124,7 +124,7 @@ Two modes:
 | `config/profile.yml` | User profile. Orchestrator reads `candidate.*` once during `--plan`, writes a small subset (full_name/first/last, email, phone, location, linkedin, portfolio, github + CV path) to `data/batch-runs/<run_id>/profile.json`. Worker receives the subset inline in the task prompt. |
 | `assets/cv/CV_www.ArshiaHemati.com_EN.pdf` | The CV uploaded on external ATS. Absolute path injected into worker task prompt; worker uses `mcp__chrome-devtools__upload_file`. |
 | `data/applications.md` | Tracker. Batch reads it for queue + writes status updates back **incrementally per chunk** (so mid-batch failures are visible). |
-| `data/gmail-apply-errors.ndjson` | Append-only forensic log across all runs. Phases: `step`, `verify`, `submit`, `submit_unconfirmed`, `escalation`, `selector_fix`, `script_extension_needed`, `worker_chunk_failure`, `yaml_autofix`, `autofix_skipped`, `autofix_failed`, `redirect_to_external`, `applied_invalidated`. |
+| `data/gmail-apply-errors.ndjson` | Append-only forensic log across all runs. Phases: `step`, `verify`, `submit`, `submit_unconfirmed`, `escalation`, `selector_fix`, `script_extension_needed`, `worker_chunk_failure`, `yaml_autofix`, `autofix_skipped`, `autofix_failed`, `redirect_to_external`, `applied_invalidated`, `simplify_autofill`, `external_field_answered`, `external_unmapped_field_required`. |
 | `data/batch-runs/<run_id>/` | Per-run dir: `plan.json`, `profile.json`, `ledger.ndjson` (orchestrator events), `steps.ndjson` (per-step records from the Playwright script), `evidence/<slug>-<ts>.json` (DOM snapshot at final state, `-redirect-` for redirects, `-external-` for external-ATS submits). |
 | `.mcp.json` | MCP server config. Workers spawn with `--strict-mcp-config --mcp-config .mcp.json` so only `chrome-devtools` + `gmail-html` load. |
 | `launch-chrome.bat` | User runs this once before any apply. Starts Chrome with `--remote-debugging-port=9222`, persistent profile, no `--enable-automation` (Google login still works). |
@@ -267,22 +267,59 @@ now; reintroduce after observed runs converge.)
 ## External ATS handover
 
 When `gmail-apply.mjs` detects redirect (URL leaves the matched portal's
-domain), it bails out without running the recipe. The worker (batch) or
-parent (single) then:
+domain), it does TWO things before bailing out:
 
+1. **Runs Simplify Copilot autofill** on the redirected tab via
+   `scripts/simplify-autofill.mjs` → `runSimplifyAutofillOnPage(page)`.
+   The Simplify browser extension (already installed in the user's
+   Chrome) injects a shadow-DOM panel on supported ATS pages
+   (Greenhouse, Lever, Ashby, etc.). The script clicks the panel's
+   `#fill-button` via shadow-root traversal, waits for navigation
+   (Simplify appends `?utm_source=Simplify` and re-renders), polls form
+   fields until stable, and detects whether the CV file input was
+   populated. Result attached to `redirect.simplify`. On unsupported
+   frameworks (Workday, iCIMS, custom forms) the panel doesn't inject
+   and Simplify no-ops in <1s. **Never blocks** — errors are logged but
+   don't fail the bailout.
+2. Emits `redirect` block (with `simplify` sub-block) and disconnects.
+
+The worker (batch) or parent (single) then runs External ATS handover
+with **branch logic** based on `redirect.simplify`:
+
+**Branch A — Simplify pre-filled** (`supported && (clicked || alreadyFilled)`):
+1. Tab-safety on `redirect.final_url`.
+2. ONE `evaluate_script` READ: errors_visible + empty `[required]` fields
+   + submit button selector.
+3. Skip CV upload if `simplify.cvUploaded === true`. Otherwise
+   `take_snapshot` + `upload_file`.
+4. MCP-fill only the gaps (typically 0-2 fields).
+5. Click submit via MCP. On validation errors, MCP-fill flagged fields,
+   resubmit once, re-verify.
+6. Mark Applied with `external_apply: true`.
+
+**Branch B — Simplify not supported** (`!supported || error`):
 1. Tab-safety on `redirect.final_url`.
 2. Wait for form to render.
-3. Probe generic fields (email/phone/name/linkedin/file upload).
-4. Fill via `evaluate_script` using `EXTERNAL_PROFILE` block from task
-   message (or `config/profile.yml` in single mode).
+3. Probe generic fields via single `evaluate_script` (email/phone/name/
+   linkedin/file upload + framework detection).
+4. Fill via MCP write tools (`fill`, `fill_form`, `type_text`, `click`)
+   using `EXTERNAL_PROFILE` block from task message (or `config/profile.yml`
+   in single mode). `evaluate_script` writes are FORBIDDEN on framework-
+   bound inputs.
 5. Upload CV via `mcp__chrome-devtools__upload_file` —
    `assets/cv/CV_www.ArshiaHemati.com_EN.pdf` (absolute).
 6. Submit, verify generic success markers (multi-language: thank-you /
    submitted / wysłane / gesendet / merci / gracias).
-7. Mark Applied with `external_apply: true`. Orchestrator skips yaml
-   autofix and does NOT create a new recipe — external ATS pages are
-   one-time applications, DOM is not stable across runs, MCP fill is the
-   right tool every time.
+7. Mark Applied with `external_apply: true`.
+
+Both branches: orchestrator skips yaml autofix and does NOT create a new
+recipe — external ATS pages are one-time applications, DOM is not stable
+across runs, MCP fill is the right tool every time.
+
+**Token win from Branch A**: Simplify fills ~6 identity fields + GDPR +
+CV via shadow-DOM click — zero MCP turn cost. Worker's per-URL MCP turn
+budget on Greenhouse/Lever drops from ~10-15 turns (probe + 6 fills +
+upload + submit + verify) to ~3-4 turns (read gaps + submit + verify).
 
 If file upload fails OR an unknown required field exists →
 `AutoApplyFailed` with `failure_kind: "external_unconfirmed"` or
@@ -320,7 +357,18 @@ Applieds = ~75 KB. Negligible.
     "detected": true,
     "original_url": "https://theprotocol.it/...",
     "final_url": "https://greenhouse.io/...",
-    "target_portal_match": null              // or known portal name
+    "target_portal_match": null,             // or known portal name
+    "framework_hint": null,                  // or { host_pattern, framework_detected, source }
+    "simplify": {                            // ALWAYS present on every redirect
+      "supported": true,                     // panel injected (= Greenhouse/Lever/Ashby/etc)
+      "clicked": true,                       // fill-button click succeeded
+      "alreadyFilled": false,                // panel present but no fill-button (already done)
+      "filledFieldCount": 7,
+      "cvUploaded": true,                    // input[type=file] populated
+      "filledFields": [{ "name":"first_name","type":"text","value":"Arshia" }, "..."],
+      "durationMs": 4200,
+      "error": null                          // string when something went wrong; never blocks
+    }
   },
   "submit_selector": "...",
   "steps": [{ "i": 0, "action": "fill", "ok": true }, ...],
@@ -539,6 +587,15 @@ No screenshots — text DOM signals only.
   with many MCP turns can grow the worker's per-chunk tool history
   toward Haiku's context budget. Chunk = 1 is correct only for
   single-URL debug — wastes most of the spawn cost on the system prompt.
+- **Simplify Copilot pre-fill (ALWAYS attempted on redirect).**
+  `gmail-apply.mjs` calls `runSimplifyAutofillOnPage(page)` before bailing
+  out on every detected redirect (startup, mid-flow same_tab, mid-flow
+  new_tab). Cost: ~1s when unsupported (panel doesn't inject), up to
+  ~20s on supported ATS (`FILL_TIMEOUT_MS`). Best-effort — errors logged
+  with `phase:"simplify_autofill"` but never block the agent handover.
+  Result lives at `redirect.simplify`. Worker / parent reads it and
+  branches: pre-filled → gap-fill + submit; unsupported → full probe.
+  See `scripts/simplify-autofill.mjs` and `docs/simplify-autofill-findings.md`.
 - **External-ATS file uploads** require `mcp__chrome-devtools__upload_file`.
   If unavailable for a given form (e.g. drag-and-drop only), worker logs
   `script_extension_needed` and the URL fails.

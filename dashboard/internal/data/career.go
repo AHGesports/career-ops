@@ -24,6 +24,7 @@ var (
 	reArchetypeColon = regexp.MustCompile(`(?i)\*\*Arquetipo:\*\*\s*(.+)`)
 	reReportURL      = regexp.MustCompile(`(?m)^\*\*URL:\*\*\s*(https?://\S+)`)
 	reBatchID        = regexp.MustCompile(`(?m)^\*\*Batch ID:\*\*\s*(\d+)`)
+	reNotesURL       = regexp.MustCompile(`https?://\S+`)
 )
 
 // ParseApplications reads applications.md and returns parsed applications.
@@ -105,6 +106,10 @@ func ParseApplications(careerOpsPath string) []model.CareerApplication {
 		// Notes (field 8 if exists)
 		if len(fields) > 8 {
 			app.Notes = fields[8]
+			// Strategy 0: extract URL from notes (auto-match rows store it inline as "URL: https://...")
+			if u := reNotesURL.FindString(app.Notes); u != "" {
+				app.JobURL = strings.TrimRight(u, ".,);")
+			}
 		}
 
 		apps = append(apps, app)
@@ -558,13 +563,19 @@ func UpdateApplicationStatus(careerOpsPath string, app model.CareerApplication, 
 	lines := strings.Split(string(content), "\n")
 	found := false
 
+	numPrefix := fmt.Sprintf("| %d |", app.Number)
 	for i, line := range lines {
-		if !strings.HasPrefix(strings.TrimSpace(line), "|") {
+		trimmed := strings.TrimSpace(line)
+		if !strings.HasPrefix(trimmed, "|") {
 			continue
 		}
-		// Match by report number
-		if app.ReportNumber != "" && strings.Contains(line, fmt.Sprintf("[%s]", app.ReportNumber)) {
-			// Replace the status field
+		// Primary: match by tracker number column (works for auto-match rows with no report link)
+		matched := strings.HasPrefix(trimmed, numPrefix)
+		// Fallback: match by report number link (legacy rows where Number parse failed)
+		if !matched && app.ReportNumber != "" && strings.Contains(line, fmt.Sprintf("[%s]", app.ReportNumber)) {
+			matched = true
+		}
+		if matched {
 			lines[i] = replaceStatusInLine(line, app.Status, newStatus)
 			found = true
 			break
@@ -572,7 +583,7 @@ func UpdateApplicationStatus(careerOpsPath string, app model.CareerApplication, 
 	}
 
 	if !found {
-		return fmt.Errorf("application not found: report %s", app.ReportNumber)
+		return fmt.Errorf("application not found: #%d (report %s)", app.Number, app.ReportNumber)
 	}
 
 	return os.WriteFile(filePath, []byte(strings.Join(lines, "\n")), 0644)

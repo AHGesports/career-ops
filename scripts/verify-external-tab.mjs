@@ -25,7 +25,39 @@ function arg(name) {
   const a = process.argv.slice(2).find(x => x.startsWith(`${name}=`));
   return a ? a.slice(name.length + 1) : null;
 }
-function out(o) { process.stdout.write(JSON.stringify(o)); }
+let _emitted = false;
+function out(o) {
+  if (_emitted) return;
+  _emitted = true;
+  process.stdout.write(JSON.stringify(o));
+}
+
+// Playwright's CDP layer asserts on unknown target types attached during
+// connectOverCDP — recruitee/captcha shared_worker blobs cause an uncatchable
+// throw inside an internal event handler. This crashes the helper after we've
+// already done useful work (or before we get to start). Swallow the assert,
+// emit a graceful inconclusive result, exit 0 so caller still gets JSON.
+function isPlaywrightTargetAssert(err) {
+  const msg = String(err?.message || err || '');
+  return /Assertion error|targetInfo|_onAttachedToTarget/i.test(msg)
+      || /shared_worker|service_worker/i.test(msg);
+}
+process.on('uncaughtException', (err) => {
+  if (isPlaywrightTargetAssert(err)) {
+    out({ ok: false, reason: `playwright cdp target assert (likely captcha shared_worker): ${String(err?.message || err).slice(0, 200)}` });
+    process.exit(0);
+  }
+  out({ ok: false, reason: `uncaught: ${String(err?.message || err).slice(0, 200)}` });
+  process.exit(0);
+});
+process.on('unhandledRejection', (err) => {
+  if (isPlaywrightTargetAssert(err)) {
+    out({ ok: false, reason: `playwright cdp target assert (rejection): ${String(err?.message || err).slice(0, 200)}` });
+    process.exit(0);
+  }
+  out({ ok: false, reason: `unhandled rejection: ${String(err?.message || err).slice(0, 200)}` });
+  process.exit(0);
+});
 
 const tabUrl = arg('--tab-url');
 const slug = arg('--slug');
@@ -36,6 +68,53 @@ if (!tabUrl || !slug || !runDir) {
   out({ ok: false, reason: 'missing required args (--tab-url, --slug, --run-dir)' });
   process.exit(0);
 }
+
+const ts = new Date().toISOString().replace(/[:.]/g, '-');
+const evDir = resolve(runDir, 'evidence');
+mkdirSync(evDir, { recursive: true });
+
+function writeEvidence(payload) {
+  const evidencePath = resolve(evDir, `${slug}-external-verify-${ts}.json`);
+  writeFileSync(evidencePath, JSON.stringify({
+    ts: new Date().toISOString(),
+    source: 'orchestrator_post_hoc_verify',
+    tab_url: tabUrl,
+    original_url: originalUrl,
+    ...payload,
+  }, null, 2));
+  return evidencePath;
+}
+
+// PRE-CHECK via raw CDP HTTP `/json/list` — no Playwright needed. If a tab
+// matching the host has a "success-y" URL (/thankyou, /applySuccess, /success,
+// /submitted, /confirmation), confirm immediately. This skips the Playwright
+// CDP attach entirely and avoids the shared_worker assert crash for the
+// common case (recruitee/softgarden/traffit redirect to /thankyou paths).
+async function urlOnlyPrecheck() {
+  try {
+    const res = await fetch(`${CDP_ENDPOINT}/json/list`, { signal: AbortSignal.timeout(3000) });
+    const tabs = await res.json();
+    const targetU = new URL(tabUrl);
+    const successRe = /thankyou|thank-you|apply-?success|applySuccess|\/success(\b|\/|\?)|submitted|confirmation/i;
+    const sameHost = tabs.filter(t => t.type === 'page' && (() => {
+      try { return new URL(t.url).host === targetU.host; } catch { return false; }
+    })());
+    const success = sameHost.find(t => successRe.test(t.url));
+    if (success) {
+      const evidencePath = writeEvidence({
+        verified: true,
+        reason: `url-only precheck matched: ${success.url}`,
+        method: 'cdp_http_precheck',
+        matched_tab_url: success.url,
+      });
+      out({ ok: true, verified: true, reason: `url precheck: ${success.url.slice(0, 120)}`, evidence_path: evidencePath, dom: { href: success.url, marker_match: null, url_changed: true, errors_visible: [] } });
+      return true;
+    }
+  } catch { /* fallthrough to Playwright */ }
+  return false;
+}
+
+if (await urlOnlyPrecheck()) process.exit(0);
 
 let browser;
 try {
@@ -111,16 +190,6 @@ if (dom.errors_visible.length > 0 && dom.form_still_present) {
   reason = 'no success marker AND url unchanged';
 }
 
-const ts = new Date().toISOString().replace(/[:.]/g, '-');
-const evDir = resolve(runDir, 'evidence');
-mkdirSync(evDir, { recursive: true });
-const evidencePath = resolve(evDir, `${slug}-external-verify-${ts}.json`);
-writeFileSync(evidencePath, JSON.stringify({
-  ts: new Date().toISOString(),
-  source: 'orchestrator_post_hoc_verify',
-  tab_url: tabUrl,
-  original_url: originalUrl,
-  verified, reason, dom,
-}, null, 2));
+const evidencePath = writeEvidence({ verified, reason, dom, method: 'playwright_dom_eval' });
 
 out({ ok: true, verified, reason, evidence_path: evidencePath, dom: { href: dom.href, marker_match: dom.marker_match, url_changed: dom.url_changed, errors_visible: dom.errors_visible } });
