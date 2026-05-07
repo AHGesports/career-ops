@@ -189,3 +189,58 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://www.xing.com/jobs/darmstadt-front-end-engineer-web-applications-j21055-153124858 | Your application was sent: Frontend Engineer Web Applications (m/w/d) - J21055 | mail.xing.com | 2026-05-06T07:50Z
 - [ ] https://linkedin.com/jobs/view/4408649872 | Associate Engineer Development at Aptean | linkedin.com | 2026-05-06T07:50Z
 - [ ] https://linkedin.com/jobs/view/4407767800 | Associate Engineer Development at Aptean | linkedin.com | 2026-05-06T07:50Z
+- [ ] https://linkedin.com/jobs/view/4408800502 | Senior Frontend Developer (m/w/d) at COOR GmbH: up to €4.6K/month | linkedin.com | 2026-05-07T08:26Z
+- [ ] https://linkedin.com/jobs/view/4408822098 | Senior Frontend Developer (m/w/d) at COOR GmbH: up to €4.6K/month | linkedin.com | 2026-05-07T08:26Z
+- [ ] https://linkedin.com/jobs/view/4409700495 | Senior Frontend Developer (m/w/d) at COOR GmbH: up to €4.6K/month | linkedin.com | 2026-05-07T08:26Z
+- [ ] https://linkedin.com/jobs/view/4410975926 | Senior Frontend Developer (m/w/d) at COOR GmbH: up to €4.6K/month | linkedin.com | 2026-05-07T08:26Z
+- [ ] https://justjoin.it/offers/clurgo-frontend-developer-gdansk-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-05-07T08:26Z
+- [ ] https://justjoin.it/offers/n-ix-senior-frontend-engineer-react--krakow-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-05-07T08:26Z
+- [ ] https://justjoin.it/offers/cloudfide-frontend-react-engineer-lodz-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-05-07T08:26Z
+- [ ] https://justjoin.it/offers/emagine-polska-senior-frontend-developer-warsaw-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/karlsruhe-account-executive-enterprise-saas-mobility-153547301 | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/hamburg-software-engineer-data-analytics-administration-instellix-nitrobox-gmbh-154059962 | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/stuttgart-account-executive-enterprise-saas-mobility-153547309 | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/frankfurt-main-account-executive-enterprise-saas-mobility-153547310 | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/hannover-account-executive-enterprise-saas-mobility-153547307 | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/nuernberg-account-executive-enterprise-saas-mobility-153547311 | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/hamburg-account-executive-enterprise-saas-mobility-153547303 | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/berlin-account-executive-enterprise-saas-mobility-153547302 | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/leipzig-sales-manager-enterprise-software-agriculture-b2b-153547215 | 10+ new job ads for your search alert: KI entwickler | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/leipzig-senior-ai-engineer-dresden-remote-leipzig-153330400 | 10+ new job ads for your search alert: KI entwickler | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/karlsruhe-senior-ai-engineer-154066600 | 10+ new job ads for your search alert: KI entwickler | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/koeln-sales-manager-enterprise-software-agriculture-b2b-153547218 | 10+ new job ads for your search alert: KI entwickler | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/essen-sales-manager-enterprise-software-agriculture-b2b-153547224 | 10+ new job ads for your search alert: KI entwickler | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/stuttgart-sales-manager-enterprise-software-agriculture-b2b-153547221 | 10+ new job ads for your search alert: KI entwickler | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/karlsruhe-sales-manager-enterprise-software-agriculture-b2b-153547213 | 10+ new job ads for your search alert: KI entwickler | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/nuernberg-sales-manager-enterprise-software-agriculture-b2b-153547223 | 10+ new job ads for your search alert: KI entwickler | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/hannover-sales-manager-enterprise-software-agriculture-b2b-153547220 | 10+ new job ads for your search alert: KI entwickler | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/koeln-application-engineer-sap-fi-cloud-genders-chargecloud-gmbh-154059992 | 10+ new job ads for your search alert: full stack engineer | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/leipzig-enterprise-account-executive-automotive-saas-153547331 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/berlin-ai-engineer-154030381 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/deutschland-sap-ai-consultant-home-office-152680451 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/gerlafingen-senior-cloud-engineer-plattform-automation-ai-infrastructure-80-100-154029621 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/koeln-enterprise-account-executive-automotive-saas-153547333 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/essen-enterprise-account-executive-automotive-saas-153547339 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://www.xing.com/jobs/frankfurt-main-enterprise-account-executive-automotive-saas-153547336 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-07T08:26Z
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-angular-java-makeitright-remote |  Nowe oferty pracy, 10 dopasowane do Twoich kryteriów: remote, Angular,  | nofluffjobs.com | 2026-05-07T08:26Z
+- [ ] https://nofluffjobs.com/pl/job/fulstack-developer-java-angular-m-f-stackmine-remote |  Nowe oferty pracy, 10 dopasowane do Twoich kryteriów: remote, Angular,  | nofluffjobs.com | 2026-05-07T08:26Z
+- [ ] https://nofluffjobs.com/pl/job/senior-java-developer-scalo-remote-16 |  Nowe oferty pracy, 10 dopasowane do Twoich kryteriów: remote, Angular,  | nofluffjobs.com | 2026-05-07T08:26Z
+- [ ] https://talentportal.germantechjobs.de/api/job-redirect?jobId=Weber-Food-Technology-SE--Co-KG-Duales-Studium-Softwaretechnologie---Softwareentwicklung-mwd---Berlin | 2 New Jobs Matching Your Alert - Software Engineering | germantechjobs.de | 2026-05-07T08:26Z
+- [ ] https://de.indeed.com/viewjob?jk=c787ab81d13c95c4 | SD&T sucht Software Developer (Javascript, React) (all gender) + 3 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-05-07T08:26Z
+- [ ] https://de.indeed.com/viewjob?jk=11712ad8de5bd99f | SD&T sucht Software Developer (Javascript, React) (all gender) + 3 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-05-07T08:26Z
+- [ ] https://linkedin.com/jobs/view/4410519257 | DevOps Engineer (f/m/d) Hardware & Locker at myflexbox | linkedin.com | 2026-05-07T08:26Z
+- [ ] https://linkedin.com/jobs/view/4409317654 | DevOps Engineer (f/m/d) Hardware & Locker at myflexbox | linkedin.com | 2026-05-07T08:26Z
+- [ ] https://linkedin.com/jobs/view/4326473699 | DevOps Engineer (f/m/d) Hardware & Locker at myflexbox | linkedin.com | 2026-05-07T08:26Z
+- [ ] https://linkedin.com/jobs/view/4410595622 | DevOps Engineer (f/m/d) Hardware & Locker at myflexbox | linkedin.com | 2026-05-07T08:26Z
+- [ ] https://linkedin.com/jobs/view/4410702939 | DevOps Engineer (f/m/d) Hardware & Locker at myflexbox | linkedin.com | 2026-05-07T08:26Z
+- [ ] https://linkedin.com/jobs/view/4410706936 | DevOps Engineer (f/m/d) Hardware & Locker at myflexbox | linkedin.com | 2026-05-07T08:26Z
+- [ ] https://theprotocol.it/szczegoly/praca/fullstack-developer-z-java-i-angular-f-m-x-bialystok-jozefa-marjanskiego-3,oferta,95560000-4cd7-a6e1-3f9b-08deaa8d061e | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-05-07T08:26Z
+- [ ] https://theprotocol.it/szczegoly/praca/fullstack-developer-java-javascript-katowice-zabrska-16,oferta,67360000-5e03-2eb4-c1ad-08deaa8a1829 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-05-07T08:26Z
+- [ ] https://theprotocol.it/szczegoly/praca/back-end-developer-wroclaw-plac-teatralny-1,oferta,95560000-4cd7-a6e1-eef4-08deaaad6c00 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-05-07T08:26Z
+- [ ] https://theprotocol.it/szczegoly/praca/ai-project-manager-warszawa,oferta,67360000-5e03-2eb4-8dfc-08deaab413bb | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-05-07T08:26Z
+- [ ] https://theprotocol.it/szczegoly/praca/java-developer-warszawa,oferta,e5df0000-8bb4-268a-eca9-08deaaae21bd | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-05-07T08:26Z
+- [ ] https://theprotocol.it/szczegoly/praca/java-software-engineer-z-quarkus-dapr-f-m-x-bialystok-jozefa-marjanskiego-3,oferta,95560000-4cd7-a6e1-5d42-08deaa8d334b | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-05-07T08:26Z
+- [ ] https://theprotocol.it/szczegoly/praca/data-ai-engineer-katowice-zabrska-16,oferta,e5df0000-8bb4-268a-0250-08deaa8a1a33 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-05-07T08:26Z
+- [ ] https://theprotocol.it/szczegoly/praca/kotlin-developer-krakow-szlak-49,oferta,67360000-5e03-2eb4-1b5f-08deaa961143 | 🔵🟢 Nowe oferty pracy: „C#; Praca: zdalna” | mailing.theprotocol.it | 2026-05-07T08:26Z
+- [ ] https://theprotocol.it/szczegoly/praca/ruby-on-rails-developer-krakow-szlak-49,oferta,95560000-4cd7-a6e1-8edc-08deaa95f662 | 🔵🟢 Nowe oferty pracy: „C#; Praca: zdalna” | mailing.theprotocol.it | 2026-05-07T08:26Z
+- [ ] https://theprotocol.it/szczegoly/praca/php-developer-warszawa-grzybowska-49,oferta,e5df0000-8bb4-268a-9954-08deaaae7783 | 🔵🟢 Nowe oferty pracy: „C#; Praca: zdalna” | mailing.theprotocol.it | 2026-05-07T08:26Z

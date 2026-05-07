@@ -9,15 +9,17 @@ candidate:
   dob: "02.06.2003"
   plz: "5400"
   city: "Salzburg"
-  # street: TODO — fill in actual street address; some German softgarden/recruitee
+  street: "Raitneaustrasse 1"
   # portals (e.g. oculus.de) require Straße + PLZ for application submission.
   # When set, projected into EXTERNAL_PROFILE for gmail-apply workers.
-  street: ""
   country: "Austria"
   anrede: "Herr"
   linkedin: "https://www.linkedin.com/in/arshia-hemati-5358742ab/"
   portfolio_url: "https://www.ArshiaHemati.com"
   github: "github.com/AHGesports"
+  nationality: "Iranian"
+  residence_permit: "RWR+ Visa, no sponsorship required"
+
   # twitter: ""
   # canva_resume_design_id: "DAxxxxxxxxx"
 
@@ -116,6 +118,37 @@ languages:
   - "English: Fluent"
   - "German: Professional proficiency"
   - "Persian: Native"
+
+# Form-answer mapping for portal questionnaires (XING/Indeed/etc.).
+# Used by gmail-apply recipes when picking a level on radio/checkbox/select
+# questions. Order = preferred → acceptable; never pick lower than the last.
+language_form_answers:
+  german:
+    cefr: "B2"
+    self_label: "Professional proficiency"
+    # Closest-to-B2 first; native overstated, elementary understated.
+    xing_levels:
+      - "Umfassende Erfahrungen im beruflichen Kontext"   # Full professional (B2/C1) ← preferred
+      - "Begrenzte Erfahrungen im beruflichen Kontext"    # Limited working (B1/B2) ← acceptable fallback
+    # Generic select-style (LinkedIn / generic ATS):
+    generic_levels:
+      - "Verhandlungssicher"          # full professional
+      - "Fließend"                     # fluent
+      - "Sehr gut"                     # very good
+    # NEVER pick:
+    avoid:
+      - "Grundkenntnisse"              # elementary — too low
+      - "Muttersprache"                # native — overclaim
+      - "Muttersprachliche oder zweisprachige Kompetenz"
+  english:
+    cefr: "C2"
+    self_label: "Fluent"
+    xing_levels:
+      - "Muttersprachliche oder zweisprachige Kompetenz"
+      - "Umfassende Erfahrungen im beruflichen Kontext"
+    generic_levels:
+      - "Verhandlungssicher"
+      - "Fließend"
 
 # Used by mcp/gmail-html/scripts/classify.mjs to triage Gmail-scanned URLs.
 # Match logic: case-insensitive regex on URL slug + email subject.

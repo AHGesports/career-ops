@@ -9,7 +9,10 @@
 //   r.classified = [{ url, tag: "auto-match" | "deferred", matched: [...], excluded: [...] }, ...]
 //
 // Match logic (per URL, case-insensitive):
-//   1. Build haystack = url-slug + " " + email-subject + " " + sender
+//   1. Build haystack = url-slug + " " + sender
+//      + email-subject ONLY for non-tracker senders (for tracker senders like XING/Stepstone/WTJ
+//      the subject is the search-alert query, shared by all URLs in the thread — including
+//      irrelevant roles — so it is excluded to prevent false positives)
 //      (slug = path segment after host, with dashes/underscores → spaces)
 //   2. If ANY match_excludes regex hits → tag = "deferred" (excludes win)
 //   3. Else if ANY match_keywords regex hits → tag = "auto-match"
@@ -88,7 +91,11 @@ let autoMatch = 0;
 let deferred = 0;
 
 for (const r of data.results) {
-  const subject = r.metadata?.subject || '';
+  // For tracker senders (XING, Stepstone, WTJ) the email subject is the search-alert
+  // query name, not a job title — it is shared by every URL in the thread and will
+  // falsely match any URL whose subject contains a keyword (e.g. "full stack engineer"
+  // alert serving Account Executive roles). Use slug-only for trackers.
+  const subject = r.extraction === 'tracker' ? '' : (r.metadata?.subject || '');
   const classified = (r.urls || []).map(u => classifyUrl(u, subject, r.sender));
   r.classified = classified;
   for (const c of classified) {

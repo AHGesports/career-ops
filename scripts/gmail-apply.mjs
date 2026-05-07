@@ -46,6 +46,34 @@ function logStep(runDir, entry) {
   } catch { /* best-effort */ }
 }
 
+// Deterministic per-URL heartbeat. Cheap (2 lines/URL) and immune to worker
+// dropouts -- referee uses presence/absence of these to know whether the
+// script even ran. Written by node; no LLM involvement.
+const PROGRESS_STATE = { runId: null, runDir: null, url: null, started: false, done: false };
+function appendScriptProgress(evt) {
+  if (!PROGRESS_STATE.runDir) return;
+  try {
+    mkdirSync(PROGRESS_STATE.runDir, { recursive: true });
+    appendFileSync(
+      resolve(PROGRESS_STATE.runDir, 'script-progress.ndjson'),
+      JSON.stringify({ ts: new Date().toISOString(), ...evt }) + '\n'
+    );
+  } catch { /* best-effort */ }
+}
+process.on('exit', (code) => {
+  if (PROGRESS_STATE.runDir && PROGRESS_STATE.started && !PROGRESS_STATE.done) {
+    PROGRESS_STATE.done = true;
+    appendScriptProgress({
+      event: 'script_done',
+      url: PROGRESS_STATE.url,
+      run_id: PROGRESS_STATE.runId,
+      pid: process.pid,
+      exit_code: code,
+      reached_normal_exit: false,
+    });
+  }
+});
+
 function urlSlug(url) {
   return url.replace(/^https?:\/\//, '').replace(/[^a-zA-Z0-9]+/g, '-').slice(0, 80).replace(/-+$/, '');
 }
@@ -199,6 +227,22 @@ async function captureEvidence(page, portal) {
 }
 
 function out(obj) {
+  // Mark progress as completed normally before stdout emit. process.on('exit')
+  // will skip the fallback once `done` is true.
+  if (PROGRESS_STATE.runDir && PROGRESS_STATE.started && !PROGRESS_STATE.done) {
+    PROGRESS_STATE.done = true;
+    appendScriptProgress({
+      event: 'script_done',
+      url: PROGRESS_STATE.url,
+      run_id: PROGRESS_STATE.runId,
+      pid: process.pid,
+      reached_normal_exit: true,
+      submitted: obj?.submitted === true,
+      submitted_unconfirmed: obj?.submitted_unconfirmed === true,
+      redirect_detected: obj?.redirect?.detected === true,
+      ok: obj?.ok === true,
+    });
+  }
   console.log(JSON.stringify(obj));
 }
 
@@ -337,9 +381,16 @@ async function runStep(page, step, portal) {
   // that other jobs on the same portal don't. Yaml authors mark such steps
   // `optional: true`. Missing selector → skip + return ok with `skipped:true`.
   if (step.optional) {
-    const probeSel = step.selector || step.container;
+    const probeSels = Array.isArray(step.selectors) && step.selectors.length
+      ? step.selectors
+      : [step.selector || step.container];
     const grace = Number(step.timeout_ms) > 0 ? Number(step.timeout_ms) : 1500;
-    if (probeSel && !(await selectorExists(page, probeSel, grace))) {
+    let any = false;
+    for (const ps of probeSels) {
+      if (!ps) continue;
+      if (await selectorExists(page, ps, grace)) { any = true; break; }
+    }
+    if (probeSels.some(Boolean) && !any) {
       return { ok: true, skipped: true, reason: 'optional selector not present' };
     }
   }
@@ -348,19 +399,56 @@ async function runStep(page, step, portal) {
       // Resilient click: scrollIntoView first (sticky headers / sidebar buttons
       // can be off-screen), bumped default timeout (Chrome under stress can
       // take >5s to settle), one retry on timeout. Honors step.timeout_ms.
+      // Multi-selector fallback: step.selectors[] tried in order; first match
+      // with count > 0 wins. step.selector still works as primary single value.
+      // Pre-click enabled-poll: Angular portals (NFJ) re-disable buttons during
+      // hydration; brief wait for :not([disabled]) avoids spurious failures
+      // without slowing portals where button is enabled from the start.
       const tmo = Number(step.timeout_ms) > 0 ? Number(step.timeout_ms) : 8000;
-      const loc = page.locator(step.selector).first();
+      const candidates = Array.isArray(step.selectors) && step.selectors.length
+        ? step.selectors
+        : [step.selector];
+      let chosenSel = null;
+      let loc = null;
+      for (const cand of candidates) {
+        if (!cand) continue;
+        const c = page.locator(cand).first();
+        try {
+          await c.waitFor({ state: 'attached', timeout: candidates.length > 1 ? 2500 : tmo });
+          chosenSel = cand;
+          loc = c;
+          break;
+        } catch { /* try next */ }
+      }
+      if (!loc) {
+        // Fall through to first candidate to preserve original error path.
+        chosenSel = candidates[0];
+        loc = page.locator(chosenSel).first();
+      }
+      // Wait for enabled (non-disabled, non-aria-disabled) up to enabled_timeout_ms
+      // (default 4s, capped by tmo). Best-effort — if it never settles, click
+      // attempt below still runs and may succeed via force.
+      const enabledTmo = Math.min(Number(step.enabled_timeout_ms) > 0 ? Number(step.enabled_timeout_ms) : 4000, tmo);
+      try {
+        await page.waitForFunction((sel) => {
+          const el = document.querySelector(sel);
+          if (!el) return false;
+          if (el.disabled === true) return false;
+          if (el.getAttribute && el.getAttribute('aria-disabled') === 'true') return false;
+          return true;
+        }, chosenSel, { timeout: enabledTmo, polling: 200 });
+      } catch { /* button may never expose disabled state — proceed */ }
       try {
         await loc.scrollIntoViewIfNeeded({ timeout: 2000 }).catch(() => {});
         await loc.click({ timeout: tmo });
-        return { ok: true };
+        return { ok: true, selector_used: chosenSel };
       } catch (e) {
         // Single retry — covers transient hydration/animation/CPU-pressure
         // misses without masking a genuinely missing selector.
         await page.waitForTimeout(750);
         await loc.scrollIntoViewIfNeeded({ timeout: 2000 }).catch(() => {});
         await loc.click({ timeout: tmo, force: !!step.force });
-        return { ok: true, retried: true };
+        return { ok: true, retried: true, selector_used: chosenSel };
       }
     }
     case 'fill': {
@@ -374,11 +462,23 @@ async function runStep(page, step, portal) {
       // Sets value of a <select> element. Playwright matches by value, label,
       // or index. We pass the resolved string as `value` (most stable for
       // server-rendered selects with stable option values).
-      const value = resolveTemplate(step.value, data);
+      // label_aliases: try each in order, first match wins. Useful when the
+      // option value varies per locale/job (e.g. nationality dropdowns).
+      // Optional steps get a short timeout (3s) so wrong-value misses are cheap.
+      const aliases = step.label_aliases
+        ? step.label_aliases.map(a => resolveTemplate(a, data))
+        : [resolveTemplate(step.value, data)];
       const loc = page.locator(step.selector).first();
       await loc.waitFor({ state: 'visible', timeout: 5000 });
-      await loc.selectOption(value);
-      return { ok: true, value };
+      const tmo = step.optional ? 3000 : 30000;
+      let lastErr;
+      for (const alias of aliases) {
+        try {
+          await loc.selectOption(alias, { timeout: tmo });
+          return { ok: true, value: alias };
+        } catch (e) { lastErr = e; }
+      }
+      throw lastErr;
     }
     case 'check': {
       const aliases = step.label_aliases || [step.label];
@@ -477,6 +577,77 @@ async function runStep(page, step, portal) {
       await page.waitForTimeout(step.ms);
       return { ok: true };
     }
+    case 'radio_group': {
+      // Pick a radio option by its visible label, scoped under a question label
+      // (XING step-2 employer questions use radio Yes/No groups, not selects).
+      // Yaml fields:
+      //   container: optional outer scope (default: page)
+      //   question_label: text/regex of the question heading (required)
+      //   answer: visible label of the option to select (required)
+      //   answer_aliases: alt strings (DE/EN), tried in order
+      //   timeout_ms: per-attempt grace (default 5000)
+      const tmo = Number(step.timeout_ms) > 0 ? Number(step.timeout_ms) : 5000;
+      const root = step.container ? page.locator(step.container).first() : page.locator('body').first();
+      const qText = step.question_label;
+      if (!qText) return { ok: false, err: 'radio_group: question_label required' };
+      // Find any element containing the question text. Fieldset/legend pattern,
+      // div with aria-labelledby, or plain label all work — we walk up to the
+      // nearest fieldset/section/group ancestor and search inside it.
+      const qLoc = root.locator(`:scope :text-matches("${qText.replace(/"/g, '\\"')}", "i")`).first();
+      try {
+        await qLoc.waitFor({ state: 'attached', timeout: tmo });
+      } catch {
+        return { ok: false, err: `radio_group: question not found: ${qText}` };
+      }
+      // Climb to the nearest grouping container holding the radios for THIS question.
+      const groupHandle = await qLoc.evaluateHandle((el) => {
+        let cur = el;
+        for (let i = 0; i < 8 && cur; i++) {
+          const inputs = cur.querySelectorAll && cur.querySelectorAll('input[type=radio], [role=radio]');
+          if (inputs && inputs.length >= 2) return cur;
+          cur = cur.parentElement;
+        }
+        return el.closest('fieldset, [role=radiogroup], .form-field, .question, section, div') || el.parentElement;
+      });
+      const aliases = Array.isArray(step.answer_aliases) && step.answer_aliases.length
+        ? step.answer_aliases
+        : [step.answer];
+      let chosen = null;
+      for (const a of aliases) {
+        if (!a) continue;
+        const clicked = await page.evaluate(({ groupEl, label }) => {
+          if (!groupEl) return false;
+          const norm = (s) => (s || '').replace(/\s+/g, ' ').trim().toLowerCase();
+          const target = norm(label);
+          const labels = [...groupEl.querySelectorAll('label')];
+          for (const l of labels) {
+            if (norm(l.innerText).includes(target)) {
+              const id = l.getAttribute('for');
+              const input = id ? document.getElementById(id) : l.querySelector('input[type=radio], [role=radio]');
+              if (input) {
+                input.click();
+                if (!input.checked && input.dispatchEvent) {
+                  input.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+                return true;
+              }
+              l.click();
+              return true;
+            }
+          }
+          // No <label> match — try aria-label on radio inputs directly.
+          const radios = [...groupEl.querySelectorAll('input[type=radio], [role=radio]')];
+          for (const r of radios) {
+            const al = norm(r.getAttribute('aria-label') || r.value || '');
+            if (al && al.includes(target)) { r.click(); return true; }
+          }
+          return false;
+        }, { groupEl: groupHandle, label: a });
+        if (clicked) { chosen = a; break; }
+      }
+      if (!chosen) return { ok: false, err: `radio_group: no answer matched: ${aliases.join('|')}` };
+      return { ok: true, chosen };
+    }
     default:
       return { ok: false, err: `unknown action: ${step.action}` };
   }
@@ -553,6 +724,13 @@ async function main() {
   const autoSubmit = args.includes('--submit') || force;
   if (!url) fail('usage: gmail-apply.mjs <URL> [--submit|--force] [--autofix] [--experimental] [--run-id=ID]');
   const runDir = runDirFor(runId);
+  if (runDir) {
+    PROGRESS_STATE.runId = runId;
+    PROGRESS_STATE.runDir = runDir;
+    PROGRESS_STATE.url = url;
+    PROGRESS_STATE.started = true;
+    appendScriptProgress({ event: 'script_started', url, run_id: runId, pid: process.pid });
+  }
 
   let config;
   try {
@@ -582,6 +760,32 @@ async function main() {
   // Dismiss leftover overlays from a previous run (e.g. apply-confirmation modal
   // from the prior URL) so the apply button is click-ready. No-op if clean.
   await settlePage(page);
+
+  // Job unavailability check — portal yaml may define `unavailable_selectors`
+  // (array of CSS selectors that appear when a listing is closed/expired).
+  // Checked BEFORE recipe steps so no worker is launched for dead listings.
+  if (Array.isArray(portal.unavailable_selectors) && portal.unavailable_selectors.length) {
+    try {
+      for (const sel of portal.unavailable_selectors) {
+        if (await selectorExists(page, sel, 800)) {
+          const txt = await page.locator(sel).first().innerText({ timeout: 1000 }).catch(() => '');
+          logError({ phase: 'job_unavailable', url, portal: portal.name, run_id: runId, selector: sel, banner_text: txt.trim() });
+          out({
+            ok: false,
+            portal: portal.name,
+            url,
+            run_id: runId,
+            job_unavailable: true,
+            submitted: false,
+            script_claim: 'Discarded',
+            banner_text: txt.trim(),
+          });
+          await browser.close().catch(() => {});
+          process.exit(0);
+        }
+      }
+    } catch { /* best-effort — proceed to normal flow if check fails */ }
+  }
 
   // Redirect detection: portals like theprotocol.it / xing sometimes redirect
   // to an external ATS (greenhouse, lever, recruitify, ...) where our recipe's
@@ -646,11 +850,73 @@ async function main() {
       submitted: false,
       force,
       autofix,
+      script_claim: 'Unknown',
       evidence_path: evidencePath,
       error_log: ERROR_LOG,
     });
     await browser.close().catch(() => {});
     process.exit(2);
+  }
+
+  // External widget detection (pre-click, attribute-based). Some portals
+  // expose external mode via an attribute on the apply trigger
+  // (theprotocol: [data-isexternal='true']) without an outright URL redirect
+  // OR a new tab (when the embedded ATS is e.g. an Adzuna iframe). Detect
+  // BEFORE running steps so the worker handles the embedded ATS via MCP
+  // rather than the script attempting an inline submit on a non-existent form.
+  if (portal.external_widget_probe?.attribute_check) {
+    const ac = portal.external_widget_probe.attribute_check;
+    let attrVal = null;
+    try {
+      const loc = page.locator(ac.selector).first();
+      if (await loc.count()) {
+        attrVal = await loc.getAttribute(ac.attribute, { timeout: 1500 });
+      }
+    } catch { attrVal = null; }
+    if (attrVal != null && String(attrVal) === String(ac.truthy_value)) {
+      const widgetInfo = {
+        detected: true,
+        external_widget: true,
+        kind: 'attribute',
+        original_url: url,
+        final_url: page.url(),
+        target_portal_match: null,
+        framework_hint: null,
+        probe: { selector: ac.selector, attribute: ac.attribute, value: attrVal },
+      };
+      logError({
+        phase: 'redirect_to_external',
+        url, portal: portal.name, run_id: runId,
+        external_widget: true, kind: 'attribute',
+        probe: widgetInfo.probe,
+      });
+      widgetInfo.simplify = await trySimplifyOnPage(page, runId, url, portal.name);
+      let evidencePath = null;
+      if (experimental && runDir) {
+        try {
+          const ev = await captureEvidence(page, portal);
+          const slug = urlSlug(url);
+          const ts = new Date().toISOString().replace(/[:.]/g, '-');
+          const evDir = resolve(runDir, 'evidence');
+          mkdirSync(evDir, { recursive: true });
+          evidencePath = resolve(evDir, `${slug}-redirect-widget-${ts}.json`);
+          writeFileSync(evidencePath, JSON.stringify({
+            ts: new Date().toISOString(),
+            run_id: runId, url, portal: portal.name,
+            redirect: widgetInfo, dom: ev,
+          }, null, 2));
+        } catch { /* best-effort */ }
+      }
+      out({
+        ok: false, portal: portal.name, url, run_id: runId, experimental,
+        redirect: widgetInfo, submitted: false, force, autofix,
+        script_claim: 'Unknown',
+        evidence_path: evidencePath,
+        error_log: ERROR_LOG,
+      });
+      await browser.close().catch(() => {});
+      process.exit(2);
+    }
   }
 
   // In --force mode: keep going on step failures (log + try next).
@@ -666,24 +932,37 @@ async function main() {
   // and remember the most recent off-portal new tab so we can bail with the
   // same redirect block as the in-place case.
   let newTabRedirect = null;
+  // Track pending popups so we can await their URL settle at end-of-loop —
+  // catches the case where the apply button is the LAST step (or only step)
+  // and the popup hasn't finished navigating by the time the loop ends.
+  const pendingPopups = [];
   const handleNewPage = (newPage) => {
-    // Wait for the new page to settle so URL is meaningful, then test.
-    Promise.resolve()
+    // Record immediately so end-of-loop wait knows there's something pending.
+    const settle = Promise.resolve()
       .then(() => newPage.waitForLoadState('domcontentloaded', { timeout: 10000 }).catch(() => {}))
       .then(() => {
         try {
           const u = newPage.url();
           if (!u || u === 'about:blank') return;
+          // ANY new tab whose URL doesn't match this portal's `match` strings
+          // is treated as an external apply form — works portal-agnostically.
+          // External ATS often lives on a totally different domain
+          // (jobriver.de, traffit, erecruiter.pl, etc.), and that's exactly
+          // the signal we use here.
           const matchesOrig = (portal.match || []).some(m => u.includes(m));
           if (!matchesOrig && !newTabRedirect) {
             newTabRedirect = { final_url: u, page: newPage };
           }
         } catch { /* best-effort */ }
       });
+    pendingPopups.push(settle);
   };
   for (const ctx of browser.contexts()) {
     ctx.on('page', handleNewPage);
   }
+  // Also hook page.popup which fires synchronously when window.open is called
+  // from the active tab — earlier signal than context 'page' for some sites.
+  page.on('popup', handleNewPage);
 
   for (let i = 0; i < portal.steps.length; i++) {
     const step = portal.steps[i];
@@ -742,6 +1021,47 @@ async function main() {
       detectedFinalUrl = newTabRedirect.final_url;
       detectedKind = 'new_tab';
     }
+    // (c) Embedded external-ATS iframe (no URL change, no new tab). Detected
+    //     by scanning iframe[src] for known external-ATS host substrings
+    //     declared in portal.external_widget_probe.iframe_match. theprotocol
+    //     uses this for Adzuna; URL stays on theprotocol.it but submission
+    //     happens inside an embedded iframe whose form selectors aren't in
+    //     our recipe.
+    let iframeMatch = null;
+    if (!detectedFinalUrl && portal.external_widget_probe?.iframe_match?.length) {
+      try {
+        const iframeSrcs = await page.evaluate(() =>
+          [...document.querySelectorAll('iframe')].map(f => f.src || '').filter(Boolean)
+        );
+        const needles = portal.external_widget_probe.iframe_match;
+        for (const src of iframeSrcs) {
+          const hit = needles.find(n => src.includes(n));
+          if (hit) { iframeMatch = { src, needle: hit }; break; }
+        }
+      } catch { /* best-effort */ }
+    }
+    if (iframeMatch) {
+      midFlowRedirect = {
+        detected: true,
+        mid_flow: true,
+        external_widget: true,
+        kind: 'iframe',
+        new_tab: false,
+        last_step_index: i,
+        original_url: url,
+        final_url: page.url(),
+        iframe: iframeMatch,
+        target_portal_match: null,
+        framework_hint: null,
+      };
+      logError({
+        phase: 'redirect_to_external',
+        url, portal: portal.name, run_id: runId,
+        external_widget: true, kind: 'iframe', mid_flow: true,
+        last_step_index: i, iframe: iframeMatch,
+      });
+      break;
+    }
     if (detectedFinalUrl) {
       const redirectedPortal = matchPortal(detectedFinalUrl, config);
       const hint = frameworkHintFor(detectedFinalUrl);
@@ -763,6 +1083,41 @@ async function main() {
         target_portal_match: midFlowRedirect.target_portal_match,
       });
       break;
+    }
+  }
+
+  // After the step loop, give any pending popup-page settle promises a chance
+  // to resolve. Apply button as the LAST step + slow ATS handoff = popup
+  // hasn't navigated by loop exit; without this wait we'd miss the redirect.
+  // Cap at 4s so we don't stall when there are no popups.
+  if (!midFlowRedirect && pendingPopups.length > 0 && !newTabRedirect?.final_url) {
+    try {
+      await Promise.race([
+        Promise.all(pendingPopups),
+        page.waitForTimeout(4000),
+      ]);
+    } catch { /* best-effort */ }
+    if (newTabRedirect && newTabRedirect.final_url) {
+      const hint = frameworkHintFor(newTabRedirect.final_url);
+      const redirectedPortal = matchPortal(newTabRedirect.final_url, config);
+      midFlowRedirect = {
+        detected: true,
+        mid_flow: true,
+        new_tab: true,
+        last_step_index: portal.steps.length - 1,
+        original_url: url,
+        final_url: newTabRedirect.final_url,
+        target_portal_match: redirectedPortal ? redirectedPortal.name : null,
+        framework_hint: hint,
+        post_loop_detection: true,
+      };
+      logError({
+        phase: 'redirect_to_external',
+        url, portal: portal.name, run_id: runId,
+        mid_flow: true, new_tab: true, post_loop: true,
+        original_url: url, final_url: newTabRedirect.final_url,
+        target_portal_match: midFlowRedirect.target_portal_match,
+      });
     }
   }
 
@@ -808,6 +1163,7 @@ async function main() {
       submitted: false,
       force,
       autofix,
+      script_claim: 'Unknown',
       evidence_path: evidencePath,
       error_log: ERROR_LOG,
     });
@@ -914,6 +1270,18 @@ async function main() {
   // Caveat: if submit was unconfirmed (no confirmation indicator), keep ok=false
   // so the caller can choose to escalate via MCP or treat as AutoApplyFailed.
   if (force && result.submitted && !result.submitted_unconfirmed) result.ok = true;
+
+  // V3 — emit explicit script_claim ∈ {Applied, Failed, Unknown}. Orchestrator
+  // compares this against the worker's claim. Script's `ok`/`submitted` booleans
+  // remain for forensics but are NOT decision authority.
+  //   Applied  : submitted + success_selector_matched + not unconfirmed.
+  //   Failed   : everything else (validation, missing selector, unsubmitted).
+  //   Unknown  : redirect detected (handled in earlier exit branches above).
+  if (result.submitted && result.submit_confirmation?.kind === 'success_selector_matched' && !result.submitted_unconfirmed) {
+    result.script_claim = 'Applied';
+  } else {
+    result.script_claim = 'Failed';
+  }
 
   // --experimental: capture compact DOM evidence at the FINAL state (post-submit
   // or post-failure). Saved to disk; only the path is in the JSON output to

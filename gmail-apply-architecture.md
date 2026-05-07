@@ -1,99 +1,94 @@
-# gmail-apply — Architecture
+# gmail-apply — Architecture (V3)
 
-This document is the single page to read if you want to understand how the
-gmail-apply system works end-to-end. Components, data flow, two operating
-modes, every flag, error handling, design trade-offs (KISS/YAGNI/SOLID/DRY).
+One-paragraph mental model:
 
-For the canonical operating manual, read
-`.claude/skills/gmail-apply/SKILL.md`. This doc is a higher-level map.
+> Node loops URLs. For each URL: run Playwright script, then spawn ONE haiku worker for that URL with a task-specific contract (External / Validate / Recover). Both write structured page-state evidence files. Node compares their claims. Agreement → write apps.md. Disagreement → opus reads both evidence files and decides. Missing worker evidence → opus uses chrome-devtools MCP itself to probe the live tab. Default path is zero-opus.
+
+For the operating manual, read `.claude/skills/gmail-apply/SKILL.md`. This doc is the architectural map.
 
 ---
 
 ## What it does
 
-Applies to job postings on supported portals (currently `nofluffjobs`,
-`theprotocol`, `xing`, `justjoinit`) using three collaborating layers:
+Applies to job postings on supported portals (`nofluffjobs`, `theprotocol`, `xing`, `justjoinit`) using three layers:
 
-1. **Playwright form fill** — `scripts/gmail-apply.mjs` connects to a user-
-   launched Chrome over CDP (port 9222) and runs a yaml-defined recipe per
-   portal. Detects redirects to external ATS at startup and bails out
-   cleanly so the agent can take over via MCP.
-2. **LLM escalation when the recipe breaks OR external ATS** — the worker
-   (batch) or parent agent (single) uses `chrome-devtools` MCP to probe the
-   live DOM, fix selectors on the fly, OR fill a generic external ATS form
-   using the user's profile + CV upload.
-3. **Optional self-healing** — `--autofix` patches
-   `config/gmail-apply-portals.yml` with a Tier-1 selector after a real
-   Applied via escalation. In batch mode, this happens **mid-batch** so
-   later chunks benefit. URLs that failed before the patch get a retry
-   pass at the end.
+1. **Playwright recipe** — `scripts/gmail-apply.mjs` connects to user-launched Chrome over CDP (port 9222), runs a yaml-defined recipe, captures evidence + emits `script_claim` ∈ {Applied, Failed, Unknown}. Detects redirects to external ATS at startup/mid-flow/new-tab.
+2. **Per-URL haiku worker** — orchestrator spawns ONE worker per URL with a task-specific contract:
+   - **External** — script bailed on redirect; worker fills external ATS via MCP.
+   - **Validate** — script claims Applied; worker confirms via live DOM read, closes tab.
+   - **Recover** — script Failed; worker reads DOM, fixes gap via MCP.
+   Worker writes `evidence/<slug>-worker-<ts>.json` with raw page-state (modal_open, success_marker_visible, validator_errors) and emits stdout `claim`.
+3. **Orchestrator agreement check + opus referee fallback** — Node compares script_claim vs worker_claim. Agreement → apps.md write. Disagreement → opus reads evidence files. No evidence → opus probes via MCP.
 
 Two modes:
-
-- **Single** — user passes a URL.
-- **Batch** — no URL → parent agent (the skill) drives a per-chunk loop
-  over every applications.md row with status `Evaluated` or `Auto-Match`.
-  Sequential, default 2 URLs per chunk.
+- **Single** — user passes URL. Skill (parent agent, opus) runs script, then handles worker role itself via MCP.
+- **Batch** — no URL. `gmail-apply-batch.mjs --plan` then `--run`. Pure Node URL loop.
 
 ---
 
 ## Component map
 
 ```
-                          USER
-                            │ /gmail-apply [URL] [flags]
-                            ▼
-                ┌──────────────────────┐
-                │ .claude/skills/      │  Parent agent / orchestrator.
-                │   gmail-apply/       │  Decides single vs batch,
-                │   SKILL.md           │  drives chunk loop in batch.
-                └─────────┬────────────┘
-                          │
-              ┌───────────┴───────────┐
-        SINGLE│                       │BATCH (parent loops chunks)
-              ▼                       ▼
-    ┌──────────────────┐   ┌──────────────────────────────┐
-    │ scripts/         │   │ scripts/gmail-apply-batch.mjs│
-    │ gmail-apply.mjs  │   │   --plan        (build queue)│
-    │ (Playwright)     │   │   --run-chunk   (one chunk)  │
-    │                  │   │   --retry-chunk (retry pass) │
-    │ Detects redirect │   │ Loads profile.yml subset +   │
-    │ at startup,      │   │ CV path. Spawns 1 haiku      │
-    │ exits early.     │   │ worker per chunk via         │
-    └────────┬─────────┘   │ `claude -p`. Updates apps.md │
-             │             │ incrementally.               │
-             │             └──────────┬───────────────────┘
-             │                        │ per chunk:
-             │                        ▼
-             │              ┌─────────────────────┐
-             │              │ claude -p           │  Each spawn:
-             │              │  --model haiku      │  - static cached prompt
-             │              │  --system-prompt-   │  - stream-json output
-             │              │    file=…           │  - profile + CV path
-             │              │  --output-format    │    in task message
-             │              │    stream-json      │  - tool calls run the
-             │              │  …                  │    Playwright script
-             │              └──────────┬──────────┘
-             │                         │ runs `node scripts/gmail-apply.mjs`
-             │                         │ once per URL it was assigned
-             │                         ▼
-             └────────────────► Same Playwright applier ◄───────────────
-                                        │
-                                        ▼
-                            ┌────────────────────────┐
-                            │ Chrome (user-launched, │
-                            │ port 9222 CDP)         │
-                            └────────────────────────┘
-
+                                   USER
+                                     │ /gmail-apply [URL] [flags]
+                                     ▼
+                         ┌──────────────────────┐
+                         │ .claude/skills/      │  Parent agent (opus).
+                         │   gmail-apply/       │  Single vs batch decision.
+                         │   SKILL.md           │  Reads --run final JSON.
+                         │                      │  Resolves disputed +
+                         │                      │  no_evidence cases.
+                         └─────────┬────────────┘
+                                   │
+                       ┌───────────┴───────────┐
+                 SINGLE│                       │BATCH
+                       ▼                       ▼
+             ┌──────────────────┐   ┌──────────────────────────────┐
+             │ scripts/         │   │ scripts/gmail-apply-batch.mjs│
+             │ gmail-apply.mjs  │   │   --plan       (build queue) │
+             │ (Playwright)     │   │   --run        (URL loop)    │
+             │                  │   │                              │
+             │ Runs recipe.     │   │ Pure Node URL loop:          │
+             │ Detects redirect │   │  for url in plan.urls:       │
+             │ at startup,      │   │    spawn gmail-apply.mjs     │
+             │ mid-flow,        │   │    pick task type            │
+             │ new-tab.         │   │    spawn 1 haiku worker      │
+             │ Emits            │   │    compare claims            │
+             │ script_claim.    │   │    write apps.md OR flag     │
+             │ Writes evidence. │   │      disputed/no_evidence    │
+             └────────┬─────────┘   └──────────┬───────────────────┘
+                      │                        │ per URL
+                      │                        ▼
+                      │              ┌─────────────────────┐
+                      │              │ claude -p           │ Per-URL spawn:
+                      │              │  --model haiku      │ - 1 URL + task type
+                      │              │  --system-prompt-   │ - cached system prompt
+                      │              │    file=…           │ - pre-digested context
+                      │              │  --output-format    │ - MCP only (no script)
+                      │              │    stream-json      │ - writes evidence file
+                      │              │  …                  │ - emits stdout JSON
+                      │              └──────────┬──────────┘ - exits
+                      │                         │
+                      │                         │ MCP work on persistent tab
+                      │                         ▼
+                      └────────────────► Chrome (port 9222 CDP) ◄──────────
+                                                │
    Shared rule docs (single source of truth):
-   - scripts/escalation-ladder.md      (tab safety, 4-step ladder, JS templates,
+   - scripts/escalation-ladder.md      (tab safety, JS templates,
                                         external-ATS handover, success markers)
    - scripts/selector-quality-rules.md (Tier 1/2/3 selector hygiene)
 
    Per-run artifacts:
    - data/batch-runs/<run_id>/
-       plan.json, profile.json, ledger.ndjson, steps.ndjson,
-       evidence/<slug>-*.json
+       plan.json, profile.json,
+       ledger.ndjson           (orchestrator events)
+       url-verdicts.ndjson     (per-URL: claims + decision)
+       steps.ndjson            (per-step from script)
+       script-progress.ndjson  (per-URL script start/done)
+       evidence/<slug>-<ts>.json           (script final-state)
+       evidence/<slug>-redirect-<ts>.json  (script at redirect)
+       evidence/<slug>-worker-<ts>.json    (worker page-state)  ← V3 NEW
+       disputed-urls.ndjson    (opus-side review queue)
 ```
 
 ---
@@ -104,30 +99,95 @@ Two modes:
 
 | File | Responsibility |
 |------|----------------|
-| `scripts/gmail-apply.mjs` | Single-URL Playwright applier. Connects via CDP, detects redirect after navigation, matches URL to a portal recipe, runs yaml-defined steps, optionally submits, races `success_selector` to confirm. With `--experimental` writes per-step ndjson + DOM evidence. Emits one JSON line on stdout. |
-| `scripts/gmail-apply-batch.mjs` | Batch orchestrator helper with three modes: `--plan` (compute queue + chunks, write run_dir + profile.json), `--run-chunk` (spawn one haiku worker for given URLs, update apps.md), `--retry-chunk` (same but logged as retry). Reads `data/applications.md`, picks `Evaluated`/`Auto-Match` rows, dedups URLs. Pure Node — no LLM in the parent process. |
+| `scripts/gmail-apply.mjs` | Single-URL Playwright applier. Runs recipe, captures evidence (final state + redirects), emits `script_claim` ∈ {Applied, Failed, Unknown}. |
+| `scripts/gmail-apply-batch.mjs` | V3 orchestrator. Modes `--plan` (queue + run_dir) and `--run` (URL-by-URL loop, per-URL haiku spawn, agreement check, apps.md write). Pure Node — no LLM in parent. |
 
-### Prompts (Markdown, read by agents)
+### Prompts
 
 | File | Audience | Purpose |
 |------|----------|---------|
-| `.claude/skills/gmail-apply/SKILL.md` | Parent agent | Mode pick, single-URL flow, batch chunk-loop logic, two-flag semantics, autofix, output formats. |
-| `scripts/gmail-apply-worker-prompt.md` | Haiku worker (`claude -p`) | Static system prompt loaded via `--system-prompt-file`. Task contract, External ATS handover steps, output JSON schema, `autofix_eligible` rules, hard rules. References ladder + selector docs instead of duplicating. |
-| `scripts/escalation-ladder.md` | Both | **Single source of truth** — tab safety, 4-step ladder, JS templates, success determination, External ATS generic success markers. |
-| `scripts/selector-quality-rules.md` | Both + `/explore-sender` | **Single source of truth** for selector hygiene. |
+| `.claude/skills/gmail-apply/SKILL.md` | Parent agent (opus) | Mode pick, single-URL flow, batch invocation, dispute/no-evidence resolution, output formats. |
+| `scripts/gmail-apply-worker-prompt.md` | Haiku worker (`claude -p`) | Static system prompt. Single-URL contract. 3 task templates (External / Validate / Recover). Hard rules (file upload, dialog, captcha, framework writes-via-MCP). Output schema. |
+| `scripts/escalation-ladder.md` | Both | Single source of truth — tab safety, JS templates, success markers, external-ATS handover. |
+| `scripts/selector-quality-rules.md` | Both + `/explore-sender` | Selector hygiene. |
 
 ### Config + data
 
 | Path | Purpose |
 |------|---------|
-| `config/gmail-apply-portals.yml` | Portal recipes — `match`, `steps`, `data`, `submit_selector`, `success_selector`, `success_timeout_ms`, `label_aliases`. Only thing autofix is allowed to mutate. |
-| `config/profile.yml` | User profile. Orchestrator reads `candidate.*` once during `--plan`, writes a small subset (full_name/first/last, email, phone, location, linkedin, portfolio, github + CV path) to `data/batch-runs/<run_id>/profile.json`. Worker receives the subset inline in the task prompt. |
-| `assets/cv/CV_www.ArshiaHemati.com_EN.pdf` | The CV uploaded on external ATS. Absolute path injected into worker task prompt; worker uses `mcp__chrome-devtools__upload_file`. |
-| `data/applications.md` | Tracker. Batch reads it for queue + writes status updates back **incrementally per chunk** (so mid-batch failures are visible). |
-| `data/gmail-apply-errors.ndjson` | Append-only forensic log across all runs. Phases: `step`, `verify`, `submit`, `submit_unconfirmed`, `escalation`, `selector_fix`, `script_extension_needed`, `worker_chunk_failure`, `yaml_autofix`, `autofix_skipped`, `autofix_failed`, `redirect_to_external`, `applied_invalidated`, `simplify_autofill`, `external_field_answered`, `external_unmapped_field_required`. |
-| `data/batch-runs/<run_id>/` | Per-run dir: `plan.json`, `profile.json`, `ledger.ndjson` (orchestrator events), `steps.ndjson` (per-step records from the Playwright script), `evidence/<slug>-<ts>.json` (DOM snapshot at final state, `-redirect-` for redirects, `-external-` for external-ATS submits). |
-| `.mcp.json` | MCP server config. Workers spawn with `--strict-mcp-config --mcp-config .mcp.json` so only `chrome-devtools` + `gmail-html` load. |
-| `launch-chrome.bat` | User runs this once before any apply. Starts Chrome with `--remote-debugging-port=9222`, persistent profile, no `--enable-automation` (Google login still works). |
+| `config/gmail-apply-portals.yml` | Portal recipes. Only thing autofix mutates. |
+| `config/profile.yml` | User profile. Orchestrator reads `candidate.*` once during `--plan`, writes subset to `data/batch-runs/<run_id>/profile.json`. Worker receives subset inline in task message. |
+| `assets/cv/CV_www.ArshiaHemati.com_EN.pdf` | CV uploaded on external ATS via `mcp__chrome-devtools__upload_file`. |
+| `data/applications.md` | Tracker. Orchestrator updates per URL (immediate visibility). |
+| `data/gmail-apply-errors.ndjson` | Append-only forensic log across all runs. |
+| `data/batch-runs/<run_id>/` | Per-run artifacts (see component map above). |
+| `.mcp.json` | MCP config — workers spawn with `--strict-mcp-config`. |
+| `launch-chrome.bat` | User runs once before any apply. |
+
+---
+
+## V3 URL flow (canonical)
+
+```
+For each URL in plan.urls:
+
+  1. Run script:
+       node gmail-apply.mjs <url> --force --experimental --run-id=<id>
+     → script_claim ∈ {Applied, Failed, Unknown}
+
+  2. Pick task type:
+       redirect.detected   → External
+       script_claim:Applied → Validate
+       else                → Recover
+
+  3. Spawn ONE haiku worker (single URL, task-specific context).
+     Worker:
+       - reads live DOM via mcp__chrome-devtools__evaluate_script
+       - completes/validates application via MCP write tools
+       - writes data/batch-runs/<id>/evidence/<slug>-worker-<ts>.json
+       - emits stdout JSON with claim ∈ {Applied, Failed}
+       - exits
+
+  4. Orchestrator reads worker stdout + verifies evidence file exists.
+     Missing evidence → respawn worker once.
+     Still missing → flag no_evidence. Continue.
+
+  5. Compare claims:
+       agree Applied      → apps.md row Applied
+       agree Failed       → apps.md row AutoApplyFailed
+       script Unknown     → take worker claim
+       Applied vs Failed  → disputed (no apps.md write)
+       worker Unknown     → disputed
+       no evidence        → no_evidence
+
+  6. With --autofix and Applied via Recover branch:
+     Log applied_via_mcp_recovery for opus to patch yaml.
+
+  7. Append url-verdicts.ndjson row. Next URL.
+```
+
+After all URLs:
+- Orchestrator emits `{applied, failed, disputed[], no_evidence[], autofixes, ms}`.
+- Skill (opus) processes `disputed[]` by reading evidence files.
+- Skill (opus) processes `no_evidence[]` via direct chrome-devtools MCP probe.
+
+---
+
+## Trust hierarchy
+
+V3 has ONE source of truth: **page-state evidence files (script + worker)**.
+
+`script_claim` and worker stdout `claim` are HINTS for the agreement check, never authority. When they disagree or evidence is missing, opus reads the actual page-state and decides.
+
+| Source | Trust | When read |
+|---|---|---|
+| Worker page-state evidence file | high | always (orchestrator agreement check) |
+| Script page-state evidence file | high | by opus on disputed cases |
+| Live DOM via opus MCP probe | highest | by opus on no_evidence cases |
+| Worker stdout `claim` | low | for agreement-rule input only |
+| Script `script_claim` | low | for agreement-rule input only |
+
+Lying in stdout while DOM contradicts → caught + flipped. Default path: file says success_marker present + modal closed → trust Applied.
 
 ---
 
@@ -135,216 +195,85 @@ Two modes:
 
 | User input | Mode | Driver |
 |---|---|---|
-| First positional arg starts with `http://` / `https://` | Single | Direct script call |
-| No URL OR `--batch` flag | Batch | Parent agent drives chunk loop |
+| First positional starts with `http://` / `https://` | Single | Direct script + opus MCP if needed |
+| No URL OR `--batch` flag | Batch | `gmail-apply-batch.mjs --plan` then `--run` |
 
 ---
 
-## Flags reference
+## Flags
 
 | Flag | Single | Batch | Effect |
 |---|:---:|:---:|---|
-| `<URL>` (positional) | required | n/a | Target URL for single mode. |
-| `[N]` (positional) | n/a | optional | Cap on URLs to process this batch run. |
-| `--chunk SIZE` |   | ✓ | URLs per worker spawn. Default 2. |
-| `--force` | ✓ | ✓ | Auto-submit + escalate failures. |
-| `--submit` | ✓ |   | Single-mode only. Submit only if every step succeeded. |
-| `--experimental` | ✓ | ✓ | Per-step ndjson + DOM evidence to disk. Parent validates **failures** only (autofix candidates). |
-| `--experimental-succ` | ✓ | ✓ | Implies `--experimental`. Parent ALSO validates every Applied via evidence — catches false positives. Invalid Applied → flipped to `AutoApplyFailed` with `phase:"applied_invalidated"`. |
-| `--autofix` | ✓ | ✓ | Patch yaml after a real Applied via escalation. Implies `--experimental`. **Mid-batch in batch mode** (parent autofixes after each chunk). |
-| `--run-id=<id>` | ✓ |   | Set by orchestrator when spawning workers. End users don't pass it. |
-| `--verbose` |   | ✓ | Tail worker `tool_use` events to stderr (zero LLM cost — Node parses stream-json). |
-| `--dry-run` |   | ✓ | --plan only, no work, no run_dir created. |
-| `--batch` |   | ✓ | Force batch mode even with stray positional arg. |
+| `<URL>` | required | n/a | Target URL. |
+| `[N]` | n/a | optional | Cap on URLs this batch run. |
+| `--force` | ✓ | ✓ | Auto-submit + escalate failures via worker. |
+| `--submit` | ✓ |   | Submit only if every script step succeeded (no escalation). |
+| `--autofix` | ✓ | ✓ | After Applied via Recover, surface yaml-patch candidate. |
+| `--verbose` |   | ✓ | Tail worker tool_use to stderr. |
+| `--dry-run` |   | ✓ | --plan only, no work. |
+| `--batch` |   | ✓ | Force batch mode even with stray positional. |
 
-No worker timeout. No `--max-turns` cap. No fail-rate skip. (Removed for
-now; reintroduce after observed runs converge.)
+V3 dropped: `--experimental`, `--experimental-succ`, `--retry-chunk`, `--run-chunk`, `--chunk SIZE`. Evidence is always on. Iteration is one URL at a time.
 
 ---
 
 ## Single-URL flow
 
 ```
-1. Skill reads user input → URL detected → single mode.
+1. Skill detects URL → single mode.
 2. Skill runs:
      node scripts/gmail-apply.mjs <URL> [--force] [--autofix]
-       [--experimental | --experimental-succ]
-
-3. gmail-apply.mjs:
-   a. Connect to Chrome via CDP, get/open tab on URL.
-   b. settlePage (close stale modals).
-   c. REDIRECT CHECK: if page.url() no longer matches any of the original
-      portal's `match` strings → emit { redirect: { detected, original_url,
-      final_url, target_portal_match } } + exit. Capture redirect-evidence
-      under data/batch-runs/<run_id>/evidence/ when --experimental.
-   d. Otherwise execute recipe.steps. With --force keep going on failures.
-   e. verify(): re-read filled values, surface mismatches.
-   f. If autoSubmit: click submit_selector, race success_selector.
-   g. Capture final-state evidence when --experimental.
-   h. Emit JSON: { ok, portal, url, run_id, experimental, redirect?,
-                   steps, verification, submitted, submitted_unconfirmed,
-                   submit_confirmation, evidence_path? }
-
-4. Skill reads JSON. Decision tree:
-   - redirect.detected:true → External ATS handover via
-     scripts/escalation-ladder.md § "External ATS handover":
-       - Tab-safety on redirect.final_url
-       - Probe generic form fields, fill from profile (read once)
-       - Upload CV (assets/cv/CV_www.ArshiaHemati.com_EN.pdf)
-       - Submit, verify generic success markers
-       - Mark Applied with external_apply:true, or AutoApplyFailed
-   - submitted_unconfirmed:true OR ok:false → escalation ladder.
-   - success_selector_matched on right tab AND --experimental-succ → read
-     evidence, validate dom.href + dom.success_match + dom.modal_open.
-     Invalid → AutoApplyFailed. Valid → mark Applied.
-
-5. With --autofix AND a real Applied via escalation (NOT external_apply):
-   - Probe alternative selectors (Tier-1 per selector-quality-rules.md).
-   - Read yaml, compute minimal diff, show user, write, validate parse.
-   - Append phase:"yaml_autofix" to error log.
+3. gmail-apply.mjs runs recipe, emits JSON with script_claim + evidence_path.
+4. Skill branches on script_claim:
+   - redirect.detected:true → External handover via MCP (opus IS the worker).
+   - script_claim:Failed (no --force) → form filled, await user "send it".
+   - script_claim:Failed (--force)    → Recover via MCP.
+   - script_claim:Applied             → Validate via MCP.
+5. Skill writes data/applications.md.
+6. With --autofix and Applied via Recover: probe alts, patch yaml.
 ```
 
 ---
 
-## Batch flow — parent drives chunk loop
+## Batch flow
 
 ```
 1. Skill (no URL) → batch mode.
-2. Skill runs --plan to get the queue + run_id:
-     node scripts/gmail-apply-batch.mjs --plan [N] [--chunk SIZE] [--force]
-       [--experimental | --experimental-succ] [--autofix]
-   → JSON: { run_id, run_dir, total_urls, chunks: [[u1,u2],...],
-             cv_path, flags, preview }
-   With --dry-run: same output, no run_dir created. Stop here.
-
-3. Skill loops chunks (held in conversation):
-   retry_queue = []
-   FOR each chunk in chunks:
-     a. node scripts/gmail-apply-batch.mjs --run-chunk \
-          --urls=<csv> --run-id=<id> [flags]
-        → spawns 1 haiku worker.
-        → worker processes 2 URLs sequentially via gmail-apply.mjs +
-          External ATS handover when redirect.detected.
-        → emits { results, errors_logged, applied_candidates,
-                  autofix_candidates }
-        → orchestrator updates apps.md for THIS chunk's URLs.
-
-     b. IF --experimental-succ:
-        FOR each entry in applied_candidates:
-          - Read evidence_path
-          - Verify dom.href + dom.success_match + dom.modal_open
-            (or external_apply markers when external_apply:true)
-          - Invalid → flip apps.md row → AutoApplyFailed,
-            log phase:"applied_invalidated",
-            push to retry_queue if yaml-fixable.
-
-     c. IF --autofix:
-        FOR each entry in autofix_candidates:
-          - Read evidence_path. Re-classify (trust evidence).
-          - Skip if external_apply / cross-domain / login / captcha /
-            transient. Log phase:"autofix_skipped".
-          - Otherwise: tab safety + probe alts + minimal yaml patch +
-            validate parse + log phase:"yaml_autofix".
-          - Push candidate URL to retry_queue.
-
-     d. (Next chunk runs WITH patched yaml — true mid-batch benefit.)
-
-4. Retry pass (if --autofix and retry_queue non-empty):
-     node scripts/gmail-apply-batch.mjs --retry-chunk \
-       --urls=<csv-of-retry_queue> --run-id=<same id> [flags]
-   Same flow as Step 3, EXCEPT no further autofix (would loop).
-   Validate Applieds under --experimental-succ. Final failures stay
-   AutoApplyFailed.
-
-5. Skill emits final summary:
-     "batch <run_id>: 47/50 Applied (3 escalated, 5 external_apply via MCP),
-      3 AutoApplyFailed. yaml autofixes: 2. retry pass: 5/5 Applied.
-      log: data/batch-runs/<run_id>/ledger.ndjson"
+2. Skill runs --plan to get queue + run_id.
+3. Skill runs --run --run-id=<id>.
+   Orchestrator iterates queue URL-by-URL. Per URL:
+     - spawns gmail-apply.mjs
+     - picks task type
+     - spawns 1 haiku worker (per URL spawn)
+     - reads worker stdout + evidence file
+     - applies agreement rule
+     - writes apps.md or flags disputed/no_evidence
+4. Skill reads --run final JSON.
+5. For each disputed URL: skill reads worker evidence file, decides via decide() rules. Writes apps.md.
+6. For each no_evidence URL: skill uses chrome-devtools MCP directly (list_pages → evaluate_script) to probe live tab. Decides. Writes apps.md.
+7. Skill emits final summary.
 ```
 
 ---
 
 ## External ATS handover
 
-When `gmail-apply.mjs` detects redirect (URL leaves the matched portal's
-domain), it does TWO things before bailing out:
+Script detects redirect → emits `redirect` block with:
+- `final_url`, `target_portal_match`, `framework_hint`, `simplify` (Simplify Copilot autofill result)
 
-1. **Runs Simplify Copilot autofill** on the redirected tab via
-   `scripts/simplify-autofill.mjs` → `runSimplifyAutofillOnPage(page)`.
-   The Simplify browser extension (already installed in the user's
-   Chrome) injects a shadow-DOM panel on supported ATS pages
-   (Greenhouse, Lever, Ashby, etc.). The script clicks the panel's
-   `#fill-button` via shadow-root traversal, waits for navigation
-   (Simplify appends `?utm_source=Simplify` and re-renders), polls form
-   fields until stable, and detects whether the CV file input was
-   populated. Result attached to `redirect.simplify`. On unsupported
-   frameworks (Workday, iCIMS, custom forms) the panel doesn't inject
-   and Simplify no-ops in <1s. **Never blocks** — errors are logged but
-   don't fail the bailout.
-2. Emits `redirect` block (with `simplify` sub-block) and disconnects.
+Orchestrator picks `External` task type → spawns worker. Worker:
+- Branch A (Simplify pre-filled): gap-fill + submit + verify.
+- Branch B (Simplify unsupported): full probe + fill + submit + verify.
 
-The worker (batch) or parent (single) then runs External ATS handover
-with **branch logic** based on `redirect.simplify`:
+Always writes `evidence/<slug>-worker-<ts>.json` with `external_ats_host` + `framework_detected` + final `page_state`.
 
-**Branch A — Simplify pre-filled** (`supported && (clicked || alreadyFilled)`):
-1. Tab-safety on `redirect.final_url`.
-2. ONE `evaluate_script` READ: errors_visible + empty `[required]` fields
-   + submit button selector.
-3. Skip CV upload if `simplify.cvUploaded === true`. Otherwise
-   `take_snapshot` + `upload_file`.
-4. MCP-fill only the gaps (typically 0-2 fields).
-5. Click submit via MCP. On validation errors, MCP-fill flagged fields,
-   resubmit once, re-verify.
-6. Mark Applied with `external_apply: true`.
-
-**Branch B — Simplify not supported** (`!supported || error`):
-1. Tab-safety on `redirect.final_url`.
-2. Wait for form to render.
-3. Probe generic fields via single `evaluate_script` (email/phone/name/
-   linkedin/file upload + framework detection).
-4. Fill via MCP write tools (`fill`, `fill_form`, `type_text`, `click`)
-   using `EXTERNAL_PROFILE` block from task message (or `config/profile.yml`
-   in single mode). `evaluate_script` writes are FORBIDDEN on framework-
-   bound inputs.
-5. Upload CV via `mcp__chrome-devtools__upload_file` —
-   `assets/cv/CV_www.ArshiaHemati.com_EN.pdf` (absolute).
-6. Submit, verify generic success markers (multi-language: thank-you /
-   submitted / wysłane / gesendet / merci / gracias).
-7. Mark Applied with `external_apply: true`.
-
-Both branches: orchestrator skips yaml autofix and does NOT create a new
-recipe — external ATS pages are one-time applications, DOM is not stable
-across runs, MCP fill is the right tool every time.
-
-**Token win from Branch A**: Simplify fills ~6 identity fields + GDPR +
-CV via shadow-DOM click — zero MCP turn cost. Worker's per-URL MCP turn
-budget on Greenhouse/Lever drops from ~10-15 turns (probe + 6 fills +
-upload + submit + verify) to ~3-4 turns (read gaps + submit + verify).
-
-If file upload fails OR an unknown required field exists →
-`AutoApplyFailed` with `failure_kind: "external_unconfirmed"` or
-`"external_unknown_required_field"`, `autofix_eligible: false`.
-
----
-
-## Two-flag validation semantics
-
-| Flag combo | Disk artifacts | Failures validated by parent? | Successes validated by parent? |
-|---|:---:|:---:|:---:|
-| (none) | ✗ | ✗ | ✗ |
-| `--experimental` | ✓ | ✓ (autofix candidates only) | ✗ |
-| `--experimental-succ` | ✓ | ✓ | ✓ (every Applied) |
-| `--autofix` | ✓ (implied) | ✓ | ✗ (unless `--experimental-succ` also set) |
-| `--autofix --experimental-succ` | ✓ | ✓ | ✓ |
-
-`--experimental-succ` cost: parent reads ~1.5 KB evidence per Applied. 50
-Applieds = ~75 KB. Negligible.
+Orchestrator marks Applied with `external_apply:true` (no yaml autofix on external — DOM not stable across runs).
 
 ---
 
 ## Output schemas
 
-### `gmail-apply.mjs` JSON
+### `gmail-apply.mjs` JSON (per URL run)
 
 ```json
 {
@@ -353,87 +282,101 @@ Applieds = ~75 KB. Negligible.
   "url": "https://...",
   "run_id": "...",
   "experimental": true,
-  "redirect": {                              // present only on cross-domain
-    "detected": true,
-    "original_url": "https://theprotocol.it/...",
-    "final_url": "https://greenhouse.io/...",
-    "target_portal_match": null,             // or known portal name
-    "framework_hint": null,                  // or { host_pattern, framework_detected, source }
-    "simplify": {                            // ALWAYS present on every redirect
-      "supported": true,                     // panel injected (= Greenhouse/Lever/Ashby/etc)
-      "clicked": true,                       // fill-button click succeeded
-      "alreadyFilled": false,                // panel present but no fill-button (already done)
-      "filledFieldCount": 7,
-      "cvUploaded": true,                    // input[type=file] populated
-      "filledFields": [{ "name":"first_name","type":"text","value":"Arshia" }, "..."],
-      "durationMs": 4200,
-      "error": null                          // string when something went wrong; never blocks
-    }
+  "script_claim": "Applied" | "Failed" | "Unknown",
+  "redirect": { /* present only on redirect detection — script_claim=Unknown */
+    "detected": true, "original_url", "final_url", "target_portal_match",
+    "framework_hint", "simplify": { ... }
   },
   "submit_selector": "...",
   "steps": [{ "i": 0, "action": "fill", "ok": true }, ...],
   "verification": { ... },
-  "submitted": true,
+  "submitted": true | false,
   "submitted_unconfirmed": false,
   "submit_confirmation": { "kind": "success_selector_matched", "selector": "..." },
-  "force": true, "autofix": false,
   "evidence_path": "data/batch-runs/.../evidence/...json",
   "error_log": "data/gmail-apply-errors.ndjson"
 }
 ```
 
-### Worker JSON (per chunk)
+### Worker JSON (per URL)
 
 ```json
 {
-  "results": [
-    { "url": "...", "status": "Applied",
-      "external_apply": false, "evidence_path": "...", "portal": "nofluffjobs" },
-    { "url": "...", "status": "Applied",
-      "external_apply": true, "evidence_path": "..." },
-    { "url": "...", "status": "AutoApplyFailed",
-      "reason": "...", "failure_kind": "...", "failed_step": "...",
-      "failed_selector": "...", "evidence_path": "...",
-      "autofix_eligible": true, "external_apply": false }
-  ],
-  "errors_logged": 3
+  "url": "<url>",
+  "claim": "Applied" | "Failed",
+  "task_type": "External" | "Validate" | "Recover",
+  "external_apply": true | false,
+  "evidence_path": "data/batch-runs/.../evidence/<slug>-worker-<ts>.json",
+  "external_ats_host": "<host or null>",
+  "framework_detected": { "angular": bool, "react": bool, "vue": bool, "workday": bool },
+  "failed_field_name": null,
+  "last_mcp_tool_used": null,
+  "validator_error_text_observed": null,
+  "reason": "<short>",
+  "failure_kind": "<when claim=Failed>"
 }
 ```
 
-### Orchestrator `--plan` JSON
+### Worker page-state evidence file
+
+```json
+{
+  "ts": "<iso>",
+  "run_id": "<id>",
+  "url": "<url>",
+  "task_type": "External" | "Validate" | "Recover",
+  "claim": "Applied" | "Failed",
+  "page_state": {
+    "href": "<location.href>",
+    "modal_open": true | false,
+    "success_marker_visible": true | false,
+    "success_marker_match": "<selector or text or null>",
+    "validator_errors": ["...", "..."],
+    "form_still_present": true | false,
+    "url_changed_from_target": true | false
+  },
+  "framework_detected": { "angular": bool, "react": bool, "vue": bool, "workday": bool },
+  "external_ats_host": "<host or null>",
+  "reason": "<short>",
+  "failure_kind": "<when claim=Failed>"
+}
+```
+
+### `--plan` JSON
 
 ```json
 {
   "ok": true, "mode": "plan",
   "run_id": "...", "run_dir": "...",
-  "total_urls": 50, "chunk_count": 25, "chunk_size": 2,
-  "chunks": [["u1","u2"], ...],
+  "total_urls": 50,
+  "urls": ["u1", "u2", ...],
   "preview": [...],
-  "portal_counts": {...}, "status_counts": {...},
-  "cv_path": "C:\\...\\assets\\cv\\CV_www.ArshiaHemati.com_EN.pdf",
-  "flags": { "force":true, "experimental":true, "experimental_succ":true, "autofix":true }
+  "portal_counts": { ... }, "status_counts": { ... },
+  "cv_path": "...",
+  "flags": { "force": true, "autofix": true }
 }
 ```
 
-### Orchestrator `--run-chunk` / `--retry-chunk` JSON
+### `--run` JSON
 
 ```json
 {
-  "ok": true, "mode": "run-chunk", "run_id": "...",
-  "is_retry": false,
-  "chunk_urls": ["u1","u2"],
-  "applied": 1, "failed": 1, "apps_md_rows_updated": 2,
-  "usage": { "input_tokens": ..., "output_tokens": ... },
-  "results": [ /* worker results, enriched with num/company/role */ ],
-  "applied_candidates": [ /* present when --experimental-succ */
-    { "url", "num", "portal", "company", "role", "evidence_path", "external_apply" }
+  "ok": true, "mode": "run", "run_id": "...",
+  "total": 50,
+  "applied": 47,
+  "failed": 1,
+  "disputed": [
+    { "url", "num", "portal", "task_type",
+      "script_claim", "worker_claim",
+      "worker_evidence_path", "script_evidence_path",
+      "reason" }
   ],
-  "autofix_candidates": [ /* present when --autofix */
-    { "url", "num", "portal", "company", "role",
-      "failure": { "kind", "failed_step", "failed_selector", "reason" },
-      "evidence_path" }
+  "no_evidence": [
+    { "url", "num", "portal", "task_type",
+      "script_claim", "worker_err", "worker_diag", "reason" }
   ],
-  "ms": 12345
+  "autofixes": 2,
+  "ms": 1234567
 }
 ```
 
@@ -441,38 +384,33 @@ Applieds = ~75 KB. Negligible.
 
 ## Strict success rules
 
-**Recipe-applied (non-external)**:
+**Recipe-applied (Validate task)**:
 1. `location.href` is target URL (or same-origin same-job redirect).
-2. Portal `success_selector` matched on that page.
-3. Apply modal closed OR success aside/icon/locale-text marker visible.
+2. Page-state shows `success_marker_visible:true` AND `modal_open:false` AND `validator_errors.length===0`.
 
 **External-applied**:
 1. `location.href` matches `redirect.final_url`.
-2. URL changed to thanks/success/submitted/confirmation OR generic
-   marker text present (multi-language list).
-3. Form not still present OR no validation errors visible.
+2. Page-state shows URL changed to thanks/success/submitted/confirmation OR generic marker text present (multi-language list).
+3. `form_still_present:false` OR no validator errors.
 
-Any ambiguity → `AutoApplyFailed`. URL on different domain than expected →
-fail. "Modal closed but no success indicator" → fail. "Looked successful
-but didn't list_pages first" → fail.
+**Recovery-applied**:
+- Same as Recipe-applied. Worker re-checks via probe after submit.
 
-When in doubt → `phase:"escalation"` log + `AutoApplyFailed`. Better to
-flag a real success as failed than mark a fail as success.
-
-Full ladder + JS templates: `scripts/escalation-ladder.md`.
+Any ambiguity → `claim:"Failed"`. URL on different domain than expected → fail. "Modal closed but no success indicator" → fail.
 
 ---
 
 ## Token economics
 
-| Layer | Cost |
+| Path | Cost per URL |
 |---|---|
-| Parent agent (this session) | Plan call (~1 k tokens). Per chunk: read run-chunk JSON + (optional) read evidence files for applied/autofix candidates. ~1–3 k per chunk. 25 chunks ≈ 30–80 k. Modest. |
-| Worker (haiku, per chunk) | Static cached system prompt (~5 k). Task prompt (URLs + profile + CV path) ~500 tokens. Tool calls + final JSON ~1–3 k output. ~50-URL run ≈ 100 k cached input + 25 k output across all spawns. |
-| Stream-json events | Parsed inside Node orchestrator. NOT in parent's context. |
-| DOM evidence | On disk only. Parent loads only what it adjudicates. |
+| Validate (script applies, worker confirms Applied) | 1 haiku spawn (~$0.001 cached) + 0 opus |
+| Recover (script fails, worker fixes + applies) | 1 haiku spawn (~$0.003-0.008, more turns) + 0 opus |
+| External | 1 haiku spawn (~$0.005-0.01) + 0 opus |
+| Disputed | 1 haiku + opus reads 2 small JSON files (~500 tokens opus) |
+| No evidence | 1-2 haiku (one respawn) + opus MCP probe (~2-4 MCP turns) |
 
-No screenshots — text DOM signals only.
+Disputes expected <5%. No-evidence expected <1%. **Default path: zero opus tokens.**
 
 ---
 
@@ -480,125 +418,42 @@ No screenshots — text DOM signals only.
 
 ### KISS
 
-- Two scripts (single + batch helper) sharing the same Playwright applier.
-  No build step, no codegen.
-- Parent agent drives the batch loop (no bidirectional IPC). Each script
-  invocation is one mode, one shot.
-- One config for portal recipes (yaml). One CLI per use case.
+- Node drives URL iteration. Haiku is leaf, never driver.
+- One CDP source of truth: live tab state. Worker observes via MCP, opus probes via MCP only on missing evidence.
+- One agreement function (~30 LOC) replaces V2's referee triangulator.
 
 ### YAGNI
 
-- No worker turn cap, no worker timeout, no fail-rate skip — removed
-  because they were guesses without real-run data.
-- No screenshot capture — DOM text is sufficient.
-- No parallel worker spawning — sequential is simpler and meets the
-  requirement.
-- No automatic retry of `AutoApplyFailed` URLs beyond the post-autofix
-  retry pass.
+- No `--experimental` toggles — evidence is always required for the agreement check.
+- No referee post-chunk audit — every URL adjudicated live.
+- No worker timeout / turn cap beyond a 6-minute safety SIGKILL — workers are tiny (1 URL of context).
+- No needs-investigation queue — outcomes are {Applied, AutoApplyFailed, disputed, no_evidence}, all explicit.
 
 ### SOLID
 
-- **Single Responsibility**: `gmail-apply.mjs` = form fill + redirect
-  detection; `gmail-apply-batch.mjs` = orchestrator helper modes; worker
-  prompt = worker behavior; SKILL.md = parent manual + chunk loop logic;
-  portal yaml = recipe data; `escalation-ladder.md` = canonical
-  ladder; `selector-quality-rules.md` = canonical hygiene.
-- **Open/Closed**: new portal = new yaml entry, no script change. New
-  step type = one new branch in `runStep()`.
-- **Dependency Inversion**: scripts depend on yaml abstraction + profile
-  abstraction. Recipe-agnostic Playwright applier interprets recipes.
+- **SRP.** `gmail-apply.mjs` = recipe + redirect detect + script_claim. `gmail-apply-batch.mjs` = iteration + per-URL spawn + agreement + apps.md write. Worker prompt = MCP work for one URL with one of three contracts.
+- **OCP.** New portal = new yaml entry, no script change. New task type = one new branch in worker prompt + orchestrator picker.
+- **DIP.** Orchestrator depends on yaml abstraction + profile abstraction. No raw selectors in orchestrator.
 
 ### DRY
 
-- Tab safety, 4-step ladder, JS templates, success determination,
-  external-ATS markers → canonical at `scripts/escalation-ladder.md`. Used
-  by both single SKILL.md and worker prompt (worker reads on demand).
-- Selector quality rules → canonical at `scripts/selector-quality-rules.md`.
-- URL extraction (notes + report file) → only in `gmail-apply-batch.mjs`.
-- Profile data path → orchestrator reads `config/profile.yml` once,
-  workers receive subset inline. No worker reads profile.yml directly.
-
-### Known minor non-DRY
-
-- Status whitelist `['Evaluated', 'Auto-Match']` hardcoded in
-  `gmail-apply-batch.mjs` while `templates/states.yml` is the documented
-  source of truth. Not worth promoting (2 strings, low drift risk).
+- Tab safety, JS templates, success determination canonical at `scripts/escalation-ladder.md`.
+- Selector quality canonical at `scripts/selector-quality-rules.md`.
+- Profile data path: orchestrator reads `config/profile.yml` once, workers receive subset inline. No worker reads profile.yml directly.
 
 ---
 
 ## Caveats / known issues
 
-- **Caveman SessionStart hook** prepends ~40 k tokens to every worker
-  spawn (user's plugin). Cache stays warm. Workers see contradictory voice
-  ("be terse caveman" + "output JSON only"); JSON-only wins for haiku.
+- **Caveman SessionStart hook** prepends ~40 k tokens to every worker spawn. Cache stays warm. Worker prompt strictly outputs JSON; voice contradiction resolved by output schema.
 - **MCP warm-up**: first `mcp__chrome-devtools__list_pages` may take ~2 s.
-- **No worker turn/timeout cap**. Parent process waits indefinitely if a
-  worker hangs. Acceptable for first iteration; reintroduce caps once
-  observed.
-- **Redirects detected in 3 places** (v2 hardening):
-  - **Startup** — page URL after navigation no longer matches portal `match`.
-  - **Mid-flow same-tab** — after any step, `page.url()` left the portal.
-  - **Mid-flow new-tab** — `context.on('page')` listener catches a popup
-    opened by a recipe step (e.g. nofluffjobs Experis apply button →
-    Pretius traffit popup). Tagged with `redirect.new_tab:true`.
-
-  All three emit the same `redirect` JSON shape; worker handover is
-  identical. The script's `browser.close()` only DISCONNECTS Playwright
-  from CDP — Chrome and the redirected tab stay open, ready for the
-  worker's MCP handover.
-
-- **Known-ATS framework hints.** When the redirect's `final_url` matches
-  a known framework-protected ATS host (Workday, Greenhouse, Lever,
-  Recruitify, Traffit, SmartRecruiters, Workable, Jobvite, iCIMS, Taleo,
-  SuccessFactors), the script populates `redirect.framework_hint` with
-  `{ host_pattern, framework_detected, source: 'known_ats_registry' }`.
-  Worker uses this verbatim, skipping its own framework probe. No yaml
-  recipe is ever auto-created for these hosts — they remain one-time MCP
-  applications.
-
-- **External-ATS write rule (v2).** WRITES on external ATS forms MUST
-  use chrome-devtools MCP write tools (`fill`, `fill_form`, `type_text`,
-  `click`, `upload_file`). `evaluate_script` for writes is FORBIDDEN —
-  framework-bound inputs (Angular `FormControl`, React controlled inputs,
-  Vue `v-model`) silently reject DOM `.value=` + synthetic events because
-  Zone.js and React's synthetic event chain only respond to real CDP
-  keystrokes. `evaluate_script` is correct for READS only. Canonical
-  rule lives in `scripts/escalation-ladder.md`; worker prompt enforces.
-
-- **3-strike per field.** External-ATS fills cap at 3 strategies per
-  field, 12 MCP write attempts per URL total. Prevents the 60+ turn
-  loops we saw before this rule (Experis Angular form, batch
-  `2026-05-04-11-44-53-795743c8`). Failures are structured:
-  `failed_field_name`, `framework_detected`, `last_mcp_tool_used`,
-  `validator_error_text_observed`, `external_ats_host`.
-
-- **Evidence capture is now portal-yaml-safe.** `captureEvidence` no
-  longer pipes `success_selector` candidates through native
-  `document.querySelector` — they probe via Playwright's
-  `page.locator(sel).count()` (handles `:has-text(...)` etc). Each probe
-  is independently try/catch'd. A single bad pseudo-selector can no
-  longer kill the entire evidence file.
-
-- **Chunk-size rule of thumb.** Default 2 is the safe baseline. After
-  2-3 successful full runs, you can bump to `--chunk 3` for ~30% fewer
-  worker spawns (each spawn pays ~45 k tokens of fixed system-prompt +
-  caveman-hook overhead — same regardless of URL count in chunk). Above
-  3 the marginal saving per URL drops, and a single external-ATS URL
-  with many MCP turns can grow the worker's per-chunk tool history
-  toward Haiku's context budget. Chunk = 1 is correct only for
-  single-URL debug — wastes most of the spawn cost on the system prompt.
-- **Simplify Copilot pre-fill (ALWAYS attempted on redirect).**
-  `gmail-apply.mjs` calls `runSimplifyAutofillOnPage(page)` before bailing
-  out on every detected redirect (startup, mid-flow same_tab, mid-flow
-  new_tab). Cost: ~1s when unsupported (panel doesn't inject), up to
-  ~20s on supported ATS (`FILL_TIMEOUT_MS`). Best-effort — errors logged
-  with `phase:"simplify_autofill"` but never block the agent handover.
-  Result lives at `redirect.simplify`. Worker / parent reads it and
-  branches: pre-filled → gap-fill + submit; unsupported → full probe.
-  See `scripts/simplify-autofill.mjs` and `docs/simplify-autofill-findings.md`.
-- **External-ATS file uploads** require `mcp__chrome-devtools__upload_file`.
-  If unavailable for a given form (e.g. drag-and-drop only), worker logs
-  `script_extension_needed` and the URL fails.
+- **Per-URL worker spawn latency**: ~5-10s setup per URL. Caching keeps marginal cost low.
+- **Hard cap per worker**: 6 min SIGKILL. If hit, evidence file may be missing → no_evidence path triggers.
+- **Redirects detected in 3 places**: startup, mid-flow same-tab, mid-flow new-tab. All three emit the same `redirect` JSON shape.
+- **Known-ATS framework hints.** When redirect's `final_url` matches a known framework-protected ATS host (Workday, Greenhouse, Lever, Recruitify, Traffit, SmartRecruiters, Workable, Jobvite, iCIMS, Taleo, SuccessFactors), script populates `redirect.framework_hint`. Worker uses verbatim, skipping its own framework probe.
+- **External-ATS write rule.** WRITES on external ATS forms MUST use chrome-devtools MCP write tools. `evaluate_script` for `.value=`/`dispatchEvent` FORBIDDEN — framework-bound inputs reject.
+- **3-strike per field.** External-ATS fills cap at 3 strategies per field, 12 MCP write attempts per URL total.
+- **Simplify Copilot pre-fill** runs on every redirect via `gmail-apply.mjs`. Result attached to `redirect.simplify`. Worker reads + branches.
 
 ---
 
@@ -607,14 +462,13 @@ No screenshots — text DOM signals only.
 | Goal | Where to change |
 |---|---|
 | New portal | `config/gmail-apply-portals.yml`. Use `/explore-sender <URL>`. No code change. |
-| New action type (file upload via Playwright, dropdown, iframe switch) | `scripts/gmail-apply.mjs` → `runStep()` switch + yaml schema + worker prompt's hard rules. |
+| New action type (Playwright) | `scripts/gmail-apply.mjs` → `runStep()` switch + yaml schema + worker prompt's hard rules. |
 | New eligibility status | Whitelist in `gmail-apply-batch.mjs` `modePlan()`. |
 | Tighten escalation rules | `scripts/escalation-ladder.md` only. Both single + batch pick it up. |
-| Add external-ATS field types | `scripts/gmail-apply-worker-prompt.md` § "External ATS handover" probe list. |
+| Add external-ATS field types | Worker prompt § "TASK_TYPE = External" probe list. |
 | Stricter selector hygiene | `scripts/selector-quality-rules.md` only. |
-| Reintroduce worker timeout / turn cap | Add constants in `gmail-apply-batch.mjs` `spawnWorker()`. |
 | Live monitor format | `gmail-apply-batch.mjs` → `child.stdout.on('data', …)` block. |
-| Extra profile fields for external apply | Extend `loadProfileForWorker()` projection + worker prompt's profile block + handover probe list. |
+| Extra profile fields | Extend `loadProfileForWorker()` projection + worker prompt's profile block + handover probe list. |
 
 ---
 
@@ -626,42 +480,41 @@ No screenshots — text DOM signals only.
 # Fill, verify, stop before submit
 node scripts/gmail-apply.mjs https://nofluffjobs.com/job/...
 
-# Fill + submit + escalate failures
+# Fill + submit + escalate failures via worker
 node scripts/gmail-apply.mjs https://... --force
 
-# Full power: submit, escalate, autofix yaml on success, validate Applied
-node scripts/gmail-apply.mjs https://... --force --autofix --experimental-succ
+# Through the skill (recommended) — opus handles MCP if needed
+/gmail-apply https://...
+/gmail-apply https://... --force --autofix
 ```
 
-### Batch — parent drives the loop
+### Batch
 
 ```bash
-# Plan (preview queue, write run_dir)
-node scripts/gmail-apply-batch.mjs --plan --dry-run
+# Plan
+node scripts/gmail-apply-batch.mjs --plan 50 --force --autofix
 
-# Plan with all flags (no work yet — parent reads chunks list)
-node scripts/gmail-apply-batch.mjs --plan 50 --force --autofix --experimental-succ --verbose
+# Run (single command — drives whole queue)
+node scripts/gmail-apply-batch.mjs --run --run-id=<from-plan> --force --autofix --verbose
 
-# Run one chunk (parent invokes per chunk)
-node scripts/gmail-apply-batch.mjs --run-chunk \
-  --urls=https://a.com/job1,https://b.com/job2 \
-  --run-id=<from-plan> \
-  --force --autofix --experimental-succ --verbose
-
-# Retry chunk after parent's mid-batch autofix landed
-node scripts/gmail-apply-batch.mjs --retry-chunk \
-  --urls=<csv-of-failed-with-patched-yaml> \
-  --run-id=<same-id> \
-  --force --experimental-succ
+# Through the skill (recommended)
+/gmail-apply
+/gmail-apply --force --autofix --verbose
+/gmail-apply --batch --dry-run
 ```
 
-### Through the skill (recommended)
+Prereq: `launch-chrome.bat` running.
 
-```
-/gmail-apply https://...                                  # single
-/gmail-apply                                               # batch
-/gmail-apply --force --autofix --experimental-succ --verbose  # batch full
-/gmail-apply --batch --dry-run                             # batch preview
-```
+---
 
-Prereq: Chrome already running via `launch-chrome.bat`.
+## V2 → V3 deletions (no backward compat)
+
+- ~~`scripts/gmail-apply-referee.mjs`~~ — replaced by inline 30-LOC agreement function in batch.mjs.
+- ~~`needs-investigation.ndjson`~~ — replaced by `disputed-urls.ndjson` (only ambiguous-after-opus cases).
+- ~~`--experimental` / `--experimental-succ` flags~~ — evidence always on.
+- ~~`--retry-chunk` / `--run-chunk` modes~~ — single `--run` mode.
+- ~~`--chunk SIZE` flag~~ — workers are per-URL.
+- ~~Chunk-as-worker-batch concept~~ — Node drives loop instead.
+- ~~Referee post-chunk triangulation~~ — agreement check is live per URL.
+- ~~Worker H0/H7 (sequential + tab dedup across URLs)~~ — irrelevant under one-URL-per-spawn (H6 keeps single-URL tab dedup).
+- ~~`token_telemetry_summary` per chunk~~ — per-URL workers can't approach context limits.

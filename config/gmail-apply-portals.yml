@@ -40,6 +40,17 @@ portals:
     match:
       - "nofluffjobs.com/"
     submit_selector: "#sendApplicationButton button"
+    # NFJ has external-apply listings (Experis, agency wrappers, employer ATS)
+    # that open a recruiter form in a new tab. Generic new-tab listener already
+    # catches those, but listing iframe-embedded ATS variants for completeness.
+    external_widget_probe:
+      iframe_match:
+        - "experis"
+        - "smartrecruiters"
+        - "workable"
+        - "traffit"
+        - "erecruiter"
+        - "theirstack"
     # success_selector — STRICT confirmation. Script waits up to
     # success_timeout_ms for ANY listed selector to become visible after the
     # submit click. None match → submitted_unconfirmed:true → real failure.
@@ -116,10 +127,38 @@ portals:
       - "[data-test='thankYouView']"
       - "[data-test='thankYouApply-title']"
     success_timeout_ms: 10000
+    # External widget detection. theprotocol routes Apply through three modes:
+    #   inline   (data-isexternal=false, no widget) → recipe steps below run
+    #   external (data-isexternal=true) → recruiter form opens in new tab
+    #   widget   (Adzuna iframe embedded in same tab, ?view=thankyou-apply-ats
+    #            after submit) → URL never changes, new-tab listener never fires
+    # For external + widget the script must bail with Unknown so the worker
+    # takes over via MCP instead of running inline submit on a non-existent form.
+    external_widget_probe:
+      attribute_check:
+        selector: "[data-test='section-sidebar-apply'] [data-test='anchor-apply']"
+        attribute: "data-isexternal"
+        truthy_value: "true"
+      iframe_match:
+        - "adzuna"
+        - "erecruiter"
+        - "traffit"
     data:
       phone: "+436703535652"
     steps:
-      - { action: click, selector: "[data-test='section-sidebar-apply'] [data-test='anchor-apply']" }
+      # Multi-selector fallback: some listings render the apply CTA outside
+      # `section-sidebar-apply` (header bar, inline panel, lazy-rendered sidebar).
+      # First match wins; sidebar-scoped selector remains preferred.
+      # Bumped timeout — Polish SEO footer can delay hydration past 8s.
+      - action: click
+        selectors:
+          - "[data-test='section-sidebar-apply'] [data-test='anchor-apply']"
+          - "[data-test='anchor-apply']"
+          - "button[data-test='anchor-apply']"
+          - "[data-test='button-quickApply']"
+          - "button:has-text('Aplikuj szybko')"
+          - "button:has-text('quick apply')"
+        timeout_ms: 12000
       # Inline-mode follow-ups. Skipped silently if external mode took us to a
       # new tab (sendApplication never appears on this page).
       - { action: wait_selector, selector: "[data-test='button-sendApplication']", timeout_ms: 4000, optional: true }
@@ -140,10 +179,20 @@ portals:
   - name: xing
     match:
       - "xing.com/jobs/"
+    # Selectors that appear when a listing is closed/expired. Script exits early
+    # with job_unavailable:true so no worker is launched for dead listings.
+    # Stable anchor: data-xds="Headline" + class prefix "empty-state-layout"
+    # (styled-components hash suffix changes per deploy, so use [class*=...]).
+    unavailable_selectors:
+      - 'h2[data-xds="Headline"][class*="empty-state-layout"]'
     submit_selector: "button:has-text('Send application')"
     success_selector:
       - "h1:has-text('Application submitted')"
       - "h2:has-text('Application submitted')"
+      # Already-applied banner — fires when user previously applied to this job.
+      # Script's apply-button click is a no-op; banner remains visible.
+      # Class hash from styled-components, prefix `confirmation__Banner` stable.
+      - "[class*='confirmation__Banner']:has-text('You applied for this job on')"
     success_timeout_ms: 15000
     data:
       # phoneNumber input takes BARE digits (no +43, no leading 0). The
@@ -153,6 +202,12 @@ portals:
       phone: "6703535652"
       german_level: "Verhandlungssicher"
       english_level: "Muttersprache oder zweisprachig"
+      # XING radio/checkbox-list scale (closest-to-B2-Professional first):
+      #   Umfassende Erfahrungen im beruflichen Kontext = Full professional (B2/C1) ← target
+      #   Begrenzte Erfahrungen im beruflichen Kontext  = Limited working (B1/B2)
+      #   Grundkenntnisse                                = Elementary (A1/A2) — TOO LOW
+      #   Muttersprachliche oder zweisprachige Kompetenz = Native (overshoot, do NOT pick)
+      german_level_xing_radio: "Umfassende Erfahrungen im beruflichen Kontext"
     steps:
       # Trigger apply — navigates to /jobs/custom-apply/... or /jobs/quick-apply/...
       # Quick-apply: profile complete, skips multi-step form, goes straight to review.
@@ -166,9 +221,62 @@ portals:
       - { action: wait_selector, selector: "select[name='customQuestions.0.value']", optional: true }
       - { action: wait_ms, ms: 600 }
       # Step 2 — employer custom questions (language proficiency for this job)
-      # Values are job-specific — defaults cover DE/EN proficiency questions.
+      # Variants: select dropdowns, OR radio Yes/No groups, OR checkbox lists.
+      # All marked optional — recipe self-skips when the listing has none.
+      # NATIONALITY dropdown — present on DE/AT AE/sales roles (customQuestions.0 = nationality).
+      # aria-labelledby scopes this step to nationality only; lang-level select below is unaffected.
+      - action: select
+        selector: "select[aria-labelledby*='nationality']"
+        value: "Austria"
+        label_aliases: ["Austria", "AT", "Österreich", "AUSTRIA"]
+        optional: true
+      # SELECT variant (legacy language-level selects):
       - { action: select, selector: "select[name='customQuestions.0.value']", value: "{{german_level}}", optional: true }
       - { action: select, selector: "select[name='customQuestions.1.value']", value: "{{english_level}}", optional: true }
+      # RADIO variant (current — Salzburg/Austria-based jobs ask Yes/No questions):
+      # Each question scoped by its visible heading text (case-insensitive match).
+      # Default answers reflect Austria-resident profile.
+      - action: radio_group
+        question_label: "Wohnen Sie derzeit in Österreich"
+        answer: "Yes"
+        answer_aliases: ["Yes", "Ja"]
+        optional: true
+      - action: radio_group
+        question_label: "Erlaubnis in Österreich zu arbeiten"
+        answer: "Yes"
+        answer_aliases: ["Yes", "Ja"]
+        optional: true
+      - action: radio_group
+        question_label: "Verfügen Sie über eine gültige Arbeitserlaubnis"
+        answer: "Yes"
+        answer_aliases: ["Yes", "Ja"]
+        optional: true
+      # CHECKBOX-list variant (German proficiency level — pick closest to B2/Full professional).
+      # Aliases ordered HIGH → LOW: try Umfassende (Full pro) first, fall back through
+      # Begrenzte (Limited working / B1-B2), never select Grundkenntnisse (A1/A2)
+      # which understates the candidate. Native is omitted to avoid overclaiming.
+      - action: radio_group
+        question_label: "Kenntnisstand in Deutsch"
+        answer: "Umfassende Erfahrungen im beruflichen Kontext"
+        answer_aliases:
+          - "Umfassende Erfahrungen im beruflichen Kontext"
+          - "Umfassende Erfahrungen"
+          - "Begrenzte Erfahrungen im beruflichen Kontext"
+          - "Begrenzte Erfahrungen"
+        optional: true
+      # Catch-all for sites that phrase the German question differently
+      # ("Deutschkenntnisse", "Sprachkenntnisse Deutsch", etc.) — same answer order.
+      - action: radio_group
+        question_label: "Deutschkenntnisse"
+        answer: "Umfassende Erfahrungen im beruflichen Kontext"
+        answer_aliases:
+          - "Umfassende Erfahrungen im beruflichen Kontext"
+          - "Umfassende Erfahrungen"
+          - "Begrenzte Erfahrungen im beruflichen Kontext"
+          - "Begrenzte Erfahrungen"
+          - "Verhandlungssicher"
+          - "Fließend"
+        optional: true
       - { action: click, selector: "button:has-text('Continue')", optional: true }
       - { action: wait_selector, selector: "[data-test='upload-button']", optional: true }
       - { action: wait_ms, ms: 600 }
@@ -179,3 +287,40 @@ portals:
       - { action: wait_ms, ms: 600 }
       # Step 4 — review page. STOP. Script exits before submit_selector.
       # User reviews + clicks "Send application" (or pass --submit to auto-click).
+
+  # =========================================================================
+  # justjoin.it — pure aggregator. Apply button opens external ATS in a new
+  # tab (cobrick.traffit.com, smartrecruiters, custom employer ATS, etc.).
+  # JJIT itself has zero native form. After clicking Apply, JJIT also shows
+  # an "application history confirm" modal in the source tab — irrelevant to
+  # the apply flow; orchestrator's new-tab/redirect detection has already
+  # fired and External worker takes over on the popup tab.
+  #
+  # URL forms in the wild:
+  #   justjoin.it/offers/<slug>            (gmail alert links — pre-canonical)
+  #   justjoin.it/job-offer/<slug>         (canonical; gmail redirects here)
+  # Match covers both.
+  #
+  # Selector note: MUI generates only `mui-<hash>` classes — no data-test/id
+  # on the Apply button. Use Playwright `:text-is("Apply")` exact match to
+  # avoid catching the "Applied - N people applied" stats button.
+  # =========================================================================
+  - name: justjoinit
+    match:
+      - "justjoin.it/offers/"
+      - "justjoin.it/job-offer/"
+    # No native form — script bails at redirect detection. submit/success
+    # selectors are placeholders only (never reached).
+    submit_selector: "button:visible:has-text('Apply'):not(:has-text('Applied'))"
+    success_selector:
+      - "[role=dialog]:has-text('Did you manage to complete your application')"
+    success_timeout_ms: 8000
+    data: {}
+    steps:
+      # Click first visible "Apply" — opens external ATS via window.open.
+      # Script's new-tab listener catches the popup → exits Unknown with
+      # redirect block → orchestrator routes to External worker.
+      # `:not(:has-text('Applied'))` excludes the "Applied - N people applied"
+      # stats button which contains the substring "Apply".
+      - { action: click, selector: "button:visible:has-text('Apply'):not(:has-text('Applied'))" }
+      - { action: wait_ms, ms: 1500 }
