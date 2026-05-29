@@ -23,3 +23,5 @@ to discover more jobs; new findings can be pasted into pipeline.md.
 - [ ] https://www.stepstone.de/magazin | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
 - [ ] https://www.stepstone.de/jobs/Software-Entwickler/in OR Software-Entwickler/in C | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
 - [ ] https://www.stepstone.de/jobs/Software-Entwickler/in/in-Home-Office | codefortynine GmbH und 7 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [ ] https://www.xing.com/jobs/search/ki | One new job ad for your search alert: I'm seeking full-time... | mail.xing.com | 2026-05-15T19:51Z
+- [ ] https://www.xing.com/jobseeker-criteria | 10 new job ads for your search alert: Full stack entwickler | mail.xing.com | 2026-05-21T08:29Z

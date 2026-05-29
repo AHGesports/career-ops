@@ -12,7 +12,7 @@
         "chrome-devtools-mcp@latest",
         "--browserUrl=http://localhost:9222"
       ],
-      "description": "Chrome DevTools MCP attaches to user-launched Chrome on port 9222. Run launch-chrome.bat first to start Chrome with debug port + persistent profile (.chrome-profile). Manual launch avoids --enable-automation flag = Google login works."
+      "description": "Chrome DevTools MCP attaches to user-launched Chrome on port 9222. Run launch-chrome.bat first to start Chrome with debug port + persistent profile (.chrome-profile)."
     }
   }
 }

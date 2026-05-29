@@ -1,0 +1,12 @@
+sandbox_mode = "danger-full-access"
+[mcp_servers.chrome-devtools]
+args = [
+    "-y",
+    "chrome-devtools-mcp@latest",
+    "--browserUrl=http://localhost:9222",
+]
+command = "npx"
+
+[mcp_servers.gmail-html]
+args = ["./mcp/gmail-html/index.mjs"]
+command = "node"

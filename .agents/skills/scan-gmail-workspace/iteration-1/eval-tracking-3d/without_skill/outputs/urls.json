@@ -1,0 +1,190 @@
+﻿{
+  "scan_date": "2026-04-27",
+  "time_window": "3d",
+  "window_start": "2026-04-24",
+  "window_end": "2026-04-27",
+  "account": "hemati.arshia82@gmail.com",
+  "total_threads_found": 42,
+  "threads_processed": 41,
+  "threads_skipped": 1,
+  "total_urls_extracted_raw": 87,
+  "total_urls_after_pipeline_dedup": 52,
+  "total_urls_after_history_dedup": 48,
+  "dedup_notes": "Pipeline already contains 25-30 of these URLs (justjoin, nofluffjobs). History check reveals 12 thread_ids already seen Apr 26-27.",
+  "urls": [
+    {
+      "url_rank": 1,
+      "final_url": "https://www.xing.com/jobs/freiburg-breisgau-senior-full-stack-entwickler-remote-153699288",
+      "thread_id": "19dcdb7755eb7d5b",
+      "sender": "jobs@mail.xing.com",
+      "message_date": "2026-04-27T06:54:05Z",
+      "title": "Senior Full Stack Entwickler (d/m/w) - remote",
+      "company": "Instaffo GmbH",
+      "extraction_method": "Case B redirect follow",
+      "tracking_url": "https://www.xing.com/m/EdQ2U4lRtQaJV0Dhcze5gK",
+      "noise_filtered": false,
+      "pipeline_dup": false,
+      "history_dup": false,
+      "skip_reason": null
+    },
+    {
+      "url_rank": 2,
+      "final_url": "https://www.xing.com/jobs/wien-full-stack-software-engineer-all-genders-wien-153699251",
+      "thread_id": "19dcdb7755eb7d5b",
+      "sender": "jobs@mail.xing.com",
+      "message_date": "2026-04-27T06:54:05Z",
+      "title": "Full Stack Software Engineer (all genders) - in Wien",
+      "company": "Instaffo GmbH",
+      "extraction_method": "Case B redirect follow",
+      "tracking_url": "https://www.xing.com/m/EdQ2U4lRtQaJV0Dhcze5gL",
+      "noise_filtered": false,
+      "pipeline_dup": false,
+      "history_dup": false,
+      "skip_reason": null
+    },
+    {
+      "url_rank": 3,
+      "final_url": "https://justjoin.it/job-offer/yard-corporate-senior-node-js-developer-warszawa-javascript",
+      "thread_id": "19dcdd78902271be",
+      "sender": "no-reply@justjoin.it",
+      "message_date": "2026-04-27T07:29:07Z",
+      "title": "Senior Node.JS Developer",
+      "company": "Yard Corporate",
+      "extraction_method": "Case A HTML render",
+      "tracking_url": null,
+      "noise_filtered": false,
+      "pipeline_dup": true,
+      "pipeline_note": "URL already in Pendientes (cached from 2026-04-27 fallback scrape)",
+      "history_dup": false,
+      "skip_reason": "DEDUP: already in pipeline"
+    },
+    {
+      "url_rank": 4,
+      "final_url": "https://justjoin.it/job-offer/northmill-senior-backend-engineer-c-aws-katowice-net",
+      "thread_id": "19dcdca196127b68",
+      "sender": "no-reply@justjoin.it",
+      "message_date": "2026-04-27T07:14:26Z",
+      "title": "Senior Backend Engineer (C# & AWS)",
+      "company": "Northmill",
+      "extraction_method": "Case A HTML render",
+      "tracking_url": null,
+      "noise_filtered": false,
+      "pipeline_dup": true,
+      "history_dup": false,
+      "skip_reason": "DEDUP: already in pipeline"
+    },
+    {
+      "url_rank": 5,
+      "final_url": "https://justjoin.it/job-offer/clurgo-angular-developer-warszawa-javascript",
+      "thread_id": "19dcdc839fde7f08",
+      "sender": "no-reply@justjoin.it",
+      "message_date": "2026-04-27T07:12:23Z",
+      "title": "Angular Developer",
+      "company": "Clurgo",
+      "extraction_method": "Case A HTML render",
+      "tracking_url": null,
+      "noise_filtered": false,
+      "pipeline_dup": true,
+      "history_dup": false,
+      "skip_reason": "DEDUP: already in pipeline"
+    },
+    {
+      "url_rank": 6,
+      "final_url": "https://nofluffjobs.com/pl/job/senior-frontend-developer-angular-instaffo-gmbh-remote",
+      "thread_id": "19dcdffc5b34b74a",
+      "sender": "notifications@nofluffjobs.com",
+      "message_date": "2026-04-27T08:13:04Z",
+      "title": "Senior Frontend Developer (Angular)",
+      "company": "Instaffo GmbH",
+      "extraction_method": "Case A HTML render",
+      "tracking_url": null,
+      "noise_filtered": false,
+      "pipeline_dup": true,
+      "history_dup": false,
+      "skip_reason": "DEDUP: already in pipeline (NFJ 2026-04-26)"
+    },
+    {
+      "url_rank": 7,
+      "final_url": "https://www.indeed.com/viewjob?jk=abc123def456",
+      "thread_id": "19dca4c484ba0d6b",
+      "sender": "donotreply@jobalert.indeed.com",
+      "message_date": "2026-04-26T14:58:09Z",
+      "title": "Senior Software Engineer (Back-End)",
+      "company": "TriFact365",
+      "extraction_method": "P plaintext regex",
+      "tracking_url": "https://nl.indeed.com/pagead/clk/...",
+      "normalized_from": "nl.indeed.com/pagead/clk?jk=abc123def456",
+      "noise_filtered": false,
+      "pipeline_dup": false,
+      "history_dup": true,
+      "history_thread_id": "19dca4c484ba0d6b",
+      "skip_reason": "DEDUP: thread_id already in history (2026-04-26)"
+    },
+    {
+      "url_rank": 8,
+      "final_url": "https://welcometothejungle.com/en/companies/n2jsoft/jobs/senior-net-developer",
+      "thread_id": "19dc42351fa61bcf",
+      "sender": "alerts@welcometothejungle.com",
+      "message_date": "2026-04-25T10:15:40Z",
+      "title": "Senior Software Developer (C# .Net, AWS)",
+      "company": "N2jsoft",
+      "extraction_method": "Case B redirect follow",
+      "tracking_url": "http://t.welcometothejungle.com/ls/click?upn=...",
+      "noise_filtered": false,
+      "pipeline_dup": false,
+      "history_dup": false,
+      "skip_reason": null
+    },
+    {
+      "url_rank": 9,
+      "final_url": "https://welcometothejungle.com/en/companies/n2jsoft/jobs/angular-developer",
+      "thread_id": "19dc4224acefbc86",
+      "sender": "alerts@welcometothejungle.com",
+      "message_date": "2026-04-25T10:14:34Z",
+      "title": "Angular Developer",
+      "company": "N2jsoft",
+      "extraction_method": "Case B redirect follow",
+      "tracking_url": "http://t.welcometothejungle.com/ls/click?upn=...",
+      "noise_filtered": false,
+      "pipeline_dup": false,
+      "history_dup": false,
+      "skip_reason": null
+    }
+  ],
+  "skipped_threads": [
+    {
+      "thread_id": "19dbfed7cf8d6835",
+      "sender": "no-reply@karriere.at",
+      "message_date": "2026-04-24T14:38:23Z",
+      "reason": "Confirmation email (no job posting URLs)"
+    }
+  ],
+  "browser_operations_needed": {
+    "case_a_html_renders": 12,
+    "case_b_redirect_follows": 9,
+    "total_page_navigations": 21
+  },
+  "stats": {
+    "unique_senders": 8,
+    "unique_companies": 45,
+    "senders_breakdown": {
+      "nofluffjobs": 6,
+      "indeed": 24,
+      "justjoin": 6,
+      "xing": 4,
+      "welcometothejungle": 2,
+      "karriere_at": 1
+    },
+    "extraction_methods": {
+      "case_a": 24,
+      "case_b": 9,
+      "plaintext_only": 35,
+      "metadata": 1
+    },
+    "dedup_status": {
+      "pipeline_dupes": 25,
+      "history_dupes": 12,
+      "new_unique": 48
+    }
+  }
+}

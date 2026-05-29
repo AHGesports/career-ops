@@ -289,12 +289,82 @@ portals:
       # User reviews + clicks "Send application" (or pass --submit to auto-click).
 
   # =========================================================================
+  # indeed.com — aggregator/external-apply flow. Many Gmail-scanned Indeed
+  # URLs are employer-site listings: the visible CTA is localized
+  # ("Apply on company site", "Solliciteer op website van werkgever",
+  # "Bewerben auf Website des Arbeitgebers") and opens /applystart -> employer
+  # ATS in a new tab. gmail-apply.mjs catches that new off-portal tab and exits
+  # Unknown with a redirect block so the worker can finish on the employer ATS.
+  #
+  # Verified sample 2026-05-19:
+  #   https://nl.indeed.com/viewjob?jk=093b4782c40a8c83
+  #   CTA button has href="/applystart?jk=..." and opens Greenhouse.
+  #
+  # Native Indeed Easy Apply redirects to smartapply.indeed.com. That wizard is
+  # dynamic: profile-location -> resume-selection -> employer questions ->
+  # review-module. Keep smartapply.indeed.com OUT of match so the script exits
+  # with a redirect block and the worker/main thread can fill job-specific
+  # questions manually. Final submit on the review page is:
+  #   [data-testid='submit-application-button']
+  # =========================================================================
+  - name: indeed
+    match:
+      - "indeed.com/viewjob"
+    # External listings should redirect/new-tab before submit_selector is used.
+    # Native SmartApply final review page submit (German sample):
+    #   https://smartapply.indeed.com/beta/indeedapply/form/review-module
+    #   <button data-testid="submit-application-button" name="submit-application">
+    #     Bewerbung absenden
+    #   </button>
+    # Do not auto-click through every SmartApply "Weiter" page blindly: the
+    # employer questions module is job-specific and often required.
+    submit_selector: "[data-testid='submit-application-button']"
+    # Not captured yet; external listings redirect before this is used.
+    success_selector:
+      - "[data-codex-indeed-success-selector-not-captured]"
+    success_timeout_ms: 10000
+    external_widget_probe:
+      iframe_match:
+        - "smartapply.indeed.com"
+    data: {}
+    steps:
+      - action: click
+        selectors:
+          - "#indeedApplyButton"
+          - "[data-testid='indeedApplyButton-test']"
+          - "button[href*='/applystart?jk=']"
+          - "a[href*='/applystart?jk=']"
+          - "button:has-text('Mit Indeed bewerben')"
+          - "button:has-text('Apply on company site')"
+          - "button:has-text('Apply now')"
+          - "button:has-text('Solliciteer op website')"
+          - "button:has-text('Eenvoudig solliciteren')"
+          - "button:has-text('Bewerben auf Website')"
+          - "button:has-text('Jetzt bewerben')"
+        timeout_ms: 10000
+      - { action: wait_ms, ms: 1500 }
+      # SmartApply next buttons observed:
+      #   profile-location: button text "Weiter" with generated data-testid
+      #   resume-selection: [data-testid='continue-button']
+      #   questions: generated data-testid, text "Weiter"
+      # Final submit observed:
+      #   [data-testid='submit-application-button']
+      # These are intentionally left for takeover logic because required
+      # employer questions between resume and review are dynamic.
+
+  # =========================================================================
   # justjoin.it — pure aggregator. Apply button opens external ATS in a new
   # tab (cobrick.traffit.com, smartrecruiters, custom employer ATS, etc.).
   # JJIT itself has zero native form. After clicking Apply, JJIT also shows
   # an "application history confirm" modal in the source tab — irrelevant to
   # the apply flow; orchestrator's new-tab/redirect detection has already
   # fired and External worker takes over on the popup tab.
+  #
+  # CAPTCHA NOTE: justjoin.it enforces strict bot-detection / Cloudflare
+  # challenge checks. If any action (click, navigate, wait_for) fails or
+  # the Apply button is unresponsive, worker MUST wait 3–5 s and retry
+  # once before escalating to AutoApplyFailed. Do NOT hammer rapidly —
+  # repeated fast retries trigger harder challenges.
   #
   # URL forms in the wild:
   #   justjoin.it/offers/<slug>            (gmail alert links — pre-canonical)
@@ -324,3 +394,53 @@ portals:
       # stats button which contains the substring "Apply".
       - { action: click, selector: "button:visible:has-text('Apply'):not(:has-text('Applied'))" }
       - { action: wait_ms, ms: 1500 }
+
+  # =========================================================================
+  # linkedin.com/jobs â€” external handoff flow. Gmail-scanned LinkedIn alerts
+  # two observed flows:
+  #   external: "Apply on company website" is an outbound safety/go link to
+  #             Workday, Greenhouse, Lever, SuccessFactors, etc.
+  #   easy:     "Easy Apply" opens LinkedIn's jobs-easy-apply-modal. The
+  #             modal can be multi-step and include job-specific questions, so
+  #             this recipe opens it for handoff/review but never auto-answers
+  #             or submits it.
+  #
+  # Verified samples 2026-05-19:
+  #   external: 4414637911 -> resmed.wd3.myworkdayjobs.com
+  #   easy:     4411199531 -> contact info -> resume -> custom questions
+  # =========================================================================
+  - name: linkedin
+    match:
+      - "linkedin.com/jobs/view/"
+    unavailable_selectors:
+      - "main:has-text('No longer accepting applications')"
+    # External listings should redirect/new-tab before submit_selector is used.
+    # Easy Apply intentionally has no auto-submit selector here; `--submit`
+    # should fail closed instead of sending a LinkedIn application blindly.
+    submit_selector: "a[aria-label='Apply on company website'][href*='/safety/go/']"
+    success_selector:
+      - "[data-codex-linkedin-success-selector-not-captured]"
+    success_timeout_ms: 10000
+    external_widget_probe:
+      iframe_match:
+        - "myworkdayjobs.com"
+        - "greenhouse.io"
+        - "lever.co"
+        - "smartrecruiters.com"
+        - "workable.com"
+        - "successfactors.com"
+        - "icims.com"
+        - "taleo.net"
+    data: {}
+    steps:
+      - action: click
+        selectors:
+          - "a[aria-label='Apply on company website'][href*='/safety/go/']"
+          - "a[href*='/safety/go/?url=']"
+          - "a:has-text('Apply')[href*='/safety/go/']"
+          - "a[aria-label='Easy Apply to this job'][href*='openSDUIApplyFlow=true']"
+          - "a[href*='/apply/?openSDUIApplyFlow=true']"
+          - "a:has-text('Easy Apply')[href*='openSDUIApplyFlow=true']"
+        timeout_ms: 10000
+      - { action: wait_ms, ms: 1500 }
+      - { action: wait_selector, selector: ".jobs-easy-apply-modal", timeout_ms: 3000, optional: true }

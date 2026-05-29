@@ -120,6 +120,19 @@ function isStillOnTracker(inputUrl, finalUrl) {
   }
 }
 
+function isXingWebVersionTracker(url) {
+  try {
+    const u = new URL(url);
+    return u.host.endsWith('xing.com') && u.pathname.startsWith('/m/') && /AA$/.test(u.pathname);
+  } catch {
+    return false;
+  }
+}
+
+function countXingRenderedJobCards(html) {
+  return [...html.matchAll(/alt="go to job ad [^"]+"/g)].length;
+}
+
 async function followOne(url) {
   const page = await ctx.newPage();
   try {
@@ -131,6 +144,17 @@ async function followOne(url) {
     let finalUrl = page.url();
     // If we never left the tracker host → mark as failure so the summary surfaces it.
     if (isStillOnTracker(url, finalUrl)) {
+      // XING's first /m/*AA link is the "view in browser" copy of the email, not
+      // a job tracker. Treat it as a normal non-job drop so it doesn't create
+      // false capture-loss warnings.
+      if (isXingWebVersionTracker(url)) {
+        return {
+          ok: true,
+          ignore: true,
+          url: postProcess(new URL(finalUrl).host, finalUrl),
+          webJobCardCount: countXingRenderedJobCards(await page.content()),
+        };
+      }
       return { ok: false, error: 'no-redirect (still on tracker after load)' };
     }
     const stepstoneShort = shortCircuitStepstone(finalUrl);
@@ -228,6 +252,14 @@ for (const res of results) {
   const filter = cfg?.decoded_must_match ? new RegExp(cfg.decoded_must_match) : null;
   const canonicalHost = canonicalBrandFor(thread.sender);
   if (res.ok) {
+    if (Number.isInteger(res.webJobCardCount)) {
+      thread.metadata = thread.metadata || {};
+      thread.metadata.rendered_job_cards = Math.max(thread.metadata.rendered_job_cards || 0, res.webJobCardCount);
+    }
+    if (res.ignore) {
+      thread.tracker_dropped_non_job.push(res.url);
+      continue;
+    }
     if (filter && !filter.test(res.url)) {
       // Classify list vs offsite
       let isOnSenderDomain = false;

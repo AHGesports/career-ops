@@ -90,7 +90,7 @@ Full details: see [01-context.md#user-profile](01-context.md#user-profile).
 - Not a universal job board aggregator. Targeted to user stack.
 - Not a replacement for `portals.yml`. Both coexist.
 - Not a real-time pipeline. Daily scan cadence matches user's application volume.
-- Not an auto-apply tool. Career-ops ethical policy: never submit without user review.
+- Not a generic auto-apply tool. Submission behavior is controlled by the active apply skill and explicit submit flags.
 
 ## How to measure "done"
 

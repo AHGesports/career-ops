@@ -1,0 +1,40 @@
+{
+  "skill_name": "scan-gmail",
+  "evals": [
+    {
+      "id": 1,
+      "name": "cold-72h-mixed-senders",
+      "prompt": "scan my gmail for the past 72 hours and pull any new job alerts into the pipeline",
+      "expected_output": "Subagent dispatched. Returns Section 9 summary with all 9 SKIP categories present (literal 0 / [] when empty), Files line shows pipe_before/after and tsv_before/after counts, processed count = tsv rows added, appended count = pipeline lines added. No source-site listing pages navigated. Indeed sponsored URLs skipped per-URL not per-thread.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "idempotency-rerun-same-window",
+      "prompt": "/career-ops scan gmail 24h",
+      "expected_output": "First run extracts N URLs. Immediately rerunning the same command must yield 0 new URLs (every thread skipped via gmail-scan-history.tsv dedup). Summary shows hist_skip == seen and processed == 0 and appended == 0.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "html-only-jjit-nfj-case-a-mandatory",
+      "prompt": "/career-ops scan gmail 7d  (focus: any threads from JustJoinIt or NoFluffJobs)",
+      "expected_output": "For every thread from no-reply@justjoin.it or notifications@nofluffjobs.com whose plaintextBody is null, the subagent MUST attempt Case A (Chrome DevTools navigate to https://mail.google.com/mail/u/0/#inbox/{thread_id} + take_snapshot). Threads logged 'body unrenderable' must show a Case A attempt in the transcript. Zero threads logged unrenderable without prior Chrome navigate_page = pass.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "tracking-redirect-restart-on-failure",
+      "prompt": "/career-ops scan gmail 3d  (windows likely contain XING and WTJ tracker URLs)",
+      "expected_output": "Each xing.com/m/* and t.welcometothejungle.com/* URL is followed via Chrome DevTools navigate_page + evaluate_script. On any nav failure (timeout, ERR_INSUFFICIENT_RESOURCES), agent MUST close_page all then new_page then retry once. Final URLs normalized + stored. Anything still failing logged under 'Redirect failed' with source URL + error.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "name": "sender-config-read-not-hardcoded",
+      "prompt": "/career-ops scan gmail 24h",
+      "expected_output": "Transcript shows the subagent reading config/gmail-senders.yml at start. Gmail search query built from yaml senders[*].email list. Adding/removing a sender entry in the yaml changes the query without editing SKILL.md.",
+      "files": []
+    }
+  ]
+}

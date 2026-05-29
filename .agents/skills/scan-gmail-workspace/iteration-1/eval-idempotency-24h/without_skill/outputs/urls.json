@@ -1,0 +1,108 @@
+{
+  "scan_window": "24h (2026-04-26 to 2026-04-27)",
+  "account": "hemati.arshia82@gmail.com",
+  "threads_seen": 18,
+  "threads_history_skipped": 9,
+  "threads_processed": 9,
+  "urls_extracted": [
+    {
+      "thread_id": "19dcdb7755eb7d5b",
+      "sender": "jobs@mail.xing.com",
+      "date": "2026-04-27T06:54:05Z",
+      "subject": "2 new job ads for your search alert: I am looking for full-time...",
+      "body_type": "T",
+      "tracker_urls": [
+        "https://www.xing.com/m/EdQ2U4lRtQaJV0Dhcze5gK",
+        "https://www.xing.com/m/EdQ2U4lRtQaJV0Dhcze5gL"
+      ],
+      "expected_final_urls_after_case_b": [
+        "https://www.xing.com/jobs/freiburg-breisgau-senior-full-stack-entwickler-remote-153699288",
+        "https://www.xing.com/jobs/wien-full-stack-software-engineer-all-genders-wien-153699251"
+      ],
+      "status": "already_in_pipeline_from_earlier_24h_scans"
+    },
+    {
+      "thread_id": "19dcdb68fcb6ce98",
+      "sender": "jobs@mail.xing.com",
+      "date": "2026-04-27T06:53:05Z",
+      "subject": "7 new job ads for your search alert: I'm seeking full-time...",
+      "body_type": "T",
+      "tracker_urls": [
+        "https://www.xing.com/m/DRqRNQNmVBFj2QBvv_GwgK",
+        "https://www.xing.com/m/DRqRNQNmVBFj2QBvv_GwgL",
+        "https://www.xing.com/m/DRqRNQNmVBFj2QBvv_GwgM",
+        "https://www.xing.com/m/DRqRNQNmVBFj2QBvv_GwgN",
+        "https://www.xing.com/m/DRqRNQNmVBFj2QBvv_GwgO",
+        "https://www.xing.com/m/DRqRNQNmVBFj2QBvv_GwgP",
+        "https://www.xing.com/m/DRqRNQNmVBFj2QBvv_GwgQ"
+      ],
+      "dedup_status": "all_7_urls_duplicates_in_pipeline_from_earlier_scans",
+      "notes": "History shows these as processed 2026-04-27 10:53 with note 'XING tracking-wrapped, partial duplicates in pipeline'"
+    }
+  ],
+  "urls_skipped": {
+    "html_only_no_plaintext_available": [
+      {
+        "thread_id": "19dcdffc5b34b74a",
+        "sender": "notifications@nofluffjobs.com",
+        "body_type": "H",
+        "reason": "plaintextBody null, Case A (Chrome DevTools) required"
+      },
+      {
+        "thread_id": "19dcdffc5a65100d",
+        "sender": "notifications@nofluffjobs.com",
+        "body_type": "H",
+        "reason": "plaintextBody null, Case A required"
+      },
+      {
+        "thread_id": "19dcdffc5765ab18",
+        "sender": "notifications@nofluffjobs.com",
+        "body_type": "H",
+        "reason": "plaintextBody null, Case A required"
+      },
+      {
+        "thread_id": "19dcdd78902271be",
+        "sender": "no-reply@justjoin.it",
+        "body_type": "H",
+        "reason": "plaintextBody null, Case A required"
+      },
+      {
+        "thread_id": "19dcdca196127b68",
+        "sender": "no-reply@justjoin.it",
+        "body_type": "H",
+        "reason": "plaintextBody null, Case A required"
+      },
+      {
+        "thread_id": "19dcdc839fde7f08",
+        "sender": "no-reply@justjoin.it",
+        "body_type": "H",
+        "reason": "plaintextBody null, Case A required"
+      }
+    ],
+    "tracking_wrapped_no_redirect_resolution": [
+      {
+        "thread_id": "19dca4c484ba0d6b",
+        "sender": "donotreply@jobalert.indeed.com",
+        "body_type": "P+T",
+        "date": "2026-04-26T14:58:09Z",
+        "reason": "Indeed tracking wrapper, jk parameter obfuscated, Case B required"
+      },
+      {
+        "thread_id": "19dca3c9083fd419",
+        "sender": "donotreply@jobalert.indeed.com",
+        "body_type": "P+T",
+        "date": "2026-04-26T14:40:59Z",
+        "reason": "Indeed tracking wrapper, 3 jobs listed but URLs tracking-wrapped"
+      },
+      {
+        "thread_id": "19dc9cd4bff467c6",
+        "sender": "donotreply@jobalert.indeed.com",
+        "body_type": "P+T",
+        "date": "2026-04-26T12:39:27Z",
+        "reason": "Indeed tracking wrapper, Case B required"
+      }
+    ]
+  },
+  "idempotency_result": "PASS",
+  "notes": "Re-running 24h scan produces 0 new URLs. XING tracking URLs already in pipeline from earlier 2026-04-27 scans. HTML-only senders not processed without Case A (Chrome DevTools). Indeed tracking URLs require Case B redirect resolution."
+}

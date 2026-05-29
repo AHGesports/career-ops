@@ -117,7 +117,7 @@ const pipeAfter = existsSync(PIPELINE_MD) ? readFileSync(PIPELINE_MD, 'utf8').sp
 const tsvAfter = existsSync(HISTORY_TSV) ? readFileSync(HISTORY_TSV, 'utf8').split('\n').length : 0;
 
 const stats = runData.stats;
-let urlsResolved = 0, trackersInput = 0, trackersResolved = 0, trackersFailed = 0, trackersLists = 0, trackersOffsite = 0;
+let urlsResolved = 0, trackersInput = 0, trackersResolved = 0, trackersFailed = 0, trackersLists = 0, trackersOffsite = 0, trackersIgnored = 0;
 const bySender = {};
 for (const r of runData.results) {
   urlsResolved += r.urls.length;
@@ -127,12 +127,17 @@ for (const r of runData.results) {
     trackersResolved += r.urls.length;
     trackersLists += (r.tracker_dropped_lists?.length || 0);
     trackersOffsite += (r.tracker_dropped_offsite?.length || 0);
+    trackersIgnored += Math.max(0,
+      (r.tracker_dropped_non_job?.length || 0)
+        - (r.tracker_dropped_lists?.length || 0)
+        - (r.tracker_dropped_offsite?.length || 0)
+    );
   }
   if (!bySender[r.sender]) bySender[r.sender] = { threads: 0, urls: 0 };
   bySender[r.sender].threads++;
   bySender[r.sender].urls += r.urls.length;
 }
-const trackersUnresolved = trackersInput - trackersResolved - trackersFailed - trackersLists - trackersOffsite;
+const trackersUnresolved = trackersInput - trackersResolved - trackersFailed - trackersLists - trackersOffsite - trackersIgnored;
 
 process.stdout.write('\n=========================================================\n');
 process.stdout.write(`Gmail scan — ${window}\n`);
@@ -140,13 +145,13 @@ process.stdout.write(`  Threads:  ${stats.seen} seen / ${stats.history_skip} ski
 process.stdout.write(`  URLs:     ${urlsResolved} resolved (after dedup + noise + final-dup)\n`);
 const cls = runData.classifier || {};
 process.stdout.write(`  Classify: auto-match=${cls.auto_match || 0} / deferred=${cls.deferred || 0}\n`);
-process.stdout.write(`  Trackers: ${trackersInput} total / ${trackersResolved} resolved / ${trackersLists} lists/SERP / ${trackersOffsite} offsite / ${trackersFailed} failed / ${trackersUnresolved} unresolved (no-follow)\n`);
+process.stdout.write(`  Trackers: ${trackersInput} total / ${trackersResolved} resolved / ${trackersLists} lists/SERP / ${trackersOffsite} offsite / ${trackersIgnored} ignored / ${trackersFailed} failed / ${trackersUnresolved} unresolved (no-follow)\n`);
 
 // Capture-loss audit: per-thread compare subject_expected_count vs (urls + pipeline_dup + noise).
 // Raises a WARNING line so the agent stops and asks before committing.
 const lossWarnings = [];
 for (const r of runData.results) {
-  const ec = r.metadata?.subject_expected_count;
+  const ec = r.metadata?.rendered_job_cards ?? r.metadata?.subject_expected_count;
   if (!ec) continue;
   const captured = (r.urls?.length || 0) + (r.metadata.pipeline_dup || 0) + (r.metadata.noise_filtered || 0) + (r.metadata.sponsored_count || 0);
   const loss = ec - captured;
@@ -162,14 +167,15 @@ for (const r of runData.results) {
   trackerStats[key] = trackerStats[key] || { in: 0, kept: 0, dropped: 0, failed: 0 };
   trackerStats[key].in += r.trackers_to_follow?.length || 0;
   trackerStats[key].kept += r.urls?.length || 0;
-  trackerStats[key].dropped += (r.tracker_dropped_non_job || []).length;
+  trackerStats[key].dropped += (r.tracker_dropped_lists || []).length + (r.tracker_dropped_offsite || []).length;
   trackerStats[key].failed += (r.tracker_failures || []).length;
 }
 const trackerWarnings = [];
 for (const [s, v] of Object.entries(trackerStats)) {
-  const dropRate = v.in > 0 ? (v.dropped + v.failed) / v.in : 0;
-  if (dropRate > 0.5 && v.in >= 10) {
-    trackerWarnings.push({ sender: s, ...v, dropRate: (dropRate * 100).toFixed(0) + '%' });
+  const failRate = v.in > 0 ? v.failed / v.in : 0;
+  const noJobsFromManyTrackers = v.in >= 10 && v.kept === 0 && (v.failed + v.dropped) > 0;
+  if ((failRate > 0.5 && v.in >= 10) || noJobsFromManyTrackers) {
+    trackerWarnings.push({ sender: s, ...v, failRate: (failRate * 100).toFixed(0) + '%' });
   }
 }
 if (lossWarnings.length || trackerWarnings.length) {
@@ -178,7 +184,7 @@ if (lossWarnings.length || trackerWarnings.length) {
     process.stdout.write(`    [thread ${w.thread} ${w.sender}] subject claims ${w.expected} jobs, captured ${w.captured} (loss=${w.loss})\n`);
   }
   for (const w of trackerWarnings) {
-    process.stdout.write(`    [tracker ${w.sender}] ${w.in} in / ${w.kept} kept / ${w.dropped} dropped / ${w.failed} failed (drop-rate ${w.dropRate})\n`);
+    process.stdout.write(`    [tracker ${w.sender}] ${w.in} in / ${w.kept} kept / ${w.dropped} dropped / ${w.failed} failed (failure-rate ${w.failRate})\n`);
   }
   process.stdout.write(`  Inspect run JSON before --commit if losses look real.\n`);
 }

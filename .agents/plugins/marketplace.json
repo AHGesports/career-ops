@@ -1,0 +1,20 @@
+{
+  "name": "career-ops-local",
+  "interface": {
+    "displayName": "Career-Ops Local"
+  },
+  "plugins": [
+    {
+      "name": "career-ops",
+      "source": {
+        "source": "local",
+        "path": "."
+      },
+      "policy": {
+        "installation": "INSTALLED_BY_DEFAULT",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

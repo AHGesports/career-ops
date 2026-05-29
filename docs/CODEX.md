@@ -43,6 +43,10 @@ npx playwright install chromium
 | Training / certification review | `modes/training.md` |
 | Project evaluation | `modes/project.md` |
 
+## Gmail Apply Workers
+
+For `/career-ops gmail-apply-batch`, Codex should run the existing Node orchestrator with `--worker-provider=codex`. The orchestrator then uses `codex exec --model gpt-5.4-mini` for the cheap per-URL worker role that Claude runs with Haiku. Override with `--worker-model=<model>` only when explicitly needed.
+
 The key point: Codex support is additive. It should route into the existing
 Career-Ops modes and scripts rather than introducing a parallel automation
 layer.
@@ -52,7 +56,7 @@ layer.
 - Treat raw JD text or a job URL as the full auto-pipeline path unless the user explicitly asks for evaluation only.
 - Keep all personalization in `config/profile.yml`, `modes/_profile.md`, `article-digest.md`, or `portals.yml`.
 - Never verify a job’s live status with generic web fetch when Playwright is available.
-- Never submit an application for the user.
+- Application submission policy is owned by the active apply skill. If a skill or explicit user command includes a submit flag, follow that skill's guarded submit flow; otherwise stop before final submission.
 - Never add new tracker rows directly to `data/applications.md`; use the TSV addition flow and `merge-tracker.mjs`.
 
 ## Verification

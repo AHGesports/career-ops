@@ -209,6 +209,14 @@ Recommended B2B headline rate: **200–230 PLN/h (€47–54/h)**.
 - On-site outside Salzburg/Vienna: score **2.0**
 - Countries outside EU/UK/US/CA/AU: score **1.0** (decline)
 
+## Application Ban List
+
+Do not apply to roles at these companies under any circumstance:
+- Axess AG / Axess
+- Designa-Axess Industries Holding GmbH / Designa
+- BG Drives
+- SKIDATA / SkiData / Ski Data
+
 ## Resume Confidentiality Notes
 
 - Do NOT name specific Axess internal projects (CLICS, ACP, etc.) -- may violate company TOS

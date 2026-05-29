@@ -1,0 +1,18 @@
+EVAL TASK: iteration-1 eval-4 (tracking-redirect-restart-on-failure)
+Window: 3d (newer_than:3d)
+Mode: with_skill (normal skill execution)
+Test focus: Case B (XING, WTJ tracker URLs) with restart-on-failure
+
+Critical rules:
+1. Only extract URLs from emails (no source-site harvesting)
+2. Case A mandatory for H-type senders (JJIT, NFJ)
+3. Case B: follow each tracker URL via navigate_page + evaluate_script
+4. Restart on failure: close_page ALL → new_page → retry ONCE
+5. Log restart cycles in transcript
+6. Verification checkpoint: counts must match
+
+Output files required:
+- summary.md (Section 9 template)
+- urls.json (redirect tracking)
+- tsv_rows.tsv (new history rows)
+- transcript.md (detailed log with restart cycles)

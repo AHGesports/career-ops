@@ -106,7 +106,7 @@ If `modes/_profile.md` is missing, copy from `modes/_profile.template.md` silent
 
 ## Ethical Use — CRITICAL
 
-- **NEVER submit an application without the user reviewing it first.** Fill forms, draft answers, generate PDFs — but always STOP before clicking Submit. The user makes the final call.
+- **Submit only through an active apply skill or explicit user command.** Fill forms, draft answers, and generate PDFs normally; final submission requires the apply workflow's guarded submit path or a clear submit instruction.
 - **Strongly discourage low-fit applications.** If a score is below 4.0/5, explicitly recommend against applying.
 - **Quality over speed.** A well-targeted application to 5 companies beats a generic blast to 50.
 

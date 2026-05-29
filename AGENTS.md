@@ -5,6 +5,6 @@ Read `CLAUDE.md` for all project instructions, routing, and behavioral rules. Th
 Key points:
 - Reuse the existing modes, scripts, templates, and tracker flow — do not create parallel logic.
 - Store user-specific customization in `config/profile.yml`, `modes/_profile.md`, or `article-digest.md` — never in `modes/_shared.md`.
-- Never submit an application on the user's behalf.
+- Application submission policy is owned by the active apply skill. If a skill or explicit user command includes a submit flag, follow that skill's guarded submit flow; otherwise stop before final submission.
 
 For Codex-specific setup, see `docs/CODEX.md`.

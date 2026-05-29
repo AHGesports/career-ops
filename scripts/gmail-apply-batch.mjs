@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // gmail-apply-batch — V3 orchestrator. Pure Node. Drives the URL loop
-// deterministically. Spawns ONE haiku worker per URL when MCP work is needed.
+// deterministically. Spawns ONE cheap worker per URL when MCP work is needed.
+// Claude provider: Haiku. Codex provider: GPT-5.4 Mini by default.
 //
 // Modes:
 //
@@ -47,6 +48,23 @@ const CV_PATH = resolve(REPO_ROOT, CV_REL);
 
 function log(msg) { process.stderr.write(`[batch] ${msg}\n`); }
 
+function parseJsonText(text) {
+  return JSON.parse(String(text || '').replace(/^\uFEFF/, ''));
+}
+
+function readJsonFile(path) {
+  return parseJsonText(readFileSync(path, 'utf8'));
+}
+
+function killProcessTree(pid) {
+  if (!pid) return;
+  if (process.platform === 'win32') {
+    spawnSync('taskkill', ['/PID', String(pid), '/T', '/F'], { stdio: 'ignore' });
+    return;
+  }
+  try { process.kill(pid, 'SIGKILL'); } catch {}
+}
+
 // -- arg parsing -------------------------------------------------------------
 
 function parseArgs(argv) {
@@ -68,7 +86,7 @@ function parseArgs(argv) {
   if (earlyRunId) {
     const planPath = resolve(REPO_ROOT, 'data/batch-runs', earlyRunId, 'plan.json');
     if (existsSync(planPath)) {
-      try { planFlags = (JSON.parse(readFileSync(planPath, 'utf8')).flags) || null; } catch { /* */ }
+      try { planFlags = (readJsonFile(planPath).flags) || null; } catch { /* */ }
     }
   }
   const planF = planFlags || {};
@@ -77,12 +95,23 @@ function parseArgs(argv) {
   const dryRun = has('--dry-run');
   const verbose = has('--verbose');
   const autofix = has('--autofix') || planF.autofix === true;
+  const workerProvider = (
+    valOf('--worker-provider') ||
+    planF.workerProvider ||
+    process.env.CAREER_OPS_WORKER_PROVIDER ||
+    'claude'
+  ).toLowerCase();
+  const workerModel =
+    valOf('--worker-model') ||
+    planF.workerModel ||
+    process.env.CAREER_OPS_WORKER_MODEL ||
+    (workerProvider === 'codex' ? 'gpt-5.4-mini' : 'haiku');
 
   const limitArg = args.find(a => /^\d+$/.test(a));
   const limit = limitArg ? parseInt(limitArg, 10) : Infinity;
   const runId = valOf('--run-id');
 
-  return { mode, force, dryRun, verbose, autofix, limit, runId };
+  return { mode, force, dryRun, verbose, autofix, workerProvider, workerModel, limit, runId };
 }
 
 // -- portals + apps ----------------------------------------------------------
@@ -141,6 +170,23 @@ function extractUrlForRow(row) {
   return null;
 }
 
+function externalApplyKeyFromUrl(url) {
+  if (!url) return null;
+  try {
+    const u = new URL(url);
+    if (u.hostname.replace(/^www\./, '') === 'vesterling.com') {
+      const m = u.href.match(/onlineapplication\/(\d+)|jobRef(\d+)/i);
+      if (m) return `vesterling:${m[1] || m[2]}`;
+    }
+  } catch { /* */ }
+  return null;
+}
+
+function externalApplyKeyFromNotes(notes) {
+  const m = String(notes || '').match(/external_apply_key:([a-z0-9:_-]+)/i);
+  return m ? m[1].toLowerCase() : null;
+}
+
 function buildUrlRowIndex() {
   const apps = parseAppsTable(readFileSync(APPS_PATH, 'utf8'));
   const idx = new Map();
@@ -148,6 +194,20 @@ function buildUrlRowIndex() {
     const url = extractUrlForRow(row);
     if (!url) continue;
     if (!idx.has(url)) idx.set(url, { num: row.num, status: row.status, company: row.company, role: row.role });
+  }
+  return idx;
+}
+
+function buildExternalApplyIndex() {
+  const apps = parseAppsTable(readFileSync(APPS_PATH, 'utf8'));
+  const idx = new Map();
+  for (const row of apps) {
+    const key = externalApplyKeyFromNotes(row.notes);
+    if (!key) continue;
+    const existing = idx.get(key);
+    if (!existing || (row.status === 'Applied' && existing.status !== 'Applied')) {
+      idx.set(key, { num: row.num, status: row.status, company: row.company, role: row.role });
+    }
   }
   return idx;
 }
@@ -288,7 +348,7 @@ function runScript({ url, runId, force }) {
 
 // -- worker spawn ------------------------------------------------------------
 
-async function spawnPerUrlWorker({ url, taskType, runId, force, profile, scriptResult, hint, verbose }) {
+async function spawnPerUrlWorker({ url, taskType, runId, force, profile, scriptResult, hint, verbose, workerProvider, workerModel }) {
   const profileBlock = buildProfileBlock(profile);
 
   const taskTemplate = (() => {
@@ -356,9 +416,26 @@ async function spawnPerUrlWorker({ url, taskType, runId, force, profile, scriptR
   ].join('\n\n');
 
   const versionedPrompt = buildVersionedPromptFile(runId);
+  const provider = (
+    process.env.CAREER_OPS_WORKER_PROVIDER ||
+    workerProvider ||
+    'claude'
+  ).toLowerCase();
+  const model =
+    process.env.CAREER_OPS_WORKER_MODEL ||
+    workerModel ||
+    (provider === 'codex' ? 'gpt-5.4-mini' : 'haiku');
+
+  if (provider === 'codex') {
+    return await spawnCodexWorker({ url, taskType, runId, taskPrompt, versionedPrompt, model, verbose });
+  }
+  return await spawnClaudeWorker({ taskType, taskPrompt, versionedPrompt, model, verbose });
+}
+
+async function spawnClaudeWorker({ taskType, taskPrompt, versionedPrompt, model, verbose }) {
   const args = [
     '-p',
-    '--model', 'haiku',
+    '--model', model,
     '--allowedTools', 'Bash,Read,Write,Edit,Grep,Glob,mcp__chrome-devtools__*',
     '--disallowedTools', 'Agent,WebSearch,WebFetch',
     '--system-prompt-file', versionedPrompt.path,
@@ -416,7 +493,7 @@ async function spawnPerUrlWorker({ url, taskType, runId, force, profile, scriptR
     child.stderr.on('data', d => { stderrBuf += d.toString(); });
 
     // Hard cap: 6 min per worker. Most tasks complete in under 2 min.
-    const killTimer = setTimeout(() => { try { child.kill('SIGKILL'); } catch {} }, 360_000);
+    const killTimer = setTimeout(() => killProcessTree(child.pid), 360_000);
 
     child.on('close', (code, signal) => {
       clearTimeout(killTimer);
@@ -428,6 +505,105 @@ async function spawnPerUrlWorker({ url, taskType, runId, force, profile, scriptR
       };
       if (!finalAssistantText) {
         return resolveP({ ok: false, err: 'no final assistant text', diag, usage });
+      }
+      let result;
+      try { result = JSON.parse(finalAssistantText); }
+      catch {
+        const m = finalAssistantText.match(/\{[\s\S]*\}/);
+        if (m) {
+          try { result = JSON.parse(m[0]); }
+          catch { return resolveP({ ok: false, err: 'worker output not JSON', text: finalAssistantText.slice(0, 400), diag, usage }); }
+        } else {
+          return resolveP({ ok: false, err: 'worker output not JSON', text: finalAssistantText.slice(0, 400), diag, usage });
+        }
+      }
+      resolveP({ ok: true, result, usage, diag });
+    });
+
+    child.on('error', e => {
+      clearTimeout(killTimer);
+      resolveP({ ok: false, err: `spawn error: ${e.message}` });
+    });
+  });
+}
+
+async function spawnCodexWorker({ url, taskType, runId, taskPrompt, versionedPrompt, model, verbose }) {
+  const runDir = resolve(REPO_ROOT, 'data/batch-runs', runId);
+  const outPath = resolve(runDir, `${urlSlug(url)}-${taskType.toLowerCase()}-codex-output.json`);
+  const systemPrompt = readFileSync(versionedPrompt.path, 'utf8');
+  const prompt = [
+    systemPrompt,
+    '',
+    '---',
+    '',
+    '# Orchestrator task',
+    taskPrompt,
+    '',
+    'Final response must be exactly the requested single JSON object. No prose, no markdown.',
+  ].join('\n');
+  const args = [
+    'exec',
+    '--model', model,
+    '--dangerously-bypass-approvals-and-sandbox',
+    '--cd', REPO_ROOT,
+    '--json',
+    '--output-last-message', outPath,
+    '-',
+  ];
+  const reasoningEffort = process.env.CAREER_OPS_WORKER_REASONING_EFFORT;
+  if (reasoningEffort) {
+    args.splice(3, 0, '-c', `model_reasoning_effort='${reasoningEffort}'`);
+  }
+
+  return await new Promise(resolveP => {
+    const child = spawn('codex', args, {
+      cwd: REPO_ROOT,
+      shell: process.platform === 'win32',
+    });
+    child.stdin.write(prompt);
+    child.stdin.end();
+
+    let stdoutBuf = '';
+    let stderrBuf = '';
+    let usage = null;
+
+    child.stdout.on('data', d => {
+      stdoutBuf += d.toString();
+      if (!verbose) return;
+      let nl;
+      while ((nl = stdoutBuf.indexOf('\n')) !== -1) {
+        const line = stdoutBuf.slice(0, nl);
+        stdoutBuf = stdoutBuf.slice(nl + 1);
+        if (!line.trim()) continue;
+        try {
+          const evt = JSON.parse(line);
+          if (evt.type || evt.msg) process.stderr.write(`[worker:${taskType}:codex] ${evt.type || evt.msg}\n`);
+          usage = evt.usage || usage;
+        } catch { /* ignore non-json progress */ }
+      }
+    });
+
+    child.stderr.on('data', d => { stderrBuf += d.toString(); });
+
+    const killTimer = setTimeout(() => killProcessTree(child.pid), 360_000);
+
+    child.on('close', (code, signal) => {
+      clearTimeout(killTimer);
+      const diag = {
+        provider: 'codex',
+        model,
+        exit_code: code,
+        signal,
+        stdout_tail: stdoutBuf.slice(-400),
+        stderr_tail: stderrBuf.slice(-400),
+        output_path: outPath,
+      };
+      let finalAssistantText = '';
+      if (existsSync(outPath)) {
+        try { finalAssistantText = readFileSync(outPath, 'utf8').trim(); } catch { /* */ }
+      }
+      if (!finalAssistantText) {
+        return resolveP({ ok: false, err: 'no final codex output', diag, usage });
       }
       let result;
       try { result = JSON.parse(finalAssistantText); }
@@ -484,7 +660,7 @@ function decideFromClaims({ scriptClaim, workerClaim, workerEvidenceFile, worker
 
 // -- apps.md write -----------------------------------------------------------
 
-function rewriteAppsRow(url, newStatus) {
+function rewriteAppsRow(url, newStatus, noteSuffix = null) {
   const md = readFileSync(APPS_PATH, 'utf8');
   const lines = md.split('\n');
   const apps = parseAppsTable(md);
@@ -506,8 +682,11 @@ function rewriteAppsRow(url, newStatus) {
       updated.push(line);
       continue;
     }
-    if (cells[6] !== newStatus) {
+    const note = cells[9] || '';
+    const shouldAppendNote = noteSuffix && !note.includes(noteSuffix);
+    if (cells[6] !== newStatus || shouldAppendNote) {
       cells[6] = newStatus;
+      if (shouldAppendNote) cells[9] = `${note} ${noteSuffix}`.trim();
       changed = true;
       updated.push('| ' + cells.slice(1, -1).join(' | ') + ' |');
     } else {
@@ -535,8 +714,12 @@ function findReusableRunDir(opts, urls, maxAgeMs = 30 * 60 * 1000) {
     const ledgerPath = resolve(dir, 'ledger.ndjson');
     if (!existsSync(planPath) || !existsSync(ledgerPath)) continue;
     let prevPlan;
-    try { prevPlan = JSON.parse(readFileSync(planPath, 'utf8')); } catch { continue; }
+    try { prevPlan = readJsonFile(planPath); } catch { continue; }
     if (JSON.stringify(prevPlan.urls || []) !== JSON.stringify(urls)) continue;
+    const prevFlags = prevPlan.flags || {};
+    if (prevFlags.force !== opts.force || prevFlags.autofix !== opts.autofix) continue;
+    if ((prevFlags.workerProvider || 'claude') !== opts.workerProvider) continue;
+    if ((prevFlags.workerModel || (opts.workerProvider === 'codex' ? 'gpt-5.4-mini' : 'haiku')) !== opts.workerModel) continue;
     let onlyPlanEvent = true;
     for (const line of readFileSync(ledgerPath, 'utf8').split('\n')) {
       if (!line.trim()) continue;
@@ -614,8 +797,20 @@ function modePlan(opts) {
       writeFileSync(resolve(runDir, 'profile.json'), JSON.stringify(profile, null, 2));
       writeFileSync(resolve(runDir, 'plan.json'), JSON.stringify({
         ts: new Date().toISOString(),
-        opts: { mode: opts.mode, force: opts.force, autofix: opts.autofix, limit: opts.limit === Infinity ? null : opts.limit },
-        flags: { force: opts.force, autofix: opts.autofix },
+        opts: {
+          mode: opts.mode,
+          force: opts.force,
+          autofix: opts.autofix,
+          workerProvider: opts.workerProvider,
+          workerModel: opts.workerModel,
+          limit: opts.limit === Infinity ? null : opts.limit,
+        },
+        flags: {
+          force: opts.force,
+          autofix: opts.autofix,
+          workerProvider: opts.workerProvider,
+          workerModel: opts.workerModel,
+        },
         total_urls: queue.length,
         urls,
         queue,
@@ -637,7 +832,12 @@ function modePlan(opts) {
     status_counts: statusCounts,
     preview: queue.slice(0, 10).map(c => `${c.num} [${c.status}] ${c.company} (${c.portal})`),
     cv_path: CV_PATH,
-    flags: { force: opts.force, autofix: opts.autofix },
+    flags: {
+      force: opts.force,
+      autofix: opts.autofix,
+      workerProvider: opts.workerProvider,
+      workerModel: opts.workerModel,
+    },
   }, null, 2));
 }
 
@@ -656,7 +856,7 @@ async function modeRun(opts) {
     console.error(`plan.json not found in ${runDir}`);
     process.exit(2);
   }
-  const plan = JSON.parse(readFileSync(planPath, 'utf8'));
+  const plan = readJsonFile(planPath);
   const urls = plan.urls || [];
   if (urls.length === 0) {
     console.log(JSON.stringify({ ok: true, mode: 'run', run_id: opts.runId, applied: 0, failed: 0, disputed: [], no_evidence: [], autofixes: 0, ms: 0 }));
@@ -673,7 +873,7 @@ async function modeRun(opts) {
   }
 
   const profile = existsSync(resolve(runDir, 'profile.json'))
-    ? JSON.parse(readFileSync(resolve(runDir, 'profile.json'), 'utf8'))
+    ? readJsonFile(resolve(runDir, 'profile.json'))
     : loadProfileForWorker();
 
   const t0 = Date.now();
@@ -682,6 +882,7 @@ async function modeRun(opts) {
   const noEvidence = [];
   const mailtoDetected = [];
   const urlIndex = buildUrlRowIndex();
+  const externalApplyIndex = buildExternalApplyIndex();
 
   log(`run starting: ${urls.length} URL(s) run_id=${opts.runId}`);
   appendLedger(runDir, { event: 'run_start', total_urls: urls.length });
@@ -760,6 +961,27 @@ async function modeRun(opts) {
     else if (scriptClaim === 'Applied') taskType = 'Validate';
     else taskType = 'Recover';
 
+    const externalApplyKey = externalApplyKeyFromUrl(scriptJson.redirect?.final_url);
+    if (externalApplyKey) {
+      const prior = externalApplyIndex.get(externalApplyKey);
+      if (prior) {
+        const note = `Duplicate external application (${externalApplyKey}); canonical row #${prior.num}.`;
+        log(`  duplicate external target ${externalApplyKey} already seen at row #${prior.num} - marking Discarded`);
+        rewriteAppsRow(url, 'Discarded', note);
+        const v = {
+          url, num: meta.num, portal, task_type: taskType,
+          script_claim: scriptClaim, worker_claim: null, worker_evidence_path: null,
+          worker_ok: false, worker_diag: null, decision: 'Discarded',
+          reason: note, external_apply_key: externalApplyKey, script_ms: scriptMs,
+        };
+        appendUrlVerdict(runDir, v);
+        appendLedger(runDir, { event: 'url_verdict', ...v });
+        failed++;
+        continue;
+      }
+      externalApplyIndex.set(externalApplyKey, { num: meta.num, status: 'Seen', company: meta.company, role: meta.role });
+    }
+
     // -- 3. Spawn worker (with one retry on missing evidence) -----------
     let workerResult = null;
     let workerEvidence = null;
@@ -768,6 +990,7 @@ async function modeRun(opts) {
       const r = await spawnPerUrlWorker({
         url, taskType, runId: opts.runId, force: opts.force, profile,
         scriptResult: scriptOut, hint: null, verbose: opts.verbose,
+        workerProvider: opts.workerProvider, workerModel: opts.workerModel,
       });
       workerResult = r;
       const evPath = r.result?.evidence_path;
@@ -794,7 +1017,7 @@ async function modeRun(opts) {
         if (candidates.length > 0) {
           const candidate = resolve(evDir, candidates[0]);
           let evClaim = null;
-          try { evClaim = JSON.parse(readFileSync(candidate, 'utf8')).claim; } catch { /* */ }
+          try { evClaim = readJsonFile(candidate).claim; } catch { /* */ }
           workerEvidence = candidate;
           if (evClaim && (!workerResult?.ok || !workerResult?.result?.claim)) {
             if (!workerResult) workerResult = { ok: true, result: { claim: evClaim }, diag: {} };
@@ -823,6 +1046,7 @@ async function modeRun(opts) {
       worker_diag: workerResult?.diag || null,
       decision: verdict.decision,
       reason: verdict.reason,
+      external_apply_key: externalApplyKey,
       script_ms: scriptMs,
     };
     appendUrlVerdict(runDir, verdictEntry);
@@ -830,7 +1054,8 @@ async function modeRun(opts) {
 
     if (verdict.decision === 'Applied') {
       applied++;
-      rewriteAppsRow(url, 'Applied');
+      rewriteAppsRow(url, 'Applied', externalApplyKey ? `external_apply_key:${externalApplyKey}` : null);
+      if (externalApplyKey) externalApplyIndex.set(externalApplyKey, { num: meta.num, status: 'Applied', company: meta.company, role: meta.role });
       // -- 5. autofix on Recover-applied --------------------------------
       if (opts.autofix && taskType === 'Recover') {
         appendErrorLog({
@@ -839,14 +1064,14 @@ async function modeRun(opts) {
           script_failed_selector: scriptJson.steps?.find(s => s.ok === false)?.selector || null,
           worker_evidence_path: workerEvidence,
         });
-        // Detailed yaml-patch logic deferred — surface for opus-side review.
+        // Detailed yaml-patch logic deferred — surface for parent-side review.
         autofixes++;
       }
     } else if (verdict.decision === 'AutoApplyFailed') {
       failed++;
-      rewriteAppsRow(url, 'AutoApplyFailed');
+      rewriteAppsRow(url, 'AutoApplyFailed', externalApplyKey ? `external_apply_key:${externalApplyKey}` : null);
     } else if (verdict.decision === 'MailtoDetected') {
-      const evJson = workerEvidence ? JSON.parse(readFileSync(workerEvidence, 'utf8')) : {};
+      const evJson = workerEvidence ? readJsonFile(workerEvidence) : {};
       mailtoDetected.push({
         url, num: meta.num, portal, task_type: taskType,
         mailto_recipient: workerResult?.result?.mailto_recipient || evJson.mailto_recipient || null,
@@ -854,7 +1079,7 @@ async function modeRun(opts) {
         company_name: workerResult?.result?.company_name || evJson.company_name || null,
         worker_evidence_path: workerEvidence,
       });
-      rewriteAppsRow(url, 'AutoApplyFailed');
+      rewriteAppsRow(url, 'AutoApplyFailed', externalApplyKey ? `external_apply_key:${externalApplyKey}` : null);
     } else if (verdict.decision === 'disputed') {
       disputed.push({
         url, num: meta.num, portal, task_type: taskType,

@@ -512,6 +512,475 @@
 - [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-software-engineer-net-aws-warszawa-pulawska-2,oferta,67360000-5e03-2eb4-6eb0-08deaa790b94     <!-- via Gmail:theprotocol 2026-05-07T08:26Z auto-match: \bnet\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/dwh-developer-warszawa-aleje-jerozolimskie-44,oferta,95560000-4cd7-a6e1-8948-08deaa78d9dd     <!-- via Gmail:theprotocol 2026-05-07T08:26Z auto-match: \bnet\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=e04b59cb85755467     <!-- via Gmail:indeed 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=c7beedb298d88a42     <!-- via Gmail:indeed 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-developer---developerka-node-react-extjs-warszawa-grzybowska-81,oferta,d3f90000-ef72-2a23-2ec4-08deb1a83a2c     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/net-developer-c-bydgoszcz-wladyslawa-broniewskiego-4,oferta,ac6c0000-e25b-7ec3-625a-08deac215594     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/net-backend-developer-wielun-rymarkiewicz-6,oferta,dd0b0000-b652-1641-94c3-08deaf3cf92d     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-test-automation-engineer-tosca-warszawa,oferta,d3f90000-ef72-2a23-de73-08deb1c83d28     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bc#,\bautomation engineer\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-c-developer-gorzow-wielkopolski-franciszka-walczaka-3,oferta,d3c50000-c6fd-e294-36a4-08deb1b33ef6     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-test-automation-engineer-tosca-warszawa,oferta,2d980000-2a88-7a1c-7239-08deb1ae4493     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bc#,\bautomation engineer\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/software-developer-c---net-warszawa-zwirki-i-wigury-18a,oferta,ac6c0000-e25b-7ec3-1ac7-08deac321530     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b,\bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/programista---programistka-net-warszawa,oferta,4d2d0000-7494-aeb0-0957-08dea5c685e0     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b,\bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-gcp-ai-developer-warszawa,oferta,2d980000-2a88-7a1c-fa7b-08deb1bd486c     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/product-owner-warszawa,oferta,d3f90000-ef72-2a23-a609-08deb1944a71     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/frontend-developer-angular-k-m-x-warszawa,oferta,d3c50000-c6fd-e294-bc32-08deb10bd65d     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-developer-python-angular-krakow,oferta,d3c50000-c6fd-e294-e86a-08deb0f9de33     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b,\bfullstack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4414637911     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4411199531     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4414726058     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4414610838     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4414472855     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4414464930     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/clurgo-fullstack-developer-devops-react-node-js--warszawa-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnode js\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/itds-senior-net-developer---financial-technology-solutions-wroclaw-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/jit-team-senior-net-developer-gdynia-net-575bed4c     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-full-stack-software-engineer-all-genders-wien-154346265     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duesseldorf-senior-full-stack-entwickler-net-angular-154346176     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/leipzig-softwareentwickler-net-leipzig-152545588     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/augsburg-ai-engineer-seo-automatisierung-python-154334319     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/muenchen-senior-react-engineer-full-stack-ai-products-154328266     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/fullstack-developer-ai-assisted-link-group-remote     <!-- via Gmail:nfj 2026-05-15T19:51Z auto-match: \bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-product-engineer-dcg-remote     <!-- via Gmail:nfj 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=99a8d0ec0ed85c6a     <!-- via Gmail:indeed 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=9bbc4a39e29a3a8b     <!-- via Gmail:indeed 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=ee8341d98e90fefc     <!-- via Gmail:indeed 2026-05-15T19:51Z auto-match: \bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=0e5a410dbac4b3f1     <!-- via Gmail:indeed 2026-05-15T19:51Z auto-match: \bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-go-developer-warszawa,oferta,d3f90000-ef72-2a23-da9e-08deb0e9c481     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-developer-nodejs---net---azure-ai---docker-warszawa,oferta,dd0b0000-b652-1641-d860-08deb0e27f16     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b,\bnodejs\b,\bfullstack\b,\bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-devsecops-engineer-with-advanced-python-skills-warszawa-grzybowska-5a,oferta,d3f90000-ef72-2a23-a27a-08deb0f92019     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-frontend-developer-angular-branza-technologiczna-warszawa,oferta,27c20000-b0d8-b6df-22f0-08deb0d9215e     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-angular-developer-warszawa,oferta,27c20000-b0d8-b6df-cbc3-08deb0c25761     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-frontend-developer-m-f-d---b2b-warszawa,oferta,27c20000-b0d8-b6df-7725-08deb002c20a     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/architekt-ictot-warszawa,oferta,ac6c0000-e25b-7ec3-9fee-08deb0e2844c     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-observability-engineer-f-m-x-bialystok-jozefa-marjanskiego-3,oferta,27c20000-b0d8-b6df-3c17-08deb02683c5     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/link-group-fullstack-developer-ai-assisted--lodz-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/edge-one-solutions-sp-z-o-o-senior-frontend-engineer-angular-branza-technologiczna-gdansk-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/devqube-sp-z-o-o--fullstack-developer-angular-nestjs--wroclaw-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bangular\b,\bnestjs\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/optiveum-fullstack-go-developer-warszawa-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/clurgo-fullstack-developer-react-node-js--warszawa-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnode js\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/emagine-polska--net-developer-warszawa-net-d6e44859     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/vetlab-fullstack-developer-net-react---web-f-m--wroclaw-net-c92a3c81     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/astek-polska-fullstack-developer-net-angular-he-she----warszawa-mazowieckie--net-957884ef     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/astek-polska-fullstack-developer-net-angular-he-she----warszawa-mazowieckie--net-19e2d57a     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/astek-polska-programista-programistka-ferryt-mid-senior---praca-zdalna--warszawa-mazowieckie--net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/astek-polska-programista-programistka-ferryt-mid-senior----warszawa-mazowieckie--net-af7ab40d     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/emagine-polska--net-developer-warsaw-net-823421dc     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duesseldorf-senior-fullstack-developer-genai-fokus-154316879     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfullstack\b,\bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/frankfurt-main-full-stack-entwickler-net-100-remote-154300649     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-senior-fullstack-developer-8138-154287717     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/zuerich-software-engineer-net-remote-154297628     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/fullstack-developer-chooose-as-remote     <!-- via Gmail:nfj 2026-05-15T19:51Z auto-match: \bc#,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-angular-developer-square-one-resources-remote     <!-- via Gmail:nfj 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=5bd4200930b21ed7     <!-- via Gmail:indeed 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4413582528     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4413533670     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4413536654     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4413458752     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4413569526     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4413573777     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/full-stack-developer-krakow-opolska-112,oferta,dd0b0000-b652-1641-2dc8-08deb03102e0     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-developer-katowice,oferta,dd0b0000-b652-1641-24d7-08deb0128488     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/ai-fullstack-engineer-nextjs-llm-warszawa-marszalkowska-89,oferta,dd0b0000-b652-1641-28c4-08deb00f86b2     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bfullstack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/programista---fullstack-developer-wroclaw-sulowska-24f,oferta,74d30000-ee8b-aa73-ba18-08deab605e0a     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/full-stack-developer-warszawa-franciszka-klimczaka-1,oferta,e5df0000-8bb4-268a-6ffb-08deaac9ecc0     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/t-hub---microsoft-dynamics-365-ce--power-platform-software-developer-warszawa-marynarska-12,oferta,dd0b0000-b652-1641-e735-08deb021cdbb     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/cloud-consultant-warszawa,oferta,27c20000-b0d8-b6df-b25d-08deb00c9fd0     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-net-developer-lodz-aleksandrowska-67,oferta,27c20000-b0d8-b6df-82c5-08deb005db03     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/t-hub---contact-center-architect-warszawa-marynarska-12,oferta,27c20000-b0d8-b6df-2d26-08deb021e313     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/software-engineer-frontend-krakow,oferta,04a20000-854a-dee6-9c5b-08de9b972384     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/frontend-react-developer-warszawa-poniatowskiego-1,oferta,88e60000-2ca1-929b-c846-08dea52096a4     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/software-developer---automation-krakow,oferta,f7b20000-ccf1-3265-0ffc-08dea05bb0fb     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/net-developer-warszawa,oferta,04a20000-854a-dee6-4527-08de99fbdaf1     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b,\bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4410177546     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4405337927     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4413446531     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4413447458     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4413434594     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4413445501     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4410181096     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/green-hive-technology-node-js-backend-developer-zappka-she-he-they--gdansk-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/co-brick-backend-engineer-node-js-typescript-aws--gliwice-other     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \btypescript\b,\bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/astek-polska-fullstack-developer-net-angular-he-she----warszawa-mazowieckie--net-b9e73062     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/transition-technologies-psc-solution-architect-dcom-wcce-ms-certificate-authority-server--lodz-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/just-join-it-fullstack-software-engineer-remote--gdansk-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/astek-polska-programista-programistka-ferryt-mid-senior----warszawa-mazowieckie--net-4514e4ca     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/vm-pl-senior-fullstack-engineer-tooling-architect-lodz-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/intellias-senior-software-engineer-poland-remote--net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/astek-polska-fullstack-developer-net-angular-he-she----warszawa-mazowieckie--net-526a1317     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-senior-full-stack-developer-net-angular-154251313     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/zuerich-full-stack-engineer-js-react-typescript-100-154262311     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \btypescript\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-lead-fullstack-developer-typescript-angular-node-js-154274594     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bangular\b,\btypescript\b,\bnode js\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/muenchen-senior-ai-genai-architect-153904843     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/leipzig-softwareentwickler-net-leipzig-152590167     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/full-stack-engineer-with-angular-for-a-startup-carsimple-via-cc-remote     <!-- via Gmail:nfj 2026-05-15T19:51Z auto-match: \bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/mid-senior-fullstack-developer-node-js-angular-lub-react-euvic-remote     <!-- via Gmail:nfj 2026-05-15T19:51Z auto-match: \bangular\b,\bnode js\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/typescript-developer-avenga-agencja-pracy-nr-kraz-8448-remote     <!-- via Gmail:nfj 2026-05-15T19:51Z auto-match: \bangular\b,\btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-frontend-entwickler-interesse-fullstack-entwicklung-154129935     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-software-developer-typescript-154162125     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-azure-platform-engineer-all-genders-wien-154151836     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-senior-developer-net-26-05-fsw-ka-154011775     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://talentportal.germantechjobs.de/api/job-redirect?jobId=Medi-Know-GmbH-Lead-Full-Stack-Developer-mfd--MedEd--AI--Learning-Platform     <!-- via Gmail:gtj 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/azure-developer-senior-smartksef-warszawa,oferta,dd0b0000-b652-1641-cc04-08deaf4507a1     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-full-stack-developer-nodejs-angular---tl-warszawa-aleje-jerozolimskie-96,oferta,dd0b0000-b652-1641-5f10-08deaf2ce927     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b,\bnodejs\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-frontend-developer-react---nextjs---typescript-m-k-n-warszawa-prosta-70,oferta,ac6c0000-e25b-7ec3-ce73-08deaf4053b6     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-developer-javaangular-warszawa-chmielna-71,oferta,dd0b0000-b652-1641-a0cb-08deaf2c3569     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/frontend-developer-angular---camunda-wroclaw,oferta,dd0b0000-b652-1641-e910-08deaf44d287     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/frontend-developer-javascript-katowice-zabrska-16,oferta,dd0b0000-b652-1641-0c8a-08deaf46fe38     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/insurance-architect-with-instanda-m-k-n-warszawa-prosta-70,oferta,dd0b0000-b652-1641-7de1-08deaf6779b5     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/web-developer---programista--ka-stron-www-jelenia-gora,oferta,27c20000-b0d8-b6df-e70b-08deaf59c8ed     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-azure-integration-developer-wroclaw-plac-solny-14a,oferta,27c20000-b0d8-b6df-d8e7-08deaf3456c2     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bc#,\bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/programista---programistka-wdrozen-warszawa-kowienska-22,oferta,78b50000-17ad-320c-51c7-08de995eb88c     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/frontend-developer-warszawa,oferta,ac6c0000-e25b-7ec3-bb91-08deaf76b451     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/technical-writer-warszawa-pulawska-182,oferta,5fe30000-9a1e-6607-dea4-08de9c8fb0b6     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/uniface-net-developer-warszawa-aleja-armii-ludowej-26,oferta,cb780000-1098-7a89-fe25-08dea69bcd97     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/software-developer-poznan-grunwaldzka-184,oferta,04a20000-854a-dee6-96ac-08dea063eb87     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/itds-senior-angular-developer---financial-technology-expertise-wroclaw-javascript-424168f8     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/clurgo-senior-fullstack-developer-react-node-js--warszawa-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnode js\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/appliscale-senior-fullstack-frontend-heavy---react-engineer-krakow-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/dcg-fullstack-node-react--warszawa-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/lumicode-sp-z-o-o-pentacomp-group--node-js-developer-k-m--warszawa-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/craftware-integration-developer-node-js-aws--warszawa-other     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/bpmriders-programista-net-z-webcon-bps--warszawa-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/relativity-senior-net-engineer---automation-services-lodz-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/co-brick-senior-c-developer-hardware--gliwice-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/optimakers-programista--tka-net-systemow-produkcyjnych-torun-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/emagine-polska-senior-software-developer---specification-driven-development-specialist-lisbon-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hannover-fullstack-engineer-154225170     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-senior-full-stack-engineer-product-ownership-operations-154208959     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/gruenwald-senior-frontend-developer-angular-154209117     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hamburg-senior-sofrware-engineer-full-stack-154209012     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/nexio-management-programista-visual-basic-net-m-k-d--warszawa-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/koordynator-ds-utrzymania-baz-danych-warszawa-aleja-generala-wladyslawa-sikorskiego-9,oferta,dd0b0000-b652-1641-da68-08deaedfb24b     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/lider-zespolu-it-k-m-os-szczecin,oferta,27c20000-b0d8-b6df-4b47-08deaedfb26e     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/asystent---asystentka-dzialu-it---it-assistant-gdansk-leona-droszynskiego-24,oferta,ac6c0000-e25b-7ec3-36f3-08deaedfb2cb     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/full-stack-developer-react-node-js-net-1dea-remote     <!-- via Gmail:nfj 2026-05-15T19:51Z auto-match: \bnet\b,\bnode js\b,\bfullstack\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-net-fullstack-developer-ka-product-factory-tech-tribe-t-mobile-polska-remote     <!-- via Gmail:nfj 2026-05-15T19:51Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/programista-fullstack-programistka-fullstack-net-angular-astek-polska-remote     <!-- via Gmail:nfj 2026-05-15T19:51Z auto-match: \bnet\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/konstanz-fullstack-developer-konstanz-berlin-remote-154204251     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/heidelberg-senior-fullstack-developer-154203106     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-senior-fullstack-typescript-developer-angular-node-js-154203101     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bangular\b,\btypescript\b,\bnode js\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/frankfurt-main-angular-developer-frontend-fokus-154203078     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/karlsruhe-full-stack-entwickler-net-azure-typescript-sql-devops-154178355     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\btypescript\b,\bfull stack\b,\bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/cologne-full-stack-software-engineer-backend-frontend-bootstrapped-saas-startup-remote-eu-154168359     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/dresden-fullstack-product-engineer-154178415     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hamburg-senior-cloud-software-engineer-typescript-aws-154161884     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-fullstack-developer-konstanz-berlin-remote-152615410     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=8b1af59887cfe884     <!-- via Gmail:indeed 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-fullstack-developer-react---typescript---node-ai-coding-warszawa-nowowiejska-15-19,oferta,ac6c0000-e25b-7ec3-6748-08deace613c4     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/scrum-master-branza-finansowa-warszawa,oferta,dd0b0000-b652-1641-e9ba-08deacea4436     <!-- via Gmail:theprotocol 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4391103573     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4412118504     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4411776223     <!-- via Gmail:linkedin 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/aura-senior-full-stack-engineer-gdansk-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/lumicode-sp-z-o-o-pentacomp-group--senior-node-js-developer-k-m--warszawa-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/upvanta-sp-z-o-o--senior-frontend-developer-react-next-js-typescript--krakow-javascript     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/maker-s-den-remote-typescript-reactjs-developer-berlin-javascript-7dc5b02f     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/co-brick-node-js-developer-mid--gliwice-other     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/emagine-polska--net-developer-lisbon-net-d2172ae2     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/h2b-group-senior-crm-software-engineer-dynamics-365-with-german-poland-remote--net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/be-in-it-senior-ai-net-developer-warszawa-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/astek-polska-programista-programistka-ferryt-mid-senior----warszawa-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/emagine-polska-software-developer-warszawa-net     <!-- via Gmail:jjit 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/cologne-senior-typescript-developer-154116691     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-senior-fullstack-developer-8138-154151812     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/muenchen-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119358     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/stuttgart-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119351     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/nuernberg-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119354     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/mannheim-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119356     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119348     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/leipzig-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119349     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hannover-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119357     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duesseldorf-full-stack-software-engineer-ki-agenten-154135567     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/langenfeld-senior-net-entwickler-154129430     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/koeln-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119352     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duesseldorf-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119345     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duisburg-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119361     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/frankfurt-main-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119350     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/essen-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119353     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/deutschland-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119346     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/huerth-senior-full-stack-engineer-ai-platform-agents-150483057     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/frankenthal-python-software-engineer-machine-learning-systems-154131194     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/dortmund-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154119355     <!-- via Gmail:xing 2026-05-15T19:51Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/frontend-developer-angular-camunda-connectis--remote     <!-- via Gmail:nfj 2026-05-15T19:51Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-ai-fullstack-developer-python-angular-virtusa-remote     <!-- via Gmail:nfj 2026-05-15T19:51Z auto-match: \bangular\b,\bfullstack\b,\bpython\b -->
+
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=4760f00ad6e66b1b     <!-- via Gmail:indeed 2026-05-18T12:56Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-fullstack-developer-net-angular-devire-remote-1     <!-- via Gmail:nfj 2026-05-18T12:56Z auto-match: \bnet\b,\bc#,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/mid-full-stack-engineer-net-azure-next-js-legal-tech-platform-polcode-remote     <!-- via Gmail:nfj 2026-05-18T12:56Z auto-match: \bnet\b,\bc#,\bfullstack\b,\bfull stack\b,\bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-fullstack-developer-net-angular-scalo-remote     <!-- via Gmail:nfj 2026-05-18T12:56Z auto-match: \bnet\b,\bc#,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-senior-full-stack-software-engineer-all-genders-wien-154423609     <!-- via Gmail:xing 2026-05-18T12:56Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/konstanz-fullstack-developer-konstanz-berlin-remote-154430604     <!-- via Gmail:xing 2026-05-18T12:56Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-azure-platform-engineer-all-genders-wien-154423607     <!-- via Gmail:xing 2026-05-18T12:56Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/remote-softwareentwickler-backend-javascript-node-js-154433250     <!-- via Gmail:xing 2026-05-18T12:56Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=093b4782c40a8c83     <!-- via Gmail:indeed 2026-05-18T12:56Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/kamsoft-s-a--programista-programistka-net-react-krakow-net     <!-- via Gmail:jjit 2026-05-18T12:56Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duesseldorf-senior-full-stack-entwickler-net-angular-154402959     <!-- via Gmail:xing 2026-05-18T12:56Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hannover-fullstack-engineer-154402928     <!-- via Gmail:xing 2026-05-18T12:56Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/huerth-softwareentwickler-backend-javascript-node-js-154409284     <!-- via Gmail:xing 2026-05-18T12:56Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-fullstack-typescript-developer-angular-node-js-154380306     <!-- via Gmail:xing 2026-05-18T12:56Z auto-match: \bangular\b,\btypescript\b,\bnode js\b,\bfullstack\b -->
+
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/fujitsu-poland-sp-z-o-o--software-developer-with-python-react-lodz-javascript     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/sigma-software-senior-node-js-developer-fintech-project--gdansk-javascript     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/auroria-full-stack-typescript-developer-krakow-javascript     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \btypescript\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/people-more-p-s-a--senior-frontend-fullstack-engineer-ai-first-next-js-medusa-js--gdansk-other     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/4soft-node-js-developer-krakow-javascript     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/sigma-software-senior-node-js-developer-fintech-project--iasi-javascript     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/just-join-it-fullstack-software-engineer-react-next-js-net-remote-gdansk-javascript     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/publink-senior-product-engineer-react-typescript-net--poznan-net     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/andersen-senior-net-azure-developer-belgrad-net     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/svitla-systems-full-stack-architect-net-react--lodz-net     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/kubo-senior-net-developer-gdansk-net-bf42c429     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-senior-net-engineer-with-aws-poland-remote--net     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/kruk-s-a-senior-net-developer---backend-angular-m-f-d--wroclaw-net-a47b71aa     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/cognizant-technology-solutions-software-engineer-net-and-angular--poland-remote--net     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/sente-s-a---net-developer-wroclaw-net     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hannover-fullstack-engineer-154461433     <!-- via Gmail:xing 2026-05-19T07:29Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-fullstack-engineer-net-angular-154434986     <!-- via Gmail:xing 2026-05-19T07:29Z auto-match: \bnet\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-senior-fullstack-developer-8138-154437061     <!-- via Gmail:xing 2026-05-19T07:29Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/dresden-fullstack-product-engineer-154461474     <!-- via Gmail:xing 2026-05-19T07:29Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/net-developer-bravura-solutions-polska-remote-2     <!-- via Gmail:nfj 2026-05-19T07:29Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/avenga-senior-software-engineer-net-python--wroclaw-net     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/co-brick-senior-net-developer-solution-architect-gliwice-net     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/scalo-senior-fullstack-developer-net-angular--wroclaw-net     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\bangular\b,\bfullstack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/scalo--net-developer-warszawa-net-77a73989     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/mw-consulting-full-stack-developer-net-azure-python--wroclaw-net-2dfff97d     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\bfullstack\b,\bfull stack\b,\bpython\b,\bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/codetwo---hrejterzy-developer-c-lub-asp-net-jelenia-gora-net     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\basp net\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/company     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/volue-sp-z-o-o---senior-software-engineer-with-c--gdansk-net-c0166bf5     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/act-digital--net-developer-warszawa-net     <!-- via Gmail:jjit 2026-05-19T07:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-frontend-developer-vue-typescript-m-f-stackmine-remote     <!-- via Gmail:nfj 2026-05-19T07:29Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-frontend-developer-react-typescript-scss-upvanta-remote     <!-- via Gmail:nfj 2026-05-19T07:29Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-frontend-developer-react-next-js-typescript-upvanta-remote     <!-- via Gmail:nfj 2026-05-19T07:29Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/angular-developer-connectis--warszawa     <!-- via Gmail:nfj 2026-05-19T07:29Z auto-match: \bangular\b,\btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-front-end-developer-angular-bayer-warszawa     <!-- via Gmail:nfj 2026-05-19T07:29Z auto-match: \bangular\b,\btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-frontend-developer-link-group-remote-4     <!-- via Gmail:nfj 2026-05-19T07:29Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/frontend-developer-link-group-remote-3     <!-- via Gmail:nfj 2026-05-19T07:29Z auto-match: \btypescript\b -->
+
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/net-sharepoint-developer-warszawa,oferta,0b5d0000-fef3-62b5-55eb-08deb67a934b     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-software-engineer-net-gdansk-aleja-grunwaldzka-163,oferta,64fc0000-43c9-c6b9-0eb0-08deb67b4c74     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/scalo-frontend-developer-angular--wroclaw-javascript-241c7a5f     <!-- via Gmail:jjit 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/nexio-management--net-sharepoint-developer-k-m-x--lodz-net     <!-- via Gmail:jjit 2026-05-21T08:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/nexio-management--net-sharepoint-developer-k-m-x--lodz-net-d9c5df8b     <!-- via Gmail:jjit 2026-05-21T08:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/7n-senior-net-developer-lodz-net-ec8ccbe2     <!-- via Gmail:jjit 2026-05-21T08:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/randlab--net-developer-warszawa-net-0103e2b9     <!-- via Gmail:jjit 2026-05-21T08:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/stuttgart-senior-fullstack-entwickler-projekterfahrung-154548075     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/frankfurt-main-senior-full-stack-entwickler-100-remote-154548969     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/muenchen-senior-full-stack-entwickler-154522101     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/kiel-mid-senior-full-stack-developer-154535900     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/stuttgart-backend-entwickler-net-cloud-ki-154511560     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/fullstack-developer-opstalent-remote-1     <!-- via Gmail:nfj 2026-05-21T08:29Z auto-match: \bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=05f495bba4ea5c6b     <!-- via Gmail:indeed 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-developer---krypton-ui-platform-mesh-integration-wroclaw,oferta,2d980000-2a88-7a1c-e495-08deb5b5d8d5     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-power-bi-developer-m-k-warszawa,oferta,d3f90000-ef72-2a23-d321-08deb5b1fd03     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/power-platform-developer---it-contracting-warszawa,oferta,d3f90000-ef72-2a23-43b7-08deb5b5807d     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/platform-engineer-krakow-aleja-pokoju-18,oferta,d3c50000-c6fd-e294-3b31-08deb5aefc35     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/business-system-analyst-public-sector-f-m-x-bialystok-jozefa-marjanskiego-3,oferta,2d980000-2a88-7a1c-57a4-08deb5b88edd     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/siemens-alm-plm-integration-consultant-wroclaw-powstancow-slaskich-9,oferta,d3f90000-ef72-2a23-2c71-08deb5b027f7     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-fullstack-engineer-net-python-aws-warszawa,oferta,2d980000-2a88-7a1c-ebbc-08deb5ad95b5     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bnet\b,\bc#,\bfullstack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-azure-devops-engineer-warszawa,oferta,d3f90000-ef72-2a23-032c-08deb5985b76     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bc#,\bazure\b,\bazure devops\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-aspnet-mvc-software-developer-warszawa-aleja-slowianska-10b,oferta,d3c50000-c6fd-e294-b7be-08deb57d05a2     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \baspnet\b,\bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/software-engineer-net-c-warszawa-marszalkowska-126-134,oferta,2d980000-2a88-7a1c-432f-08deb0e85c45     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bnet\b,\bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-developer-warszawa,oferta,d3c50000-c6fd-e294-cbd4-08deb58f644d     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/cyclad-fullstack-developer---krypton-ui-platform-mesh-integration-warszawa-javascript     <!-- via Gmail:jjit 2026-05-21T08:29Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/andersen-backend-developer-net-with-german-budapest-net     <!-- via Gmail:jjit 2026-05-21T08:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/spyrosoft--net-regular-senior-developer-lodz-net     <!-- via Gmail:jjit 2026-05-21T08:29Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/n-ix-senior-angular-engineer-with-polish-and-english-language-skills--krakow-javascript     <!-- via Gmail:jjit 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/itmagination-senior-ai-full-stack-developer-python-angular--gdansk-javascript     <!-- via Gmail:jjit 2026-05-21T08:29Z auto-match: \bangular\b,\bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/pirxey-senior-angular-developer-gdansk-javascript     <!-- via Gmail:jjit 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hannover-softwareentwickler-power-platform-microsoft-azure-154480243     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-fullstack-developer-154482293     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/mannheim-senior-full-stack-entwickler-100-remote-153228151     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/mannheim-senior-full-stack-entwickler-100-remote-153227915     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-senior-fullstack-typescript-developer-angular-node-js-154495483     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bangular\b,\btypescript\b,\bnode js\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/luzern-senior-full-stack-developer-portugal-based-154446716     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/muenchen-softwareentwickler-power-platform-microsoft-azure-154480241     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/karlsruhe-softwareentwickler-power-platform-microsoft-azure-154480238     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/stuttgart-softwareentwickler-power-platform-microsoft-azure-154480246     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/essen-softwareentwickler-power-platform-microsoft-azure-154480250     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/bonn-softwareentwickler-power-platform-microsoft-azure-154480251     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/koeln-softwareentwickler-power-platform-microsoft-azure-154480242     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/munich-remote-founding-full-stack-engineer-154471196     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/frankfurt-main-softwareentwickler-power-platform-microsoft-azure-154480248     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-full-stack-software-engineer-154481025     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duesseldorf-softwareentwickler-power-platform-microsoft-azure-154480253     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-softwareentwickler-power-platform-microsoft-azure-154480239     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/nuernberg-softwareentwickler-power-platform-microsoft-azure-154480247     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/leipzig-softwareentwickler-power-platform-microsoft-azure-154480244     <!-- via Gmail:xing 2026-05-21T08:29Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/frontend-developer-angular-scalo-remote-5     <!-- via Gmail:nfj 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-frontend-engineer-frontend-platform-smartrecruiters-remote     <!-- via Gmail:nfj 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-fullstack-engineer-net-python-aws-square-one-resources-remote     <!-- via Gmail:nfj 2026-05-21T08:29Z auto-match: \bnet\b,\bfullstack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4416261700     <!-- via Gmail:linkedin 2026-05-21T08:29Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4416254635     <!-- via Gmail:linkedin 2026-05-21T08:29Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4416267312     <!-- via Gmail:linkedin 2026-05-21T08:29Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4416281482     <!-- via Gmail:linkedin 2026-05-21T08:29Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4416272715     <!-- via Gmail:linkedin 2026-05-21T08:29Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4416282189     <!-- via Gmail:linkedin 2026-05-21T08:29Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/architekt-rozwiazan-it-m-k-n-wroclaw-legnicka-70,oferta,2d980000-2a88-7a1c-a31a-08deb4e10f7d     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/software-engineer-net-and-angular-krakow-lublanska-34,oferta,2d980000-2a88-7a1c-2e80-08deb4c958d6     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/architekt---architektka-it-wroclaw,oferta,2d980000-2a88-7a1c-8452-08deb4c81a88     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/net-developer-warszawa-ogrodowa-58,oferta,31ad0000-9520-9ebd-6c3e-08dea183de8c     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/net-team-manager-krakow-krolewska-57,oferta,d3f90000-ef72-2a23-a7b7-08deb4c83fbd     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/engineering-manager-m-f-krakow-pawia-9,oferta,d3f90000-ef72-2a23-006a-08deb4c43a4d     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/vibe-coding-developer-warszawa,oferta,d3c50000-c6fd-e294-9d54-08deb4c1b478     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-fullstack-developer-net-blazor---angular-poznan-mostowa-38,oferta,d3f90000-ef72-2a23-c0ad-08deb4d823fd     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bnet\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/full-stack-developer-poznan-kazimierza-wielkiego-5,oferta,2d980000-2a88-7a1c-fdce-08deb2cd77ed     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/net-software-developer-zabierzow-pow-krakowski-krakowska-368,oferta,e5df0000-8bb4-268a-3e44-08deab469bae     <!-- via Gmail:theprotocol 2026-05-21T08:29Z auto-match: \bnet\b -->
+
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/churchdesk-senior-backend-engineer---node-js-remote--gdansk-data     <!-- via Gmail:jjit 2026-05-22T08:16Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/godel-technologies-europe-senior-ai-first-fullstack-engineer-lodz-net     <!-- via Gmail:jjit 2026-05-22T08:16Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/bms-sp-z-o-o--senior-asp-net-mvc-software-developer-warszawa-net     <!-- via Gmail:jjit 2026-05-22T08:16Z auto-match: \bnet\b,\basp net\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/sky-quant-sp-z-o-o--performance-engineer---low-latency-trading-systems-gdynia-net     <!-- via Gmail:jjit 2026-05-22T08:16Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-senior-fullstack-developer-151772939     <!-- via Gmail:xing 2026-05-22T08:16Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/trier-senior-fullstack-developer-patient-portal-154555817     <!-- via Gmail:xing 2026-05-22T08:16Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-ai-first-fullstack-engineer-godel-technologies-europe-remote     <!-- via Gmail:nfj 2026-05-22T08:16Z auto-match: \bc#,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/analityk-biznesowo-systemowy-upvanta-remote-1     <!-- via Gmail:nfj 2026-05-22T08:16Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/frontend-developer-angular-wroclaw-powstancow-slaskich-9,oferta,d3f90000-ef72-2a23-65a1-08deb6504056     <!-- via Gmail:theprotocol 2026-05-22T08:16Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/angular-developer-poznan-wozna-14,oferta,2d980000-2a88-7a1c-1b88-08deb27d034c     <!-- via Gmail:theprotocol 2026-05-22T08:16Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/aem-frontend-developer-krakow,oferta,d3f90000-ef72-2a23-7eab-08deb6538669     <!-- via Gmail:theprotocol 2026-05-22T08:16Z auto-match: \bangular\b -->
+
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/developer-c-lub-aspnet---programista--ka-c-lub-aspnet-jelenia-gora-wolnosci-16,oferta,3cb60000-fc8e-76fa-73d1-08debb016955     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \baspnet\b,\bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/net-developer-wroclaw-plac-solny-14a,oferta,6a570000-7f21-f2aa-737d-08debaf9f3e7     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bnet\b,\bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/ux-designerka---ux-designer-warszawa,oferta,3cb60000-fc8e-76fa-abe4-08debb3207e5     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4416831626     <!-- via Gmail:linkedin 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4416822721     <!-- via Gmail:linkedin 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4416812845     <!-- via Gmail:linkedin 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4416820337     <!-- via Gmail:linkedin 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4418257297     <!-- via Gmail:linkedin 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4416835171     <!-- via Gmail:linkedin 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/speedapp-senior-full-stack-engineer-nodejs-react--warszawa-javascript-0333a1d9     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnodejs\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/lumicode-sp-z-o-o-pentacomp-group--senior-frontend-developer-react-typescript--warszawa-javascript     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/dcg--net-developer-warszawa-net-ac5fb5a1     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/edge-one-solutions-sp-z-o-o--net-developer-gdansk-net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/clurgo-fullstack-net-developer-warszawa-net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/co-brick--net-developer-ddd--gliwice-net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/co-brick--net-developer-with-angular--gliwice-net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/emagine-polska-senior-net-developer-banking---remote-poland--warsaw-net-df07facf     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/lumicode-sp-z-o-o-pentacomp-group---net-developer-warszawa-net-83d9526f     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/cshark--net-winforms-developer-gdansk-net-043a9830     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/emagine-polska-outsystems-developer-mid-senior--warsaw-net-60604831     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/coffee-mug--net-developer-katowice-net-d0e54a54     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-senior-full-stack-software-engineer-all-genders-wien-154720357     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-senior-fullstack-developer-8138-154720330     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-azure-platform-engineer-all-genders-wien-154720356     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duesseldorf-senior-full-stack-entwickler-net-angular-154708452     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/ludwigshafen-rhein-genai-powerautomate-engineer-154714036     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/deutschland-senior-ai-genai-architect-home-office-154336213     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/net-developer-dcg-remote-2     <!-- via Gmail:nfj 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=a23b6296c4ece007     <!-- via Gmail:indeed 2026-05-27T12:46Z auto-match: \bangular\b,\bnestjs\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=f442d1a3c616588e     <!-- via Gmail:indeed 2026-05-27T12:46Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=eff0cfc4004d4f15     <!-- via Gmail:indeed 2026-05-27T12:46Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=6759b5f56b93d3cb     <!-- via Gmail:indeed 2026-05-27T12:46Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=51d954373dc14038     <!-- via Gmail:indeed 2026-05-27T12:46Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-full-stack-software-engineer-154606746     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/modivo-platform-senior-angular-frontend-developer-m-f--polkowice-javascript     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=c1949c23a6b7b87c     <!-- via Gmail:indeed 2026-05-27T12:46Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4418963492     <!-- via Gmail:linkedin 2026-05-27T12:46Z auto-match: \bc#,\btypescript\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4414893818     <!-- via Gmail:linkedin 2026-05-27T12:46Z auto-match: \bc#,\btypescript\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4415212081     <!-- via Gmail:linkedin 2026-05-27T12:46Z auto-match: \bc#,\btypescript\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4418978078     <!-- via Gmail:linkedin 2026-05-27T12:46Z auto-match: \bc#,\btypescript\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4418966280     <!-- via Gmail:linkedin 2026-05-27T12:46Z auto-match: \bc#,\btypescript\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4418201426     <!-- via Gmail:linkedin 2026-05-27T12:46Z auto-match: \bc#,\btypescript\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-developer-net-maui-lodz,oferta,6a570000-7f21-f2aa-a338-08deba440dae     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/greenminds-sp-z-o-o--senior-full-stack-developer-react-node-js--warszawa-javascript     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnode js\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/antal-sp-z-o-o--full-stack-engineer---backend-node-js-oriented-wroclaw-javascript     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnode js\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/miquido-senior-net-developer-poznan-net-305e6f64     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/insert-senior-c-developer-wroclaw-net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/pko-bp-finat-programista-net-programistka-net-warszawa-net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/co-brick-senior-net-maui-developer-gliwice-net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/future-mind--net-integration-developer-warszawa-net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/miquido--net-developer-gdansk-net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/itis-full-stack-developer-c-net-asp-net-webforms-mvc--lodz-net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b,\basp net\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/future-mind-full-stack-net-developer-warszawa-net-b7c74218     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/kamsoft-s-a--programista-programistka-net-opole-net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hannover-fullstack-engineer-154699169     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wiesbaden-senior-fullstack-entwickler-154702254     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/dresden-senior-softwareentwickler-net-dresden-154697360     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duesseldorf-senior-fullstack-developer-genai-fokus-154699296     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bfullstack\b,\bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/net-developer-m-f-antal-remote     <!-- via Gmail:nfj 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/mid-fullstack-developer-net-react-euvic-remote     <!-- via Gmail:nfj 2026-05-27T12:46Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/co-brick-fullstack-developer-nestjs-angular--gliwice-other     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bangular\b,\bnestjs\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/co-brick-senior-frontend-developer-angular--gliwice-other-1ce7d578     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-ai-first-net-engineer-godel-technologies-europe-remote-1     <!-- via Gmail:nfj 2026-05-27T12:46Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-full-stack-engineer-net-azure-next-js-legal-tech-platform-polcode-remote     <!-- via Gmail:nfj 2026-05-27T12:46Z auto-match: \bnet\b,\bfullstack\b,\bfull stack\b,\bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-full-stack-engineer-net-sql-angular-par-ops-remote     <!-- via Gmail:nfj 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b,\bfullstack\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-lead-fullstack-developer-typescript-angular-node-js-154675975     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bangular\b,\btypescript\b,\bnode js\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/net-developer-warszawa-ogrodowa-58,oferta,3cb60000-fc8e-76fa-8665-08deb916cbf9     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-net-developer-warszawa-poniatowskiego-1,oferta,cb780000-1098-7a89-29bc-08dea6bc012b     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-is-technical-business-consultant-krakow-przy-rondzie-4,oferta,682c0000-a5dc-c24e-053a-08deb916cb9d     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/programista---programistka-bytom-kedzierzynska-17,oferta,6a570000-7f21-f2aa-e969-08deb8d85e3e     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/programista-automatyzacji-i-ai---power-platform-developer-warszawa,oferta,6a570000-7f21-f2aa-7682-08deb80e6862     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/koordynator--ka-ds-danych-i-analiz-warszawa,oferta,6a570000-7f21-f2aa-7762-08deb84d9d46     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/software-developer-programista-k-m-gliwice,oferta,682c0000-a5dc-c24e-e8ce-08deb7fde959     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-full-stack-software-engineer-all-genders-wien-154647180     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/deutschland-senior-ai-genai-architect-home-office-154658908     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/dresden-senior-softwareentwickler-net-dresden-154644535     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://talentportal.germantechjobs.de/api/job-redirect?jobId=Cosonic-GmbH-Fullstack-Web-Software-Entwickler-mwd-Angular--NestJS     <!-- via Gmail:gtj 2026-05-27T12:46Z auto-match: \bangular\b,\bnestjs\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=5caa7f78019ca0d6     <!-- via Gmail:indeed 2026-05-27T12:46Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-net-developer-financial-technology-solutions-wroclaw,oferta,3cb60000-fc8e-76fa-3ee2-08deb7eca606     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-business-analyst-warszawa,oferta,682c0000-a5dc-c24e-10a0-08deb7ecbb93     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-net-developer-wroclaw,oferta,d3f90000-ef72-2a23-e433-08deb2541868     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-software-engineer-warszawa,oferta,88e60000-2ca1-929b-e537-08dea1e1ece5     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/programista---programistka-net-warszawa,oferta,3cb60000-fc8e-76fa-b192-08deb80c7339     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bnet\b,\bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/backend-developer-with-c-and-python-warszawa,oferta,3cb60000-fc8e-76fa-5549-08deb8049ac9     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bc#,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/backend-developer-net-application-security-warszawa-aleje-jerozolimskie-93,oferta,6a570000-7f21-f2aa-69d6-08deb7e15e8b     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bnet\b,\bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/net-developer-lodz,oferta,04a20000-854a-dee6-4d83-08dea1373037     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bnet\b,\bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-c-developer---performance-oriented-net-engineer-gdynia-aleja-zwyciestwa-96,oferta,6a570000-7f21-f2aa-fe78-08deb7d1561d     <!-- via Gmail:theprotocol 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/swingdev-a-hippo-company-back-end-engineer-node-js--gdansk-javascript     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/ness-solution-programista-frontend-react-typescript--krakow-javascript     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/spyrosoft-senior-fullstack-developer-typescript-aws--szczecin-javascript     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/capco-poland-senior-net-engineer-sun-thu-work-schedule-she-he-they--krakow-net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/sweco-polska-sp-z-o-o---net-developer-poland-remote--net     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/zaven--net-developer-wroclaw-net-cd5a546f     <!-- via Gmail:jjit 2026-05-27T12:46Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-fullstack-typescript-developer-angular-node-js-154617384     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bangular\b,\btypescript\b,\bnode js\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duesseldorf-senior-fullstack-developer-genai-fokus-154617367     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bfullstack\b,\bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hamburg-software-developer-net-azure-154607939     <!-- via Gmail:xing 2026-05-27T12:46Z auto-match: \bnet\b,\bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/system-designer-analyst-astek-polska-remote     <!-- via Gmail:nfj 2026-05-27T12:46Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-net-developer-scalo-remote-3     <!-- via Gmail:nfj 2026-05-27T12:46Z auto-match: \bnet\b,\bangular\b -->
+
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-full-stack-developer-python-react-gdansk,oferta,3cb60000-fc8e-76fa-bff3-08debbe2cd3b     <!-- via Gmail:theprotocol 2026-05-28T08:32Z auto-match: \bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-developer-m-f-poznan-wierzbiecice-1b,oferta,6a570000-7f21-f2aa-e960-08debbdd4be3     <!-- via Gmail:theprotocol 2026-05-28T08:32Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-python-ai-developer-krakow,oferta,682c0000-a5dc-c24e-a035-08debbd9d84e     <!-- via Gmail:theprotocol 2026-05-28T08:32Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-engineer-ai-project-warszawa-aleja-niepodleglosci-18,oferta,6a570000-7f21-f2aa-77f7-08debbd8599c     <!-- via Gmail:theprotocol 2026-05-28T08:32Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/angular-developer-rzeszow-aleja-tadeusza-rejtana-20a,oferta,682c0000-a5dc-c24e-b452-08debb2e61d7     <!-- via Gmail:theprotocol 2026-05-28T08:32Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/software-engineer-python-warszawa,oferta,2d980000-2a88-7a1c-b7c1-08deb4b23c99     <!-- via Gmail:theprotocol 2026-05-28T08:32Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/itds-senior-angular-developer---financial-technology-expertise-wroclaw-javascript-d7997dcb     <!-- via Gmail:jjit 2026-05-28T08:32Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/clurgo-senior-full-stack-developer-devops-react-node-js--warszawa-javascript     <!-- via Gmail:jjit 2026-05-28T08:32Z auto-match: \bnode js\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/remodevs-senior-fullstack-engineer-ai-assisted-coding--poznan-ai     <!-- via Gmail:jjit 2026-05-28T08:32Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/inuits-senior-full-stack-engineer-krakow-javascript-f1d3c1f8     <!-- via Gmail:jjit 2026-05-28T08:32Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/bms-sp-z-o-o--fullstack-net-developer-z-jezykiem-polskim-lodz-net     <!-- via Gmail:jjit 2026-05-28T08:32Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/bms-sp-z-o-o--senior-net-software-developer-z-jezykiem-polskim-krakow-net     <!-- via Gmail:jjit 2026-05-28T08:32Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/clurgo--net-developer-web--poland-remote--net     <!-- via Gmail:jjit 2026-05-28T08:32Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/h2b-group-mid-net-developer-poland-remote--net     <!-- via Gmail:jjit 2026-05-28T08:32Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/huerth-principal-full-stack-engineer-ai-platform-agents-150634007     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duesseldorf-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735055     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735049     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/essen-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735043     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hamburg-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735048     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duisburg-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735051     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/nuernberg-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735038     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/leipzig-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735046     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/frankfurt-main-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735047     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hannover-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735034     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/bremen-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735033     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/deutschland-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735056     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-senior-fullstack-developer-8138-154746251     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/stuttgart-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735040     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/dortmund-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735035     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/muenchen-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735054     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/dresden-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735050     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/koeln-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-154735042     <!-- via Gmail:xing 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/technical-project-leader-scalo-remote-1     <!-- via Gmail:nfj 2026-05-28T08:32Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/itds-mid-level-net-developer---financial-technology-sector-warszawa-net     <!-- via Gmail:jjit 2026-05-28T08:32Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/medius-mid-software-engineer-krakow-net     <!-- via Gmail:jjit 2026-05-28T08:32Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/ness-solution--net-developer-frontend--warszawa-net     <!-- via Gmail:jjit 2026-05-28T08:32Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/itis-full-stack-developer-c-net-asp-net-webforms-mvc--warszawa-net     <!-- via Gmail:jjit 2026-05-28T08:32Z auto-match: \bnet\b,\basp net\b,\bc#,\bfull stack\b -->
+
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/net-developer-mid-upvanta-remote     <!-- via Gmail:nfj 2026-05-29T05:14Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-backend-oriented-fullstack-developer-node-net-react-adaptiq-remote     <!-- via Gmail:nfj 2026-05-29T05:14Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-dynamics-365-crm-developer-with-react-f-m-x-bialystok-jozefa-marjanskiego-3,oferta,47a40000-59d6-3231-af60-08debbedb36e     <!-- via Gmail:theprotocol 2026-05-29T05:14Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/javascript-engineer-warszawa-krolewska-16,oferta,47a40000-59d6-3231-ebb5-08debbe8e7a1     <!-- via Gmail:theprotocol 2026-05-29T05:14Z auto-match: \bc# -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->

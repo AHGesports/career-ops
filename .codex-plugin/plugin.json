@@ -1,0 +1,37 @@
+{
+  "name": "career-ops",
+  "version": "1.6.0",
+  "description": "AI job search command center: evaluate offers, generate CVs, scan portals, scan Gmail alerts, and track applications.",
+  "author": {
+    "name": "santifer",
+    "url": "https://santifer.io"
+  },
+  "keywords": [
+    "career",
+    "jobs",
+    "cv",
+    "pipeline",
+    "gmail",
+    "mcp"
+  ],
+  "skills": "./.claude/skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Career-Ops",
+    "shortDescription": "Job-search pipeline automation for Codex",
+    "longDescription": "Use the existing Career-Ops modes, scripts, skills, templates, and MCP servers from this repository to evaluate jobs, generate CVs, scan portals and Gmail alerts, and maintain the application tracker.",
+    "developerName": "santifer",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://santifer.io",
+    "defaultPrompt": [
+      "Evaluate this job URL with Career-Ops and run the full pipeline.",
+      "Scan my configured portals for matching roles.",
+      "Scan Gmail job alerts and update the pipeline."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

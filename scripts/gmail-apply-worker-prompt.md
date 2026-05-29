@@ -86,6 +86,8 @@ H2. If file_cv field present + required + still empty after first `upload_file` 
 
 H3. If you see a native dialog appear in `mcp__chrome-devtools__list_pages` or evidence (e.g. browser hangs, no DOM updates) you violated H1. Use `mcp__chrome-devtools__handle_dialog` to dismiss, then retry with `upload_file`.
 
+H4a. **justjoin.it strict bot-detection.** If Apply button unresponsive or any action fails on justjoin.it: wait (use H4 sleep pattern) and retry ONCE before giving up. Rapid retries trigger harder challenges.
+
 H4. **Captcha → wait, don't fail.** Extension auto-solves captchas but needs time. When submit fails or appears blocked by any captcha (any kind — do NOT inspect captcha DOM or selectors): wait 150s via one `evaluate_script` sleep, then retry submit ONCE:
 ```js
 await new Promise(r => setTimeout(r, 150000));
