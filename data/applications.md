@@ -2,6 +2,12 @@
 
 | # | Date | Company | Role | Score | Status | PDF | Report | Notes |
 |---|------|---------|------|-------|--------|-----|--------|-------|
+| 834 | 2026-05-30 | NoFluffJobs | Mobile Software Engineer Native Euvic | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:nfj). matched=[\bangular\b]. URL: https://nofluffjobs.com/pl/job/mobile-software-engineer-native-euvic-remote |
+| 838 | 2026-05-30 | theprotocol.it | Inzynierka Inzynier Devops Warszawa | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:theprotocol). matched=[\bnet\b]. URL: https://theprotocol.it/szczegoly/praca/inzynierka---inzynier-devops-warszawa,oferta,0dd40000-e543-8e8b-e1f6-08debca5534f |
+| 847 | 2026-05-30 | XING | Offenbach Ai Native Full Stack Engineer Louco | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\bfull stack\b]. URL: https://www.xing.com/jobs/offenbach-ai-native-full-stack-engineer-louco-154766407 |
+| 848 | 2026-05-30 | XING | Graevenwiesbach 100 Software Entwickler Net Jobangebot | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\bnet\b]. URL: https://www.xing.com/jobs/graevenwiesbach-100-software-entwickler-net-jobangebot-154764686 |
+| 849 | 2026-05-30 | XING | Dortmund Full Stack Softwareentwickler | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\bfull stack\b]. URL: https://www.xing.com/jobs/dortmund-full-stack-softwareentwickler-154783489 |
+| 850 | 2026-05-30 | XING | Koeln Full Stack Softwareentwickler | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\bfull stack\b]. URL: https://www.xing.com/jobs/koeln-full-stack-softwareentwickler-154783494 |
 | 833 | 2026-05-29 | theprotocol.it | Javascript Engineer Warszawa Krolewska 16 | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:theprotocol). matched=[\bc#]. URL: https://theprotocol.it/szczegoly/praca/javascript-engineer-warszawa-krolewska-16,oferta,47a40000-59d6-3231-ebb5-08debbe8e7a1 |
 | 822 | 2026-05-28 | theprotocol.it | Angular Developer Rzeszow Aleja Tadeusza Rejtana 20a | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:theprotocol). matched=[\bangular\b]. URL: https://theprotocol.it/szczegoly/praca/angular-developer-rzeszow-aleja-tadeusza-rejtana-20a,oferta,682c0000-a5dc-c24e-b452-08debb2e61d7 |
 | 826 | 2026-05-28 | JustJoinIT | Remodevs Senior Fullstack Engineer Ai Assisted Coding Poznan Ai | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:jjit). matched=[\bfullstack\b]. URL: https://justjoin.it/offers/remodevs-senior-fullstack-engineer-ai-assisted-coding--poznan-ai |

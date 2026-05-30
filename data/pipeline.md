@@ -981,6 +981,24 @@
 - [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-dynamics-365-crm-developer-with-react-f-m-x-bialystok-jozefa-marjanskiego-3,oferta,47a40000-59d6-3231-af60-08debbedb36e     <!-- via Gmail:theprotocol 2026-05-29T05:14Z auto-match: \bc# -->
 - [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/javascript-engineer-warszawa-krolewska-16,oferta,47a40000-59d6-3231-ebb5-08debbe8e7a1     <!-- via Gmail:theprotocol 2026-05-29T05:14Z auto-match: \bc# -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/mobile-software-engineer-native-euvic-remote     <!-- via Gmail:nfj 2026-05-30T05:11Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-full-stack-net-engineer-n-ix-remote-3     <!-- via Gmail:nfj 2026-05-30T05:11Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-full-stack-ai-architect-154698745     <!-- via Gmail:xing 2026-05-30T05:11Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/net-developer---devops-warszawa-aleje-jerozolimskie-162,oferta,32c90000-7e6c-d690-5e14-08debcac16a8     <!-- via Gmail:theprotocol 2026-05-30T05:11Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/inzynierka---inzynier-devops-warszawa,oferta,0dd40000-e543-8e8b-e1f6-08debca5534f     <!-- via Gmail:theprotocol 2026-05-30T05:11Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/front-end-solution-consultant---email-developer-warszawa,oferta,47a40000-59d6-3231-3cae-08debcac5c7b     <!-- via Gmail:theprotocol 2026-05-30T05:11Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/platform-integration-engineer-m-f-d-warszawa,oferta,0dd40000-e543-8e8b-51c1-08debc8db42a     <!-- via Gmail:theprotocol 2026-05-30T05:11Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/programista---programistka-warszawa,oferta,6a570000-7f21-f2aa-50e3-08deba482abf     <!-- via Gmail:theprotocol 2026-05-30T05:11Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/shaped-thoughts-fullstack-software-engineer-gdansk-javascript     <!-- via Gmail:jjit 2026-05-30T05:11Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/co-brick-node-js-developer-mid--gliwice-other-8030c900     <!-- via Gmail:jjit 2026-05-30T05:11Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/dcg-senior-fullstack-engineer-warszawa-net-20ca250c     <!-- via Gmail:jjit 2026-05-30T05:11Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/sellintegro-fullstack-net-developer-krakow-net     <!-- via Gmail:jjit 2026-05-30T05:11Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/clurgo-fullstack-net-developer-warszawa-net-17c6fc32     <!-- via Gmail:jjit 2026-05-30T05:11Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/offenbach-ai-native-full-stack-engineer-louco-154766407     <!-- via Gmail:xing 2026-05-30T05:11Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/graevenwiesbach-100-software-entwickler-net-jobangebot-154764686     <!-- via Gmail:xing 2026-05-30T05:11Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/dortmund-full-stack-softwareentwickler-154783489     <!-- via Gmail:xing 2026-05-30T05:11Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/koeln-full-stack-softwareentwickler-154783494     <!-- via Gmail:xing 2026-05-30T05:11Z auto-match: \bfull stack\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->

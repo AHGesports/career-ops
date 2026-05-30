@@ -665,3 +665,25 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://www.xing.com/jobs/wien-senior-java-typescript-fullstack-developer-154757456 | 10+ new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-05-28T08:32Z
 - [ ] https://www.xing.com/jobs/vienna-backend-developer-phyton-odoo-146703895 | 10+ new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-05-28T08:32Z
 - [ ] https://at.indeed.com/viewjob?jk=087faeea37deb14e | 1 Developer Job in Home Office | jobalert.indeed.com | 2026-05-29T05:14Z
+- [ ] https://nofluffjobs.com/pl/job/solution-architect-java-quality-minds-remote |  Nowe oferty pracy, 9 dopasowane do Twoich kryteriów: remote, Angular,  | nofluffjobs.com | 2026-05-30T05:11Z
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-angular-java-devire-remote |  Nowe oferty pracy, 9 dopasowane do Twoich kryteriów: remote, Angular,  | nofluffjobs.com | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/wien-ai-champion-ai-hub-manager-154729292 | PALFINGER Gruppe, RUBICON IT GmbH, Instaffo GmbH and other great companies are looking for candidates just like you! | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/salzburg-software-developer-pfarrwefen-urstein-salzburg-154732555 | PALFINGER Gruppe, RUBICON IT GmbH, Instaffo GmbH and other great companies are looking for candidates just like you! | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/wien-java-fullstack-developer-154760080 | PALFINGER Gruppe, RUBICON IT GmbH, Instaffo GmbH and other great companies are looking for candidates just like you! | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/salzburg-anwendungsentwickler-proalpha-erp-branchenloesung-100-remote-90-000-mwd-154788782 | PALFINGER Gruppe, RUBICON IT GmbH, Instaffo GmbH and other great companies are looking for candidates just like you! | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/wien-solution-architect-ai-it-process-automation-154591756 | PALFINGER Gruppe, RUBICON IT GmbH, Instaffo GmbH and other great companies are looking for candidates just like you! | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/wien-software-engineer-java-screening-risk-services-154746268 | PALFINGER Gruppe, RUBICON IT GmbH, Instaffo GmbH and other great companies are looking for candidates just like you! | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://de.indeed.com/viewjob?jk=bc2df990bb4074b8 | 1 Software Developer Job in Remote | jobalert.indeed.com | 2026-05-30T05:11Z
+- [ ] https://linkedin.com/jobs/view/4419072593 | Senior Software Engineer (mfd) at SKIDATA | linkedin.com | 2026-05-30T05:11Z
+- [ ] https://linkedin.com/jobs/view/4417631881 | Senior Software Engineer (mfd) at SKIDATA | linkedin.com | 2026-05-30T05:11Z
+- [ ] https://linkedin.com/jobs/view/4401422713 | Senior Software Engineer (mfd) at SKIDATA | linkedin.com | 2026-05-30T05:11Z
+- [ ] https://linkedin.com/jobs/view/4419088106 | Senior Software Engineer (mfd) at SKIDATA | linkedin.com | 2026-05-30T05:11Z
+- [ ] https://linkedin.com/jobs/view/4420448769 | Senior Software Engineer (mfd) at SKIDATA | linkedin.com | 2026-05-30T05:11Z
+- [ ] https://justjoin.it/offers/bee-talents-senior-frontend-developer-k-m-restaurantweek-warszawa-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/berlin-senior-softwareentwickler-java-fullstack-spring-angular-100-home-office-80-000-mwd-154767345 | 3 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/wien-server-engineer-service-deployment-154759734 | 4 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/homeoffice-people-systems-ai-operations-engineer-154745554 | 5 new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/muenchen-senior-ai-engineer-all-genders-154763768 | 5 new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/hannover-devops-engineer-ai-infrastruktur-100-remotearbeit-154766208 | 5 new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/berlin-interim-ai-coach-sparring-partner-154760770 | 5 new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://www.xing.com/jobs/friedrichsdorf-microsoft-bi-entwickler-154469179 | 2 new job ads for your search alert: .net | mail.xing.com | 2026-05-30T05:11Z
