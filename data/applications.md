@@ -2,6 +2,7 @@
 
 | # | Date | Company | Role | Score | Status | PDF | Report | Notes |
 |---|------|---------|------|-------|--------|-----|--------|-------|
+| 854 | 2026-06-01 | XING | Frankfurt Main Senior Genai Engineer Llms Rag Python Remote De | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\bpython\b,\bgenai\b]. URL: https://www.xing.com/jobs/frankfurt-main-senior-genai-engineer-llms-rag-python-remote-de-154820297 |
 | 834 | 2026-05-30 | NoFluffJobs | Mobile Software Engineer Native Euvic | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:nfj). matched=[\bangular\b]. URL: https://nofluffjobs.com/pl/job/mobile-software-engineer-native-euvic-remote |
 | 838 | 2026-05-30 | theprotocol.it | Inzynierka Inzynier Devops Warszawa | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:theprotocol). matched=[\bnet\b]. URL: https://theprotocol.it/szczegoly/praca/inzynierka---inzynier-devops-warszawa,oferta,0dd40000-e543-8e8b-e1f6-08debca5534f |
 | 847 | 2026-05-30 | XING | Offenbach Ai Native Full Stack Engineer Louco | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\bfull stack\b]. URL: https://www.xing.com/jobs/offenbach-ai-native-full-stack-engineer-louco-154766407 |

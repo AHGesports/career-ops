@@ -999,6 +999,12 @@
 - [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/dortmund-full-stack-softwareentwickler-154783489     <!-- via Gmail:xing 2026-05-30T05:11Z auto-match: \bfull stack\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/koeln-full-stack-softwareentwickler-154783494     <!-- via Gmail:xing 2026-05-30T05:11Z auto-match: \bfull stack\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4418349242     <!-- via Gmail:linkedin 2026-06-01T05:17Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4421227464     <!-- via Gmail:linkedin 2026-06-01T05:17Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/nuernberg-senior-fullstack-developer-154708450     <!-- via Gmail:xing 2026-06-01T05:17Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/frankfurt-main-senior-genai-engineer-llms-rag-python-remote-de-154820297     <!-- via Gmail:xing 2026-06-01T05:17Z auto-match: \bpython\b,\bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-python-langchain-ki-entwickler-100-remote-154829769     <!-- via Gmail:xing 2026-06-01T05:17Z auto-match: \bpython\b,\blangchain\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->

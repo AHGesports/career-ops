@@ -687,3 +687,13 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://www.xing.com/jobs/hannover-devops-engineer-ai-infrastruktur-100-remotearbeit-154766208 | 5 new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-30T05:11Z
 - [ ] https://www.xing.com/jobs/berlin-interim-ai-coach-sparring-partner-154760770 | 5 new job ads for your search alert: ai engineer | mail.xing.com | 2026-05-30T05:11Z
 - [ ] https://www.xing.com/jobs/friedrichsdorf-microsoft-bi-entwickler-154469179 | 2 new job ads for your search alert: .net | mail.xing.com | 2026-05-30T05:11Z
+- [ ] https://de.indeed.com/viewjob?jk=a2556a2dc635ba21 | LCOY Germany sucht bezahltes Praktikum im Bereich Public Relations/Social Media + 2 neue .NET Jobs in Remote | jobalert.indeed.com | 2026-06-01T05:17Z
+- [ ] https://de.indeed.com/viewjob?jk=4bf58a51b7ae1f3e | LCOY Germany sucht bezahltes Praktikum im Bereich Public Relations/Social Media + 2 neue .NET Jobs in Remote | jobalert.indeed.com | 2026-06-01T05:17Z
+- [ ] https://www.xing.com/jobs/wien-software-engineer-business-logic-154573427 | 3 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-01T05:17Z
+- [ ] https://www.xing.com/jobs/fuerth-senior-softwareentwickler-all-genders-154825072 | 3 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-01T05:17Z
+- [ ] https://www.xing.com/jobs/rastede-entwickler-berater-one-identity-154825086 | 2 new job ads for your search alert: .net | mail.xing.com | 2026-06-01T05:17Z
+- [ ] https://www.xing.com/jobs/wiesbaden-sales-lead-b2b-saas-atlassian-marketplace-stakeholder-management-154835850 | 7 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-01T05:17Z
+- [ ] https://www.xing.com/jobs/muenster-sales-lead-b2b-saas-atlassian-marketplace-stakeholder-management-154835767 | 7 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-01T05:17Z
+- [ ] https://www.xing.com/jobs/wiesbaden-sales-lead-jira-confluence-apps-b2b-product-marketing-154835080 | 7 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-01T05:17Z
+- [ ] https://www.xing.com/jobs/ulm-ai-data-engineer-154833485 | 3 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-01T05:17Z
+- [ ] https://www.xing.com/jobs/ulm-software-engineer-backend-ai-154833489 | 4 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-01T05:17Z
