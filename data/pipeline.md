@@ -1005,6 +1005,23 @@
 - [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/frankfurt-main-senior-genai-engineer-llms-rag-python-remote-de-154820297     <!-- via Gmail:xing 2026-06-01T05:17Z auto-match: \bpython\b,\bgenai\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-python-langchain-ki-entwickler-100-remote-154829769     <!-- via Gmail:xing 2026-06-01T05:17Z auto-match: \bpython\b,\blangchain\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/fullstack-developer-link-group-remote-4     <!-- via Gmail:nfj 2026-06-02T05:10Z auto-match: \bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/unide-senior-fullstack-developer-node--warszawa-javascript     <!-- via Gmail:jjit 2026-06-02T05:10Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/speedapp-senior-frontend-developer-warszawa-javascript-d68194cb     <!-- via Gmail:jjit 2026-06-02T05:10Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/itds-senior-react-developer---web-applications-expert-warszawa-javascript     <!-- via Gmail:jjit 2026-06-02T05:10Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/tqlo-spolka-z-ograniczona-odpowiedzialnoscia-senior-frontend-dev-js-typescript-html-css--warszawa-javascript     <!-- via Gmail:jjit 2026-06-02T05:10Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/7n-senior-frontend-developer-poland-remote--javascript     <!-- via Gmail:jjit 2026-06-02T05:10Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/three-points-senior-software-engineer-typescript-react-aws---ai-startup-poznan-javascript     <!-- via Gmail:jjit 2026-06-02T05:10Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/kyper-senior-fullstack-engineer-warszawa-javascript     <!-- via Gmail:jjit 2026-06-02T05:10Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/web-impact-fullstack-engineer-ai-distributed-systems-automation--krakow-javascript     <!-- via Gmail:jjit 2026-06-02T05:10Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/remodevs-senior-fullstack-engineer-ai-assisted-coding--warszawa-javascript     <!-- via Gmail:jjit 2026-06-02T05:10Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4418700508     <!-- via Gmail:linkedin 2026-06-02T05:10Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4418701373     <!-- via Gmail:linkedin 2026-06-02T05:10Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4421609435     <!-- via Gmail:linkedin 2026-06-02T05:10Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4418394558     <!-- via Gmail:linkedin 2026-06-02T05:10Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4418390421     <!-- via Gmail:linkedin 2026-06-02T05:10Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4418392573     <!-- via Gmail:linkedin 2026-06-02T05:10Z auto-match: \bfull stack\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->

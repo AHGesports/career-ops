@@ -2,6 +2,7 @@
 
 | # | Date | Company | Role | Score | Status | PDF | Report | Notes |
 |---|------|---------|------|-------|--------|-----|--------|-------|
+| 859 | 2026-06-02 | JustJoinIT | Tqlo Spolka Z Ograniczona Odpowiedzialnoscia Senior Frontend Dev Js Typescript Html Css Warszawa Javascript | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:jjit). matched=[\btypescript\b,\bfullstack\b]. URL: https://justjoin.it/offers/tqlo-spolka-z-ograniczona-odpowiedzialnoscia-senior-frontend-dev-js-typescript-html-css--warszawa-javascript |
 | 854 | 2026-06-01 | XING | Frankfurt Main Senior Genai Engineer Llms Rag Python Remote De | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\bpython\b,\bgenai\b]. URL: https://www.xing.com/jobs/frankfurt-main-senior-genai-engineer-llms-rag-python-remote-de-154820297 |
 | 834 | 2026-05-30 | NoFluffJobs | Mobile Software Engineer Native Euvic | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:nfj). matched=[\bangular\b]. URL: https://nofluffjobs.com/pl/job/mobile-software-engineer-native-euvic-remote |
 | 838 | 2026-05-30 | theprotocol.it | Inzynierka Inzynier Devops Warszawa | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:theprotocol). matched=[\bnet\b]. URL: https://theprotocol.it/szczegoly/praca/inzynierka---inzynier-devops-warszawa,oferta,0dd40000-e543-8e8b-e1f6-08debca5534f |

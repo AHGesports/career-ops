@@ -697,3 +697,9 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://www.xing.com/jobs/wiesbaden-sales-lead-jira-confluence-apps-b2b-product-marketing-154835080 | 7 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-01T05:17Z
 - [ ] https://www.xing.com/jobs/ulm-ai-data-engineer-154833485 | 3 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-01T05:17Z
 - [ ] https://www.xing.com/jobs/ulm-software-engineer-backend-ai-154833489 | 4 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-01T05:17Z
+- [ ] https://www.xing.com/jobs/frankfurt-main-senior-ai-systems-engineer-aws-100-remote-154840086 | One new job ad for your search alert: KI entwickler | mail.xing.com | 2026-06-02T05:10Z
+- [ ] https://www.xing.com/jobs/koeln-fullstack-entwickler-java-typescript-154839663 | 4 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-02T05:10Z
+- [ ] https://www.xing.com/jobs/wien-sap-fiori-entwickler-154855185 | 4 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-02T05:10Z
+- [ ] https://www.xing.com/jobs/wien-sap-sd-berater-154855203 | 4 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-02T05:10Z
+- [ ] https://www.xing.com/jobs/wien-sap-job-sd-mm-consultant-raum-wien-154855182 | 4 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-02T05:10Z
+- [ ] https://www.xing.com/jobs/berlin-backend-entwickler-154838792 | 5 new job ads for your search alert: c# entwickler | mail.xing.com | 2026-06-02T05:10Z
