@@ -2,6 +2,9 @@
 
 | # | Date | Company | Role | Score | Status | PDF | Report | Notes |
 |---|------|---------|------|-------|--------|-----|--------|-------|
+| 862 | 2026-06-03 | GermanTechJobs | Job Pascal-Uter- | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:gtj). matched=[\bfull stack\b]. URL: https://talentportal.germantechjobs.de/api/job-redirect?jobId=Pascal-Uter-IT-Dienstleistungen--Co-KmG-Remote-Senior-Django-Full-Stack-Entwickler-50-100 |
+| 873 | 2026-06-03 | theprotocol.it | Programista M K N Doswiadczony Specjalista Warszawa Aleja Niepodleglosci 188b | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:theprotocol). matched=[\bangular\b]. URL: https://theprotocol.it/szczegoly/praca/programista-m-k-n-doswiadczony-specjalista-warszawa-aleja-niepodleglosci-188b,oferta,682c0000-a5dc-c24e-7124-08debb0063c0 |
+| 874 | 2026-06-03 | JustJoinIT | Cloudflight Angular Stream Leader Gdansk Javascript | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:jjit). matched=[\bangular\b]. URL: https://justjoin.it/offers/cloudflight-angular-stream-leader-gdansk-javascript |
 | 859 | 2026-06-02 | JustJoinIT | Tqlo Spolka Z Ograniczona Odpowiedzialnoscia Senior Frontend Dev Js Typescript Html Css Warszawa Javascript | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:jjit). matched=[\btypescript\b,\bfullstack\b]. URL: https://justjoin.it/offers/tqlo-spolka-z-ograniczona-odpowiedzialnoscia-senior-frontend-dev-js-typescript-html-css--warszawa-javascript |
 | 854 | 2026-06-01 | XING | Frankfurt Main Senior Genai Engineer Llms Rag Python Remote De | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\bpython\b,\bgenai\b]. URL: https://www.xing.com/jobs/frankfurt-main-senior-genai-engineer-llms-rag-python-remote-de-154820297 |
 | 834 | 2026-05-30 | NoFluffJobs | Mobile Software Engineer Native Euvic | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:nfj). matched=[\bangular\b]. URL: https://nofluffjobs.com/pl/job/mobile-software-engineer-native-euvic-remote |

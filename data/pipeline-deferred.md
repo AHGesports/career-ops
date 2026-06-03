@@ -703,3 +703,34 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://www.xing.com/jobs/wien-sap-sd-berater-154855203 | 4 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-02T05:10Z
 - [ ] https://www.xing.com/jobs/wien-sap-job-sd-mm-consultant-raum-wien-154855182 | 4 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-02T05:10Z
 - [ ] https://www.xing.com/jobs/berlin-backend-entwickler-154838792 | 5 new job ads for your search alert: c# entwickler | mail.xing.com | 2026-06-02T05:10Z
+- [ ] https://www.xing.com/jobs/wien-softwareentwickler-154576370 | Instaffo GmbH, Vienna University of Technology, Constrct and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/wien-software-engineer-business-logic-154568910 | Instaffo GmbH, Vienna University of Technology, Constrct and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/wien-lead-software-developer-154897439 | Instaffo GmbH, Vienna University of Technology, Constrct and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/salzburg-proalpha-anwendungsentwickler-4gl-erp-branchenloesung-100-home-office-mwd-154875379 | Instaffo GmbH, Vienna University of Technology, Constrct and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/wien-software-engineer-game-math-reviews-154746265 | Instaffo GmbH, Vienna University of Technology, Constrct and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/wien-senior-software-entwickler-154494149 | Instaffo GmbH, Vienna University of Technology, Constrct and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/wiener-neudorf-softwareentwickler-teilzeit-20h-154875562 | Instaffo GmbH, Vienna University of Technology, Constrct and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/salzburg-sap-job-abap-ui5-entwickler-raum-salzburg-154855256 | Instaffo GmbH, Vienna University of Technology, Constrct and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/wien-sap-job-abap-senior-developer-raum-wien-154855245 | Instaffo GmbH, Vienna University of Technology, Constrct and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://de.indeed.com/viewjob?jk=f3af96b7d402e81c | Refactum sucht Student Assistant (m/w/d) Software Developer + 2 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-06-03T05:13Z
+- [ ] https://linkedin.com/jobs/view/4423211310 | Full-Stack Developer - digitale Versicherungslösungen (m/w/d) at Wüstenrot Gruppe | linkedin.com | 2026-06-03T05:13Z
+- [ ] https://linkedin.com/jobs/view/4421800489 | Full-Stack Developer - digitale Versicherungslösungen (m/w/d) at Wüstenrot Gruppe | linkedin.com | 2026-06-03T05:13Z
+- [ ] https://linkedin.com/jobs/view/4422853987 | Full-Stack Developer - digitale Versicherungslösungen (m/w/d) at Wüstenrot Gruppe | linkedin.com | 2026-06-03T05:13Z
+- [ ] https://linkedin.com/jobs/view/4422891948 | Full-Stack Developer - digitale Versicherungslösungen (m/w/d) at Wüstenrot Gruppe | linkedin.com | 2026-06-03T05:13Z
+- [ ] https://linkedin.com/jobs/view/4418754498 | Full-Stack Developer - digitale Versicherungslösungen (m/w/d) at Wüstenrot Gruppe | linkedin.com | 2026-06-03T05:13Z
+- [ ] https://theprotocol.it/szczegoly/praca/programista-full-stack-java-angular-warszawa-aleje-jerozolimskie-162a,oferta,47a40000-59d6-3231-5e7d-08debfd9b982 | 🔵🟢 Nowe oferty pracy: „Angular; Praca: zdalna” | mailing.theprotocol.it | 2026-06-03T05:13Z
+- [ ] https://theprotocol.it/szczegoly/praca/fullstack-developer-java-angular-warszawa,oferta,79620000-9298-b25a-1efc-08debfe9e2c7 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-03T05:13Z
+- [ ] https://justjoin.it/offers/nortal-full-stack-engineer-react-java---18-month-project-krakow-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-03T05:13Z
+- [ ] https://justjoin.it/offers/n-ix-rendering-web-specialist-krakow-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-03T05:13Z
+- [ ] https://justjoin.it/offers/advox-studio-magento-frontend-developer-gdansk-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/weinsberg-software-engineer-retail-media-154905331 | 2 new job ads for your search alert: full stack developer | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/wien-senior-devops-engineer-154863924 | 6 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/wien-server-engineer-solution-deployment-italian-speaker-154863083 | 6 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/wien-application-developer-154897437 | 6 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/wien-senior-data-scientist-genders-151603469 | 6 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/hamburg-ai-engineer-151544326 | 3 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/berlin-ai-research-engineer-ml-signal-processing-154899577 | 3 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/berlin-lead-advisor-consultant-ki-strategie-transformation-154884969 | 3 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/kaiserslautern-senior-softwareentwickler-154873903 | 4 new job ads for your search alert: .net | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/friedrichsdorf-microsoft-bi-entwickler-154867895 | 4 new job ads for your search alert: .net | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://www.xing.com/jobs/osnabrueck-gebietsleiter-hebe-zugangs-und-sicherheitstechnik-154874682 | 2 new job ads for your search alert: c# | mail.xing.com | 2026-06-03T05:13Z
