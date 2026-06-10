@@ -4,21 +4,21 @@ Generic SWE roles found by /scan-gmail that did NOT hit the auto-match keyword f
 Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using oferta.md A-G.
 
 ## Pendientes
-- [ ] https://linkedin.com/jobs/view/4406947759 | DevOps Engineer Hardware & Locker @ Myflexbox at DEVjobs | linkedin.com | 2026-04-30
+- [x] https://linkedin.com/jobs/view/4406947759 | DevOps Engineer Hardware & Locker @ Myflexbox at DEVjobs | linkedin.com | 2026-04-30 | apply-skip 2026-06-01: LinkedIn shows "No longer accepting applications".
 - [x] https://justjoin.it/offers/pretius-senior-frontend-engineer-game-platform--warszawa-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-04-30 | apply-skip 2026-05-27: JustJoinIT showed offer expired.
 - [x] https://justjoin.it/offers/dotlinkers-senior-frontend-enigneer-krakow-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-04-30 | apply-skip 2026-05-27: JustJoinIT showed offer expired.
 - [x] https://justjoin.it/offers/link-group-frontend-developer-lodz-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-04-30 | applied 2026-05-27: external Recruitify form submitted; thank-you page confirmed.
 - [x] https://www.xing.com/jobs/hamburg-shopify-backend-developer-api-java-graphql-spring-boot-3-gcp-azure-aws-remote-eu-153799415 | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-04-30 | applied 2026-05-27: XING custom apply confirmed "Application submitted".
 - [x] https://www.xing.com/jobs/wien-it-entwickler-sap-teilzeit-vollzeit-153789921 | 10+ new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-04-30 | apply-skip 2026-05-27: XING showed job ad unavailable.
-- [ ] https://www.stepstone.de/stellenangebote----13949275-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
-- [ ] https://www.stepstone.de/stellenangebote----13949149-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
-- [ ] https://www.stepstone.de/stellenangebote----13949400-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
-- [ ] https://www.stepstone.de/stellenangebote----13949123-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
-- [ ] https://www.stepstone.de/stellenangebote----13949169-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
-- [ ] https://www.stepstone.de/stellenangebote----13949401-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
-- [ ] https://www.stepstone.de/stellenangebote----13808873-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
-- [ ] https://www.stepstone.de/stellenangebote----13949420-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
-- [ ] https://www.stepstone.de/stellenangebote----13958972-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
+- [x] https://www.stepstone.de/stellenangebote----13949275-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30 | apply-skip 2026-06-01: adesso Software Engineer Defense requires public-security/Bundeswehr/NATO domain experience; not a clean CV match.
+- [x] https://www.stepstone.de/stellenangebote----13949149-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30 | apply-skip 2026-06-01: SAP & oscare role requires ABAP/SAP module experience; outside target stack.
+- [x] https://www.stepstone.de/stellenangebote----13949400-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30 | apply-skip 2026-06-01: Golang-specialist role; Go/Golang is outside profile target stack.
+- [x] https://www.stepstone.de/stellenangebote----13949123-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30 | apply-skip 2026-06-01: SAP role requires ABAP/SAP module experience; outside target stack.
+- [x] https://www.stepstone.de/stellenangebote----13949169-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30 | apply-skip 2026-06-01: SAP FS-CD role requires ABAP and SAP Insurance module experience; outside target stack.
+- [x] https://www.stepstone.de/stellenangebote----13949401-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30 | apply-skip 2026-06-01: Kotlin-specialist role; Kotlin is outside profile target stack.
+- [x] https://www.stepstone.de/stellenangebote----13808873-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30 | apply-skip 2026-06-01: Pradtke full-stack role requires at least 3 days/week onsite in Bochum; outside location constraints.
+- [x] https://www.stepstone.de/stellenangebote----13949420-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30 | apply-skip 2026-06-01: StepStone shows listing no longer available.
+- [x] https://www.stepstone.de/stellenangebote----13958972-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30 | apply-skip 2026-06-01: StepStone shows listing no longer available.
 - [ ] https://www.stepstone.de/stellenangebote----13958333-inline.html | adesso SE und 4 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
 - [ ] https://www.stepstone.de/stellenangebote----13960151-inline.html | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
 - [ ] https://www.stepstone.de/stellenangebote----13962989-inline.html | Jako AG und 9 andere Firmen suchen Kandidaten wie Dich | jobagent.stepstone.de | 2026-04-30
@@ -734,3 +734,143 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://www.xing.com/jobs/kaiserslautern-senior-softwareentwickler-154873903 | 4 new job ads for your search alert: .net | mail.xing.com | 2026-06-03T05:13Z
 - [ ] https://www.xing.com/jobs/friedrichsdorf-microsoft-bi-entwickler-154867895 | 4 new job ads for your search alert: .net | mail.xing.com | 2026-06-03T05:13Z
 - [ ] https://www.xing.com/jobs/osnabrueck-gebietsleiter-hebe-zugangs-und-sicherheitstechnik-154874682 | 2 new job ads for your search alert: c# | mail.xing.com | 2026-06-03T05:13Z
+- [ ] https://theprotocol.it/szczegoly/praca/java-fullstack-developer-lublin,oferta,32c90000-7e6c-d690-6bd4-08dec5472c8b | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/software-engineer-java-kotlin-branza-e-commerce-warszawa,oferta,79620000-9298-b25a-1a88-08dec303790d | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/devops-engineer-warszawa,oferta,79620000-9298-b25a-0c4e-08dec5607b3f | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-java-developer-k-m-warszawa-komitetu-obrony-robotnikow-43,oferta,47a40000-59d6-3231-fd8d-08dec17eccde | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/full-stack-developer-java-angular-warszawa,oferta,79620000-9298-b25a-0620-08dec5631ac6 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/kierowniczka---kierownik-sekcji-rozwoju-crm-korporacyjnego-poznan-osiedle-boleslawa-smialego-121,oferta,47a40000-59d6-3231-81ac-08dec563cfe4 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4425608802 | “software developer”: LIXIL - Backend Software Developer posted on 6/8/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4425292328 | “software developer”: LIXIL - Backend Software Developer posted on 6/8/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4425485661 | “software developer”: LIXIL - Backend Software Developer posted on 6/8/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4425642097 | “software developer”: LIXIL - Backend Software Developer posted on 6/8/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4425264454 | “software developer”: LIXIL - Backend Software Developer posted on 6/8/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4421938838 | “software developer”: LIXIL - Backend Software Developer posted on 6/8/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4425482213 | “software developer”: LIXIL - Backend Software Developer posted on 6/8/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4425482165 | “software developer”: LIXIL - Backend Software Developer posted on 6/8/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://justjoin.it/offers/dcg-senior-frontend-developer-warszawa-javascript-5344e4d8 | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-09T09:19Z
+- [ ] https://justjoin.it/offers/blazity-sp-z-o-o--frontend-react-next-js-developer-with-ai-mindset-warszawa-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-09T09:19Z
+- [ ] https://justjoin.it/offers/shimi-sp-z-o-o--senior-front-end-engineer-micro-frontends-m-f-n--warszawa-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-09T09:19Z
+- [ ] https://justjoin.it/offers/bluesoft-regular-fullstack-developer-java-angular--poznan-javascript | New jobs for you: JavaScript, Angular, Full-time, Remote. Check them out. | justjoin.it | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/larnaka-ai-developer-claude-155081618 | 2 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/stuttgart-software-engineer-backend-ai-155091492 | 2 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/ditzingen-senior-full-stack-developer-laravel-vue-js-remote-155083907 | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/berlin-fullstack-softwareentwickler-java-springboot-angular-100-remote-80-000-mwd-155080761 | 10+ new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/zuerich-palantir-aip-spezialist-155074005 | 3 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://at.indeed.com/viewjob?jk=069001bd56a969b1 | 1 Developer Job in Home Office | jobalert.indeed.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4425186664 | “software developer”: LIXIL - Backend Software Developer posted on 6/7/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4421903073 | “software developer”: LIXIL - Backend Software Developer posted on 6/7/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4421574359 | “software developer”: LIXIL - Backend Software Developer posted on 6/7/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4425179593 | “software developer”: LIXIL - Backend Software Developer posted on 6/7/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4424699066 | “software developer”: LIXIL - Backend Software Developer posted on 6/7/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4425001045 | “software developer”: LIXIL - Backend Software Developer posted on 6/7/26 | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-sap-sd-mm-consultant-wien-155070664 | 3 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-sap-fiori-entwickler-155070560 | 3 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/aachen-sap-full-stack-development-experte-100-home-office-bzw-remote-taetigkeit-155070893 | 6 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-sap-job-sd-mm-consultant-raum-wien-155070564 | 6 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-sap-sd-berater-155070508 | 6 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/kuenzell-ki-berater-b2b-commerce-berufseinstieg-155067562 | 2 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://de.indeed.com/viewjob?jk=e9dba115a22f4cd6 | 1 softwareentwickler Job in Home Office | jobalert.indeed.com | 2026-06-09T09:19Z
+- [ ] https://de.indeed.com/viewjob?jk=f8759bccfa19b8fe | Network-88 sucht Programador + 3 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4424667629 | Software Engineer (Code Review & Quality) / $80/hr Remote at Crossing Hurdles: up to $80/hour | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4424650899 | Software Engineer (Code Review & Quality) / $80/hr Remote at Crossing Hurdles: up to $80/hour | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4421160738 | Software Engineer (Code Review & Quality) / $80/hr Remote at Crossing Hurdles: up to $80/hour | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4421154721 | Software Engineer (Code Review & Quality) / $80/hr Remote at Crossing Hurdles: up to $80/hour | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/bonn-wissenschaftlicher-mitarbeiter-ki-digitalisierung-transformation-oeffentlicher-dienst-154538407 | One new job ad for your search alert: KI entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/fullstack-developer-z-java-i-angular-f-m-x-bialystok-jozefa-marjanskiego-3,oferta,47a40000-59d6-3231-bba3-08dec306a19a | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/full-stack-developer-react-kotlin-warszawa,oferta,32c90000-7e6c-d690-6ab0-08dec2f0bb0d | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-fullstack-developer-f-m---java-react-krakow-ksiedza-jozefa-tischnera-8,oferta,32c90000-7e6c-d690-bbd0-08dec2ca0a2c | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/salesforce-solution-architect-warszawa-kazimierza-brokla-2,oferta,32c90000-7e6c-d690-2dd3-08dec2d2e6dc | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/it-architect-warszawa-aleje-jerozolimskie-93,oferta,79620000-9298-b25a-ba1d-08dec2dbaaf4 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/business-system-analyst-warszawa,oferta,79620000-9298-b25a-d342-08dec3015c9b | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/architekt-oprogramowania-k-m-warszawa,oferta,32c90000-7e6c-d690-89f8-08dec2f0ced4 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-ios-developer-k-m-warszawa,oferta,79620000-9298-b25a-552b-08dec2ddc6fa | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/solution-architect-java-warszawa-aleje-jerozolimskie-123a,oferta,47a40000-59d6-3231-6d68-08dec2d66169 | 🔵🟢 Nowe oferty pracy: „C#; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4421113262 | Senior Frontend Developer (m/w/d) at COOR GmbH: up to €4.6K/month | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4424718573 | Senior Frontend Developer (m/w/d) at COOR GmbH: up to €4.6K/month | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4421111374 | Senior Frontend Developer (m/w/d) at COOR GmbH: up to €4.6K/month | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4424755598 | Senior Frontend Developer (m/w/d) at COOR GmbH: up to €4.6K/month | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4424778562 | Senior Frontend Developer (m/w/d) at COOR GmbH: up to €4.6K/month | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://justjoin.it/offers/tidio-ai-web-developer-szczecin-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-09T09:19Z
+- [ ] https://justjoin.it/offers/link-group-frontend-developer-react--gdansk-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/muenster-senior-fullstack-angular-kotlin-java-developer-155017254 | 6 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-software-engineer-it-entwickler-155020193 | 6 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wuerzburg-devops-engineer-155011770 | 6 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/fuerth-senior-softwareentwickler-all-genders-155017434 | 6 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/germany-software-developer-cdc-hcc-155031676 | 4 new job ads for your search alert: Full stack entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/berlin-senior-software-engineer-consulting-155013547 | 3 new job ads for your search alert: .net | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/hamburg-shopify-developer-fullstack-vollzeit-155017387 | 4 new job ads for your search alert: full stack developer | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/bremen-ki-entwickler-155017373 | 7 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/glinde-ai-software-developer-155017317 | 7 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/muenster-ai-enablement-engineer-155018806 | 7 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/hamburg-data-ai-engineer-energie-computer-vision-155020984 | 7 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/bad-sobernheim-ai-sales-manager-155007101 | 7 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/koenigstein-taunus-dozent-ai-big-data-100-remote-155006263 | 7 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-java-angular-j-labs-software-specialist-remote-2 |  Nowe oferty pracy, 8 dopasowane do Twoich kryteriów: remote, Angular,  | nofluffjobs.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-rpa-entwickler-155005293 | IT-Services der Sozialversicherung GmbH, Instaffo GmbH, apsa personnel concepts gmbh and other great companies are looking for candidates ju | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-backend-developer-with-ai-skills-java-net-basic-154942061 | IT-Services der Sozialversicherung GmbH, Instaffo GmbH, apsa personnel concepts gmbh and other great companies are looking for candidates ju | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-data-ai-tech-consultant-154839627 | IT-Services der Sozialversicherung GmbH, Instaffo GmbH, apsa personnel concepts gmbh and other great companies are looking for candidates ju | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-software-engineer-rust-python-asset-pricing-hedging-154938164 | IT-Services der Sozialversicherung GmbH, Instaffo GmbH, apsa personnel concepts gmbh and other great companies are looking for candidates ju | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-software-architect-all-genders-wien-154699273 | IT-Services der Sozialversicherung GmbH, Instaffo GmbH, apsa personnel concepts gmbh and other great companies are looking for candidates ju | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-backend-developer-with-ai-skills-154815391 | IT-Services der Sozialversicherung GmbH, Instaffo GmbH, apsa personnel concepts gmbh and other great companies are looking for candidates ju | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/full-stack-java-developer-poznan,oferta,79620000-9298-b25a-92ae-08dec244d052 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/frontend-developer-m-f-poznan-krysiewicza-9,oferta,32c90000-7e6c-d690-bb97-08dec1bbab78 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/frontend-developer-k-m-warszawa-komitetu-obrony-robotnikow-43,oferta,32c90000-7e6c-d690-5c23-08dec17d4a9e | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4424375896 | SAP Job als ABAP/UI5 Entwickler (m/w/x) im Raum Salzburg - Studentjob.at at Jobster | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4424373298 | SAP Job als ABAP/UI5 Entwickler (m/w/x) im Raum Salzburg - Studentjob.at at Jobster | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4423524054 | SAP Job als ABAP/UI5 Entwickler (m/w/x) im Raum Salzburg - Studentjob.at at Jobster | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4423529683 | SAP Job als ABAP/UI5 Entwickler (m/w/x) im Raum Salzburg - Studentjob.at at Jobster | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://justjoin.it/offers/svitla-systems-senior-front-end-engineer-extjs--gdansk-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/nordstemmen-ki-content-creator-learning-designer-154982528 | One new job ad for your search alert: KI entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/dresden-growth-lead-ai-fastic-154992593 | 6 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/berlin-ai-research-engineer-reinforcement-learning-154992487 | 6 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/homeoffice-senior-solutions-engineer-155001607 | 6 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/bonn-ai-product-manager-154705130 | 6 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/bern-software-engineer-realtime-applications-154989749 | 6 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/ios-developer-warszawa,oferta,47a40000-59d6-3231-ce67-08dec1620353 | 🔵🟢 Nowe oferty pracy: „C#; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/f-m-fullstack-java-angular-developer-warszawa,oferta,79620000-9298-b25a-fb25-08dec16eb6aa | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/fullstack-developer---fullstack-developerka-java-angular-warszawa,oferta,47a40000-59d6-3231-a6a7-08dec16c04ef | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-fullstack-engineer-java--angular-gdansk,oferta,79620000-9298-b25a-cf6f-08dec1611bff | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/fullstack-developer---java-angular-m-k-i-wroclaw-strzegomska-140a,oferta,3cb60000-fc8e-76fa-a640-08debbd299c0 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/fullstack-developer-java-angular-warszawa-aleje-jerozolimskie-93,oferta,6a570000-7f21-f2aa-0fe5-08debbc465f4 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4424021369 | Senior Software Engineer (mfd) at SKIDATA | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4424088455 | Senior Software Engineer (mfd) at SKIDATA | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4409241720 | Senior Software Engineer (mfd) at SKIDATA | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4423039219 | Senior Software Engineer (mfd) at SKIDATA | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4423035265 | Senior Software Engineer (mfd) at SKIDATA | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://justjoin.it/offers/wyzsza-szkola-ksztalcenia-zawodowego--react-frontend-developer-gdansk-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-09T09:19Z
+- [ ] https://justjoin.it/offers/devapo-react-developer-krakw-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-09T09:19Z
+- [ ] https://justjoin.it/offers/wyzsza-szkola-ksztalcenia-zawodowego--vue-frontend-developer-lodz-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/muenster-ai-enablement-engineer-154952382 | 3 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/berlin-ai-engineer-remote-154963713 | 3 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/muenchen-lead-consultant-ai-cloud-development-154116720 | 6 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/muenchen-sap-ai-consultant-154953393 | 6 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/kotlin-developer-krakow-aleja-pokoju-18,oferta,79620000-9298-b25a-456b-08dec0a579d3 | 🔵🟢 Nowe oferty pracy: „.NET; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/fullstack-developer-java-angular-poznan,oferta,79620000-9298-b25a-c109-08dec0759d2e | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/backend-developer-wroclaw-plac-powstancow-slaskich-1,oferta,79620000-9298-b25a-1684-08dec07f79db | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-php-engineer-with-ai---llm-krakow,oferta,32c90000-7e6c-d690-c8ef-08debfed7f53 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/php-developer-warszawa,oferta,79620000-9298-b25a-87a5-08dec084df30 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/php-developer-warszawa,oferta,d3f90000-ef72-2a23-33c1-08deb28e69ca | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-java-developer-katowice-zabrska-16,oferta,32c90000-7e6c-d690-af92-08dec075c639 | 🔵🟢 Nowe oferty pracy: „Angular; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://theprotocol.it/szczegoly/praca/backend-developer-java-bydgoszcz,oferta,79620000-9298-b25a-36e5-08dec0a29f79 | 🔵🟢 Nowe oferty pracy: „Angular; Praca: zdalna” | mailing.theprotocol.it | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4422422613 | Senior Software Engineer (Wals, AT) at Parking Network B.V. | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4422433472 | Senior Software Engineer (Wals, AT) at Parking Network B.V. | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4422445423 | Senior Software Engineer (Wals, AT) at Parking Network B.V. | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4423920091 | Senior Software Engineer (Wals, AT) at Parking Network B.V. | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4422441053 | Senior Software Engineer (Wals, AT) at Parking Network B.V. | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://linkedin.com/jobs/view/4423941081 | Senior Software Engineer (Wals, AT) at Parking Network B.V. | linkedin.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/salzburg-backend-softwareentwickler-microservices-java-kotlin-medtech-plattform-154533255 | One new job ad for your search alert: .net in Salzburg | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-senior-fullstack-java-developer-spring-angular-4-woche-wien-homeoffice-151239340 | 7 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/duesseldorf-fullstack-developer-java-typescript-crm-ai-solutions-154909216 | 7 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-senior-web-application-developer-backend-frontend-wien-149081070 | 7 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/homeoffice-smallworld-developer-magik-154939998 | 7 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/wien-senior-sales-manager-wien-154917890 | 9 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/muenchen-senior-java-entwickler-full-remote-154917978 | 9 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://www.xing.com/jobs/duisburg-senior-software-developer-154909217 | 2 new job ads for your search alert: .net | mail.xing.com | 2026-06-09T09:19Z
+- [ ] https://nofluffjobs.com/pl/job/senior-java-developer-java-17-21-spring-boot-angular-flutter-squareone-remote |  Nowe oferty pracy, 7 dopasowane do Twoich kryteriów: remote, Angular,  | nofluffjobs.com | 2026-06-10T05:04Z
+- [ ] https://nofluffjobs.com/pl/job/senior-fullstack-java-developer-react-js-algoteque-innovation-hub-remote |  Nowe oferty pracy, 7 dopasowane do Twoich kryteriów: remote, Angular,  | nofluffjobs.com | 2026-06-10T05:04Z
+- [ ] https://de.indeed.com/viewjob?jk=b2e44b9f9d2bad0e | 1 softwareentwickler Job in Home Office | jobalert.indeed.com | 2026-06-10T05:04Z
+- [ ] https://www.xing.com/jobs/salzburg-software-entwickler-backend-155073010 | Technodat Technische Datenverarbeitung GmbH, IT-Services der Sozialversicherung GmbH, apsa personnel concepts gmbh and other great companies | mail.xing.com | 2026-06-10T05:04Z
+- [ ] https://www.xing.com/jobs/wien-software-developer-go-rust-155077873 | Technodat Technische Datenverarbeitung GmbH, IT-Services der Sozialversicherung GmbH, apsa personnel concepts gmbh and other great companies | mail.xing.com | 2026-06-10T05:04Z
+- [ ] https://linkedin.com/jobs/view/4425211660 | React Software Entwickler (f/m/d) at myflexbox | linkedin.com | 2026-06-10T05:04Z
+- [ ] https://linkedin.com/jobs/view/4425209430 | React Software Entwickler (f/m/d) at myflexbox | linkedin.com | 2026-06-10T05:04Z
