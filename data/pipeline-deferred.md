@@ -874,3 +874,19 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://www.xing.com/jobs/wien-software-developer-go-rust-155077873 | Technodat Technische Datenverarbeitung GmbH, IT-Services der Sozialversicherung GmbH, apsa personnel concepts gmbh and other great companies | mail.xing.com | 2026-06-10T05:04Z
 - [ ] https://linkedin.com/jobs/view/4425211660 | React Software Entwickler (f/m/d) at myflexbox | linkedin.com | 2026-06-10T05:04Z
 - [ ] https://linkedin.com/jobs/view/4425209430 | React Software Entwickler (f/m/d) at myflexbox | linkedin.com | 2026-06-10T05:04Z
+- [ ] https://at.indeed.com/viewjob?jk=7f8eb802c11b1249 | 1 Developer Job in Home Office | jobalert.indeed.com | 2026-06-11T05:05Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-fullstack-developer-java-angular-m-f-poznan-krysiewicza-9,oferta,47a40000-59d6-3231-60d7-08dec67282c5 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-11T05:05Z
+- [ ] https://theprotocol.it/szczegoly/praca/regular-fullstack-developer-java-angular-m-f-poznan-krysiewicza-9,oferta,06e00000-3d90-ba72-d50a-08dec67281e7 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-11T05:05Z
+- [ ] https://theprotocol.it/szczegoly/praca/php-nextjs-developer-with-sylius-warszawa-pulawska-2,oferta,79620000-9298-b25a-0927-08dec623eb19 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-11T05:05Z
+- [ ] https://theprotocol.it/szczegoly/praca/it-innovation-manager-warszawa-pulawska-2,oferta,32c90000-7e6c-d690-2ffc-08dec60646ea | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-11T05:05Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-data-platform-engineer-warszawa-grzybowska-60,oferta,79620000-9298-b25a-67e4-08dec5f706bf | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-11T05:05Z
+- [ ] https://theprotocol.it/szczegoly/praca/mlops-engineer-warszawa,oferta,47a40000-59d6-3231-813a-08dec601a3cc | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-11T05:05Z
+- [ ] https://theprotocol.it/szczegoly/praca/mlodszy-administrator---mlodsza-administratorka-sieci-ozarow-mazowiecki-poznanska-280,oferta,79620000-9298-b25a-dec9-08dec61ad9c3 | 🔵🟢 Nowe oferty pracy: „Full-stack; Praca: zdalna” | mailing.theprotocol.it | 2026-06-11T05:05Z
+- [ ] https://linkedin.com/jobs/view/4425835785 | Senior Software Engineer Parking Access (mfd) at SKIDATA | linkedin.com | 2026-06-11T05:05Z
+- [ ] https://linkedin.com/jobs/view/4422735170 | Senior Software Engineer Parking Access (mfd) at SKIDATA | linkedin.com | 2026-06-11T05:05Z
+- [ ] https://linkedin.com/jobs/view/4422270367 | Senior Software Engineer Parking Access (mfd) at SKIDATA | linkedin.com | 2026-06-11T05:05Z
+- [ ] https://theprotocol.it/szczegoly/praca/team-leader-java-krakow,oferta,32c90000-7e6c-d690-14cc-08dec2f94b42 | 🔵🟢 Nowe oferty pracy: „.NET; Praca: zdalna” | mailing.theprotocol.it | 2026-06-11T05:05Z
+- [ ] https://www.xing.com/jobs/berlin-senior-softwareentwickler-java-fullstack-spring-angular-100-home-office-80-000-mwd-155103634 | 8 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-11T05:05Z
+- [ ] https://www.xing.com/jobs/ulm-ai-data-engineer-155105869 | 2 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-11T05:05Z
+- [ ] https://www.xing.com/jobs/muenchen-ai-automation-builder-remote-155099315 | 2 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-11T05:05Z
+- [ ] https://www.xing.com/jobs/muenchen-chatbot-ai-solutions-manager-155095174 | 3 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-11T05:05Z

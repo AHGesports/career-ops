@@ -1157,6 +1157,28 @@
 - [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=29100e0b7214dff6     <!-- via Gmail:indeed 2026-06-10T05:04Z auto-match: \bangular\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-full-stack-developer-ki-webplattform-remote-beteiligung-gehalt-155101948     <!-- via Gmail:xing 2026-06-10T05:04Z auto-match: \bfull stack\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/front-end-developer-pr-talent-remote-1     <!-- via Gmail:nfj 2026-06-11T05:05Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=c3f67845108f1818     <!-- via Gmail:indeed 2026-06-11T05:05Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=fbe77091751481e2     <!-- via Gmail:indeed 2026-06-11T05:05Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-ai-engineer-with-net-warszawa,oferta,47a40000-59d6-3231-4168-08dec5ffdc85     <!-- via Gmail:theprotocol 2026-06-11T05:05Z auto-match: \bnet\b,\bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/applied-ai-engineer-krakow,oferta,79620000-9298-b25a-2af9-08dec54d238a     <!-- via Gmail:theprotocol 2026-06-11T05:05Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/aviation-software-engineer-python-gdansk,oferta,79620000-9298-b25a-3c4e-08dec5575c1f     <!-- via Gmail:theprotocol 2026-06-11T05:05Z auto-match: \bc#,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-software-engineer-i---full-stack-reporting-gdansk,oferta,79620000-9298-b25a-e9f9-08dec62aa07d     <!-- via Gmail:theprotocol 2026-06-11T05:05Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/netguru--senior-frontend-developer---angular---freelance-poznan-javascript     <!-- via Gmail:jjit 2026-06-11T05:05Z auto-match: \bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/dcg-senior-fullstack-developer-warszawa-net     <!-- via Gmail:jjit 2026-06-11T05:05Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/shimi-sp-z-o-o--senior-fullsatack-developer---net-and-angular-m-f-n--warszawa-net     <!-- via Gmail:jjit 2026-06-11T05:05Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/netguru--senior-net-developer---freelance-gdansk-net-24098fa5     <!-- via Gmail:jjit 2026-06-11T05:05Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/angry-nerds-backend-developer-net--wroclaw-net-8870dbb8     <!-- via Gmail:jjit 2026-06-11T05:05Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/astek-polska-programista-fullstack-programistka-fullstack-net-angular--warszawa-mazowieckie--net     <!-- via Gmail:jjit 2026-06-11T05:05Z auto-match: \bnet\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/konstanz-fullstack-developer-155110338     <!-- via Gmail:xing 2026-06-11T05:05Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-fullstack-developer-155110335     <!-- via Gmail:xing 2026-06-11T05:05Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/fullstack-developer-155110346     <!-- via Gmail:xing 2026-06-11T05:05Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/konstanz-fullstack-developer-schwerpunkt-frontend-konstanz-berlin-remote-155106934     <!-- via Gmail:xing 2026-06-11T05:05Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/deutschlandweit-devops-engineer-vollzeit-full-remote-azure-devops-databricks-terraform-155101219     <!-- via Gmail:xing 2026-06-11T05:05Z auto-match: \bazure\b,\bazure devops\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/fully-senior-full-stack-engineer-155102193     <!-- via Gmail:xing 2026-06-11T05:05Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/deutschland-devops-engineer-vollzeit-full-remote-azure-devops-databricks-terraform-155105136     <!-- via Gmail:xing 2026-06-11T05:05Z auto-match: \bazure\b,\bazure devops\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/darmstadt-net-softwareentwickler-datenbankkenntnissen-155096789     <!-- via Gmail:xing 2026-06-11T05:05Z auto-match: \bnet\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->
