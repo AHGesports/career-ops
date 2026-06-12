@@ -298,15 +298,15 @@ tracked_companies:
     careers_url: https://www.skidata.com/careers
     scan_method: websearch
     scan_query: 'site:skidata.com/careers OR "skidata" "Software" OR "Engineer" OR "Developer"'
-    notes: "Salzburg. Access & ticketing (similar domain to Axess)."
-    enabled: true
+    notes: "User-blocked/current-company conflict. Do not scan or apply."
+    enabled: false
 
   - name: Palfinger
     careers_url: https://www.palfinger.com/en/career
     scan_method: websearch
     scan_query: 'site:palfinger.com "Software" OR "Developer" OR "Engineer" OR ".NET" OR "Angular"'
-    notes: "Salzburg/Bergheim. Crane & lifting tech. Digital division."
-    enabled: true
+    notes: "User-blocked/already applied. Do not scan or apply."
+    enabled: false
 
   - name: Eurofunk Kappacher
     careers_url: https://eurofunk.com/karriere

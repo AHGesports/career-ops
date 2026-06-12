@@ -195,6 +195,36 @@ senders:
       Reuse one page across many redirects; restart browser on ERR_INSUFFICIENT_RESOURCES.
       Pattern requires href= context (lookbehind) to exclude img src tracking pixels that
       also match xing.com/m/<id> — those caused 2 phantom failures per thread.
+      Verified 2026-06-09: job links are the uppercase suffix block `AK`, `AL`, ...
+      before footer/account suffixes; extract-urls filters to that block before following.
+
+  - email: jobalert@metajob.at
+    extraction: tracker
+    pattern: 'https?://(?:www\.)?metajob\.at/the/a\?c=[A-Za-z0-9]+'
+    final_shape: 'metajob.at/?q={query}&l={location}&r={radius}&tl={timestamp}'
+    decoded_list_match: '^https://www\.metajob\.at/\?q='
+    decoded_ignore_match: 'metajob\.at/the/a\?c='
+    subject_count_pattern: '^(\d+)\s+neue\s+Jobs\b'
+    subject_count_is_summary: true
+    notes: |
+      METAJob is an aggregator. Alert emails contain tracker links, not individual
+      posting URLs: one "Neue Jobs anzeigen" link plus a control/unsubscribe link.
+      Following the first tracker resolves to a search/list URL like
+      `https://www.metajob.at/?q=Informationstechnik&l=Salzburg+(Bundesland)&r=20&tl=...`.
+      Route these to `data/pipeline-lists.md`; do not create application rows or
+      portal recipes for metajob.at itself.
+
+  - email: notifications@app.instaffo.com
+    extraction: plaintext
+    pattern: 'https?://app\.instaffo\.com/candidate/job/[0-9a-f-]+'
+    final_shape: 'app.instaffo.com/candidate/job/{uuid}'
+    notes: |
+      Instaffo direct job recommendations. The HTML buttons are Klaviyo trackers,
+      but the plaintext body contains canonical direct job links:
+      `app.instaffo.com/candidate/job/<uuid>`. Extract from plaintext to avoid
+      slow tracker-following and footer/settings/unsubscribe noise.
+      Do NOT add an Instaffo apply YAML recipe; direct Instaffo URLs are
+      third-party/browser-takeover work for gmail-apply-smilified.
 
   - email: info@email.stepstone.at
     extraction: tracker

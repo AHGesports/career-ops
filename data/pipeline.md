@@ -1179,6 +1179,34 @@
 - [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/deutschland-devops-engineer-vollzeit-full-remote-azure-devops-databricks-terraform-155105136     <!-- via Gmail:xing 2026-06-11T05:05Z auto-match: \bazure\b,\bazure devops\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/darmstadt-net-softwareentwickler-datenbankkenntnissen-155096789     <!-- via Gmail:xing 2026-06-11T05:05Z auto-match: \bnet\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/accenture-secure-ai-innovation-engineer-regular-senior-she-he-they--lodz-security     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/dcv-technologies-middle-aws-devops---remote-gdansk-devops     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/cloudfide-data-catalog-governance-specialist-wroclaw-data     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/upvanta-sp-z-o-o--senior-genai-engineer-warszawa-ai     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/dcg-ml-and-automation-manager-warszawa-ai     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/dcv-technologies-python-developer-with-genai-gdansk-python     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bpython\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/andersen-qa-automation-engineer-typescript--praga-testing     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \btypescript\b,\bagentic\b,\bautomation engineer\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/sii-ai-ml-developer---generative-ai-f-m-x--lodz-ai     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/axabee-senior-ai-engineer-opole-ai     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/netguru--senior-genai-product-manager---freelance-gdansk-ai     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/wavestone-poland-ai-software-engineer-opole-ai     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/sii-ai-engineer---genai-cloud-f-m-x--lodz-ai     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/lea-ai-solutions-analyst-torun-ai     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/billennium-ml-ai-engineer-krakow-ai     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/devapo-ai-llm-engineer-warszawa-ai     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bllm\b,\bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-lead-fullstack-developer-typescript-angular-node-js-155254248     <!-- via Gmail:xing 2026-06-12T07:26Z auto-match: \bangular\b,\btypescript\b,\bnode js\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/muenchen-test-automation-engineer-schwerpunkt-ki-testing-155245993     <!-- via Gmail:xing 2026-06-12T07:26Z auto-match: \bautomation engineer\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-full-stack-ai-architect-154308049     <!-- via Gmail:xing 2026-06-12T07:26Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/dotlinkers-full-stack-developer-gdansk-javascript     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bnet\b,\bfullstack\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-net-developer-warszawa-aleje-jerozolimskie-93,oferta,32c90000-7e6c-d690-55a2-08dec6fd738b     <!-- via Gmail:theprotocol 2026-06-12T07:26Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/starszy-programista-frontend-warszawa,oferta,47a40000-59d6-3231-919c-08dec6f9c161     <!-- via Gmail:theprotocol 2026-06-12T07:26Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-frontend-developer-k-m-warszawa-cybernetyki-8,oferta,32c90000-7e6c-d690-09d4-08dec6f84ab4     <!-- via Gmail:theprotocol 2026-06-12T07:26Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/power-bi---data-visualization-specialist-warszawa-nowowiejska-15-19,oferta,32c90000-7e6c-d690-0e52-08dec70038e2     <!-- via Gmail:theprotocol 2026-06-12T07:26Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-backend-developer-k-m-warszawa-cybernetyki-9,oferta,b85a0000-5237-4a8f-d1a4-08dec6f938de     <!-- via Gmail:theprotocol 2026-06-12T07:26Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/starszy-specjalista-ds-narzedzi-wspierajacych-procesy-kredytowe-k-m-warszawa-chmielna-73,oferta,47a40000-59d6-3231-5e07-08dec6f9aca5     <!-- via Gmail:theprotocol 2026-06-12T07:26Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/awareson-sp-z-o-o--senior-node-js-developer-warszawa-javascript     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bnode js\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/the-software-house-senior-qa-automation-engineer-gliwice-javascript     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bautomation engineer\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->

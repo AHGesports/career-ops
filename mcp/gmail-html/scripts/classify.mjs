@@ -66,10 +66,12 @@ function urlSlug(url) {
   }
 }
 
-function classifyUrl(url, subject, sender) {
+function classifyUrl(url, subject, sender, snippet = '', bodyPreview = '') {
   const haystack = [
     urlSlug(url),
     (subject || '').toLowerCase(),
+    (snippet || '').toLowerCase(),
+    (bodyPreview || '').toLowerCase(),
     (sender || '').toLowerCase(),
   ].join(' \n ');
 
@@ -90,13 +92,29 @@ let totalUrls = 0;
 let autoMatch = 0;
 let deferred = 0;
 
+const TRACKER_SUBJECT_IS_ALERT_QUERY = new Set([
+  'jobs@mail.xing.com',
+  'alerts@welcometothejungle.com',
+  'info@email.stepstone.at',
+  'info@email.stepstone.de',
+  'info@jobagent.stepstone.de',
+  'jobalert@metajob.at',
+]);
+
 for (const r of data.results) {
-  // For tracker senders (XING, Stepstone, WTJ) the email subject is the search-alert
-  // query name, not a job title — it is shared by every URL in the thread and will
-  // falsely match any URL whose subject contains a keyword (e.g. "full stack engineer"
-  // alert serving Account Executive roles). Use slug-only for trackers.
-  const subject = r.extraction === 'tracker' ? '' : (r.metadata?.subject || '');
-  const classified = (r.urls || []).map(u => classifyUrl(u, subject, r.sender));
+  // Some tracker senders use the subject as a shared search-alert query, not a
+  // job title. Instaffo emails are direct recommendations, so their subject,
+  // snippet, and compact body preview are useful classification context.
+  const subject = TRACKER_SUBJECT_IS_ALERT_QUERY.has((r.sender || '').toLowerCase())
+    ? ''
+    : (r.metadata?.subject || '');
+  const snippet = TRACKER_SUBJECT_IS_ALERT_QUERY.has((r.sender || '').toLowerCase())
+    ? ''
+    : (r.metadata?.snippet || '');
+  const bodyPreview = TRACKER_SUBJECT_IS_ALERT_QUERY.has((r.sender || '').toLowerCase())
+    ? ''
+    : (r.metadata?.body_preview || '');
+  const classified = (r.urls || []).map(u => classifyUrl(u, subject, r.sender, snippet, bodyPreview));
   r.classified = classified;
   for (const c of classified) {
     totalUrls++;

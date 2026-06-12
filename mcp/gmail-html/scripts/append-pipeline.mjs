@@ -61,6 +61,7 @@ function senderShort(email) {
     ['stepstone.at', 'stepstone'],
     ['germantechjobs.de', 'gtj'],
     ['theprotocol.it', 'theprotocol'],
+    ['app.instaffo.com', 'instaffo'],
     ['arbeitsagentur.de', 'arbeitsagentur'],
     ['ifttt.com', 'ifttt'],
     ['himalayas.app', 'himalayas'],
@@ -170,6 +171,16 @@ function deriveCompanyRole(url, subject) {
     // strip trailing numeric id
     const core = last.replace(/-\d{5,}$/, '');
     return { company: 'XING', role: tc(core.replace(/[-_]+/g, ' ')) };
+  }
+
+  // ---- Instaffo direct recommendations: /candidate/job/<uuid>
+  if (host.endsWith('instaffo.com') && pathname.includes('/candidate/job/')) {
+    let role = subject || '';
+    role = role
+      .replace(/^Arshia,\s*/i, '')
+      .replace(/\s+/g, ' ')
+      .slice(0, 80);
+    return { company: 'Instaffo', role: tc(role) || 'Job Recommendation' };
   }
 
   // ---- JustJoinIT: /job-offer/<company-slug>-<title>-<location>-<stack>[-<id>]

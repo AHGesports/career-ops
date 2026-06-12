@@ -68,9 +68,9 @@ narrative:
       hero_metric: "Bi-directional state sync between platform and customer middleware, deployed to 10+ enterprise customers"
 
 compensation:
-  target_range: "EUR 55K-80K"
+  target_range: "EUR 65K-80K"
   currency: "EUR"
-  minimum: "EUR 55K"
+  minimum: "EUR 65K"
   location_flexibility: "On-site in Salzburg area, hybrid, or remote within Austria/EU or remote with occasional travel or remote from USA with timezone workable from my location"
 
 # Used by gmail-apply workers when external ATS forms ask follow-up fields
@@ -83,28 +83,28 @@ availability:
   short: "6 weeks"
 
 salary_expectations:
-  default_text: "EUR 55,000-80,000 / year gross (target range)"
+  default_text: "EUR 65,000-80,000 / year gross (target range)"
   eur:
-    annual_gross_min: 55000
-    annual_gross_target: 65000
+    annual_gross_min: 65000
+    annual_gross_target: 70000
     annual_gross_max: 80000
-    monthly_gross_12pay: 4583
-    monthly_gross_14pay: 3929
-    hourly_gross: 32
+    monthly_gross_12pay: 5417
+    monthly_gross_14pay: 4643
+    hourly_gross: 38
   pln:
     # Permanent / UoP — write the 12-pay number when Polish recruiter asks
-    monthly_gross_uop_12pay: 19479
-    monthly_gross_uop_14pay: 16696
-    annual_gross: 233750
+    monthly_gross_uop_12pay: 23021
+    monthly_gross_uop_14pay: 19732
+    annual_gross: 276250
     # B2B Einzelunternehmer — total-value parity floor
-    b2b_monthly_revenue: 19125
-    b2b_hourly_rate: 135
+    b2b_monthly_revenue: 23021
+    b2b_hourly_rate: 163
   usd:
     annual_gross_target: 75000
   notes: |
-    - For PL job forms asking PLN/month gross (UoP): 19,479 PLN.
-    - For PL B2B rate fields (PLN/hour): 135-191 PLN/hour.
-    - For EUR gross/year fields: 55,000 minimum, 70,000 target.
+    - For PL job forms asking PLN/month gross (UoP): 23,021 PLN.
+    - For PL B2B rate fields (PLN/hour): 163-223 PLN/hour.
+    - For EUR gross/year fields: 65,000 minimum, 70,000 target.
     - When form forces single number, use the target (mid-range).
     - When form forces a range, write min-max from this block.
 
@@ -219,6 +219,15 @@ gmail_classifier:
     - "\\bsap\\b"
     - "\\bcobol\\b"
     - "\\bmainframe\\b"
+    - "\\baxess\\b"
+    - "\\baxess ag\\b"
+    - "\\bdesigna[- ]?axess\\b"
+    - "\\bdesigna\\b"
+    - "\\bbg drives\\b"
+    - "\\bskidata\\b"
+    - "\\bski[- ]?data\\b"
+    - "\\bdsb[- ]?one\\b"
+    - "\\bpalfinger\\b"
     - "\\bembedded\\b"
     - "\\bfirmware\\b"
     - "\\bios developer\\b"

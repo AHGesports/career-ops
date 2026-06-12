@@ -15,11 +15,9 @@ Leer `modes/_profile.md` sección "Hard Discard Filters". Aplicar en orden:
 Keep if permanent employment OR contract type not mentioned (evaluate + note unknown in Block A).
 
 **2. Salary — DISCARD if:**
-- Salary IS disclosed AND top of range < EUR 55K (candidate minimum)
-- PLN discard thresholds (NBP 4.25, validated April 2026):
-  - Permanent/UoP: top < 19,480 PLN/month gross (12-pay)
-  - B2B revenue: top < 19,100 PLN/month
-  - Hourly B2B: rate < 112 PLN/h
+- Salary IS disclosed AND the true ceiling is clearly below the candidate minimum from `config/profile.yml`
+- PLN discard thresholds: use the current floors from `modes/_profile.md` / `config/profile.yml`.
+- Do NOT discard only because the minimum/bottom of the range is below floor. If the max reaches the floor, the range is open-ended ("from", "starting at", "minimum"), salary is negotiable, bonus/OTE/equity may bridge the gap, or the ceiling is unclear, evaluate normally and flag compensation as a negotiation risk in Block D.
 - Do NOT discard if salary hidden — evaluate normally
 
 **If discarded:** output one-line verdict and stop:

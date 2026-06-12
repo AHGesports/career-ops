@@ -326,7 +326,23 @@ function extractTracker(msg, senderCfg) {
   // For tracker senders we DON'T resolve here. We collect tracker URLs to follow later.
   const haystack = msg.html || msg.plain || '';
   const re = new RegExp(senderCfg.pattern, 'gi');
-  return [...new Set([...haystack.matchAll(re)].map(m => m[0]))];
+  const found = [...new Set([...haystack.matchAll(re)].map(m => m[0]))];
+
+  if ((senderCfg.email || '').toLowerCase() === 'jobs@mail.xing.com') {
+    const jobBlock = found.filter(u => {
+      try {
+        return /^A[K-Z]$/.test(new URL(u).pathname.split('/').pop().slice(-2));
+      } catch {
+        return false;
+      }
+    });
+    const m = msg.subject.match(new RegExp(senderCfg.subject_count_pattern || '$.^'));
+    const expected = m?.[1] ? parseInt(m[1], 10) : null;
+    if (expected && jobBlock.length >= expected) return jobBlock.slice(0, expected);
+    if (jobBlock.length) return jobBlock;
+  }
+
+  return found;
 }
 
 function extractPlaintext(msg, senderCfg) {
@@ -463,11 +479,25 @@ async function main() {
 
     // Subject-count sanity check (per yaml). Only warn on GENUINE undercount —
     // i.e. when totalSeen + sponsored is still less than the subject claim.
-    let subjectCount = null, subjectCountWarning = null;
+    let subjectCount = null, subjectClaimedCount = null, subjectCountWarning = null;
     if (cfg.subject_count_pattern) {
       const m = msg.subject.match(new RegExp(cfg.subject_count_pattern));
       if (m && m[1]) {
         subjectCount = parseInt(m[1], 10);
+        subjectClaimedCount = subjectCount;
+        if (cfg.subject_count_is_summary) {
+          subjectCount = null;
+        }
+        if (
+          subjectCount !== null &&
+          senderEmail === 'jobs@mail.xing.com' &&
+          trackers.length > 0 &&
+          subjectCount > trackers.length
+        ) {
+          // Older XING alerts sometimes claim one more job than the email exposes;
+          // the extra link is a search/survey/footer URL, not a single job card.
+          subjectCount = trackers.length;
+        }
         const totalSeen = filtered.length + pipeDup + noise + trackers.length + sponsoredCount;
         if (subjectCount > 0 && totalSeen < subjectCount) {
           subjectCountWarning =
@@ -489,6 +519,8 @@ async function main() {
       metadata: {
         subject: msg.subject,
         date: msg.date,
+        snippet: msg.snippet,
+        body_preview: (msg.plain || msg.html || '').replace(/\s+/g, ' ').slice(0, 2000),
         n_messages: msg.n_messages,
         html_length: msg.html?.length || 0,
         raw_extracted: urls.length,
@@ -497,6 +529,7 @@ async function main() {
         pipeline_dup: pipeDup,
         sponsored_count: sponsoredCount,
         subject_expected_count: subjectCount,
+        subject_claimed_count: subjectClaimedCount !== subjectCount ? subjectClaimedCount : null,
         subject_count_warning: subjectCountWarning,
       },
     });

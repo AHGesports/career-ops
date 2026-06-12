@@ -124,7 +124,7 @@ for (const r of runData.results) {
   if (r.extraction === 'tracker') {
     trackersInput += r.trackers_to_follow?.length || 0;
     trackersFailed += r.tracker_failures?.length || 0;
-    trackersResolved += r.urls.length;
+    trackersResolved += r.urls.length + (r.tracker_duplicate_resolved || 0);
     trackersLists += (r.tracker_dropped_lists?.length || 0);
     trackersOffsite += (r.tracker_dropped_offsite?.length || 0);
     trackersIgnored += Math.max(0,
@@ -153,7 +153,12 @@ const lossWarnings = [];
 for (const r of runData.results) {
   const ec = r.metadata?.rendered_job_cards ?? r.metadata?.subject_expected_count;
   if (!ec) continue;
-  const captured = (r.urls?.length || 0) + (r.metadata.pipeline_dup || 0) + (r.metadata.noise_filtered || 0) + (r.metadata.sponsored_count || 0);
+  const captured =
+    (r.urls?.length || 0) +
+    (r.tracker_dropped_lists?.length || 0) +
+    (r.metadata.pipeline_dup || 0) +
+    (r.metadata.noise_filtered || 0) +
+    (r.metadata.sponsored_count || 0);
   const loss = ec - captured;
   if (loss > 0) {
     lossWarnings.push({ thread: r.thread_id.slice(0, 8), sender: r.sender.split('@')[1], expected: ec, captured, loss });

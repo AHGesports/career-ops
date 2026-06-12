@@ -88,6 +88,19 @@ function postProcess(host, finalUrl) {
         return 'https://www.stepstone.de' + decodeURIComponent(returnUrl).split('?')[0];
       }
     }
+    // MetaJob alert links resolve to search/list pages. The query string is the
+    // useful payload; stripping it turns every alert into the homepage.
+    if (u.host.endsWith('metajob.at') && u.pathname === '/' && u.searchParams.has('q')) {
+      return u.toString().replace(/\/$/, '');
+    }
+    // Instaffo tracker links can redirect unauthenticated headless sessions to
+    // /signin while preserving the original job route in ?path=...
+    if (u.host === 'app.instaffo.com' && u.searchParams.has('path')) {
+      const path = u.searchParams.get('path');
+      if (path && path.startsWith('candidate/job/')) {
+        return 'https://app.instaffo.com/' + path.split('?')[0];
+      }
+    }
     // Strip query for canonical
     u.search = '';
     return u.toString().replace(/\/$/, '');
@@ -153,6 +166,15 @@ async function followOne(url) {
           ignore: true,
           url: postProcess(new URL(finalUrl).host, finalUrl),
           webJobCardCount: countXingRenderedJobCards(await page.content()),
+        };
+      }
+      // METAJob's second alert tracker is a control/unsubscribe link. It stays
+      // on /the/a?c=... and is not a failed job redirect.
+      if (/metajob\.at\/the\/a\?c=/.test(finalUrl)) {
+        return {
+          ok: true,
+          ignore: true,
+          url: postProcess(new URL(finalUrl).host, finalUrl),
         };
       }
       return { ok: false, error: 'no-redirect (still on tracker after load)' };
@@ -244,12 +266,15 @@ for (const r of data.results) {
     r.tracker_dropped_offsite = r.tracker_dropped_offsite || [];
     // Legacy field — keep so older runs don't break older readers; new code reads the split fields.
     r.tracker_dropped_non_job = r.tracker_dropped_non_job || [];
+    r.tracker_duplicate_resolved = r.tracker_duplicate_resolved || 0;
   }
 }
 for (const res of results) {
   const thread = data.results[res.ri];
   const cfg = senderMap.get(thread.sender);
   const filter = cfg?.decoded_must_match ? new RegExp(cfg.decoded_must_match) : null;
+  const listFilter = cfg?.decoded_list_match ? new RegExp(cfg.decoded_list_match) : null;
+  const ignoreFilter = cfg?.decoded_ignore_match ? new RegExp(cfg.decoded_ignore_match) : null;
   const canonicalHost = canonicalBrandFor(thread.sender);
   if (res.ok) {
     if (Number.isInteger(res.webJobCardCount)) {
@@ -258,6 +283,16 @@ for (const res of results) {
     }
     if (res.ignore) {
       thread.tracker_dropped_non_job.push(res.url);
+      continue;
+    }
+    if (ignoreFilter && ignoreFilter.test(res.url)) {
+      thread.tracker_dropped_non_job.push(res.url);
+      continue;
+    }
+    if (listFilter && listFilter.test(res.url)) {
+      thread.tracker_dropped_lists.push(res.url);
+      droppedLists++;
+      thread.tracker_dropped_non_job.push(res.url); // legacy, keep populated
       continue;
     }
     if (filter && !filter.test(res.url)) {
@@ -279,6 +314,7 @@ for (const res of results) {
       thread.urls.push(res.url);
       resolved++;
     } else {
+      thread.tracker_duplicate_resolved = (thread.tracker_duplicate_resolved || 0) + 1;
       resolved++; // duplicate within thread
     }
   } else {
