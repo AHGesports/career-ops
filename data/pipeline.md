@@ -1207,6 +1207,97 @@
 - [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/awareson-sp-z-o-o--senior-node-js-developer-warszawa-javascript     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bnode js\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/the-software-house-senior-qa-automation-engineer-gliwice-javascript     <!-- via Gmail:jjit 2026-06-12T07:26Z auto-match: \bautomation engineer\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/jit-team-senior-ai-engineer-gdansk-ai     <!-- via Gmail:jjit 2026-06-13T08:13Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/sii-senior-computer-vision-engineer---classical-deep-learning-f-m-x--warszawa-data     <!-- via Gmail:jjit 2026-06-13T08:13Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/people-more-p-s-a--ai-expert-agentic-ai-llm-angular-jsp--krakow-ai     <!-- via Gmail:jjit 2026-06-13T08:13Z auto-match: \bangular\b,\bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/be-in-it-azure-ai-data-architect-wroclaw-architecture     <!-- via Gmail:jjit 2026-06-13T08:13Z auto-match: \bagentic\b,\bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/emagine-polska-senior-software-developer-net--warsaw-net     <!-- via Gmail:jjit 2026-06-13T08:13Z auto-match: \bnet\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/be-in-it-agentic-ai-solution-architect-warszawa-ai     <!-- via Gmail:jjit 2026-06-13T08:13Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/experis-manpower-group-senior-genai-engineer-warszawa-ai     <!-- via Gmail:jjit 2026-06-13T08:13Z auto-match: \bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/muenchen-python-entwickler-ai-apis-155285982     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/braunschweig-fullstack-softwareentwickler-155268298     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hannover-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271221     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/stuttgart-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271212     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/deutschland-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271230     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/dortmund-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271222     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/muenchen-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271219     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/essen-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271225     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/dresden-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271218     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271217     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/nuernberg-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271224     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duesseldorf-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271229     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/duisburg-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271214     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hamburg-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271215     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/frankfurt-main-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271228     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/bremen-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271220     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/koeln-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271213     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/mannheim-fullstack-softwareentwickler-asp-net-react-angular-blazor-ecm-100-home-office-mwd-155271223     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b,\basp net\b,\bblazor\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-full-stack-developer-with-ai-idego-group-remote     <!-- via Gmail:nfj 2026-06-13T08:13Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-ai-engineer-gcp-addepto-remote     <!-- via Gmail:nfj 2026-06-13T08:13Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/backend-developer-node-js-ai-tools-smart-topaz-remote     <!-- via Gmail:nfj 2026-06-13T08:13Z auto-match: \bnode js\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/mlops-engineer-with-azure-square-one-resources-remote     <!-- via Gmail:nfj 2026-06-13T08:13Z auto-match: \bfull stack\b,\bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-fullstack-engineer-ai-evaluations-platform-acaisoft-remote-1     <!-- via Gmail:nfj 2026-06-13T08:13Z auto-match: \bfullstack\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/machine-learning-developer-engineer-remote-link-group-1     <!-- via Gmail:nfj 2026-06-13T08:13Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/ai-engineer-remote-link-group-3     <!-- via Gmail:nfj 2026-06-13T08:13Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=2ebb13a6e72e7653     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bllm\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=4234d5a6501c3ab0     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bllm\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=924f2328c1b95e26     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bllm\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=5da4456581400e1d     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bllm\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=4a3b8b28b91edbab     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bllm\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=561c63066fe2e0e0     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bllm\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=8ce1c78b973cbecd     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bllm\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=0e963bd0d0ac10a1     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bllm\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=d73f6d649f1f5c41     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bllm\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=739430c15399da3c     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=7fad82d96075f00e     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=cb262a28f466b97c     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=d837dc84816234ec     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=f8bab8eb6b58bc70     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=78ee25ac11f6eb99     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=1e07aac451359165     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=1023254ee5d5ac41     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=6278bc579ec05bad     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bentity framework\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=7327fe6bdf33528b     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bentity framework\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=138567e885c31c97     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bentity framework\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=bccb7bbdb1d6d719     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bentity framework\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=64cb9c3e88994a63     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bentity framework\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=f5c30eff1ee853bc     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bentity framework\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=3726f5e7b45a225c     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bentity framework\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=8c1deaed0d342257     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bentity framework\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=6c33d60fb402cb1c     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bentity framework\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=5b8ad213fe571f8d     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bentity framework\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=83f79c4dee8648ed     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bentity framework\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=8caa07709cc629c3     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bentity framework\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=b3ba6a97226ad00c     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bc#,\btypescript\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=0ec6bcdcfc1d1b37     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bc#,\btypescript\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=39b539bb55f7990f     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bc#,\btypescript\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=89555a610107410d     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bc#,\btypescript\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=d3538ad4347d81be     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bc#,\btypescript\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=76bdd50e38646d9a     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bc#,\btypescript\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=37ea69dcec2df9c8     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bc#,\btypescript\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=7f7b901de3e8c6d0     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bc#,\btypescript\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=ed2ae9a46d486ccf     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bc#,\btypescript\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=d3911e97462dec87     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bc#,\btypescript\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=36ec4a00546f4e65     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=62d92387270d3084     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/darmstadt-net-softwareentwickler-postgresql-kenntnissen-155096789     <!-- via Gmail:xing 2026-06-13T08:13Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=899b415510cd0996     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\btypescript\b,\bfullstack\b,\bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=07f86cacf98945d8     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\btypescript\b,\bfullstack\b,\bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=c972912e8b88c907     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\btypescript\b,\bfullstack\b,\bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=98fa2cb8b452e420     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\btypescript\b,\bfullstack\b,\bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=6b91413e8bb6c61b     <!-- via Gmail:indeed 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\btypescript\b,\bfullstack\b,\bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4427557776     <!-- via Gmail:linkedin 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4427567292     <!-- via Gmail:linkedin 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4423668347     <!-- via Gmail:linkedin 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4427550626     <!-- via Gmail:linkedin 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4427521872     <!-- via Gmail:linkedin 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4427520871     <!-- via Gmail:linkedin 2026-06-13T08:13Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/ai-engineer-llm---agentic-systems-f-m-x-bialystok-jozefa-marjanskiego-3,oferta,32c90000-7e6c-d690-0d36-08dec7b9f64a     <!-- via Gmail:theprotocol 2026-06-13T08:13Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/infra-software-engineer-ai-project-warszawa-aleja-niepodleglosci-18,oferta,94a30000-978f-a29b-e75f-08dec7c8a68b     <!-- via Gmail:theprotocol 2026-06-13T08:13Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-python-engineer-ai-evaluations-platform-warszawa-aleja-niepodleglosci-18,oferta,94a30000-978f-a29b-52b3-08dec7c97c3c     <!-- via Gmail:theprotocol 2026-06-13T08:13Z auto-match: \bpython\b,\bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/assistant-vice-president-senior-engineer---ai-data-science-krakow-kapelanka-42a,oferta,94a30000-978f-a29b-4bc0-08dec7a4c84e     <!-- via Gmail:theprotocol 2026-06-13T08:13Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/senior-ai---full-stack-engineer-typescript-nodejs-react-warszawa-domaniewska-45,oferta,32c90000-7e6c-d690-506a-08dec790e403     <!-- via Gmail:theprotocol 2026-06-13T08:13Z auto-match: \btypescript\b,\bnodejs\b,\bfull stack\b,\bllm\b,\bagentic\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->

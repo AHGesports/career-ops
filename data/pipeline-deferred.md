@@ -926,3 +926,54 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://justjoin.it/offers/dataart-appian-developer-lodz-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-12T07:26Z
 - [ ] https://justjoin.it/offers/edge-one-solutions-sp-z-o-o-senior-frontend-developer-react-react-native-branza-transportowa-gdansk-javascript | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-12T07:26Z
 - [ ] https://justjoin.it/offers/dataart-react-next-js-developer-lodz-javascript-a4304156 | New jobs for you: JavaScript, Full-time, Remote. Check them out. | justjoin.it | 2026-06-12T07:26Z
+- [ ] https://linkedin.com/jobs/view/4424812433 | Full Stack Entwickler:in - Produktkonfiguratoren (w/m/d) at ABB | linkedin.com | 2026-06-13T08:13Z
+- [ ] https://justjoin.it/offers/sii-data-scientist---python-cloud-data-platforms-f-m-x--warszawa-data | New jobs for you: agentic ai, Best match, Remote. Check them out. | justjoin.it | 2026-06-13T08:13Z
+- [ ] https://justjoin.it/offers/dcv-technologies-java-full-stack-developer-gdansk-java-98dece8f | New jobs for you: agentic ai, Best match, Remote. Check them out. | justjoin.it | 2026-06-13T08:13Z
+- [ ] https://justjoin.it/offers/7n-workflow-engineer-agentic-ai--gdansk-java | New jobs for you: agentic ai, Best match, Remote. Check them out. | justjoin.it | 2026-06-13T08:13Z
+- [ ] https://justjoin.it/offers/poland-machine-learning-engineer-ml-specialist-mlops-warszawa-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-13T08:13Z
+- [ ] https://justjoin.it/offers/link-group-ai-python-developer-warszawa-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-13T08:13Z
+- [ ] https://justjoin.it/offers/itlt-llm-rag-engineer-poland-remote--ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-13T08:13Z
+- [ ] https://justjoin.it/offers/craftware-senior-ai-engineer-warszawa-ai-42d783b0 | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-13T08:13Z
+- [ ] https://justjoin.it/offers/upvanta-sp-z-o-o--senior-ai-governance-consultant-krakow-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-13T08:13Z
+- [ ] https://justjoin.it/offers/itlt-ai-agentic-specialist-polska-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-13T08:13Z
+- [ ] https://justjoin.it/offers/be-in-it-senior-genai-engineer-warszawa-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-13T08:13Z
+- [ ] https://justjoin.it/offers/antal-sp-z-o-o--backend-developer-with-ai--wroclaw-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-13T08:13Z
+- [ ] https://www.xing.com/jobs/dresden-junior-ai-deployment-ingenieur-agentische-fertigung-dresden-155279667 | One new job ad for your search alert: ai engineer | mail.xing.com | 2026-06-13T08:13Z
+- [ ] https://www.xing.com/jobs/berlin-fullstack-developer-vue-3-kotlin-100-remote-155283247 | 10+ new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-13T08:13Z
+- [ ] https://www.xing.com/jobs/wien-senior-devops-engineer-page-is-loaded-153845023 | 10+ new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-13T08:13Z
+- [ ] https://at.indeed.com/viewjob?jk=2075b02984362aca | 1 Ai Entwickler Job in Wien | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://de.indeed.com/viewjob?jk=95d8ffd24b093735 | Owkin sucht Software Engineer + 2 neue Agentic Ai Jobs | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://de.indeed.com/viewjob?jk=dce12ff40092145a | Owkin sucht Software Engineer + 2 neue Agentic Ai Jobs | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://de.indeed.com/viewjob?jk=585214aa2fa34d52 | InnovationTeam sucht Junior AI Engineer - Computer Vision + 2 neue Ai Ml Engineer Jobs | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://de.indeed.com/viewjob?jk=9b4728dc59580697 | InnovationTeam sucht Junior AI Engineer - Computer Vision + 2 neue Ai Ml Engineer Jobs | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://nl.indeed.com/viewjob?jk=0fa0e53ebf6e7349 | Cyferd zoekt een Applied Data Scientist + 4 nieuwe banen als .NET in Thuiswerken | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://at.indeed.com/viewjob?jk=e7fd4c5c4de10a54 | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 10 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://at.indeed.com/viewjob?jk=a0c9be4e18e51bf7 | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 10 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://at.indeed.com/viewjob?jk=aa621b9a4994932c | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 10 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://at.indeed.com/viewjob?jk=ab93332a3c61707f | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 10 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://at.indeed.com/viewjob?jk=6db461db713dff60 | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 10 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://at.indeed.com/viewjob?jk=bbf110b36461bad4 | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 10 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://at.indeed.com/viewjob?jk=5d955d01cd43df17 | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 10 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://at.indeed.com/viewjob?jk=2b0baf6497bf26b7 | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 10 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://www.xing.com/jobs/vienna-senior-software-engineer-genders-glue-code-155127093 | Technodat Technische Datenverarbeitung GmbH, IT-Services der Sozialversicherung GmbH, viewpointsystem gmbh and other great companies are loo | mail.xing.com | 2026-06-13T08:13Z
+- [ ] https://www.xing.com/jobs/salzburg-anwendungsentwickler-proalpha-erp-branchenloesung-100-remote-90-000-mwd-155207295 | Technodat Technische Datenverarbeitung GmbH, IT-Services der Sozialversicherung GmbH, viewpointsystem gmbh and other great companies are loo | mail.xing.com | 2026-06-13T08:13Z
+- [ ] https://www.xing.com/jobs/wien-senior-java-backend-developer-all-genders-155236848 | Technodat Technische Datenverarbeitung GmbH, IT-Services der Sozialversicherung GmbH, viewpointsystem gmbh and other great companies are loo | mail.xing.com | 2026-06-13T08:13Z
+- [ ] https://www.xing.com/jobs/wien-senior-data-ai-architect-155115969 | Technodat Technische Datenverarbeitung GmbH, IT-Services der Sozialversicherung GmbH, viewpointsystem gmbh and other great companies are loo | mail.xing.com | 2026-06-13T08:13Z
+- [ ] https://www.xing.com/jobs/wien-sap-job-abap-senior-developer-raum-wien-155070551 | Technodat Technische Datenverarbeitung GmbH, IT-Services der Sozialversicherung GmbH, viewpointsystem gmbh and other great companies are loo | mail.xing.com | 2026-06-13T08:13Z
+- [ ] https://www.xing.com/jobs/vienna-senior-data-scientist-genders-pattern-hunter-155104342 | Technodat Technische Datenverarbeitung GmbH, IT-Services der Sozialversicherung GmbH, viewpointsystem gmbh and other great companies are loo | mail.xing.com | 2026-06-13T08:13Z
+- [ ] https://nl.indeed.com/viewjob?jk=97e3e6da84b6e2fa | Cyferd zoekt een Applied Data Scientist + 14 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://nl.indeed.com/viewjob?jk=920eebd5fa4c1cb2 | Cyferd zoekt een Applied Data Scientist + 14 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://nl.indeed.com/viewjob?jk=e8261e386afec2aa | Cyferd zoekt een Applied Data Scientist + 14 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://nl.indeed.com/viewjob?jk=95fb616df15917c2 | Cyferd zoekt een Applied Data Scientist + 14 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://nl.indeed.com/viewjob?jk=c94df0fef9d02cf6 | Cyferd zoekt een Applied Data Scientist + 14 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://nl.indeed.com/viewjob?jk=8c157444e8e6b3f9 | Cyferd zoekt een Applied Data Scientist + 14 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://nl.indeed.com/viewjob?jk=6f29755d7c9cf0ba | Cyferd zoekt een Applied Data Scientist + 14 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://nl.indeed.com/viewjob?jk=d8ccfea1d03edd55 | Cyferd zoekt een Applied Data Scientist + 14 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://nl.indeed.com/viewjob?jk=bc88561b53c7adc8 | Cyferd zoekt een Applied Data Scientist + 14 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://nl.indeed.com/viewjob?jk=e5767dc70a9c81c2 | Cyferd zoekt een Applied Data Scientist + 14 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://nl.indeed.com/viewjob?jk=517a5bd0f47e479c | Cyferd zoekt een Applied Data Scientist + 14 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://linkedin.com/jobs/view/4423156909 | Full-Stack Developer - digitale Versicherungslösungen (m/w/d) at Wüstenrot Gruppe | linkedin.com | 2026-06-13T08:13Z
+- [ ] https://linkedin.com/jobs/view/4426269691 | Full-Stack Developer - digitale Versicherungslösungen (m/w/d) at Wüstenrot Gruppe | linkedin.com | 2026-06-13T08:13Z
+- [ ] https://linkedin.com/jobs/view/4426255826 | Full-Stack Developer - digitale Versicherungslösungen (m/w/d) at Wüstenrot Gruppe | linkedin.com | 2026-06-13T08:13Z
+- [ ] https://de.indeed.com/viewjob?jk=c0427b1f5363309b | Smartedge Solution sucht SAP FICO Consultant + 3 neue .NET Jobs in Remote | jobalert.indeed.com | 2026-06-13T08:13Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-ai-data-scientist-warszawa-rondo-onz-1,oferta,47a40000-59d6-3231-6699-08dec7c3cf53 | 🔵🟢 Nowe oferty pracy: „ai engineer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-13T08:13Z

@@ -27,3 +27,4 @@ to discover more jobs; new findings can be pasted into pipeline.md.
 - [ ] https://www.xing.com/jobseeker-criteria | 10 new job ads for your search alert: Full stack entwickler | mail.xing.com | 2026-05-21T08:29Z
 - [ ] https://www.xing.com/jobs/my-jobs | One new job ad for your search alert: c# | mail.xing.com | 2026-06-11T05:05Z
 - [ ] https://www.metajob.at/?q=Informationstechnik&l=Salzburg+(Bundesland)&r=20&tl=20260611060000 | 8 neue Jobs zu Ihrer Suche auf METAJob | metajob.at | 2026-06-12T07:26Z
+- [ ] https://www.metajob.at/?q=Informationstechnik&l=Salzburg+(Bundesland)&r=20&tl=20260612060000 | 11 neue Jobs zu Ihrer Suche auf METAJob | metajob.at | 2026-06-13T08:13Z
