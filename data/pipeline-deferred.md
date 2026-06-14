@@ -977,3 +977,35 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://linkedin.com/jobs/view/4426255826 | Full-Stack Developer - digitale Versicherungslösungen (m/w/d) at Wüstenrot Gruppe | linkedin.com | 2026-06-13T08:13Z
 - [ ] https://de.indeed.com/viewjob?jk=c0427b1f5363309b | Smartedge Solution sucht SAP FICO Consultant + 3 neue .NET Jobs in Remote | jobalert.indeed.com | 2026-06-13T08:13Z
 - [ ] https://theprotocol.it/szczegoly/praca/senior-ai-data-scientist-warszawa-rondo-onz-1,oferta,47a40000-59d6-3231-6699-08dec7c3cf53 | 🔵🟢 Nowe oferty pracy: „ai engineer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-13T08:13Z
+- [ ] https://justjoin.it/offers/holisticon-connect-ml-software-engineer-wroclaw-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-14T08:12Z
+- [ ] https://justjoin.it/offers/emagine-polska-ai-architect-gdansk-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-14T08:12Z
+- [ ] https://justjoin.it/offers/link-group-senior-manager-artificial-intelligence-gdansk-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-14T08:12Z
+- [ ] https://justjoin.it/offers/limango-polska-machine-learning-engineer-personalization-m-f-d-lodz-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-14T08:12Z
+- [ ] https://justjoin.it/offers/netguru-ai-engineer-lodz-ai-04f973ef | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-14T08:12Z
+- [ ] https://www.xing.com/jobs/dresden-junior-ai-deployment-ingenieur-agentische-fertigung-155298940 | One new job ad for your search alert: ai engineer | mail.xing.com | 2026-06-14T08:12Z
+- [ ] https://www.xing.com/jobs/dresden-manager-platform-engineering-155298775 | 2 new job ads for your search alert: .net | mail.xing.com | 2026-06-14T08:12Z
+- [ ] https://de.indeed.com/viewjob?jk=b2f3cc4f48e540fb | RoX Health sucht Agentic Innovation Developer - Werkstudent (m/w/d) + 2 neue Agentic Ai Jobs | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://at.indeed.com/viewjob?jk=aa872e517cc30916 | Radancy sucht AI Engineer + 12 neue Ai Engineer Jobs in Wien | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://at.indeed.com/viewjob?jk=cd77031e5179e5f0 | Radancy sucht AI Engineer + 21 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://de.indeed.com/viewjob?jk=07c0f00f2b52a54e | 1 Applied Ai Engineer Job | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://nl.indeed.com/viewjob?jk=5ea1bdc8fe6092c3 | 1 nieuwe applied ai engineer vacature | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://de.indeed.com/viewjob?jk=2211f2d94c7da6fc | 1 Software Developer Job in Remote | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://de.indeed.com/viewjob?jk=a342c5d7aac360a2 | Cello sucht Software Engineer (m/f/d) + 9 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://nl.indeed.com/viewjob?jk=cf5e00ebde14b07c | Gaide zoekt een AI Engineer Intern + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://nl.indeed.com/viewjob?jk=6190c74657db4627 | Gaide zoekt een AI Engineer Intern + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://nl.indeed.com/viewjob?jk=1165fc92271b6ffd | Gaide zoekt een AI Engineer Intern + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://nl.indeed.com/viewjob?jk=d72c6746805f07d5 | Gaide zoekt een AI Engineer Intern + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://nl.indeed.com/viewjob?jk=85cbe21a1e43ac4b | Gaide zoekt een AI Engineer Intern + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://nl.indeed.com/viewjob?jk=80094633d84b62fb | Gaide zoekt een AI Engineer Intern + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://nl.indeed.com/viewjob?jk=ba1f485488e78bf4 | Gaide zoekt een AI Engineer Intern + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://de.indeed.com/viewjob?jk=b2ecbb42e94433a1 | ZDF Sparks GmbH sucht DevOps Engineer (m/w/d) + 8 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://de.indeed.com/viewjob?jk=449cb3cdd0f9a02b | ZDF Sparks GmbH sucht DevOps Engineer (m/w/d) + 8 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://de.indeed.com/viewjob?jk=fd3f790db2bcc2cb | ZDF Sparks GmbH sucht DevOps Engineer (m/w/d) + 8 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://de.indeed.com/viewjob?jk=7a2b0610568e0584 | ZDF Sparks GmbH sucht DevOps Engineer (m/w/d) + 8 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://de.indeed.com/viewjob?jk=8cea38bcd2dd3d38 | ZDF Sparks GmbH sucht DevOps Engineer (m/w/d) + 8 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-14T08:12Z
+- [ ] https://theprotocol.it/szczegoly/praca/t-hub---ai-engineer-llms-agents-warszawa-marynarska-12,oferta,47a40000-59d6-3231-7fc5-08dec88980a1 | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-14T08:12Z
+- [ ] https://theprotocol.it/szczegoly/praca/software-engineer-ai-solutions-warszawa-rondo-onz-1,oferta,47a40000-59d6-3231-be96-08dec890cea7 | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-14T08:12Z
+- [ ] https://theprotocol.it/szczegoly/praca/java-developer-warszawa-jana-nowaka-jezioranskiego-53a,oferta,32c90000-7e6c-d690-b4a0-08dec889d79e | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-14T08:12Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-software-engineer-ai-solutions-warszawa-rondo-onz-1,oferta,94a30000-978f-a29b-c0eb-08dec890dc14 | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-14T08:12Z
+- [ ] https://theprotocol.it/szczegoly/praca/ekspert-ds-migracji-danych-oracle-m-k-x-warszawa,oferta,32c90000-7e6c-d690-8d6f-08dec86b0c9a | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-14T08:12Z
+- [ ] https://theprotocol.it/szczegoly/praca/php-developer-regular-poznan-boleslawa-krzywoustego-3,oferta,32c90000-7e6c-d690-e121-08dec868ad2b | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-14T08:12Z
