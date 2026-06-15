@@ -1009,3 +1009,45 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://theprotocol.it/szczegoly/praca/senior-software-engineer-ai-solutions-warszawa-rondo-onz-1,oferta,94a30000-978f-a29b-c0eb-08dec890dc14 | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-14T08:12Z
 - [ ] https://theprotocol.it/szczegoly/praca/ekspert-ds-migracji-danych-oracle-m-k-x-warszawa,oferta,32c90000-7e6c-d690-8d6f-08dec86b0c9a | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-14T08:12Z
 - [ ] https://theprotocol.it/szczegoly/praca/php-developer-regular-poznan-boleslawa-krzywoustego-3,oferta,32c90000-7e6c-d690-e121-08dec868ad2b | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-14T08:12Z
+- [ ] https://nofluffjobs.com/pl/job/senior-modelling-simulation-engineer-softserve-remote-1 |  New week, new job – jobs matching your criteria: remote, ai, applied, engineer,  | nofluffjobs.com | 2026-06-15T08:11Z
+- [ ] https://nofluffjobs.com/pl/job/java-developer-with-ai-pharmaceutical-industry-f-m-x-sii-polska-remote |  New week, new job – jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-15T08:11Z
+- [ ] https://nofluffjobs.com/pl/job/ai-engineer-mpc-agents-dcg-remote |  New week, new job – jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-15T08:11Z
+- [ ] https://justjoin.it/offers/upvanta-sp-z-o-o--data-scientist-genai-azure--gdansk-data | New jobs for you: agentic ai, Best match, Remote. Check them out. | justjoin.it | 2026-06-15T08:11Z
+- [ ] https://justjoin.it/offers/fitatu-sp-z-o-o--ai-backend-developer-poznan-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-15T08:11Z
+- [ ] https://justjoin.it/offers/softblue-intechhouse--ai-infrastructure-engineer-mlops-k-m--warszawa-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-15T08:11Z
+- [ ] https://justjoin.it/offers/deviniti-ai-engineer-wroclaw-ai-c3fa5816 | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-15T08:11Z
+- [ ] https://justjoin.it/offers/kalepa-senior-backend-engineer---client-integrations-europe--new-york-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-15T08:11Z
+- [ ] https://www.xing.com/jobs/wien-sap-sd-mm-consultant-wien-155324366 | 5 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-15T08:11Z
+- [ ] https://www.xing.com/jobs/wien-senior-vertriebsprofi-stahlbau-home-office-vertriebsgebiet-europa-155324488 | 5 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-15T08:11Z
+- [ ] https://www.xing.com/jobs/wien-sap-fiori-entwickler-155324261 | 5 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-15T08:11Z
+- [ ] https://www.xing.com/jobs/wien-sap-sd-berater-155324203 | 5 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-15T08:11Z
+- [ ] https://de.indeed.com/viewjob?jk=b9797ae5f0148659 | Cello sucht Software Engineer (m/f/d) + 8 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://de.indeed.com/viewjob?jk=31d938f5dec42277 | Cello sucht Software Engineer (m/f/d) + 8 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://de.indeed.com/viewjob?jk=3e13838cdd1dff9e | Cello sucht Software Engineer (m/f/d) + 8 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://de.indeed.com/viewjob?jk=7cb3c28f83adfd92 | Booz Allen sucht Software Developer + 12 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://de.indeed.com/viewjob?jk=96d96a1dcb0291f9 | Booz Allen sucht Software Developer + 12 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://de.indeed.com/viewjob?jk=3e57f1f6ff5bc0c1 | Booz Allen sucht Software Developer + 12 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://de.indeed.com/viewjob?jk=1e215b1485199db5 | Booz Allen sucht Software Developer + 12 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://de.indeed.com/viewjob?jk=a8bda0e28fd203bc | Booz Allen sucht Software Developer + 12 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=3c26d358fa84e2ad | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=4752029619e1a141 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=f23747fa73bc21f7 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=735152d6384ee630 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=8c6918c74c1c82a6 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=24ab5e17de0f5bb4 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=15cdf1bec42fcc1b | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=09b924ec309a4362 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=74fa15709a23750f | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=22f164067406ad1a | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=1c5a097862f14a26 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=fa6223c0fa4a0ef2 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=65931b2011a54df1 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=b36484465bd16b2f | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=dc3c19abef8854f0 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nl.indeed.com/viewjob?jk=350c4e6ce83745af | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-15T08:11Z
+- [ ] https://nofluffjobs.com/pl/job/senior-data-engineer-ai-snowflake-acaisoft-poland-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-15T08:11Z
+- [ ] https://nofluffjobs.com/pl/job/data-engineer-data-ai-consultant-ebis-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-15T08:11Z
+- [ ] https://nofluffjobs.com/pl/job/platform-engineer-ai-supercompute-infrastructure-networking-systems-cloud-engineering-deloitte-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-15T08:11Z
+- [ ] https://nofluffjobs.com/pl/job/software-developer-ai-cdq-poland-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-15T08:11Z
+- [ ] https://nofluffjobs.com/pl/job/senior-robotics-ai-and-simulation-engineer-softserve-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-15T08:11Z
+- [ ] https://nofluffjobs.com/pl/job/ai-product-engineer-tooploox-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-15T08:11Z

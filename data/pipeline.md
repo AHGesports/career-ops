@@ -1336,6 +1336,46 @@
 - [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4426970639     <!-- via Gmail:linkedin 2026-06-14T08:12Z auto-match: \bnet\b,\bc#,\bfull stack\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4425302081     <!-- via Gmail:linkedin 2026-06-14T08:12Z auto-match: \bnet\b,\bc#,\bfull stack\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4428649412     <!-- via Gmail:linkedin 2026-06-15T08:11Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4428653052     <!-- via Gmail:linkedin 2026-06-15T08:11Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4428661002     <!-- via Gmail:linkedin 2026-06-15T08:11Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4427018686     <!-- via Gmail:linkedin 2026-06-15T08:11Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4428620067     <!-- via Gmail:linkedin 2026-06-15T08:11Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4428660292     <!-- via Gmail:linkedin 2026-06-15T08:11Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/ai-engineer-connectis--remote-2     <!-- via Gmail:nfj 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/ai-native-engineer-full-stack-agentic-ai-engineer-vecten-remote     <!-- via Gmail:nfj 2026-06-15T08:11Z auto-match: \bfull stack\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/power-platform-developer-copilot-studio-link-group-remote     <!-- via Gmail:nfj 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/agentic-code-analysis-engineer-mend-io-remote     <!-- via Gmail:nfj 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/research-engineer-agentic-behavior-jetbrains-remote     <!-- via Gmail:nfj 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/ai-engineer-genai-agentic-systems-dcg-remote     <!-- via Gmail:nfj 2026-06-15T08:11Z auto-match: \bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-ai-engineer-smartrecruiters-remote-1     <!-- via Gmail:nfj 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/applied-ai-engineer-iteamly-remote     <!-- via Gmail:nfj 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-ml-platform-reliability-infrastructure-engineer-holisticon-connect-remote     <!-- via Gmail:nfj 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/pretius-ai-engineer-budapest-ai-57eeb152     <!-- via Gmail:jjit 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/pretius-ai-engineer-warszawa-ai-a16d624d     <!-- via Gmail:jjit 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/dmtech-polska-ai-engineer-z-j-niemieckim---genai-lodz-other     <!-- via Gmail:jjit 2026-06-15T08:11Z auto-match: \bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/rite-nrg-ai-engineer-wroclaw-ai     <!-- via Gmail:jjit 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/pretius-ai-engineer-warszawa-ai-a2e4bbe7     <!-- via Gmail:jjit 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/vazco-ai-project-manager-wroclaw-pm     <!-- via Gmail:jjit 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/pretius-ai-engineer-budapest-ai     <!-- via Gmail:jjit 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/dmtech-polska-fullstack-developer-z-j-niemieckim---genai-lodz-javascript     <!-- via Gmail:jjit 2026-06-15T08:11Z auto-match: \bfullstack\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/koeln-senior-fullstack-entwickler-154746261     <!-- via Gmail:xing 2026-06-15T08:11Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://app.instaffo.com/candidate/job/6d55e3a5-40ee-4419-8b85-e4eccc5904b9     <!-- via Gmail:instaffo 2026-06-15T08:11Z auto-match: \bnet\b,\bc#,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://app.instaffo.com/candidate/job/f25c55d3-3050-494e-836f-000ccffded38     <!-- via Gmail:instaffo 2026-06-15T08:11Z auto-match: \bnet\b,\bc#,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://app.instaffo.com/candidate/job/1dfda343-800a-4c06-a441-c2272731b5d9     <!-- via Gmail:instaffo 2026-06-15T08:11Z auto-match: \bnet\b,\bc#,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://app.instaffo.com/candidate/job/515382f2-1be5-461a-966d-1e822495f33d     <!-- via Gmail:instaffo 2026-06-15T08:11Z auto-match: \bnet\b,\bc#,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://app.instaffo.com/candidate/job/6b2b2b3c-1114-4f9b-85b5-923debb99e32     <!-- via Gmail:instaffo 2026-06-15T08:11Z auto-match: \bnet\b,\bc#,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=65165e9800a70fbf     <!-- via Gmail:indeed 2026-06-15T08:11Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/ai-fullstack-developer-j-labs-software-specialist-remote     <!-- via Gmail:nfj 2026-06-15T08:11Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/fullstack-developer-react-node-js-ai-fintech-green-minds-remote     <!-- via Gmail:nfj 2026-06-15T08:11Z auto-match: \bnode js\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=e9a85b6fe301045c     <!-- via Gmail:indeed 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=32d865c946eb4bbf     <!-- via Gmail:indeed 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=eab30b00471af6f1     <!-- via Gmail:indeed 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=cb4709adea7f490a     <!-- via Gmail:indeed 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=c55569ba65ef62df     <!-- via Gmail:indeed 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=da1f45b5e7abd551     <!-- via Gmail:indeed 2026-06-15T08:11Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=1b0487ca709474be     <!-- via Gmail:indeed 2026-06-15T08:11Z auto-match: \bagentic\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->
