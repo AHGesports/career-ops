@@ -1376,6 +1376,68 @@
 - [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=da1f45b5e7abd551     <!-- via Gmail:indeed 2026-06-15T08:11Z auto-match: \bagentic\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=1b0487ca709474be     <!-- via Gmail:indeed 2026-06-15T08:11Z auto-match: \bagentic\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/directio-senior-ai-python-developer-warszawa-ai-fc3e6ea1     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/dcv-technologies-ai-application-developer-gdansk-ai     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/callstack-senior-ai-system-engineer-gdansk-ai     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/cyclad-it-operations-engineer-kafka-platform-support--warszawa-ai     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/koleo-specjalista-specjalistka-ds-ai-warszawa-ai     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-ai-python-developer-remote-work-type-directio     <!-- via Gmail:nfj 2026-06-17T08:22Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=b7eb6d6712deb5f6     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bopenai\b,\bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=24c3b30768338618     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=b24c0065b5c52902     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=c70bab4181bd867a     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=7466255b2874ee1a     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=2ba86ca8cee2e327     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-senior-full-stack-developer-net-angular-155333324     <!-- via Gmail:xing 2026-06-17T08:22Z auto-match: \bnet\b,\bangular\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=33425388e6b779c9     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=0b69c376866e14ea     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=213e1892760fa49c     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=e01cef5175ea08b0     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=f5733df417051f59     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=f6424683b2edd005     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=ac4902989c8597d2     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=e5342262a462f8d6     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=e95427ca83fc3e29     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=dfc2eeb65d7cf67e     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=0932886af377fb61     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=1bc906a45c0f068c     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=7acd04c6a893947f     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=83dd6e2edd99ce08     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=bb6096c51ba418ac     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=d665b16623329cba     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bnet\b,\bc#,\bangular\b,\bfull stack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=4cff3eb16f62895b     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bnet\b,\bc#,\bangular\b,\bfull stack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=5e8ba031d37d4e5b     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bnet\b,\bc#,\bangular\b,\bfull stack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=62bec972018e8875     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bnet\b,\bc#,\bangular\b,\bfull stack\b,\bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=c6779bc6ae43c613     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=5c45f35bc7ea0664     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/transition-technologies-psc-genai-architect-warszawa-ai     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/dcg-senior-product-engineer-poland-remote--ai     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/expert-python-engineer-with-ai-ml-skills-gft-poland-krakow     <!-- via Gmail:nfj 2026-06-17T08:22Z auto-match: \bpython\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-python-engineer-with-ai-ml-skills-gft-poland-krakow     <!-- via Gmail:nfj 2026-06-17T08:22Z auto-match: \bpython\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/expert-python-consultant-with-ai-ml-skills-gft-poland-krakow     <!-- via Gmail:nfj 2026-06-17T08:22Z auto-match: \bpython\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/ai-engineer-asana-warszawa     <!-- via Gmail:nfj 2026-06-17T08:22Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-python-consultant-with-ai-ml-skills-gft-poland-krakow     <!-- via Gmail:nfj 2026-06-17T08:22Z auto-match: \bpython\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://theprotocol.it/szczegoly/praca/fullstack-net-developer-warszawa-stefana-okrzei-1,oferta,47a40000-59d6-3231-a1a1-08decaafe7c4     <!-- via Gmail:theprotocol 2026-06-17T08:22Z auto-match: \bnet\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/hays-poland-automation-engineer-python--krakow-python     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bpython\b,\bagentic\b,\bautomation engineer\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/emagine-polska-senior-net-developer-warszawa-net-f2cbf3c7     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bnet\b,\bpython\b,\bagentic\b,\bautomation engineer\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/addepto-ai-solution-architect-gdansk-architecture     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bpython\b,\bagentic\b,\bautomation engineer\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/sunscrapers-ai-native-engineer-full-stack-agentic-ai-engineer--warszawa-ai     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bfull stack\b,\bpython\b,\bagentic\b,\bautomation engineer\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/itmagination-senior-ai-full-stack-developer-python-angular--gdansk-python     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bangular\b,\bfull stack\b,\bpython\b,\bagentic\b,\bautomation engineer\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/emagine-polska-ai-security-engineer---agentic-ai-ai-hubs-use-cases-lisbon-ai     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bpython\b,\bagentic\b,\bautomation engineer\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/addepto-ai-solution-architect-gdansk-ai     <!-- via Gmail:jjit 2026-06-17T08:22Z auto-match: \bpython\b,\bagentic\b,\bautomation engineer\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-senior-full-stack-software-engineer-financial-infrastructure-payments-155334602     <!-- via Gmail:xing 2026-06-17T08:22Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/cologne-ai-developer-llm-products-remote-155330147     <!-- via Gmail:xing 2026-06-17T08:22Z auto-match: \bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/cologne-ai-engineer-llm-remote-155330145     <!-- via Gmail:xing 2026-06-17T08:22Z auto-match: \bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-agentic-ai-engineer-c-net-softserve-remote     <!-- via Gmail:nfj 2026-06-17T08:22Z auto-match: \bnet\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=fd3174519bca4410     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bnet\b,\bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=0d249d37fa0fd6d6     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=3966c9c1decea755     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=bd8a2376d8e28fe1     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=5107b10c4cc6aa82     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=2ae7c245dfbc3adb     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=f0d30d95f2728c1f     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=7401f159fc9b4fba     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bc# -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->

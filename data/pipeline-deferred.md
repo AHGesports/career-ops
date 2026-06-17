@@ -1051,3 +1051,110 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://nofluffjobs.com/pl/job/software-developer-ai-cdq-poland-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-15T08:11Z
 - [ ] https://nofluffjobs.com/pl/job/senior-robotics-ai-and-simulation-engineer-softserve-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-15T08:11Z
 - [ ] https://nofluffjobs.com/pl/job/ai-product-engineer-tooploox-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-15T08:11Z
+- [ ] https://linkedin.com/jobs/view/4429503315 | Softwareentwickler (m/w/d) at Employer Brand Anchor | linkedin.com | 2026-06-17T08:22Z
+- [ ] https://linkedin.com/jobs/view/4429514083 | Softwareentwickler (m/w/d) at Employer Brand Anchor | linkedin.com | 2026-06-17T08:22Z
+- [ ] https://linkedin.com/jobs/view/4429239433 | Softwareentwickler (m/w/d) at Employer Brand Anchor | linkedin.com | 2026-06-17T08:22Z
+- [ ] https://linkedin.com/jobs/view/4426487050 | Softwareentwickler (m/w/d) at Employer Brand Anchor | linkedin.com | 2026-06-17T08:22Z
+- [ ] https://talentportal.germantechjobs.de/api/job-redirect?jobId=FERENDIN-Engineering-GmbH-Java-Senior-Entwicklerin-Webtechnologien-mwd | 1 New Job Matching Your Alert - Software Engineering | germantechjobs.de | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/eichenau-junior-webentwickler-fullstack-festanstellung-onsite-remote-155380933 | One new job ad for your search alert: Full stack entwickler | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/berlin-tech-product-manager-ai-chatbot-155366092 | 2 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/berlin-tech-product-manager-ai-chatbot-155366066 | 2 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/nidderau-shopify-entwickler-shopify-programmer-155359839 | 3 new job ads for your search alert: full stack developer | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/nidderau-ki-spezialist-ai-power-user-schwerpunkt-claude-cowork-claude-code-155359837 | 5 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/mid-senior-ai-engineer-with-networking-experience-codilime-remote | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/backend-ai-engineer-acaisoft-poland-remote | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/senior-software-ai-developer-business-intelligence-xtb-remote | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/devops-engineer-ai-ml-experis-polska-remote-1 | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/mlops-engineer-dcg-remote-1 | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/data-architect-ai-m-kn-upvanta-remote | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/senior-software-engineer-applied-ai-remote-from-poland-oversee | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/ml-engineer-python-iteamly-remote | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=049bfd88a4190a50 | 1 Ai Ml Engineer Job | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://at.indeed.com/viewjob?jk=2ee7c0bb3bd063ed | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 11 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://at.indeed.com/viewjob?jk=ac8de1d21d3d947c | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 11 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://at.indeed.com/viewjob?jk=2da0aaeeb61a1859 | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 11 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=f24dc714826ea8ab | 1 Applied Ai Engineer Job | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=cd8141693d237a16 | codea IT-Services sucht Web Developer (m/w/d) + 10 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=f4c1dbe83cc49e01 | codea IT-Services sucht Web Developer (m/w/d) + 10 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=bf011d2bbacdfbf4 | codea IT-Services sucht Web Developer (m/w/d) + 10 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=6b95539ccef0d09b | codea IT-Services sucht Web Developer (m/w/d) + 10 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=2b81790eeddcbf84 | codea IT-Services sucht Web Developer (m/w/d) + 10 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=d9b15eb493459040 | codea IT-Services sucht Web Developer (m/w/d) + 10 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=3b2d5f457a3594a1 | codea IT-Services sucht Web Developer (m/w/d) + 10 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=021cce814a161395 | codea IT-Services sucht Web Developer (m/w/d) + 10 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=c60e402782c66c3b | codea IT-Services sucht Web Developer (m/w/d) + 10 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://at.indeed.com/viewjob?jk=c9bc94be9d3843c3 | Salesforce sucht Lead Software Engineer + 21 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://at.indeed.com/viewjob?jk=e103eec7205621ca | Salesforce sucht Lead Software Engineer + 21 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://at.indeed.com/viewjob?jk=d0dac544c8964be8 | Salesforce sucht Lead Software Engineer + 21 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://at.indeed.com/viewjob?jk=9f5731906ac6f0e4 | Speechify sucht Software Engineer, iOS Core Product - Vienna, Austria + 18 neue Ai Engineer Jobs in Wien | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://at.indeed.com/viewjob?jk=723c86b1e4d0b606 | Speechify sucht Software Engineer, iOS Core Product - Vienna, Austria + 18 neue Ai Engineer Jobs in Wien | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://at.indeed.com/viewjob?jk=ad9d56efb0fe444e | Speechify sucht Software Engineer, iOS Core Product - Vienna, Austria + 18 neue Ai Engineer Jobs in Wien | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/salzburg-proalpha-anwendungsentwickler-4gl-erp-branchenloesung-100-home-office-mwd-155299832 | Technodat Technische Datenverarbeitung GmbH, ADMIRAL Gruppe, Vesterling AG - Personalberatung für Technologie and other great companies are  | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/wien-systemarchitect-155235323 | Technodat Technische Datenverarbeitung GmbH, ADMIRAL Gruppe, Vesterling AG - Personalberatung für Technologie and other great companies are  | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/wien-software-architect-155310697 | Technodat Technische Datenverarbeitung GmbH, ADMIRAL Gruppe, Vesterling AG - Personalberatung für Technologie and other great companies are  | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/wien-solution-architect-b2c-omnichannel-155268307 | Technodat Technische Datenverarbeitung GmbH, ADMIRAL Gruppe, Vesterling AG - Personalberatung für Technologie and other great companies are  | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/wien-senior-entwickler-155329395 | Technodat Technische Datenverarbeitung GmbH, ADMIRAL Gruppe, Vesterling AG - Personalberatung für Technologie and other great companies are  | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/salzburg-sap-job-abap-ui5-entwickler-raum-salzburg-155324312 | Technodat Technische Datenverarbeitung GmbH, ADMIRAL Gruppe, Vesterling AG - Personalberatung für Technologie and other great companies are  | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/wien-ai-expert-155329394 | Technodat Technische Datenverarbeitung GmbH, ADMIRAL Gruppe, Vesterling AG - Personalberatung für Technologie and other great companies are  | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/wien-devops-engineer-genders-155085627 | Technodat Technische Datenverarbeitung GmbH, ADMIRAL Gruppe, Vesterling AG - Personalberatung für Technologie and other great companies are  | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://nl.indeed.com/viewjob?jk=1807f5d3dd11f729 | EverAI zoekt een Senior Product Designer (Full Remote - Netherlands) + 10 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://nl.indeed.com/viewjob?jk=ab7c649b950aea03 | EverAI zoekt een Senior Product Designer (Full Remote - Netherlands) + 10 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://nl.indeed.com/viewjob?jk=11af706b1e25df6a | EverAI zoekt een Senior Product Designer (Full Remote - Netherlands) + 10 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://nl.indeed.com/viewjob?jk=26a5e4cdf582165a | EverAI zoekt een Senior Product Designer (Full Remote - Netherlands) + 10 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://nl.indeed.com/viewjob?jk=e40cba9f4bb654c9 | EverAI zoekt een Senior Product Designer (Full Remote - Netherlands) + 10 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://nl.indeed.com/viewjob?jk=6f2b0f2c98942cea | EverAI zoekt een Senior Product Designer (Full Remote - Netherlands) + 10 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://nl.indeed.com/viewjob?jk=30a3cda433b38e83 | EverAI zoekt een Senior Product Designer (Full Remote - Netherlands) + 10 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://nl.indeed.com/viewjob?jk=ae2ab62348e912a3 | EverAI zoekt een Senior Product Designer (Full Remote - Netherlands) + 10 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=1a8e7116cf50e9ba | Contabo GmbH sucht Software Engineer (all genders) + 7 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=71ac8ce60d33b83f | Contabo GmbH sucht Software Engineer (all genders) + 7 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=7d0a28a9be2e877a | Contabo GmbH sucht Software Engineer (all genders) + 7 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=ffeb265512e149ac | Contabo GmbH sucht Software Engineer (all genders) + 7 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=b8654af8d86bfbef | Contabo GmbH sucht Software Engineer (all genders) + 7 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://at.indeed.com/viewjob?jk=e0c0ef4c26c7e897 | 1 ai integration engineer Job in Österreich | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://linkedin.com/jobs/view/4427724291 | Senior Software Engineer Mountain Destinations (mfd) at SKIDATA | linkedin.com | 2026-06-17T08:22Z
+- [ ] https://linkedin.com/jobs/view/4427712839 | Senior Software Engineer Mountain Destinations (mfd) at SKIDATA | linkedin.com | 2026-06-17T08:22Z
+- [ ] https://linkedin.com/jobs/view/4427464881 | Senior Software Engineer Mountain Destinations (mfd) at SKIDATA | linkedin.com | 2026-06-17T08:22Z
+- [ ] https://linkedin.com/jobs/view/4428881727 | Senior Software Engineer Mountain Destinations (mfd) at SKIDATA | linkedin.com | 2026-06-17T08:22Z
+- [ ] https://linkedin.com/jobs/view/4423331107 | Senior Software Engineer Mountain Destinations (mfd) at SKIDATA | linkedin.com | 2026-06-17T08:22Z
+- [ ] https://linkedin.com/jobs/view/4428859912 | Senior Software Engineer Mountain Destinations (mfd) at SKIDATA | linkedin.com | 2026-06-17T08:22Z
+- [ ] https://linkedin.com/jobs/view/4425752097 | Senior Software Engineer Mountain Destinations (mfd) at SKIDATA | linkedin.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=e72f52980228cc38 | Contabo GmbH sucht Frontend-Focused Software Engineer (all genders) + 4 neue full stack Jobs in Remote | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=57199b5445e22a4c | Contabo GmbH sucht Frontend-Focused Software Engineer (all genders) + 4 neue full stack Jobs in Remote | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/data-scientist-ml-engineer-addepto-remote-26 | Your application for Agentic Code Analysis Engineer @ Mend.io | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/ai-ml-engineer-mindbox-remote | Your application for Agentic Code Analysis Engineer @ Mend.io | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-ai-engineer-krakow-aleja-pokoju-18,oferta,32c90000-7e6c-d690-ccdb-08decab4b00c | 🔵🟢 Nowe oferty pracy: „ai engineer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-17T08:22Z
+- [ ] https://theprotocol.it/szczegoly/praca/ai-engineer-java-krakow,oferta,32c90000-7e6c-d690-33ff-08decaaea15f | 🔵🟢 Nowe oferty pracy: „ai engineer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-17T08:22Z
+- [ ] https://theprotocol.it/szczegoly/praca/programista-full-stack-ze-spring-boot-i-angular-warszawa-zurawia-6-12,oferta,32c90000-7e6c-d690-ebb9-08decaae0c2c | 🔵🟢 Nowe oferty pracy: „ai engineer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-17T08:22Z
+- [ ] https://theprotocol.it/szczegoly/praca/frontend-developer-katowice-zabrska-16,oferta,94a30000-978f-a29b-abcc-08decac8a32a | 🔵🟢 Nowe oferty pracy: „ai engineer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-17T08:22Z
+- [ ] https://theprotocol.it/szczegoly/praca/data-engineer---data-scientist-m-f-warszawa,oferta,32c90000-7e6c-d690-d645-08dec7ae4c6d | 🔵🟢 Nowe oferty pracy: „ai engineer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-17T08:22Z
+- [ ] https://justjoin.it/offers/agileengine-salesforce-ai-integration-architect-krakow-architecture | New jobs for you: agentic ai, Best match, Remote. Check them out. | justjoin.it | 2026-06-17T08:22Z
+- [ ] https://justjoin.it/offers/connectis-java-backend-engineer-krakow-java | New jobs for you: agentic ai, Best match, Remote. Check them out. | justjoin.it | 2026-06-17T08:22Z
+- [ ] https://justjoin.it/offers/addepto-data-scientist-ml-engineer-gdansk-ai-d4a7b3e2 | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-17T08:22Z
+- [ ] https://justjoin.it/offers/kruk-s-a-platna-praktyka-w-dziale-ai-digital-enablement-area-wroclaw-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-17T08:22Z
+- [ ] https://justjoin.it/offers/addepto-ai-engineer-llms-python--gdansk-ai-acf36179 | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-17T08:22Z
+- [ ] https://justjoin.it/offers/dtiq-poland-sp-z-o-o--machine-learning-specialist-gliwice-ai-d508d09f | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-17T08:22Z
+- [ ] https://justjoin.it/offers/addepto-senior-data-scientist-ml-engineer-gdansk-ai-3a94e634 | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-17T08:22Z
+- [ ] https://justjoin.it/offers/people-more-p-s-a--ai-engineer-llm-engineer-ai-first-typescript--poznan-ai-58213987 | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-17T08:22Z
+- [ ] https://justjoin.it/offers/mailerlite-machine-learning-engineer-serbia-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-17T08:22Z
+- [ ] https://justjoin.it/offers/montrose-software-polska-sp-z-o-o-applied-ai-engineer-krakow-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-17T08:22Z
+- [ ] https://justjoin.it/offers/dtiq-poland-sp-z-o-o--machine-learning-specialist-gliwice-ai-d9a46be5 | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/rhein-ms-dynamics-365-ce-entwickler-155349265 | One new job ad for your search alert: c# | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/essen-fullstack-entwickler-java-typescript-opus-155327168 | 6 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/alsdorf-fullstack-developerin-react-java-155335084 | 6 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/homeoffice-deal-commercial-strategy-operations-lead-155350830 | 6 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/werther-westfalen-junior-full-stack-developer-befristet-2-monate-read-description-before-155330095 | 2 new job ads for your search alert: full stack engineer | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/nuernberg-fertigungsplaner-industrial-engineer-155332643 | 4 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://www.xing.com/jobs/cologne-applied-ai-developer-remote-155330146 | 4 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/ai-ml-developer-chemistry-industry-spyrosoft-remote | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/ai-architect-senior-ai-engineer-link-group-remote | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/ai-engineer-gcp-addepto-remote-1 | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/ai-agent-engineer-mindbox-remote | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/senior-ml-engineer-softserve-remote-2 | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://nofluffjobs.com/pl/job/ai-devops-engineer-lingaro-remote-3 | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=9a16fa3e9c020fab | codea IT-Services sucht Web Developer (m/w/d) + 17 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=26ea92771e123da7 | codea IT-Services sucht Web Developer (m/w/d) + 17 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://at.indeed.com/viewjob?jk=dd8918f2fc74a1c9 | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 12 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://nl.indeed.com/viewjob?jk=899e35d9fc725579 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://nl.indeed.com/viewjob?jk=4a3f3355f42887e1 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=750e14db8f5dd03b | blackned GmbH sucht Software Engineer Fullstack (m/w/d) + 4 neue full stack Jobs in Remote | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://de.indeed.com/viewjob?jk=b87dafad7e0f09de | blackned GmbH sucht Software Engineer Fullstack (m/w/d) + 4 neue full stack Jobs in Remote | jobalert.indeed.com | 2026-06-17T08:22Z
