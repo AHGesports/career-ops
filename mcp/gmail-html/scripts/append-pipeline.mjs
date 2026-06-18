@@ -254,6 +254,10 @@ function loadAppsMaxNum() {
 }
 let tsvSeq = loadAppsMaxNum() + 1;
 
+function finalTargetFor(r, url) {
+  return (r.indeed_final_targets || []).find(x => x.url === url)?.final_url || null;
+}
+
 for (const r of data.results) {
   const tag = senderShort(r.sender);
   const subject = r.metadata?.subject || '';
@@ -268,22 +272,27 @@ for (const r of data.results) {
 
     if (c.tag === 'auto-match') {
       const { company, role } = deriveCompanyRole(c.url, subject);
+      const finalTarget = finalTargetFor(r, c.url);
+      const finalMarker = finalTarget ? ` indeed-final:${finalTarget}` : '';
       // pipeline.md row — pre-checked, no further processing needed, score 5.0
       newPipelineLines.push(
-        `- [x] AUTO-MATCH | 5.0/5 | ${c.url}     <!-- via Gmail:${tag} ${nowIso} auto-match: ${c.matched.join(',')} -->`
+        `- [x] AUTO-MATCH | 5.0/5 | ${c.url}     <!-- via Gmail:${tag} ${nowIso} auto-match: ${c.matched.join(',')}${finalMarker} -->`
       );
       // tracker-additions TSV row (9 cols: num\tdate\tcompany\trole\tstatus\tscore\tpdf\treport\tnotes)
       const noteUrl = c.url.replace(/\t/g, ' ');
       const matchedKw = c.matched.join(',');
-      const noteText = `Auto-match (gmail:${tag}). matched=[${matchedKw}]. URL: ${noteUrl}`.replace(/\t/g, ' ');
+      const finalNote = finalTarget ? ` Final target: ${finalTarget}` : '';
+      const noteText = `Auto-match (gmail:${tag}). matched=[${matchedKw}]. URL: ${noteUrl}.${finalNote}`.replace(/\t/g, ' ');
       newTrackerRows.push(
         [tsvSeq++, today, company, role, 'Auto-Match', '5.0/5', '❌', '—', noteText].join('\t')
       );
     } else {
       // deferred — title from email subject + sender; URL kept verbatim
       const safeSubject = subject.replace(/\|/g, '/').replace(/\s+/g, ' ').slice(0, 140);
+      const finalTarget = finalTargetFor(r, c.url);
+      const finalMarker = finalTarget ? ` | indeed-final:${finalTarget}` : '';
       newDeferredLines.push(
-        `- [ ] ${c.url} | ${safeSubject || '(no subject)'} | ${senderToHostHint(r.sender)} | ${nowIso}`
+        `- [ ] ${c.url} | ${safeSubject || '(no subject)'} | ${senderToHostHint(r.sender)} | ${nowIso}${finalMarker}`
       );
     }
   }

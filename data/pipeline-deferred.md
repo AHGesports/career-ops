@@ -1158,3 +1158,65 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://nl.indeed.com/viewjob?jk=4a3f3355f42887e1 | Gaide zoekt een AI Engineer Intern + 19 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-17T08:22Z
 - [ ] https://de.indeed.com/viewjob?jk=750e14db8f5dd03b | blackned GmbH sucht Software Engineer Fullstack (m/w/d) + 4 neue full stack Jobs in Remote | jobalert.indeed.com | 2026-06-17T08:22Z
 - [ ] https://de.indeed.com/viewjob?jk=b87dafad7e0f09de | blackned GmbH sucht Software Engineer Fullstack (m/w/d) + 4 neue full stack Jobs in Remote | jobalert.indeed.com | 2026-06-17T08:22Z
+- [ ] https://linkedin.com/jobs/view/4427360540 | Senior Data Engineer - TV Insight at Red Bull | linkedin.com | 2026-06-18T08:28Z
+- [ ] https://linkedin.com/jobs/view/4428712432 | Senior Data Engineer - TV Insight at Red Bull | linkedin.com | 2026-06-18T08:28Z
+- [ ] https://justjoin.it/offers/yard-corporate-computer-vision---perception-engineer-warszawa-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-18T08:28Z
+- [ ] https://justjoin.it/offers/emagine-polska-ai-transformation-coach--lisbon-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-18T08:28Z
+- [ ] https://justjoin.it/offers/emagine-polska-ai-engineer-warszawa-ai-abce0672 | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-18T08:28Z
+- [ ] https://justjoin.it/offers/scalo-ai-engineer-katowice-ai-5a2139e3 | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/vienna-founders-associate-155394240 | 2 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/salzburg-softwareentwicklung-vollzeit-teilzeit-146696838 | One new job ad for your search alert: c# in Salzburg | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/freiburg-breisgau-mitarbeiter-it-systemadministration-entwicklungstools-155318685 | 3 new job ads for your search alert: .net entwickler | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/brannenburg-ai-agent-engineer-155404497 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/berlin-data-ai-engineer-155411060 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/wuerzburg-senior-ai-engineer-solution-architect-ai-155414314 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/wuerzburg-senior-ai-engineer-solution-architect-ai-155400247 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/balingen-ki-anwendungsentwickler-155414900 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/stuttgart-ai-operations-manager-low-code-automation-sales-enablement-155399191 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/homeoffice-software-engineer-data-growth-154899530 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/gerlafingen-senior-cloud-engineer-plattform-automation-ai-infrastructure-80-100-155392368 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/munich-software-engineer-genders-146762882 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/muenchen-software-engineer-all-genders-155398746 | 10+ new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/koeln-ki-governance-experte-148327083 | 7 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://www.xing.com/jobs/wallisellen-software-solution-engineer-155403768 | 5 new job ads for your search alert: .net | mail.xing.com | 2026-06-18T08:28Z
+- [ ] https://nofluffjobs.com/pl/job/senior-ai-engineer-simon-kucher-core-business-services-remote | 8 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-18T08:28Z
+- [ ] https://nofluffjobs.com/pl/job/senior-ml-ai-engineer-iteamly-remote | 8 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-18T08:28Z
+- [ ] https://nofluffjobs.com/pl/job/social-media-ai-content-specialist-coconut-agency-remote | 8 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=b70be7d10b6217bc | Corva sucht Backend Developer (Managed Services) + 3 neue Ai Ml Engineer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z | indeed-final:https://ats.rippling.com/corva/jobs/9c7e8d9f-70b1-41ee-8216-6b077592e83e?jobSite=Indeed
+- [ ] https://de.indeed.com/viewjob?jk=a1ba1c08e4fbca85 | Corva sucht Backend Developer (Managed Services) + 3 neue Ai Ml Engineer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://at.indeed.com/viewjob?jk=c1a8360978ef1499 | Speechify sucht Senior Software Engineer, Windows/Desktop Applications - Vienna, Austria + 10 neue ai integration engineer Jobs in Wien | jobalert.indeed.com | 2026-06-18T08:28Z | indeed-final:https://magenta.onlyfy.jobs/en/job/ow1r6638u7iosyqrl2brhkmqke4iiji?codes=1-INDEED
+- [ ] https://at.indeed.com/viewjob?jk=883aeed8fa60ffbf | Salesforce sucht Lead Software Engineer + 10 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://at.indeed.com/viewjob?jk=1fcca289856c049d | Salesforce sucht Lead Software Engineer + 10 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://nl.indeed.com/viewjob?jk=a864e1b97e49d26d | Fugro zoekt een AI & Automation Architect + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://nl.indeed.com/viewjob?jk=3d9b122af7e99344 | Fugro zoekt een AI & Automation Architect + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://nl.indeed.com/viewjob?jk=d5eb6af327efc6fe | Fugro zoekt een AI & Automation Architect + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://nl.indeed.com/viewjob?jk=5dee9bb51b46d95f | Fugro zoekt een AI & Automation Architect + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://nl.indeed.com/viewjob?jk=45211ff754b66a26 | Fugro zoekt een AI & Automation Architect + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://nl.indeed.com/viewjob?jk=19900316b015e2cb | Fugro zoekt een AI & Automation Architect + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://nl.indeed.com/viewjob?jk=e2dcece3ed085c91 | Fugro zoekt een AI & Automation Architect + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://nl.indeed.com/viewjob?jk=2c923fd3a68a7841 | Fugro zoekt een AI & Automation Architect + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://nl.indeed.com/viewjob?jk=ee2e1e439b4f40d0 | Fugro zoekt een AI & Automation Architect + 12 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=3336123f80b8a0fe | codea IT-Services sucht Web Developer (m/w/d) + 5 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=61b9dc7f70c58de6 | codea IT-Services sucht Web Developer (m/w/d) + 5 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=259a2c520cabd1be | EverReal GmbH sucht AI-First QA Engineer (Quality & Test Automation) (m/f/d) + 11 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=c08ac6efbc542599 | EverReal GmbH sucht AI-First QA Engineer (Quality & Test Automation) (m/f/d) + 11 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=64fbac926d310071 | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=9892ad099dd084cb | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=124b2d7d5010b4ab | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=0eb175efea895629 | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=8d988147bed40f86 | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=98f668d8ad8d7fe0 | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=76a304654ce81a28 | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=030dc0204cc5d15a | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=e1f804e04b81246a | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=c43c6ffa7bab6a82 | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=7050b53fac0de5cb | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=fd94e820fadd8b21 | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=90d1c3298cb45932 | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=2d52024fd76b808a | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://at.indeed.com/viewjob?jk=66905fae2877333a | Boston Consulting Group sucht AI Architect (all genders) - BCG Platinion Vienna, Austria + 11 neue Agentic Ai Jobs in Wien | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=be7d5e3f4bc9a970 | KernelMinds GbR sucht Full Stack Developer (m/w/d) + 3 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://at.indeed.com/viewjob?jk=b5206c3c86e654f2 | 1 Softwareentwickler Job in Salzburg | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://de.indeed.com/viewjob?jk=b72e6d3accc3a594 | 1 .NET Job in Remote | jobalert.indeed.com | 2026-06-18T08:28Z
+- [ ] https://linkedin.com/jobs/view/4429155725 | Softwareentwickler (m/w/d) at Employer Brand Anchor | linkedin.com | 2026-06-18T08:28Z
+- [ ] https://linkedin.com/jobs/view/4429163715 | Softwareentwickler (m/w/d) at Employer Brand Anchor | linkedin.com | 2026-06-18T08:28Z

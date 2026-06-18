@@ -72,6 +72,17 @@ if (!latestRun) {
 // ---------- Step 2: follow trackers (optional) ----------
 let runData = JSON.parse(readFileSync(latestRun, 'utf8'));
 const trackerCount = runData.results.reduce((n, r) => n + (r.trackers_to_follow?.length || 0), 0);
+const indeedCount = runData.results.reduce((n, r) => {
+  if ((r.sender || '').toLowerCase() !== 'donotreply@jobalert.indeed.com') return n;
+  return n + (r.urls || []).filter(u => {
+    try {
+      const url = new URL(u);
+      return url.host.endsWith('indeed.com') && url.pathname === '/viewjob' && url.searchParams.has('jk');
+    } catch {
+      return false;
+    }
+  }).length;
+}, 0);
 
 if (trackerCount > 0 && !noFollow) {
   // Try follow-trackers; if Playwright not installed, exit code is 2 — emit warning.
@@ -86,6 +97,23 @@ if (trackerCount > 0 && !noFollow) {
     );
   } else if (r.status !== 0) {
     process.stderr.write(`scan: follow-trackers failed (exit ${r.status}). Continuing to append step.\n`);
+  }
+  runData = JSON.parse(readFileSync(latestRun, 'utf8'));
+}
+
+// ---------- Step 2.25: Indeed-only final-target dedup ----------
+if (indeedCount > 0 && !noFollow) {
+  process.stdout.write(`\n--- indeed-final-dedup (${indeedCount} URLs) ---\n`);
+  const r = spawnSync(process.execPath, [join(SCRIPT_DIR, 'dedup-indeed-final.mjs'), '--in', latestRun],
+    { cwd: PROJECT_ROOT, stdio: 'inherit' });
+  if (r.status === 2) {
+    process.stdout.write(
+      `\nNOTE: Playwright not installed — ${indeedCount} Indeed URLs were not final-target deduped.\n` +
+      `Install with: cd mcp/gmail-html && npm install playwright && npx playwright install chromium\n` +
+      `Or pass --no-follow to skip browser-based resolution.\n`
+    );
+  } else if (r.status !== 0) {
+    process.stderr.write(`scan: indeed-final-dedup failed (exit ${r.status}). Continuing to append step.\n`);
   }
   runData = JSON.parse(readFileSync(latestRun, 'utf8'));
 }
@@ -145,6 +173,10 @@ process.stdout.write(`  Threads:  ${stats.seen} seen / ${stats.history_skip} ski
 process.stdout.write(`  URLs:     ${urlsResolved} resolved (after dedup + noise + final-dup)\n`);
 const cls = runData.classifier || {};
 process.stdout.write(`  Classify: auto-match=${cls.auto_match || 0} / deferred=${cls.deferred || 0}\n`);
+if (runData.indeed_final_dedup) {
+  const d = runData.indeed_final_dedup;
+  process.stdout.write(`  Indeed final dedup: ${d.input || 0} checked / ${d.kept || 0} kept / ${(d.duplicate || 0) + (d.known_duplicate || 0)} dup / ${d.failed || 0} failed\n`);
+}
 process.stdout.write(`  Trackers: ${trackersInput} total / ${trackersResolved} resolved / ${trackersLists} lists/SERP / ${trackersOffsite} offsite / ${trackersIgnored} ignored / ${trackersFailed} failed / ${trackersUnresolved} unresolved (no-follow)\n`);
 
 // Capture-loss audit: per-thread compare subject_expected_count vs (urls + pipeline_dup + noise).

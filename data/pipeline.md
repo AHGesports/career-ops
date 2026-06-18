@@ -1438,6 +1438,19 @@
 - [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=f0d30d95f2728c1f     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bc# -->
 - [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=7401f159fc9b4fba     <!-- via Gmail:indeed 2026-06-17T08:22Z auto-match: \bc# -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-senior-fullstack-engineer-climatiq-151078593     <!-- via Gmail:xing 2026-06-18T08:28Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/leipzig-softwareentwickler-net-leipzig-155100098     <!-- via Gmail:xing 2026-06-18T08:28Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/mlops-engineer-azure-databricks-python-ml-platform-engineer-square-one-resources-remote     <!-- via Gmail:nfj 2026-06-18T08:28Z auto-match: \bpython\b,\bazure\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=acc67f1a46d65cc1     <!-- via Gmail:indeed 2026-06-18T08:28Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=d0cf8bbc9f4e1f38     <!-- via Gmail:indeed 2026-06-18T08:28Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=89163fbfe4eed22e     <!-- via Gmail:indeed 2026-06-18T08:28Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=9ed340916b4493bf     <!-- via Gmail:indeed 2026-06-18T08:28Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=7fdeec73a606e095     <!-- via Gmail:indeed 2026-06-18T08:28Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=cf896d0264ec265b     <!-- via Gmail:indeed 2026-06-18T08:28Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/agileengine-full-stack-engineer-krakow-net     <!-- via Gmail:jjit 2026-06-18T08:28Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/be-in-it-senior-fullstack-developer-net-angular--krakow-net     <!-- via Gmail:jjit 2026-06-18T08:28Z auto-match: \bnet\b,\bangular\b,\bfullstack\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=d9ebf796d853fe39     <!-- via Gmail:indeed 2026-06-18T08:28Z auto-match: \bfull stack\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->
