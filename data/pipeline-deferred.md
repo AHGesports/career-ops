@@ -1220,3 +1220,52 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://de.indeed.com/viewjob?jk=b72e6d3accc3a594 | 1 .NET Job in Remote | jobalert.indeed.com | 2026-06-18T08:28Z
 - [ ] https://linkedin.com/jobs/view/4429155725 | Softwareentwickler (m/w/d) at Employer Brand Anchor | linkedin.com | 2026-06-18T08:28Z
 - [ ] https://linkedin.com/jobs/view/4429163715 | Softwareentwickler (m/w/d) at Employer Brand Anchor | linkedin.com | 2026-06-18T08:28Z
+- [ ] https://theprotocol.it/szczegoly/praca/ai-engineer-warszawa-zwirki-i-wigury-16a,oferta,8b070000-eede-f619-ab34-08decd20b163 | 🔵🟢 Nowe oferty pracy: „ai engineer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-19T08:21Z
+- [ ] https://theprotocol.it/szczegoly/praca/ai-engineer-warszawa-zwirki-i-wigury-16a,oferta,2a7e0000-1d75-d6c2-b724-08decd206d12 | 🔵🟢 Nowe oferty pracy: „ai engineer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-19T08:21Z
+- [ ] https://theprotocol.it/szczegoly/praca/data-engineer-warszawa,oferta,8b070000-eede-f619-3937-08decd1b8424 | 🔵🟢 Nowe oferty pracy: „ai engineer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-19T08:21Z
+- [ ] https://theprotocol.it/szczegoly/praca/ai-automatization-engineer-wroclaw,oferta,90930000-5d99-4a0e-f707-08decd03de69 | 🔵🟢 Nowe oferty pracy: „ai engineer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-19T08:21Z
+- [ ] https://theprotocol.it/szczegoly/praca/ai---llmops-engineer-m-k-lodz-wersalska-75-77,oferta,47a40000-59d6-3231-ab34-08decc48c4cd | 🔵🟢 Nowe oferty pracy: „ai engineer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-19T08:21Z
+- [ ] https://justjoin.it/offers/antal-sp-z-o-o--ai-operations-engineer-barcelona-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-19T08:21Z
+- [ ] https://justjoin.it/offers/dataart-ai-solutions-architect-lodz-ai-26b7c39b | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-19T08:21Z
+- [ ] https://justjoin.it/offers/red-sky-coo-cto-co-founder-warszawa-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-19T08:21Z
+- [ ] https://justjoin.it/offers/altimetrik-poland-senior-ai-ml-engineer-krakow-ai-de00b0cc | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/weinsberg-software-engineer-retail-media-155474644 | 6 new job ads for your search alert: full stack engineer | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/salzburg-software-engineer-152473912 | One new job ad for your search alert: .net in Salzburg | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/wien-full-stack-java-entwickler-155451721 | 5 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/wien-senior-software-engineer-angular-java-155460040 | 5 new job ads for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/duesseldorf-softwareentwickler-155462545 | One new job ad for your search alert: c# entwickler | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/berlin-ki-entwickler-ai-engineer-projekte-mittelstand-155470719 | 8 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/gerlafingen-senior-cloud-engineer-plattform-automation-ai-infrastructure-80-100-155444203 | 8 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/hamburg-senior-data-engineer-151351733 | 8 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/deutschland-cmo-ai-start-100-remote-155459834 | 8 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/dresden-growth-lead-ai-fastic-155017259 | 8 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/deutschland-cmo-ai-start-100-remote-155460026 | 8 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/ulm-entwickler-releasemanagement-tooling-ulm-remote-155444327 | 2 new job ads for your search alert: .net entwickler | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/berlin-initiative-application-146727549 | 5 new job ads for your search alert: full stack developer | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/machine-learning-engineer-psignite-remote | 8 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-19T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/ai-engineer-scalo-remote-1 | 8 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-19T08:21Z
+- [ ] https://at.indeed.com/viewjob?jk=fe59cbea65327334 | 1 Ai Entwickler Job in Wien | jobalert.indeed.com | 2026-06-19T08:21Z | indeed-final:https://fluidtime.com/karriere/software-engineer-java/
+- [ ] https://de.indeed.com/viewjob?jk=ae515b923476af44 | 1 softwareentwickler Job in Home Office | jobalert.indeed.com | 2026-06-19T08:21Z | indeed-final:https://de.indeed.com/job/werkstudent-informatik-ae515b923476af44?xpse=SoCu67I3ivWmhkT4mh0LbzkdCdPP&xfps=cf9805af-4130-41c5-ac6a-bc866d2649ab
+- [ ] https://de.indeed.com/viewjob?jk=803669e39240c792 | SoftServe sucht Robotics Architect + 4 neue Ai Ml Engineer Jobs | jobalert.indeed.com | 2026-06-19T08:21Z | indeed-final:https://career.softserveinc.com/en-us/vacancies/robotics-architect-86625
+- [ ] https://de.indeed.com/viewjob?jk=39f06f3c02775475 | SoftServe sucht Robotics Architect + 4 neue Ai Ml Engineer Jobs | jobalert.indeed.com | 2026-06-19T08:21Z | indeed-final:https://jobs.techbiz.global/o/senior-ai-product-engineer?source=Indeed
+- [ ] https://de.indeed.com/viewjob?jk=40464aea22f93dd5 | SoftServe sucht Robotics Architect + 4 neue Ai Ml Engineer Jobs | jobalert.indeed.com | 2026-06-19T08:21Z | indeed-final:https://career.softserveinc.com/en-us/vacancies/lead-mobile-robotics-engineer-88764
+- [ ] https://at.indeed.com/viewjob?jk=9facdaea6526149c | EUROPEAN DYNAMICS sucht Full Stack Developer (.NET) + 14 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-19T08:21Z
+- [ ] https://at.indeed.com/viewjob?jk=6b5cc2db11da0bb7 | EUROPEAN DYNAMICS sucht Full Stack Developer (.NET) + 14 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-19T08:21Z
+- [ ] https://at.indeed.com/viewjob?jk=f64c8de129932e9c | EUROPEAN DYNAMICS sucht Full Stack Developer (.NET) + 14 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-19T08:21Z
+- [ ] https://at.indeed.com/viewjob?jk=c1bdfac1ccf139ed | EUROPEAN DYNAMICS sucht Full Stack Developer (.NET) + 14 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-19T08:21Z
+- [ ] https://nl.indeed.com/viewjob?jk=aa30b0369f8537d1 | 1 nieuwe ai engineer vacature | jobalert.indeed.com | 2026-06-19T08:21Z
+- [ ] https://nl.indeed.com/viewjob?jk=a6f9eb04de1b7e95 | Bain & Company Inc zoekt een Expert Consultant, Coro, AI Engineer + 11 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-19T08:21Z
+- [ ] https://nl.indeed.com/viewjob?jk=a5f477cd89fb71ee | Bain & Company Inc zoekt een Expert Consultant, Coro, AI Engineer + 11 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-19T08:21Z
+- [ ] https://nl.indeed.com/viewjob?jk=6fac7941f9faf240 | Bain & Company Inc zoekt een Expert Consultant, Coro, AI Engineer + 11 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/berlin-senior-software-engineer-155096141 | Your application was sent: (Senior) Full-Stack Software Engineer - Financial Infrastructure & Payments (m/f/d) | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/berlin-senior-software-engineer-154597214 | Your application was sent: (Senior) Full-Stack Software Engineer - Financial Infrastructure & Payments (m/f/d) | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/berlin-software-engineer-tv-154495479 | Your application was sent: (Senior) Full-Stack Software Engineer - Financial Infrastructure & Payments (m/f/d) | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/muenchen-ai-developer-muenchen-155327143 | Your application was sent: AI Developer (LLM Products) - Remote | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/berlin-experte-kuenstliche-intelligenz-155326404 | Your application was sent: AI Developer (LLM Products) - Remote | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://www.xing.com/jobs/huerth-senior-expert-ai-business-automation-154735159 | Your application was sent: AI Developer (LLM Products) - Remote | mail.xing.com | 2026-06-19T08:21Z
+- [ ] https://theprotocol.it/szczegoly/praca/ai-engineer-wroclaw-ksawerego-liskego-7,oferta,90930000-5d99-4a0e-d1c7-08decc6d33b1 | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-19T08:21Z
+- [ ] https://theprotocol.it/szczegoly/praca/ai-engineer-katowice-zabrska-16,oferta,32c90000-7e6c-d690-3156-08decc3efcc0 | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-19T08:21Z
+- [ ] https://theprotocol.it/szczegoly/praca/cryptography-engineer-wroclaw-ksawerego-liskego-7,oferta,2a7e0000-1d75-d6c2-b4ec-08decc6d4681 | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-19T08:21Z
+- [ ] https://theprotocol.it/szczegoly/praca/machine-learning-engineer---allegro-pay-warszawa-zelazna-51-53,oferta,94a30000-978f-a29b-6d69-08decc538e0f | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-19T08:21Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-ai-ml-developer-assistant-vice-president-krakow-generala-bohdana-zielinskiego-3,oferta,90930000-5d99-4a0e-cec8-08decc6f4e8d | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-19T08:21Z
+- [ ] https://theprotocol.it/szczegoly/praca/programistka---programista-baz-danych-oracle-warszawa,oferta,32c90000-7e6c-d690-4802-08decc65d15a | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-19T08:21Z
