@@ -1500,6 +1500,57 @@
 - [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-senior-fullstack-engineer-154397679     <!-- via Gmail:xing 2026-06-19T08:21Z auto-match: \bfullstack\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/koeln-software-engineer-ai-solutions-net-web-155099484     <!-- via Gmail:xing 2026-06-19T08:21Z auto-match: \bnet\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4430984990     <!-- via Gmail:linkedin 2026-06-20T08:26Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4429648453     <!-- via Gmail:linkedin 2026-06-20T08:26Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4429667208     <!-- via Gmail:linkedin 2026-06-20T08:26Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4430999210     <!-- via Gmail:linkedin 2026-06-20T08:26Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4428227503     <!-- via Gmail:linkedin 2026-06-20T08:26Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4428219566     <!-- via Gmail:linkedin 2026-06-20T08:26Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-python-ai-engineer-gdansk-python     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bpython\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-python-ai-engineer-poznan-python     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bpython\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-python-ai-engineer-warsaw-ai     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bpython\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-generative-ai-operations-engineer-genai-ops--poznan-devops     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bpython\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-generative-ai-operations-engineer-genai-ops--gdansk-devops     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bpython\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-python-ai-engineer-katowice-python     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bpython\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-python-ai-engineer-wroclaw-ai     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bpython\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-generative-ai-operations-engineer-genai-ops--warsaw-ai     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bpython\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-generative-ai-operations-engineer-genai-ops--katowice-devops     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bpython\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-generative-ai-operations-engineer-genai-ops--wroclaw-devops     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bpython\b,\bgenai\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-senior-python-ai-engineer-full-stack--warsaw-ai     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-senior-python-ai-engineer-full-stack--gdansk-ai     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/epam-systems-senior-python-ai-engineer-full-stack--poznan-ai     <!-- via Gmail:jjit 2026-06-20T08:26Z auto-match: \bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/cologne-senior-typescript-developer-155515373     <!-- via Gmail:xing 2026-06-20T08:26Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hannover-ai-data-science-engineer-erfahrung-bereich-llm-155529108     <!-- via Gmail:xing 2026-06-20T08:26Z auto-match: \bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/hannover-ai-data-science-engineer-erfahrung-bereich-llm-155529107     <!-- via Gmail:xing 2026-06-20T08:26Z auto-match: \bllm\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-applied-ai-engineer-deepsense-ai-remote     <!-- via Gmail:nfj 2026-06-20T08:26Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-python-ai-engineer-avenga-agencja-pracy-nr-kraz-8448-remote     <!-- via Gmail:nfj 2026-06-20T08:26Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=3f931e188a883107     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=9641731785339bed     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \bnet\b,\bfull stack\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=30064e500a4082eb     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=75b1d9fa35cc3e4c     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=c6261bebe1f0e64b     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=5be45b60c5a7f158     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=c479d37af7a3adee     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=06573427ef32e816     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=d7eb165cd5faf87d     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=07ce2ea33d883689     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=ceefe491cf084b7f     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=6ed95edbc8955bd0     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=80f4cf261b5019ef     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=fb300d257a9f69e3     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=e9393bed0ef5f5ff     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=fabecf4311a12127     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=5d638129cfb77d13     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=53cccc4f784979cf     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/bergheim-salzburg-pimcore-full-stack-developer-pro-all-genders-155458178     <!-- via Gmail:xing 2026-06-20T08:26Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/bergheim-salzburg-full-stack-developer-pro-all-genders-155458183     <!-- via Gmail:xing 2026-06-20T08:26Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-net-wpf-developer-155516469     <!-- via Gmail:xing 2026-06-20T08:26Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-software-entwickler-net-bereich-155447392     <!-- via Gmail:xing 2026-06-20T08:26Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-fullstack-developer-155410416     <!-- via Gmail:xing 2026-06-20T08:26Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-full-stack-cloud-developer-manufacturing-excellence-155521795     <!-- via Gmail:xing 2026-06-20T08:26Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=6db71b2135a8c004     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=4eabd6e9c66a13e1     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfull stack\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->
