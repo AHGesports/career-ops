@@ -1551,6 +1551,16 @@
 - [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=6db71b2135a8c004     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \bnet\b,\bfull stack\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=4eabd6e9c66a13e1     <!-- via Gmail:indeed 2026-06-20T08:26Z auto-match: \btypescript\b,\bfull stack\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/erfurt-senior-entwickler-softwarearchitekt-asp-net-home-office-155572839     <!-- via Gmail:xing 2026-06-21T08:38Z auto-match: \bnet\b,\basp net\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/ettlingen-lead-entwickler-frontend-vue-js-typescript-155580727     <!-- via Gmail:xing 2026-06-21T08:38Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-full-stack-software-engineer-155550415     <!-- via Gmail:xing 2026-06-21T08:38Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=5283efb85d3f9021     <!-- via Gmail:indeed 2026-06-21T08:38Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/cyclad-fullstack-developer-net-angular--warszawa-net-5e5dfdff     <!-- via Gmail:jjit 2026-06-21T08:38Z auto-match: \bnet\b,\bangular\b,\bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/airslate-senior-software-engineer---agentic-ai-wroclaw-ai     <!-- via Gmail:jjit 2026-06-21T08:38Z auto-match: \bfullstack\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=c86f8d9663dd1c1c     <!-- via Gmail:indeed 2026-06-21T08:38Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=1eda8e31a5f3d3fb     <!-- via Gmail:indeed 2026-06-21T08:38Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=43b8c1bb3440b193     <!-- via Gmail:indeed 2026-06-21T08:38Z auto-match: \bnet\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->

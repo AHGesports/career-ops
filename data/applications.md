@@ -2,6 +2,10 @@
 
 | # | Date | Company | Role | Score | Status | PDF | Report | Notes |
 |---|------|---------|------|-------|--------|-----|--------|-------|
+| 1343 | 2026-06-21 | XING | Erfurt Senior Entwickler Softwarearchitekt Asp Net Home Office | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\bnet\b,\basp net\b]. URL: https://www.xing.com/jobs/erfurt-senior-entwickler-softwarearchitekt-asp-net-home-office-155572839. |
+| 1344 | 2026-06-21 | XING | Ettlingen Lead Entwickler Frontend Vue Js Typescript | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\btypescript\b]. URL: https://www.xing.com/jobs/ettlingen-lead-entwickler-frontend-vue-js-typescript-155580727. |
+| 1347 | 2026-06-21 | Indeed | TechBiz Global GmbH Sucht Senior AI DevOps / LLMOps + 2 Neue Agentic Ai Jobs | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:indeed). matched=[\bagentic\b]. URL: https://de.indeed.com/viewjob?jk=5283efb85d3f9021. |
+| 1353 | 2026-06-21 | Indeed | TriFact365 Zoekt Een Senior Software Engineer / Senior Developer (Back-End) + 2 | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:indeed). matched=[\bnet\b]. URL: https://nl.indeed.com/viewjob?jk=43b8c1bb3440b193. |
 | 1302 | 2026-06-20 | JustJoinIT | Epam Systems Python Ai Engineer Warsaw Ai | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:jjit). matched=[\bpython\b,\bagentic\b]. URL: https://justjoin.it/offers/epam-systems-python-ai-engineer-warsaw-ai. |
 | 1303 | 2026-06-20 | JustJoinIT | Epam Systems Generative Ai Operations Engineer Genai Ops Poznan Devops | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:jjit). matched=[\bpython\b,\bgenai\b,\bagentic\b]. URL: https://justjoin.it/offers/epam-systems-generative-ai-operations-engineer-genai-ops--poznan-devops. |
 | 1304 | 2026-06-20 | JustJoinIT | Epam Systems Generative Ai Operations Engineer Genai Ops Gdansk Devops | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:jjit). matched=[\bpython\b,\bgenai\b,\bagentic\b]. URL: https://justjoin.it/offers/epam-systems-generative-ai-operations-engineer-genai-ops--gdansk-devops. |

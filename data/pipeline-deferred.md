@@ -1304,3 +1304,45 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://de.indeed.com/viewjob?jk=74c11d19008b5721 | energized& sucht Praktikant AI Engineer (m/w/d) + 10 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-20T08:26Z
 - [ ] https://de.indeed.com/viewjob?jk=1750a1745ed18744 | energized& sucht Praktikant AI Engineer (m/w/d) + 10 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-20T08:26Z
 - [ ] https://de.indeed.com/viewjob?jk=f32c64bb5a3e924f | energized& sucht Praktikant AI Engineer (m/w/d) + 10 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-20T08:26Z
+- [ ] https://linkedin.com/jobs/view/4428515839 | Cloud Platform Engineer at Haystack App: up to €65K/year | linkedin.com | 2026-06-21T08:38Z
+- [ ] https://linkedin.com/jobs/view/4430089650 | Cloud Platform Engineer at Haystack App: up to €65K/year | linkedin.com | 2026-06-21T08:38Z
+- [ ] https://linkedin.com/jobs/view/4430074947 | Cloud Platform Engineer at Haystack App: up to €65K/year | linkedin.com | 2026-06-21T08:38Z
+- [ ] https://www.xing.com/jobs/dresden-software-entwickler-cad-junior-senior-dresden-154741186 | 3 new job ads for your search alert: c# | mail.xing.com | 2026-06-21T08:38Z
+- [ ] https://www.xing.com/jobs/frankfurt-main-entwickler-microsoft-dynamics-365-field-service-155573303 | 3 new job ads for your search alert: c# | mail.xing.com | 2026-06-21T08:38Z
+- [ ] https://www.xing.com/jobs/bremen-ki-entwickler-155573290 | One new job ad for your search alert: KI entwickler | mail.xing.com | 2026-06-21T08:38Z
+- [ ] https://www.xing.com/jobs/freiburg-mitarbeiter-it-systemadministration-entwicklungstools-153769038 | 5 new job ads for your search alert: .net | mail.xing.com | 2026-06-21T08:38Z
+- [ ] https://www.xing.com/jobs/berlin-fullstack-softwareentwickler-java-springboot-angular-100-remote-80-000-mwd-155570081 | 4 new job ads for your search alert: I'm seeking full-time... | mail.xing.com | 2026-06-21T08:38Z
+- [ ] https://www.xing.com/jobs/berlin-future-opportunities-bookingkit-155550410 | 4 new job ads for your search alert: full stack engineer | mail.xing.com | 2026-06-21T08:38Z
+- [ ] https://www.xing.com/jobs/deggendorf-senior-fertigungsplaner-zerspanung-kalkulation-155566260 | 5 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-21T08:38Z
+- [ ] https://www.xing.com/jobs/deutschland-lead-consultant-ai-cloud-development-home-office-151268616 | 5 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-21T08:38Z
+- [ ] https://www.xing.com/jobs/berlin-senior-machine-learning-engineer-155017315 | 5 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-21T08:38Z
+- [ ] https://www.xing.com/jobs/nuernberg-senior-fertigungsplaner-zerspanung-kalkulation-155566259 | 5 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=f36320d9d6f4703c | 1 Ai Ml Engineer Job | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://at.indeed.com/viewjob?jk=e1c2a28732fc1084 | EUROPEAN DYNAMICS sucht Full Stack Developer (.NET) + 10 neue Ai Engineer Jobs in Wien | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=5a43bb83bec76ebd | München sucht JUNIOR AI SOLUTIONS ENGINEER (M/W/D) + 22 neue Ai Developer Jobs  | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=f5738b6cf354031c | München sucht JUNIOR AI SOLUTIONS ENGINEER (M/W/D) + 22 neue Ai Developer Jobs  | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=6450b96d2eb446d2 | München sucht JUNIOR AI SOLUTIONS ENGINEER (M/W/D) + 22 neue Ai Developer Jobs  | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=8952e73f2044ff58 | München sucht JUNIOR AI SOLUTIONS ENGINEER (M/W/D) + 22 neue Ai Developer Jobs  | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=c1b3c5c6b4c48fd0 | München sucht JUNIOR AI SOLUTIONS ENGINEER (M/W/D) + 22 neue Ai Developer Jobs  | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=b4672e8588af63e8 | München sucht JUNIOR AI SOLUTIONS ENGINEER (M/W/D) + 22 neue Ai Developer Jobs  | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=2af31a0ac6a04356 | München sucht JUNIOR AI SOLUTIONS ENGINEER (M/W/D) + 22 neue Ai Developer Jobs  | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=bd8541e722ac143d | München sucht JUNIOR AI SOLUTIONS ENGINEER (M/W/D) + 22 neue Ai Developer Jobs  | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=ad3fafdba0a49ed7 | München sucht JUNIOR AI SOLUTIONS ENGINEER (M/W/D) + 22 neue Ai Developer Jobs  | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=e727b27934251c31 | München sucht JUNIOR AI SOLUTIONS ENGINEER (M/W/D) + 22 neue Ai Developer Jobs  | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=567e8f39b991e5c9 | München sucht JUNIOR AI SOLUTIONS ENGINEER (M/W/D) + 22 neue Ai Developer Jobs  | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=7d2e6ce59d58c2ea | 1 Applied Ai Engineer Job | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://nl.indeed.com/viewjob?jk=2e710cd2730010b4 | The Kingfish Company zoekt een Aquaculture R&D Internship + 11 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://nl.indeed.com/viewjob?jk=11053f6345420cce | The Kingfish Company zoekt een Aquaculture R&D Internship + 11 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://nl.indeed.com/viewjob?jk=cc906d9781d1b01b | The Kingfish Company zoekt een Aquaculture R&D Internship + 11 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=b0e7b02a39e88070 | energized& sucht Praktikant AI Engineer (m/w/d) + 9 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://de.indeed.com/viewjob?jk=a13dc25624d59354 | energized& sucht Praktikant AI Engineer (m/w/d) + 9 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-21T08:38Z
+- [ ] https://linkedin.com/jobs/view/4430752808 | Software Engineer (w/m/d) at Porsche Holding | linkedin.com | 2026-06-21T08:38Z
+- [ ] https://linkedin.com/jobs/view/4428212519 | Software Engineer (w/m/d) at Porsche Holding | linkedin.com | 2026-06-21T08:38Z
+- [ ] https://linkedin.com/jobs/view/4421789562 | Software Engineer (w/m/d) at Porsche Holding | linkedin.com | 2026-06-21T08:38Z
+- [ ] https://linkedin.com/jobs/view/4428232223 | Software Engineer (w/m/d) at Porsche Holding | linkedin.com | 2026-06-21T08:38Z
+- [ ] https://linkedin.com/jobs/view/4429663994 | Software Engineer (w/m/d) at Porsche Holding | linkedin.com | 2026-06-21T08:38Z
+- [ ] https://theprotocol.it/szczegoly/praca/senior-gcp-ai-developer-warszawa,oferta,2a7e0000-1d75-d6c2-d26b-08decdd2046f | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-21T08:38Z
+- [ ] https://theprotocol.it/szczegoly/praca/gcp-senior-engineer-google-cloud-platform-warszawa,oferta,90930000-5d99-4a0e-1f1e-08decdd1e3b9 | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-21T08:38Z
+- [ ] https://theprotocol.it/szczegoly/praca/project-manager---sap-successfactors-gdansk-marynarki-polskiej-197,oferta,8b070000-eede-f619-3e91-08decdd1ed03 | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-21T08:38Z
+- [ ] https://theprotocol.it/szczegoly/praca/kierownik-dzialu-uczenia-maszynowego-k-m-warszawa,oferta,90930000-5d99-4a0e-bf16-08decdcbb188 | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-21T08:38Z
+- [ ] https://talentportal.germantechjobs.de/api/job-redirect?jobId=Hausdorf--Stritzke-GbR-Werkstudent-in-Informatik | 1 New Job Matching Your Alert - Software Engineering | germantechjobs.de | 2026-06-21T08:38Z
