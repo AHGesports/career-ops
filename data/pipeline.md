@@ -1561,6 +1561,23 @@
 - [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=1eda8e31a5f3d3fb     <!-- via Gmail:indeed 2026-06-21T08:38Z auto-match: \bnet\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=43b8c1bb3440b193     <!-- via Gmail:indeed 2026-06-21T08:38Z auto-match: \bnet\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=5e571e3b25eed9bc     <!-- via Gmail:indeed 2026-06-22T08:21Z auto-match: \bnet\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=823a181721bb3f6e     <!-- via Gmail:indeed 2026-06-22T08:21Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=7107efbd57f00f51     <!-- via Gmail:indeed 2026-06-22T08:21Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=73e741ec8e53b5c8     <!-- via Gmail:indeed 2026-06-22T08:21Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=da8721c0bc798b03     <!-- via Gmail:indeed 2026-06-22T08:21Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=803c8153ef24c19d     <!-- via Gmail:indeed 2026-06-22T08:21Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=0dc251c1e96ddc37     <!-- via Gmail:indeed 2026-06-22T08:21Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=715ebfccc72abe4c     <!-- via Gmail:indeed 2026-06-22T08:21Z auto-match: \bc# -->
+- [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=a64ad06dc4c9d279     <!-- via Gmail:indeed 2026-06-22T08:21Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=292064a9ba1bd2eb     <!-- via Gmail:indeed 2026-06-22T08:21Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4428513874     <!-- via Gmail:linkedin 2026-06-22T08:21Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4431322547     <!-- via Gmail:linkedin 2026-06-22T08:21Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4428525815     <!-- via Gmail:linkedin 2026-06-22T08:21Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4428541332     <!-- via Gmail:linkedin 2026-06-22T08:21Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4430091619     <!-- via Gmail:linkedin 2026-06-22T08:21Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4431132987     <!-- via Gmail:linkedin 2026-06-22T08:21Z auto-match: \bfull stack\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->

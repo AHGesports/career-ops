@@ -1346,3 +1346,25 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://theprotocol.it/szczegoly/praca/project-manager---sap-successfactors-gdansk-marynarki-polskiej-197,oferta,8b070000-eede-f619-3e91-08decdd1ed03 | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-21T08:38Z
 - [ ] https://theprotocol.it/szczegoly/praca/kierownik-dzialu-uczenia-maszynowego-k-m-warszawa,oferta,90930000-5d99-4a0e-bf16-08decdcbb188 | 🔵🟢 Nowe oferty pracy: „ai developer; Praca: zdalna” | mailing.theprotocol.it | 2026-06-21T08:38Z
 - [ ] https://talentportal.germantechjobs.de/api/job-redirect?jobId=Hausdorf--Stritzke-GbR-Werkstudent-in-Informatik | 1 New Job Matching Your Alert - Software Engineering | germantechjobs.de | 2026-06-21T08:38Z
+- [ ] https://linkedin.com/jobs/view/4431394296 | “software developer”: LIXIL - Backend Software Developer posted on 6/21/26 | linkedin.com | 2026-06-22T08:21Z
+- [ ] https://linkedin.com/jobs/view/4431388230 | “software developer”: LIXIL - Backend Software Developer posted on 6/21/26 | linkedin.com | 2026-06-22T08:21Z
+- [ ] https://linkedin.com/jobs/view/4431398142 | “software developer”: LIXIL - Backend Software Developer posted on 6/21/26 | linkedin.com | 2026-06-22T08:21Z
+- [ ] https://linkedin.com/jobs/view/4430088871 | “software developer”: LIXIL - Backend Software Developer posted on 6/21/26 | linkedin.com | 2026-06-22T08:21Z
+- [ ] https://linkedin.com/jobs/view/4428596193 | “software developer”: LIXIL - Backend Software Developer posted on 6/21/26 | linkedin.com | 2026-06-22T08:21Z
+- [ ] https://linkedin.com/jobs/view/4428902011 | “software developer”: LIXIL - Backend Software Developer posted on 6/21/26 | linkedin.com | 2026-06-22T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/f-m-senior-machine-learning-engineer-full-remote-astek-polska |  New week, new job – jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-22T08:21Z
+- [ ] https://www.xing.com/jobs/aachen-sap-full-stack-development-experte-100-home-office-bzw-remote-taetigkeit-155597823 | One new job ad for your search alert: Full stack entwickler | mail.xing.com | 2026-06-22T08:21Z
+- [ ] https://app.instaffo.com/candidate/job/26c9208b-a140-4f32-b924-dca8015d80be | Arshia, start your new role as Senior Software Developer .NE… 🚀 | app.instaffo.com | 2026-06-22T08:21Z
+- [ ] https://app.instaffo.com/candidate/job/eda67459-d8e3-42dc-9e80-53701da6337c | Arshia, start your new role as Senior Software Developer .NE… 🚀 | app.instaffo.com | 2026-06-22T08:21Z
+- [ ] https://de.indeed.com/viewjob?jk=fcf05d3beb1894ce | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-22T08:21Z
+- [ ] https://de.indeed.com/viewjob?jk=a75adb63760c8482 | codea IT-Services sucht Web Developer (m/w/d) + 23 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-22T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/fullstack-developer-java-react-ai-spyrosoft-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-22T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/infra-software-engineer-with-agentic-ai-experience-acaisoft-poland-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-22T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/python-engineer-with-c-ai-project-acaisoft-poland-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-22T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/ai-first-senior-fullstack-developer-node-js-react-7bulls-com-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-22T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/senior-fullstack-ai-developer-python-angular-virtusa-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-22T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/site-reliability-engineer-ai-llm-infra-acaisoft-poland-remote-1 |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-22T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/ai-engineer-llms-python-addepto-remote-8 |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-22T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/senior-ai-engineer-llms-python-addepto-remote-11 |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-22T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/senior-data-scientist-ml-engineer-addepto-remote-27 |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-22T08:21Z
+- [ ] https://nofluffjobs.com/pl/job/microsoft-devops-ai-architect-azure-m365-d365-1dea-remote |  Pick of the week – the best jobs matching your criteria: remote, ai engineer,  | nofluffjobs.com | 2026-06-22T08:21Z

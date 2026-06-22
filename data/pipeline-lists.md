@@ -35,3 +35,4 @@ to discover more jobs; new findings can be pasted into pipeline.md.
 - [ ] https://www.metajob.at/?q=Informationstechnik&l=Salzburg+(Bundesland)&r=20&tl=20260618060000 | 6 neue Jobs zu Ihrer Suche auf METAJob | metajob.at | 2026-06-19T08:21Z
 - [ ] https://www.metajob.at/?q=Informationstechnik&l=Salzburg+(Bundesland)&r=20&tl=20260619060000 | 7 neue Jobs zu Ihrer Suche auf METAJob | metajob.at | 2026-06-20T08:26Z
 - [ ] https://www.metajob.at/?q=Informationstechnik&l=Salzburg+(Bundesland)&r=20&tl=20260620060000 | 2 neue Jobs zu Ihrer Suche auf METAJob | metajob.at | 2026-06-21T08:38Z
+- [ ] https://www.metajob.at/?q=Informationstechnik&l=Salzburg+(Bundesland)&r=20&tl=20260621060000 | 1 neue Jobs zu Ihrer Suche auf METAJob | metajob.at | 2026-06-22T08:21Z

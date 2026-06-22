@@ -2,6 +2,8 @@
 
 | # | Date | Company | Role | Score | Status | PDF | Report | Notes |
 |---|------|---------|------|-------|--------|-----|--------|-------|
+| 1354 | 2026-06-22 | Indeed | Revolut Sucht Software Engineer (DevOps) - Site Reliability + 2 Neue Developer @ | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:indeed). matched=[\bnet\b]. URL: https://at.indeed.com/viewjob?jk=5e571e3b25eed9bc. |
+| 1362 | 2026-06-22 | Indeed | Fugro Zoekt Een AI & Automation Architect + 15 Nieuwe Banen Als Applied Ai | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:indeed). matched=[\bpython\b]. URL: https://nl.indeed.com/viewjob?jk=a64ad06dc4c9d279. |
 | 1343 | 2026-06-21 | XING | Erfurt Senior Entwickler Softwarearchitekt Asp Net Home Office | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\bnet\b,\basp net\b]. URL: https://www.xing.com/jobs/erfurt-senior-entwickler-softwarearchitekt-asp-net-home-office-155572839. |
 | 1344 | 2026-06-21 | XING | Ettlingen Lead Entwickler Frontend Vue Js Typescript | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\btypescript\b]. URL: https://www.xing.com/jobs/ettlingen-lead-entwickler-frontend-vue-js-typescript-155580727. |
 | 1347 | 2026-06-21 | Indeed | TechBiz Global GmbH Sucht Senior AI DevOps / LLMOps + 2 Neue Agentic Ai Jobs | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:indeed). matched=[\bagentic\b]. URL: https://de.indeed.com/viewjob?jk=5283efb85d3f9021. |
