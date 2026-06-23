@@ -2,6 +2,12 @@
 
 | # | Date | Company | Role | Score | Status | PDF | Report | Notes |
 |---|------|---------|------|-------|--------|-----|--------|-------|
+| 1364 | 2026-06-23 | XING | Berlin Senior Product Engineer Typescript All Genders | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\btypescript\b]. URL: https://www.xing.com/jobs/berlin-senior-product-engineer-typescript-all-genders-155614316. |
+| 1365 | 2026-06-23 | XING | Homeoffice Senior Ai Engineer Genai Llm All Genders | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\bllm\b,\bgenai\b]. URL: https://www.xing.com/jobs/homeoffice-senior-ai-engineer-genai-llm-all-genders-155620126. |
+| 1366 | 2026-06-23 | NoFluffJobs | Ai First Full Stack Engineer Matrix Global Services | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:nfj). matched=[\bfull stack\b]. URL: https://nofluffjobs.com/pl/job/ai-first-full-stack-engineer-matrix-global-services-remote. |
+| 1368 | 2026-06-23 | NoFluffJobs | Senior Ai Engineer Python Genai Gcp Primotly | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:nfj). matched=[\bfull stack\b,\bpython\b,\bgenai\b]. URL: https://nofluffjobs.com/pl/job/senior-ai-engineer-python-genai-gcp-primotly-remote. |
+| 1369 | 2026-06-23 | NoFluffJobs | Senior Network Reliability Engineer Nre Ai Gpu Clusters Margo | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:nfj). matched=[\bfull stack\b]. URL: https://nofluffjobs.com/pl/job/senior-network-reliability-engineer-nre-ai-gpu-clusters-margo-remote. |
+| 1370 | 2026-06-23 | NoFluffJobs | Pre Sales Solution Architect Data Ai Addepto | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:nfj). matched=[\bfull stack\b]. URL: https://nofluffjobs.com/pl/job/pre-sales-solution-architect-data-ai-addepto-remote. |
 | 1354 | 2026-06-22 | Indeed | Revolut Sucht Software Engineer (DevOps) - Site Reliability + 2 Neue Developer @ | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:indeed). matched=[\bnet\b]. URL: https://at.indeed.com/viewjob?jk=5e571e3b25eed9bc. |
 | 1362 | 2026-06-22 | Indeed | Fugro Zoekt Een AI & Automation Architect + 15 Nieuwe Banen Als Applied Ai | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:indeed). matched=[\bpython\b]. URL: https://nl.indeed.com/viewjob?jk=a64ad06dc4c9d279. |
 | 1343 | 2026-06-21 | XING | Erfurt Senior Entwickler Softwarearchitekt Asp Net Home Office | 5.0/5 | Auto-Match | ❌ | — | Auto-match (gmail:xing). matched=[\bnet\b,\basp net\b]. URL: https://www.xing.com/jobs/erfurt-senior-entwickler-softwarearchitekt-asp-net-home-office-155572839. |

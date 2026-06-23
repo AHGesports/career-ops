@@ -1578,6 +1578,23 @@
 - [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4430091619     <!-- via Gmail:linkedin 2026-06-22T08:21Z auto-match: \bfull stack\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4431132987     <!-- via Gmail:linkedin 2026-06-22T08:21Z auto-match: \bfull stack\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/erlenbach-main-ott-platforms-specialist-full-stack-engineer-80-100-155618686     <!-- via Gmail:xing 2026-06-23T08:28Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/berlin-senior-product-engineer-typescript-all-genders-155614316     <!-- via Gmail:xing 2026-06-23T08:28Z auto-match: \btypescript\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/homeoffice-senior-ai-engineer-genai-llm-all-genders-155620126     <!-- via Gmail:xing 2026-06-23T08:28Z auto-match: \bllm\b,\bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/ai-first-full-stack-engineer-matrix-global-services-remote     <!-- via Gmail:nfj 2026-06-23T08:28Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/python-developer-with-gen-ai-agent-python-gcp-deloitte-remote     <!-- via Gmail:nfj 2026-06-23T08:28Z auto-match: \bfull stack\b,\bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-ai-engineer-python-genai-gcp-primotly-remote     <!-- via Gmail:nfj 2026-06-23T08:28Z auto-match: \bfull stack\b,\bpython\b,\bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/senior-network-reliability-engineer-nre-ai-gpu-clusters-margo-remote     <!-- via Gmail:nfj 2026-06-23T08:28Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nofluffjobs.com/pl/job/pre-sales-solution-architect-data-ai-addepto-remote     <!-- via Gmail:nfj 2026-06-23T08:28Z auto-match: \bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=58bf5848d14ebde4     <!-- via Gmail:indeed 2026-06-23T08:28Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=5511995a615b9bfb     <!-- via Gmail:indeed 2026-06-23T08:28Z auto-match: \bllm\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=6274cc43b17aa527     <!-- via Gmail:indeed 2026-06-23T08:28Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=d11d8e3754741dff     <!-- via Gmail:indeed 2026-06-23T08:28Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=b9fe7e2cc4021922     <!-- via Gmail:indeed 2026-06-23T08:28Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=fa2049278c7f4079     <!-- via Gmail:indeed 2026-06-23T08:28Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=86a743f9228e5d1a     <!-- via Gmail:indeed 2026-06-23T08:28Z auto-match: \bpython\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=3a55c80634096cf5     <!-- via Gmail:indeed 2026-06-23T08:28Z auto-match: \bpython\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->
