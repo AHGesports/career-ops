@@ -1417,3 +1417,63 @@ Run /deeper-eval to evaluate these via WebFetch (Chrome MCP fallback) using ofer
 - [ ] https://de.indeed.com/viewjob?jk=76081923202b5ed5 | Supplenatura Rheinland GmbH sucht Full Stack Developer (m/w/d) / AI Automation Developer + 15 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-23T08:28Z
 - [ ] https://de.indeed.com/viewjob?jk=dbbb7bd01ef186cb | Supplenatura Rheinland GmbH sucht Full Stack Developer (m/w/d) / AI Automation Developer + 15 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-23T08:28Z
 - [ ] https://de.indeed.com/viewjob?jk=d8d434710483da04 | Supplenatura Rheinland GmbH sucht Full Stack Developer (m/w/d) / AI Automation Developer + 15 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-23T08:28Z
+- [ ] https://justjoin.it/offers/awareson-sp-z-o-o--senior-java-developer-kafka-security--warszawa-java | New jobs for you: agentic ai, Best match, Remote. Check them out. | justjoin.it | 2026-06-24T08:19Z
+- [ ] https://justjoin.it/offers/flyps-machine-learning-engineer-cv-llm--poznan-ai-b687d37a | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-24T08:19Z
+- [ ] https://justjoin.it/offers/b-right-ai-automation-architect-krakow-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-24T08:19Z
+- [ ] https://justjoin.it/offers/b-right-solutions-engineer-ai-automation--krakow-ai | New jobs for you: AI/ML, Remote. Check them out. | justjoin.it | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/remote-ki-experte-workflow-automatisierung-sprachmodelle-155662006 | 5 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/wien-ai-engineer-155665261 | 5 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/koeln-ki-spezialist-inputmanagement-152813605 | 5 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/deutschlandweit-senior-artificial-intelligence-machine-learning-engineer-155662009 | 5 new job ads for your search alert: KI entwickler | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/berlin-sap-business-one-anwendungsentwickler-all-genders-155023966 | One new job ad for your search alert: c# | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/muenchen-devops-engineer-schwerpunkten-development-technical-management-operations-155289252 | 2 new job ads for your search alert: .net | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/berlin-senior-full-stack-entwickler-mw-java-spring-boot-react-remote-155640265 | One new job ad for your search alert: I am looking for full-time... | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/remote-senior-ml-engineer-production-systems-155662000 | 8 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/berlin-founder-associate-success-ops-remote-155636057 | 8 new job ads for your search alert: ai engineer | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/freiburg-breisgau-software-content-specialist-155654099 | 4 new job ads for your search alert: full stack developer | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://nofluffjobs.com/pl/job/senior-machine-learning-engineer-llms-deepsense-ai-remote | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-24T08:19Z
+- [ ] https://nofluffjobs.com/pl/job/ai-ml-engineer-lingaro-remote-2 | 10 new job offer(s) matching your criteria: remote, ai engineer, | nofluffjobs.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/wien-platform-software-engineer-155543512 | Michael Page Austria, HRworks, Dedalus HealthCare GmbH and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/wien-senior-software-engineer-backend-155478282 | Michael Page Austria, HRworks, Dedalus HealthCare GmbH and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/wien-rpa-entwickler-155600904 | Michael Page Austria, HRworks, Dedalus HealthCare GmbH and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/wien-software-engineer-155611670 | Michael Page Austria, HRworks, Dedalus HealthCare GmbH and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://www.xing.com/jobs/salzburg-media-channels-automation-ai-specialist-155619466 | Michael Page Austria, HRworks, Dedalus HealthCare GmbH and other great companies are looking for candidates just like you! | mail.xing.com | 2026-06-24T08:19Z
+- [ ] https://at.indeed.com/viewjob?jk=40d0a728090eeb65 | 1 AI coding Job in Wien | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=f42ba3c70e80283b | 1 Ai Ml Engineer Job | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://at.indeed.com/viewjob?jk=0984558a26a2f2d6 | 1 ai integration engineer Job in Österreich | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=d37342977513dfe3 | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=06f32c3178b9827f | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=bdbf27f9be041cfb | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=dc354877116a17db | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=03463ece0e567a8e | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=31246cf8b56fd2f7 | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=c347d79de73e01bd | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=dd1f1b41d1a38cd9 | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=da22ea7b45700733 | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=065766275813469f | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=0e1d503ed3c86c88 | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=745eef0846036f7a | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=4e8fb2f3790f08f7 | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=2a7944f41a588ca2 | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://nl.indeed.com/viewjob?jk=261188ffaf2ee8fc | Keylane zoekt een AI Solutions Engineer + 17 nieuwe banen als applied ai | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=3074bf99e3160bcf | FINN sucht Associate Product Engineer (m/f/x) + 21 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=0e01f423e779556b | FINN sucht Associate Product Engineer (m/f/x) + 21 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=bca531698bd0d905 | FINN sucht Associate Product Engineer (m/f/x) + 21 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=740a4730f33648ba | FINN sucht Associate Product Engineer (m/f/x) + 21 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=3eba4b428f5fb3c6 | FINN sucht Associate Product Engineer (m/f/x) + 21 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=fae9e251f92f63cf | FINN sucht Associate Product Engineer (m/f/x) + 21 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=e08470ce66ec50cf | FINN sucht Associate Product Engineer (m/f/x) + 21 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=8865650a593522cb | FINN sucht Associate Product Engineer (m/f/x) + 21 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=4f905552f07a7d63 | FINN sucht Associate Product Engineer (m/f/x) + 21 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=055c04bc77e8b56e | FINN sucht Associate Product Engineer (m/f/x) + 21 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=5af8a352671abf66 | FINN sucht Associate Product Engineer (m/f/x) + 21 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=9992e46b424357d3 | FINN sucht Associate Product Engineer (m/f/x) + 21 neue Ai Developer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://at.indeed.com/viewjob?jk=a30b20dbfe39165b | EUROPEAN DYNAMICS sucht Full Stack Developer (.NET) + 12 neue Ai Engineer Jobs in Wien | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=9d2c3d6dd905f111 | Primefold sucht AI-Native Product Engineer + 15 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=c73582f63212bfdc | Primefold sucht AI-Native Product Engineer + 15 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=c561c35ed1492aa4 | Primefold sucht AI-Native Product Engineer + 15 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=54ed227d5be5ec7b | Primefold sucht AI-Native Product Engineer + 15 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=7648a31466f39691 | Primefold sucht AI-Native Product Engineer + 15 neue Ai Engineer Jobs | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://at.indeed.com/viewjob?jk=fca187e2bb5ccf2f | 1 Agentic Ai Job in Österreich | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=4dc592bed7233e5a | FINN sucht Associate Product Engineer (m/f/x) + 6 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-06-24T08:19Z
+- [ ] https://de.indeed.com/viewjob?jk=3c16796593cf646e | FINN sucht Associate Product Engineer (m/f/x) + 6 neue Software Developer Jobs in Remote | jobalert.indeed.com | 2026-06-24T08:19Z

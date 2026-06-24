@@ -1595,6 +1595,34 @@
 - [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=86a743f9228e5d1a     <!-- via Gmail:indeed 2026-06-23T08:28Z auto-match: \bpython\b -->
 - [x] AUTO-MATCH | 5.0/5 | https://nl.indeed.com/viewjob?jk=3a55c80634096cf5     <!-- via Gmail:indeed 2026-06-23T08:28Z auto-match: \bpython\b -->
 
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4429402853     <!-- via Gmail:linkedin 2026-06-24T08:19Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4432213974     <!-- via Gmail:linkedin 2026-06-24T08:19Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4429446537     <!-- via Gmail:linkedin 2026-06-24T08:19Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4431788831     <!-- via Gmail:linkedin 2026-06-24T08:19Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4432286905     <!-- via Gmail:linkedin 2026-06-24T08:19Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4429453849     <!-- via Gmail:linkedin 2026-06-24T08:19Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/xebia-sp-z-o-o---senior-net-developer-gdansk-net     <!-- via Gmail:jjit 2026-06-24T08:19Z auto-match: \bnet\b,\bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://justjoin.it/offers/itlt-agentic-ai-solution-architect-warszawa-ai     <!-- via Gmail:jjit 2026-06-24T08:19Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/muenchen-senior-ai-genai-architect-155112837     <!-- via Gmail:xing 2026-06-24T08:19Z auto-match: \bgenai\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/nuernberg-senior-fullstack-developer-155647777     <!-- via Gmail:xing 2026-06-24T08:19Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-sw-entwickler-net-angular-155479871     <!-- via Gmail:xing 2026-06-24T08:19Z auto-match: \bnet\b,\bangular\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-senior-software-engineer-agentic-engineering-155555111     <!-- via Gmail:xing 2026-06-24T08:19Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-senior-fullstack-engineer-wien-155638471     <!-- via Gmail:xing 2026-06-24T08:19Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://www.xing.com/jobs/wien-agentic-engineering-expert-wien-155647120     <!-- via Gmail:xing 2026-06-24T08:19Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=063969dce9f7f1ce     <!-- via Gmail:indeed 2026-06-24T08:19Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=bc31495d53fcadd8     <!-- via Gmail:indeed 2026-06-24T08:19Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=e9dc482c2bc0404b     <!-- via Gmail:indeed 2026-06-24T08:19Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://de.indeed.com/viewjob?jk=e3fc8bf2a50a70ec     <!-- via Gmail:indeed 2026-06-24T08:19Z auto-match: \bagentic\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=85748bffc268db40     <!-- via Gmail:indeed 2026-06-24T08:19Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=a82cfa413fd25d2c     <!-- via Gmail:indeed 2026-06-24T08:19Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://at.indeed.com/viewjob?jk=3fb64c3f130ad8f3     <!-- via Gmail:indeed 2026-06-24T08:19Z auto-match: \bnet\b,\bfull stack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4430579170     <!-- via Gmail:linkedin 2026-06-24T08:19Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4430574723     <!-- via Gmail:linkedin 2026-06-24T08:19Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4431750363     <!-- via Gmail:linkedin 2026-06-24T08:19Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4431738542     <!-- via Gmail:linkedin 2026-06-24T08:19Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4428957551     <!-- via Gmail:linkedin 2026-06-24T08:19Z auto-match: \bfullstack\b -->
+- [x] AUTO-MATCH | 5.0/5 | https://linkedin.com/jobs/view/4428919560     <!-- via Gmail:linkedin 2026-06-24T08:19Z auto-match: \bfullstack\b -->
+
 ## Procesadas
 
 <!-- Gmail scan 2026-04-24 batch — 50 URLs evaluated -->
