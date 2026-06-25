@@ -86,7 +86,7 @@ portals:
       # Location is a custom Angular nfj-multiselect-dropdown (no native select),
       # so it needs the dedicated select_multiselect action with real CDP click.
       - action: select_multiselect
-        selector: "#apply-modal nfj-form-field:has(label:has-text('lokalizacj'))"
+        selector: "#apply-modal nfj-form-field:has(label:has-text('lokalizacj')), #apply-modal nfj-form-field:has(label:has-text('Choose job location'))"
         # Remote-only — Salzburg-based candidate. NEVER fall back to a city
         # (e.g. Warsaw) on patterns miss; require_match=true forces fail-stop.
         # Polish ("Praca zdalna" / "zdalna") + EN/DE Remote variants covered.
