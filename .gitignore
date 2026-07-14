@@ -7,8 +7,12 @@ data/salary-observations.tsv
 data/status-log.tsv
 data/assessments.tsv
 data/pipeline.md
+data/pipeline-deferred.md
+data/pipeline-lists.md
 data/scan-history.tsv
 data/scan-runs.tsv
+data/gmail-scan-history.tsv
+data/gmail-apply-errors.ndjson
 data/blacklist.md
 data/pdf-index.tsv
 data/agent-inbox.md
@@ -111,6 +115,9 @@ package-lock.json
 
 # Playwright MCP server run artifacts (ephemeral, machine-local)
 .playwright-mcp/
+
+# Legacy in-repo Chrome profiles may contain cookies and login sessions.
+.chrome-profile/
 
 # Planning (local scratchpad)
 plan/

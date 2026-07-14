@@ -1,0 +1,92 @@
+# Shared, data-free portal recipes for scripts/gmail-apply.mjs.
+# Personal values come only from config/profile.yml through {{dotted.paths}}.
+# Job-specific questions remain for browser takeover and user review.
+
+portals:
+  - name: nofluffjobs
+    match: ["nofluffjobs.com/"]
+    submit_selector: "#sendApplicationButton button"
+    success_selector:
+      - "[data-cy='post apply survey button']"
+      - "inline-icon[commonicon=success_circle_raw]"
+      - "aside:has-text('Aplikacja została wysłana')"
+      - "aside:has-text('Application has been sent')"
+    success_timeout_ms: 10000
+    steps:
+      - { action: click, selector: "#applyButton" }
+      - { action: wait_selector, selector: "#apply-modal" }
+      - action: fill
+        selector: "#apply-modal input[formcontrolname=phoneNumber]"
+        value: "{{candidate.phone}}"
+        optional: true
+
+  - name: theprotocol
+    match: ["theprotocol.it/szczegoly/praca/"]
+    submit_selector: "[data-test='button-sendApplication']"
+    success_selector:
+      - "[data-test='thankYouView']"
+      - "[data-test='thankYouApply-title']"
+    success_timeout_ms: 10000
+    steps:
+      - action: click
+        selectors:
+          - "[data-test='section-sidebar-apply'] [data-test='anchor-apply']"
+          - "[data-test='anchor-apply']"
+          - "[data-test='button-quickApply']"
+          - "button:has-text('Aplikuj szybko')"
+          - "button:has-text('quick apply')"
+      - action: fill
+        selector: "input[data-test='input-phoneNumber']"
+        value: "{{candidate.phone}}"
+        optional: true
+
+  - name: xing
+    match: ["xing.com/jobs/"]
+    unavailable_selectors:
+      - "h2[data-xds='Headline'][class*='empty-state-layout']"
+    submit_selector: "button:has-text('Send application')"
+    success_selector:
+      - "h1:has-text('Application submitted')"
+      - "h2:has-text('Application submitted')"
+      - "[class*='confirmation__Banner']:has-text('You applied for this job on')"
+    success_timeout_ms: 15000
+    steps:
+      - { action: click, selector: "[data-testid='apply-button']" }
+      - { action: wait_ms, ms: 800 }
+
+  - name: indeed
+    match: ["indeed.com/viewjob"]
+    submit_selector: "[data-testid='submit-application-button']"
+    steps:
+      - action: click
+        selectors:
+          - "#indeedApplyButton"
+          - "[data-testid='indeedApplyButton-test']"
+          - "button[href*='/applystart?jk=']"
+          - "a[href*='/applystart?jk=']"
+          - "button:has-text('Apply on company site')"
+          - "button:has-text('Apply now')"
+          - "button:has-text('Bewerben auf Website')"
+      - { action: wait_ms, ms: 1200 }
+
+  - name: justjoinit
+    match:
+      - "justjoin.it/offers/"
+      - "justjoin.it/job-offer/"
+    submit_selector: "button:visible:has-text('Apply'):not(:has-text('Applied'))"
+    steps:
+      - { action: click, selector: "button:visible:has-text('Apply'):not(:has-text('Applied'))" }
+
+  - name: linkedin
+    match: ["linkedin.com/jobs/view/"]
+    unavailable_selectors:
+      - "main:has-text('No longer accepting applications')"
+    steps:
+      - action: click
+        selectors:
+          - "a[aria-label='Apply on company website'][href*='/safety/go/']"
+          - "a[href*='/safety/go/?url=']"
+          - "a[aria-label='Easy Apply to this job'][href*='openSDUIApplyFlow=true']"
+          - "a[href*='/apply/?openSDUIApplyFlow=true']"
+      - { action: wait_ms, ms: 1000 }
+      - { action: wait_selector, selector: ".jobs-easy-apply-modal", timeout_ms: 3000, optional: true }

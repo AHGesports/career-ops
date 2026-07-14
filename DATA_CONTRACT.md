@@ -26,7 +26,11 @@ These files contain your personal data, customizations, and work product. Update
 | `data/applications.md` | Your application tracker (source of truth) |
 | `data/applications.db` | Derived query index over `applications.md` (SQLite, rebuilt by `node tracker.mjs sync` — safe to delete) |
 | `data/pipeline.md` | Your URL inbox |
+| `data/pipeline-deferred.md` | Gmail leads that did not match your profile classifier |
+| `data/pipeline-lists.md` | Gmail alert links that resolve to search/list pages rather than one job |
 | `data/scan-history.tsv` | Your scan history (9 tab-separated columns; col 8: local SimHash JD fingerprint for cross-listing detection, col 9: posting date) |
+| `data/gmail-scan-history.tsv` | Read-only Gmail scanner cursor and per-message extraction outcome |
+| `data/gmail-apply-errors.ndjson` | Local application-form automation diagnostics |
 | `data/scan-runs.tsv` | Your per-run scan counters (appended by `scan.mjs`, read by `stats.mjs`) |
 | `data/follow-ups.md` | Your follow-up history |
 | `data/offers/*` | Your received offers/contracts, promise notes, prep reports, and reply drafts (PII — gitignored, written by the `offer-prep` mode) |
@@ -87,6 +91,8 @@ These files contain system logic, scripts, templates, and instructions that impr
 | `plugins-registry/` | Curated community plugins, one `<id>.json` per plugin (the trust root) |
 | `plugin-install.mjs` / `plugin-audit.mjs` / `validate-plugin-registry.mjs` | Plugin install/audit/registry-validation utilities |
 | `config/plugins.example.yml` | Plugin activation template (seed for `config/plugins.yml`) |
+| `config/gmail-senders.yml` | Data-free job-alert sender extraction recipes |
+| `config/gmail-apply-portals.yml` | Data-free application portal selectors; personal values resolve from the user profile |
 | `batch/batch-prompt.md` | Batch worker prompt |
 | `batch/batch-runner.sh` | Batch orchestrator |
 | `dashboard/*` | Go TUI dashboard |

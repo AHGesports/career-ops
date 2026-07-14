@@ -30,12 +30,23 @@ export const SKILL_ENTRYPOINTS = [
   },
 ];
 
+const ADDITIONAL_SKILL_NAMES = ['scan-gmail', 'gmail-apply-smilified'];
+const ENTRYPOINT_ROOTS = ['.claude', '.opencode', '.qwen', '.antigravitycli', '.grok'];
+
+export const ADDITIONAL_SKILL_GROUPS = ADDITIONAL_SKILL_NAMES.map(name => ({
+  canonicalPath: `.agents/skills/${name}/SKILL.md`,
+  entrypoints: ENTRYPOINT_ROOTS.map(root => ({
+    path: `${root}/skills/${name}/SKILL.md`,
+    pointer: `../../../.agents/skills/${name}/SKILL.md`,
+  })),
+}));
+
 function repoPath(root, path) {
   return join(root, ...path.split('/'));
 }
 
-function readCanonical(root) {
-  const canonicalPath = repoPath(root, CANONICAL_SKILL_PATH);
+function readCanonical(root, relativePath = CANONICAL_SKILL_PATH) {
+  const canonicalPath = repoPath(root, relativePath);
   if (!existsSync(canonicalPath)) return null;
   try {
     return readFileSync(canonicalPath, 'utf-8');
@@ -45,70 +56,80 @@ function readCanonical(root) {
 }
 
 export function materializeSkillEntrypoints(root) {
-  const canonicalContent = readCanonical(root);
-  if (canonicalContent === null) return [];
-
   const materialized = [];
-  for (const entry of SKILL_ENTRYPOINTS) {
-    const entryPath = repoPath(root, entry.path);
-    if (!existsSync(entryPath)) continue;
+  const groups = [
+    { canonicalPath: CANONICAL_SKILL_PATH, entrypoints: SKILL_ENTRYPOINTS },
+    ...ADDITIONAL_SKILL_GROUPS,
+  ];
+  for (const group of groups) {
+    const canonicalContent = readCanonical(root, group.canonicalPath);
+    if (canonicalContent === null) continue;
+    for (const entry of group.entrypoints) {
+      const entryPath = repoPath(root, entry.path);
+      if (!existsSync(entryPath)) continue;
 
-    let stat = null;
-    try {
-      stat = lstatSync(entryPath);
-    } catch {
-      continue;
-    }
-    if (stat.isSymbolicLink()) continue;
-    if (!stat.isFile()) continue;
+      let stat = null;
+      try {
+        stat = lstatSync(entryPath);
+      } catch {
+        continue;
+      }
+      if (stat.isSymbolicLink()) continue;
+      if (!stat.isFile()) continue;
 
-    try {
-      const content = readFileSync(entryPath, 'utf-8').trim();
-      if (content !== entry.pointer) continue;
-      writeFileSync(entryPath, canonicalContent);
-    } catch {
-      continue;
+      try {
+        const content = readFileSync(entryPath, 'utf-8').trim();
+        if (content !== entry.pointer) continue;
+        writeFileSync(entryPath, canonicalContent);
+      } catch {
+        continue;
+      }
+      materialized.push(entry.path);
     }
-    materialized.push(entry.path);
   }
 
   return materialized;
 }
 
 export function ensureSkillEntrypoints(root) {
-  const canonicalContent = readCanonical(root);
-  if (canonicalContent === null) return [];
-
   const touched = [];
-  for (const entry of SKILL_ENTRYPOINTS) {
-    const entryPath = repoPath(root, entry.path);
+  const groups = [
+    { canonicalPath: CANONICAL_SKILL_PATH, entrypoints: SKILL_ENTRYPOINTS },
+    ...ADDITIONAL_SKILL_GROUPS,
+  ];
+  for (const group of groups) {
+    const canonicalContent = readCanonical(root, group.canonicalPath);
+    if (canonicalContent === null) continue;
+    for (const entry of group.entrypoints) {
+      const entryPath = repoPath(root, entry.path);
 
-    if (!existsSync(entryPath)) {
+      if (!existsSync(entryPath)) {
+        try {
+          mkdirSync(dirname(entryPath), { recursive: true });
+          writeFileSync(entryPath, entry.pointer);
+          touched.push(entry.path);
+        } catch {
+          continue;
+        }
+      }
+
+      let stat = null;
       try {
-        mkdirSync(dirname(entryPath), { recursive: true });
-        writeFileSync(entryPath, entry.pointer);
-        touched.push(entry.path);
+        stat = lstatSync(entryPath);
       } catch {
         continue;
       }
-    }
+      if (stat.isSymbolicLink()) continue;
+      if (!stat.isFile()) continue;
 
-    let stat = null;
-    try {
-      stat = lstatSync(entryPath);
-    } catch {
-      continue;
-    }
-    if (stat.isSymbolicLink()) continue;
-    if (!stat.isFile()) continue;
-
-    try {
-      const content = readFileSync(entryPath, 'utf-8').trim();
-      if (content !== entry.pointer) continue;
-      writeFileSync(entryPath, canonicalContent);
-      if (!touched.includes(entry.path)) touched.push(entry.path);
-    } catch {
-      continue;
+      try {
+        const content = readFileSync(entryPath, 'utf-8').trim();
+        if (content !== entry.pointer) continue;
+        writeFileSync(entryPath, canonicalContent);
+        if (!touched.includes(entry.path)) touched.push(entry.path);
+      } catch {
+        continue;
+      }
     }
   }
 

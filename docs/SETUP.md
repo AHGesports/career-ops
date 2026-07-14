@@ -80,6 +80,19 @@ npx playwright install chromium
 | Batch evaluate | `/career-ops batch` or use `codex exec "Run career-ops batch mode ..."` |
 | Check tracker status | `/career-ops tracker` or ask the agent to run `tracker` |
 | Fill application form | `/career-ops apply` or ask the agent to run `apply` |
+| Scan Gmail job alerts | `/scan-gmail 1d` or ask the agent to run the `scan-gmail` skill |
+| Prepare evaluated applications | `/gmail-apply-smilified` or ask the agent to run that skill |
+
+## Optional Gmail alert and form automation
+
+The two optional skills reuse the same first-run profile as the rest of Career-Ops. They do not ship a candidate identity, profession, CV, cookies, or portal login.
+
+1. Set your Gmail OAuth Desktop client id and secret in `.env`, then run `node scripts/gmail-auth.mjs`. The token is read-only and `.env` is gitignored.
+2. Add any title aliases or exclusions to `gmail_classifier` in `config/profile.yml`. If omitted, Gmail classification derives phrases from `target_roles`.
+3. Configure PDF resume paths under `application.resumes` in `config/profile.yml`.
+4. On Windows, run `launch-chrome.bat` and sign into job portals in that window. Its profile defaults to `%LOCALAPPDATA%\career-ops\chrome-profile`, outside the repository and separate for every Windows user.
+
+The apply skill prepares forms first. Career-Ops still requires the user to review the completed application before any submission.
 
 ## Verify Setup
 

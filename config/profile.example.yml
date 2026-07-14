@@ -38,6 +38,19 @@ target_roles:
       level: "Mid-Senior"
       fit: "adjacent"
 
+# Optional Gmail-alert classifier. When match_keywords is empty or omitted,
+# scan-gmail derives conservative phrase patterns from target_roles above.
+# Add aliases here when job boards use different titles. These are JavaScript
+# regular expressions applied to normalized URL/title/email text, so the same
+# mechanism works for software, biotech, healthcare, finance, or any other field.
+gmail_classifier:
+  match_keywords: []
+  # Examples only — choose patterns for your field:
+  # - "\\bresearch\\s+scientist\\b"
+  # - "\\bclinical\\s+data\\s+manager\\b"
+  # - "\\bsoftware\\s+engineer\\b"
+  match_excludes: []
+
 narrative:
   # Your professional headline (1 line)
   headline: "ML Engineer turned AI product builder"
@@ -82,6 +95,17 @@ language:
   # vocabulary/rules, while output selects the prose language.
   output: en
   # modes_dir: modes/de  # optional: use DACH market vocabulary while still writing in English
+
+# Optional application-form automation settings. Keep resume files in a
+# gitignored user directory such as output/ or point to another local path.
+# gmail-apply-smilified selects by the form language, then falls back to default.
+application:
+  minimum_score: 4.0
+  resumes:
+    default: ""
+    by_language:
+      # en: "output/resume-en.pdf"
+      # de: "output/resume-de.pdf"
 
 # Optional follow-up cadence preferences for `node followup-cadence.mjs`.
 # CLI flags still win for one-off runs (for example `--applied-days 10`).

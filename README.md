@@ -292,6 +292,15 @@ Career-ops uses a shared command router. In CLIs that register slash commands, i
 /career-ops project        → Evaluate a portfolio project
 ```
 
+Optional profile-backed skills:
+
+```
+/scan-gmail 1d             → Read job-alert emails into the evaluation pipeline (Gmail remains read-only)
+/gmail-apply-smilified     → Prepare evaluated applications in your own Chrome profile; review is required before submit
+```
+
+Both use the normal `config/profile.yml`, `cv.md`, `portals.yml`, and `data/blacklist.md` user layer. They do not ship a candidate identity, profession, CV, cookies, or portal login. See [Setup](docs/SETUP.md#optional-gmail-alert-and-form-automation).
+
 Or just paste a job URL or description directly -- career-ops auto-detects it and runs the full pipeline.
 
 In Codex, slash commands are not guaranteed. Use the same mode names in a prompt instead, or call them from `codex exec`.

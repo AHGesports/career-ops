@@ -1,0 +1,106 @@
+# Shared parsers for job-alert email providers. This file contains no user data.
+# Add personal targeting rules to config/profile.yml under gmail_classifier.
+
+senders:
+  - email: no-reply@justjoin.it
+    extraction: direct
+    pattern: 'https?://(?:www\.)?justjoin\.it/(?:offers|job-offer)/[a-z0-9-]+'
+    decoded_must_match: 'justjoin\.it/(?:offers|job-offer)/'
+
+  - email: jobalert@mailing.theprotocol.it
+    extraction: direct
+    pattern: 'https?://(?:www\.)?theprotocol\.it/szczegoly/praca/[^,\s"<>]+,oferta,[a-f0-9-]+'
+    decoded_must_match: 'theprotocol\.it/szczegoly/praca/'
+
+  - email: app@germantechjobs.de
+    extraction: direct
+    pattern: 'https?://talentportal\.germantechjobs\.de/api/job-redirect\?jobId=([^&"<>]+)'
+    subject_count_pattern: '^(\d+)\s+New\s+Job(?:s)?\s+Matching'
+
+  - email: notifications@nofluffjobs.com
+    extraction: base64
+    pattern: 'https?://mail-link\.nofluffjobs\.com/click/[^/]+/([A-Za-z0-9_-]+)'
+    decode_group: 1
+    decoded_must_match: 'nofluffjobs\.com/(?:pl/)?job/'
+    subject_count_pattern: '(\d+)\s*dopasowane'
+
+  - email: news@profil.karriere.at
+    extraction: zlib
+    pattern: 'https?://email\.karriere\.at/c/([A-Za-z0-9_-]+)'
+    decode_group: 1
+    target_param: l
+    decoded_must_match: 'karriere\.at/jobs/\d+'
+
+  - email: no-reply@karriere.at
+    extraction: zlib
+    pattern: 'https?://email\.karriere\.at/c/([A-Za-z0-9_-]+)'
+    decode_group: 1
+    target_param: l
+    decoded_must_match: 'karriere\.at/jobs/\d+'
+
+  - email: donotreply@jobalert.indeed.com
+    extraction: direct
+    pattern: 'https?://(de|at|nl|ie)\.indeed\.com/rc/clk(?:/dl)?\?[^"<>]*?jk=([a-f0-9]+)[^"<>]*'
+    url_template: 'https://{1}.indeed.com/viewjob?jk={2}'
+    subject_count_pattern: '^(\d+)\s+(?:nieuwe\s+)?[A-Za-z0-9.+#-]+\s+(?:[Jj]obs?|[Vv]acatures?)\b'
+
+  - email: jobalerts-noreply@linkedin.com
+    extraction: direct
+    pattern: 'https?://(?:www\.)?linkedin\.com/comm/jobs/view/\d+'
+    decoded_must_match: 'linkedin\.com/jobs/view/\d+'
+
+  - email: alerts@welcometothejungle.com
+    extraction: tracker
+    pattern: 'https?://t\.welcometothejungle\.com/ls/click\?upn=[^"\s)]+'
+    decoded_must_match: 'welcometothejungle\.com/[a-z]+/companies/[^/]+/jobs/'
+
+  - email: jobs@mail.xing.com
+    extraction: tracker
+    pattern: 'https?://(?:www\.)?xing\.com/m/[A-Za-z0-9_-]+'
+    decoded_must_match: 'xing\.com/jobs/[^/]+-\d+'
+    subject_count_pattern: '^(\d+)\s+new\s+job\s+ads?\b'
+
+  - email: jobalert@metajob.at
+    extraction: tracker
+    pattern: 'https?://(?:www\.)?metajob\.at/the/a\?c=[A-Za-z0-9]+'
+    decoded_list_match: '^https://www\.metajob\.at/\?q='
+    subject_count_pattern: '^(\d+)\s+neue\s+Jobs\b'
+    subject_count_is_summary: true
+
+  - email: notifications@app.instaffo.com
+    extraction: plaintext
+    pattern: 'https?://app\.instaffo\.com/candidate/job/[0-9a-f-]+'
+
+  - email: info@email.stepstone.at
+    extraction: tracker
+    pattern: 'https?://click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
+    decoded_must_match: 'stepstone\.(?:de|at)/stellenangebote----\d+'
+
+  - email: info@email.stepstone.de
+    extraction: tracker
+    pattern: 'https?://click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
+    decoded_must_match: 'stepstone\.(?:de|at)/stellenangebote----\d+'
+
+  - email: info@jobagent.stepstone.de
+    extraction: tracker
+    pattern: 'https?://click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
+    decoded_must_match: 'stepstone\.(?:de|at)/stellenangebote----\d+'
+
+  # Keep unknown formats disabled until one real message has been inspected.
+  - email: jobagent@arbeitsagentur.de
+    extraction: untested
+    pattern_guess: 'https?://jobboerse\.arbeitsagentur\.de/[^\s"<>]+'
+
+  - email: alerts@himalayas.app
+    extraction: untested
+    pattern_guess: 'https?://himalayas\.app/jobs/[a-z0-9-]+'
+
+strip_params:
+  - utm_*
+  - ref
+  - src
+  - trk
+  - mc_eid
+  - mc_cid
+  - trackingId
+  - gh_src

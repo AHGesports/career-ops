@@ -97,6 +97,8 @@ AI-powered, CLI-agnostic job search automation: pipeline tracking, offer evaluat
 |------|----------|
 | `data/applications.md` | Application tracker |
 | `data/pipeline.md` | Inbox of pending URLs |
+| `data/pipeline-deferred.md` | Gmail leads outside the current profile match rules |
+| `data/gmail-scan-history.tsv` | Read-only Gmail scan cursor |
 | `data/scan-history.tsv` | Scanner dedup history |
 | `portals.yml` | Query and company config |
 | `templates/cv-template.html` | HTML template for CVs |
@@ -325,6 +327,8 @@ These are two separate axes:
 | Asks about application status | `tracker` |
 | Fills out application form | `apply` |
 | Searches for new offers | `scan` |
+| Scans job-alert emails in Gmail | `scan-gmail` skill — reads `target_roles` / `gmail_classifier`, writes pending URLs, never modifies Gmail |
+| Prepares evaluated Gmail-derived applications | `gmail-apply-smilified` skill — uses the user's profile, resumes, blacklist, portal recipes, and browser; requires review before submit |
 | Processes pending URLs | `pipeline` |
 | Batch processes offers | `batch` |
 | Asks about rejection patterns, wants to improve targeting, or wants to match interview answers to best-fit roles | `patterns` |
