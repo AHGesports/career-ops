@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
-import { spawnSync } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { deflateSync } from 'node:zlib';
 import { appendPending, canonicalizeUrl, extractSenderUrls, parseWindow } from './gmail-scan.mjs';
@@ -13,6 +13,7 @@ import {
   captchaWaitMilliseconds,
   classifierSources,
   classifyText,
+  requireActiveProfile,
   resolveProfileTemplate,
   resumeForLanguage,
 } from './profile-config.mjs';
@@ -56,6 +57,29 @@ test('profile templates resolve nested user-owned values', () => {
   const profile = { candidate: { phone: '+1-555-0100' } };
   assert.equal(resolveProfileTemplate('Call {{candidate.phone}}', profile), 'Call +1-555-0100');
   assert.throws(() => resolveProfileTemplate('{{candidate.missing}}', profile), /Unresolved/);
+});
+
+test('Gmail operations reject a profile while its workspace is switching', () => {
+  const root = mkdtempSync(join(tmpdir(), 'career-ops-profile-state-'));
+  try {
+    mkdirSync(join(root, '.career-ops'), { recursive: true });
+    writeFileSync(join(root, '.career-ops', 'active-profile'), 'arshia-hemati\n');
+    writeFileSync(join(root, '.career-ops', 'profile-state.json'), JSON.stringify({
+      status: 'switching',
+      profile_id: 'hannah-aghaei',
+      generation: 2,
+    }));
+    assert.throws(() => requireActiveProfile(root), /is switching/);
+    writeFileSync(join(root, '.career-ops', 'active-profile'), 'hannah-aghaei\n');
+    writeFileSync(join(root, '.career-ops', 'profile-state.json'), JSON.stringify({
+      status: 'ready',
+      profile_id: 'hannah-aghaei',
+      generation: 2,
+    }));
+    assert.equal(requireActiveProfile(root), 'hannah-aghaei');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('resume selection uses the user language mapping and verifies the file', () => {
@@ -216,6 +240,89 @@ test('named profiles isolate and restore complete user workspaces', () => {
     const browser = JSON.parse(readFileSync(join(root, '.career-ops', 'active-browser.json'), 'utf8'));
     assert.equal(browser.profile_id, 'arshia-hemati');
     assert.equal(browser.port, 9222);
+    const state = JSON.parse(readFileSync(join(root, '.career-ops', 'profile-state.json'), 'utf8'));
+    assert.equal(state.status, 'ready');
+    assert.equal(state.profile_id, 'arshia-hemati');
+
+    writeFileSync(join(root, '.career-ops', 'operation.lock'), JSON.stringify({ pid: process.pid, purpose: 'test automation' }));
+    const blocked = spawnSync(process.execPath, [script, 'activate', 'hannah-aghaei', '--cwd', root], { encoding: 'utf8' });
+    assert.equal(blocked.status, 1);
+    assert.match(blocked.stderr, /Another Career-Ops profile operation is running/);
+    rmSync(join(root, '.career-ops', 'operation.lock'), { force: true });
+  } finally {
+    rmSync(base, { recursive: true, force: true });
+  }
+});
+
+test('profile runner activates one owner and binds the child command to it', () => {
+  const base = mkdtempSync(join(tmpdir(), 'career-ops-profile-run-'));
+  const root = join(base, 'repo');
+  const script = join(REPO_ROOT, 'scripts', 'profile.mjs');
+  const captureScript = join(base, 'capture-profile.mjs');
+  const capturePath = join(base, 'captured.json');
+  try {
+    mkdirSync(root, { recursive: true });
+    writeFileSync(captureScript, `
+import { writeFileSync } from 'node:fs';
+writeFileSync(process.argv[2], JSON.stringify({
+  id: process.env.CAREER_OPS_PROFILE_ID,
+  port: process.env.CAREER_OPS_CHROME_PORT,
+  cwd: process.cwd(),
+  childCwdFlag: process.argv[4],
+}));
+`);
+    let result = spawnSync(process.execPath, [script, 'create', 'hannah-aghaei', '--name', 'Hannah Aghaei', '--browser-port', '9223', '--cwd', root], { encoding: 'utf8' });
+    assert.equal(result.status, 0, result.stderr);
+    result = spawnSync(process.execPath, [
+      script,
+      'run', 'hannah-aghaei', '--cwd', root,
+      '--', process.execPath, captureScript, capturePath, '--cwd', 'belongs-to-child',
+    ], { encoding: 'utf8' });
+    assert.equal(result.status, 0, result.stderr);
+    const captured = JSON.parse(readFileSync(capturePath, 'utf8'));
+    assert.equal(captured.id, 'hannah-aghaei');
+    assert.equal(captured.port, '9223');
+    assert.equal(captured.cwd, root);
+    assert.equal(captured.childCwdFlag, 'belongs-to-child');
+    assert.equal(existsSync(join(root, '.career-ops', 'operation.lock')), false);
+  } finally {
+    rmSync(base, { recursive: true, force: true });
+  }
+});
+
+test('profile runners queue different owners instead of overlapping workspaces', { timeout: 5000 }, async () => {
+  const base = mkdtempSync(join(tmpdir(), 'career-ops-profile-queue-'));
+  const root = join(base, 'repo');
+  const script = join(REPO_ROOT, 'scripts', 'profile.mjs');
+  const holdScript = join(base, 'hold.mjs');
+  const captureScript = join(base, 'capture.mjs');
+  const capturePath = join(base, 'captured.txt');
+  try {
+    mkdirSync(root, { recursive: true });
+    writeFileSync(holdScript, 'Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 300);\n');
+    writeFileSync(captureScript, `import { writeFileSync } from 'node:fs'; writeFileSync(process.argv[2], process.env.CAREER_OPS_PROFILE_ID);\n`);
+    for (const [id, name, port] of [['alpha-user', 'Alpha User', '9222'], ['beta-user', 'Beta User', '9223']]) {
+      const created = spawnSync(process.execPath, [script, 'create', id, '--name', name, '--browser-port', port, '--cwd', root], { encoding: 'utf8' });
+      assert.equal(created.status, 0, created.stderr);
+    }
+
+    let firstError = '';
+    const first = spawn(process.execPath, [script, 'run', 'alpha-user', '--cwd', root, '--', process.execPath, holdScript], { stdio: ['ignore', 'ignore', 'pipe'] });
+    first.stderr.on('data', chunk => { firstError += chunk; });
+    const firstDone = new Promise(resolveDone => first.once('close', code => resolveDone(code)));
+    for (let attempt = 0; attempt < 100 && !existsSync(join(root, '.career-ops', 'operation.lock')); attempt += 1) {
+      await new Promise(resolveWait => setTimeout(resolveWait, 10));
+    }
+    assert.equal(existsSync(join(root, '.career-ops', 'operation.lock')), true, 'first runner never acquired the lock');
+
+    const second = spawnSync(process.execPath, [
+      script, 'run', 'beta-user', '--cwd', root,
+      '--', process.execPath, captureScript, capturePath,
+    ], { encoding: 'utf8' });
+    assert.equal(second.status, 0, second.stderr);
+    assert.equal(await firstDone, 0, firstError);
+    assert.equal(readFileSync(capturePath, 'utf8'), 'beta-user');
+    assert.equal(readFileSync(join(root, '.career-ops', 'active-profile'), 'utf8').trim(), 'beta-user');
   } finally {
     rmSync(base, { recursive: true, force: true });
   }

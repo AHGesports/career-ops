@@ -9,7 +9,7 @@ Use the current user's profile and browser. Reuse the tracker, portal recipes, a
 
 ## Preflight
 
-1. Run `node scripts/profile.mjs current`. If no profile is active, list profiles and activate the requested one. Never read one profile's CV or tracker while another profile is active.
+1. Run `node scripts/profile.mjs current`. If no profile is active, list profiles and activate the requested one. Record the active `<profile-id>`. Never read one profile's CV or tracker while another profile is active.
 2. Run `node doctor.mjs --json` and complete onboarding for the active profile if needed.
 3. Read the active `config/profile.yml`, `cv.md`, and `data/blacklist.md` when it exists.
 4. Use `target_roles`, `gmail_classifier.match_excludes`, the evaluated report, and `data/blacklist.md` as the role/company guardrails. Do not substitute software-development rules or any other profession-specific policy.
@@ -23,7 +23,7 @@ Use the current user's profile and browser. Reuse the tracker, portal recipes, a
 For a tracker batch, run:
 
 ```bash
-node scripts/pick-apply-urls.mjs <amount>
+node scripts/profile.mjs run <profile-id> -- node scripts/pick-apply-urls.mjs <amount>
 ```
 
 Without an amount, use 10. The picker reads the latest tracker layout, minimum score, blacklist, and portal recipes. It marks an unknown portal for browser takeover instead of excluding the user's evaluated role.
@@ -39,14 +39,14 @@ If Chrome/CDP is closed or unreachable, stop. Do not launch or restart it from t
 Run:
 
 ```bash
-node scripts/gmail-apply.mjs <url>
+node scripts/profile.mjs run <profile-id> -- node scripts/gmail-apply.mjs <url>
 ```
 
 The script fills stable, profile-backed fields. If `application.auto_submit: true`, it also submits a validated supported portal. Inspect its JSON:
 
 - `prepared: true` -> inspect required fields, resume selection, and visible answers with Chrome DevTools MCP.
 - `takeover_required: true` -> continue immediately in the reported external ATS tab with Chrome DevTools MCP, upload the reported resume path when needed, and finish every required field. This is a handoff, not a completed or skipped attempt.
-- `job_unavailable: true` -> update the existing tracker row to `Discarded` with `node set-status.mjs`.
+- `job_unavailable: true` -> update the existing tracker row to `Discarded` through the same profile runner and `node set-status.mjs`.
 - Any missing or job-specific required answer -> use only `cv.md`, `article-digest.md`, `config/profile.yml`, `modes/_profile.md`, and current-conversation facts. Ask the user if the answer is not supported.
 
 Use the form/job language when the profile supports it; otherwise use `language.output`. Upload the configured resume for that language.
@@ -61,7 +61,7 @@ Always finish all supported fields for every role that passes the profile, score
 - With `application.auto_submit: false`, stop only at the final Submit action and present the fully completed form and key answers. If the user then explicitly confirms, run:
 
 ```bash
-node scripts/gmail-apply.mjs <url> --submit --reviewed
+node scripts/profile.mjs run <profile-id> -- node scripts/gmail-apply.mjs <url> --submit --reviewed
 ```
 
 Regardless of submission mode, require visible, strict post-submit evidence; a click, detached modal, or URL change alone is not success.
@@ -69,10 +69,12 @@ Regardless of submission mode, require visible, strict post-submit evidence; a c
 After confirmed success, update the existing row:
 
 ```bash
-node set-status.mjs <tracker-number> Applied --note "Application submitted and confirmed"
+node scripts/profile.mjs run <profile-id> -- node set-status.mjs <tracker-number> Applied --note "Application submitted and confirmed"
 ```
 
 Never create a tracker row. Leave blocked or unconfirmed attempts in their current status and report the required manual action.
+
+Do not run two live apply flows for different profiles concurrently in one checkout. The runner protects each deterministic command; browser takeover remains attached to the currently active data and Chrome profile until that application is finished.
 
 ## Final response
 

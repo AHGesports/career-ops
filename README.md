@@ -301,7 +301,7 @@ Optional profile-backed skills:
 
 Both use the normal `config/profile.yml`, `cv.md`, `portals.yml`, and `data/blacklist.md` user layer. Submission is controlled by `application.auto_submit`, and CAPTCHA waits use the extension installed in that user's dedicated Chrome profile. They do not ship a candidate identity, profession, CV, cookies, or portal login. See [Setup](docs/SETUP.md#optional-gmail-alert-and-form-automation).
 
-Named profiles let one installation serve multiple people without sharing data or browser sessions. Use `node scripts/profile.mjs create|import|activate|list`, then launch the matching browser with `launch-chrome.bat <profile-id> [debug-port]`. Each profile keeps its own CV, configuration, tracker, Gmail credentials, generated work, Chrome cookies, and extensions.
+Named profiles let one installation serve multiple people without sharing data or browser sessions. Use `node scripts/profile.mjs create|import|activate|list`, then launch the matching browser with `launch-chrome.bat <profile-id> [debug-port]`. Each profile keeps its own CV, configuration, tracker, Gmail credentials, generated work, Chrome cookies, and extensions. For an automation, use `node scripts/profile.mjs run <profile-id> -- <command>`; the runner activates that owner and holds a lock until the command exits, so jobs for different people queue instead of mixing workspaces.
 
 Or just paste a job URL or description directly -- career-ops auto-detects it and runs the full pipeline.
 
@@ -360,6 +360,8 @@ The built-in terminal dashboard lets you browse your pipeline visually:
 npm run serve:dashboard   # launch the TUI
 npm run build:dashboard   # optional: build the standalone binary
 ```
+
+The header always shows the active named profile. A profile switch immediately hides the old dashboard, discards its in-memory report cache, and reloads only after the new profile is ready. Empty profiles open as an empty dashboard instead of inheriting the previous person's tracker.
 
 Features: 6 filter tabs, 4 sort modes, grouped/flat view, lazy-loaded previews, inline status changes.
 

@@ -102,7 +102,6 @@ var canonicalDiscardReasons = []string{
 	"company_culture",
 }
 
-
 type reportSummary struct {
 	archetype string
 	tldr      string
@@ -224,20 +223,21 @@ type PipelineModel struct {
 	theme         theme.Theme
 	careerOpsPath string
 	reportCache   map[string]reportSummary
+	profileLabel  string
 	// Status picker sub-state
 	statusPicker bool
 	statusCursor int
 	// Discard reason picker sub-state (Issue 1380) — opens when status
 	// transitions to Discarded or SKIP, pre-populated from the report's
 	// predicted discard_reasons, plus canonical fallback options.
-	discardPicker       bool
-	discardCursor       int
-	discardOptions      []string // predicted + canonical options shown to user
-	discardCustomInput  bool     // true when "Other…" is selected and user is typing
-	discardCustomText   string   // free-text typed for "Other…" reason
-	discardPendingApp    model.CareerApplication // app awaiting the reason pick
-	discardPendingStatus string                  // new status to commit with the reason
-	discardPredictedCount int                    // count of predicted reasons (from report)
+	discardPicker         bool
+	discardCursor         int
+	discardOptions        []string                // predicted + canonical options shown to user
+	discardCustomInput    bool                    // true when "Other…" is selected and user is typing
+	discardCustomText     string                  // free-text typed for "Other…" reason
+	discardPendingApp     model.CareerApplication // app awaiting the reason pick
+	discardPendingStatus  string                  // new status to commit with the reason
+	discardPredictedCount int                     // count of predicted reasons (from report)
 
 	// PDF picker sub-state — shown when one application matches several
 	// generated CVs (role variants from the same company).
@@ -305,6 +305,9 @@ func (m PipelineModel) Width() int { return m.width }
 // Height returns the current height.
 func (m PipelineModel) Height() int { return m.height }
 
+// SetProfileLabel identifies the active data owner in the dashboard header.
+func (m *PipelineModel) SetProfileLabel(label string) { m.profileLabel = label }
+
 // CopyReportCache copies the report cache from another pipeline model.
 func (m *PipelineModel) CopyReportCache(other *PipelineModel) {
 	for k, v := range other.reportCache {
@@ -344,6 +347,7 @@ func (m PipelineModel) WithReloadedData(apps []model.CareerApplication, metrics 
 	reloaded.searchInput = m.searchInput
 	// Preserve user's column visibility choices across refresh.
 	reloaded.visibleCols = m.visibleCols
+	reloaded.profileLabel = m.profileLabel
 	reloaded.applyFilterAndSort()
 	reloaded.CopyReportCache(&m)
 
@@ -775,8 +779,8 @@ func (m PipelineModel) handleStatusPicker(msg tea.KeyMsg) (PipelineModel, tea.Cm
 func (m PipelineModel) startDiscardFlow(app model.CareerApplication, newStatus string) tea.Msg {
 	predicted := data.LoadReportDiscardReasons(m.careerOpsPath, app.ReportPath)
 	return pipelineStartDiscardPickerMsg{
-		app:           app,
-		newStatus:     newStatus,
+		app:              app,
+		newStatus:        newStatus,
 		predictedReasons: predicted,
 	}
 }
@@ -1329,7 +1333,11 @@ func (m PipelineModel) renderHeader() string {
 	avg := fmt.Sprintf("%.1f", m.metrics.AvgScore)
 	info := right.Render(fmt.Sprintf(i18n.Current.OffersSummary, m.metrics.Total, avg))
 
-	title := lipgloss.NewStyle().Bold(true).Foreground(m.theme.Blue).Render(i18n.Current.AppTitle)
+	titleText := i18n.Current.AppTitle
+	if m.profileLabel != "" {
+		titleText += " · " + m.profileLabel
+	}
+	title := lipgloss.NewStyle().Bold(true).Foreground(m.theme.Blue).Render(titleText)
 	gap := m.width - lipgloss.Width(title) - lipgloss.Width(info) - 4
 	if gap < 1 {
 		gap = 1
@@ -1889,7 +1897,6 @@ func (m PipelineModel) overlayStatusPicker(body string) string {
 	return strings.Join(bodyLines, "\n")
 }
 
-
 func (m PipelineModel) overlayHiredFlow() string {
 	borderStyle := lipgloss.NewStyle().
 		Border(lipgloss.DoubleBorder()).
@@ -2098,7 +2105,6 @@ func (m PipelineModel) overlayDiscardPicker(body string) string {
 		picker = append(picker, padStyle.Render(hintStyle.Render("Enter: confirm   Esc: back")))
 	} else {
 		numPredicted := m.discardPredictedCount
-
 
 		heading := "─── Discard reason (↑↓ navigate · Enter confirm · Esc skip) ─"
 		picker = append(picker, padStyle.Render(titleStyle.Render(heading)))

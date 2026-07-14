@@ -8,7 +8,7 @@ import yaml from 'js-yaml';
 import { chromium } from 'playwright';
 import { companyFromUrl, isAuthenticEmail, parseRoleAtCompany } from '../plugins/gmail/_helpers.mjs';
 import { getAccessToken } from '../plugins/gmail/index.mjs';
-import { activeProfile, classifyText, loadProfile } from './profile-config.mjs';
+import { classifyText, loadProfile, requireActiveProfile } from './profile-config.mjs';
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT = resolve(SCRIPT_DIR, '..');
@@ -260,6 +260,7 @@ function leadFor(url, message, kind, profile) {
 
 export async function runScan(options) {
   const root = options.root;
+  const profileId = requireActiveProfile(root);
   const profile = loadProfile(root);
   const sendersPath = resolve(root, 'config/gmail-senders.yml');
   if (!existsSync(sendersPath)) throw new Error('config/gmail-senders.yml is missing.');
@@ -367,7 +368,7 @@ export async function runScan(options) {
   }
 
   return {
-    profile_id: activeProfile(root),
+    profile_id: profileId,
     window: window.label,
     messages_seen: ids.length,
     messages_processed: history.length,

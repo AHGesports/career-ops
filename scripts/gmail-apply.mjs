@@ -7,10 +7,10 @@ import yaml from 'js-yaml';
 import { chromium } from 'playwright';
 import {
   activeBrowser,
-  activeProfile,
   applicationSubmissionPolicy,
   captchaWaitMilliseconds,
   loadProfile,
+  requireActiveProfile,
   resolveProfileTemplate,
   resumeForLanguage,
 } from './profile-config.mjs';
@@ -210,8 +210,8 @@ async function main() {
   if (process.argv.includes('--force')) fail('--force is not supported; application steps must validate before submission.');
   if (!existsSync(CONFIG_PATH)) fail('config/gmail-apply-portals.yml is missing.');
 
+  const profileId = requireActiveProfile(ROOT);
   const profile = loadProfile(ROOT);
-  const profileId = activeProfile(ROOT);
   const { autoSubmit, shouldSubmit } = applicationSubmissionPolicy(profile, args);
   const captchaTimeoutMs = captchaWaitMilliseconds(profile);
   const browserState = activeBrowser(ROOT);

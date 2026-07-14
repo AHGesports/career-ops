@@ -22,6 +22,8 @@ There are two layers. Read `DATA_CONTRACT.md` for the full list.
 
 **THE RULE: When the user asks to customize facts or targeting (archetypes, narrative, negotiation scripts, proof points, location policy, comp targets), ALWAYS write to `modes/_profile.md` or `config/profile.yml`. When they ask for procedural house rules, custom workflows, output preferences, or automations, write to `modes/_custom.md` (copy it from `modes/_custom.template.md` if missing). NEVER edit `modes/_shared.md` for user-specific content.** This ensures system updates don't overwrite their customizations.
 
+**Named-profile rule:** Activate a named profile before any user-data operation. For scheduled or overlapping jobs, run the command through `node scripts/profile.mjs run <profile-id> -- <command>` so profile switches and writes are serialized. Never run direct commands for different profiles concurrently in one checkout.
+
 ## Source-of-Truth Boundary (CRITICAL)
 
 User-facing content (CV, cover letters, application emails, form answers, recruiter outreach, application form responses) is generated **exclusively** from these files plus statements the user makes directly in the current conversation:

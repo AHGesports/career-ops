@@ -95,7 +95,16 @@ The two optional skills reuse the same first-run profile as the rest of Career-O
 6. Set `application.auto_submit: true` to grant standing submission permission, or leave it `false` to stop at a fully completed form. Configure the solver-extension wait with `application.captcha_wait_seconds`.
 7. On Windows, run `launch-chrome.bat <profile-id> [debug-port]`, install the CAPTCHA extension in that named Chrome profile, and sign into its job portals. Browser data defaults to `%LOCALAPPDATA%\career-ops\chrome-profiles\<profile-id>`.
 
-One workspace data profile is active at a time. Multiple named Chrome profiles can remain open concurrently when they use different debug ports; launching or activating a profile selects which data, CV, tracker, Gmail credentials, and browser endpoint the skills use.
+One workspace data profile is active at a time. Multiple named Chrome profiles can remain open concurrently when they use different debug ports; launching or activating a profile selects which data, CV, tracker, Gmail credentials, and browser endpoint the skills use. The dashboard follows that selection, hides data while a switch is in progress, and rebuilds without carrying report previews from the previous profile.
+
+For scheduled operations, bind the whole command to its owner:
+
+```bash
+node scripts/profile.mjs run arshia-hemati -- node scripts/gmail-scan.mjs --window 1d --commit
+node scripts/profile.mjs run hannah-aghaei -- node scripts/gmail-scan.mjs --window 1d --commit
+```
+
+The runner serializes these commands with profile creation, saving, activation, and other profile-scoped runs. A command that bypasses the runner is suitable only for sequential interactive work after an explicit `activate`; do not run direct commands for different profiles concurrently in one checkout.
 
 The apply skill always finishes eligible applications. It submits without another prompt only when the user's profile explicitly enables `application.auto_submit`.
 

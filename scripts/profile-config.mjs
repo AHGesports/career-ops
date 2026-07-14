@@ -20,6 +20,33 @@ export function activeProfile(repoRoot = process.cwd()) {
   return readFileSync(path, 'utf8').trim() || null;
 }
 
+export function requireActiveProfile(repoRoot = process.cwd()) {
+  const id = activeProfile(repoRoot);
+  if (!id) throw new Error('No Career-Ops profile is active. Run node scripts/profile.mjs activate <profile-id>.');
+
+  const statePath = resolve(repoRoot, '.career-ops/profile-state.json');
+  if (existsSync(statePath)) {
+    let state;
+    try {
+      state = JSON.parse(readFileSync(statePath, 'utf8'));
+    } catch (error) {
+      throw new Error(`Active profile state is unreadable: ${error.message}`);
+    }
+    if (state.status !== 'ready') {
+      throw new Error(`Career-Ops profile ${state.profile_id || id} is ${state.status || 'not ready'}; wait for profile activation to finish.`);
+    }
+    if (state.profile_id !== id) {
+      throw new Error(`Active profile pointer ${id} does not match ready profile state ${state.profile_id}.`);
+    }
+  }
+
+  const expected = process.env.CAREER_OPS_PROFILE_ID;
+  if (expected && expected !== id) {
+    throw new Error(`This operation is bound to profile ${expected}, but the active workspace belongs to ${id}.`);
+  }
+  return id;
+}
+
 export function activeBrowser(repoRoot = process.cwd()) {
   const path = resolve(repoRoot, '.career-ops/active-browser.json');
   if (!existsSync(path)) return null;

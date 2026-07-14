@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 import {
+  closeSync,
   cpSync,
   existsSync,
+  openSync,
   lstatSync,
   mkdirSync,
   readFileSync,
@@ -51,14 +53,16 @@ function slash(value) {
 
 function parseArgs(argv) {
   const args = argv.slice(2);
+  const separator = args.indexOf('--');
+  const ownArgs = separator >= 0 ? args.slice(0, separator) : args;
   const value = flag => {
-    const inline = args.find(arg => arg.startsWith(`${flag}=`));
+    const inline = ownArgs.find(arg => arg.startsWith(`${flag}=`));
     if (inline) return inline.slice(flag.length + 1);
-    const index = args.indexOf(flag);
-    return index >= 0 ? args[index + 1] : null;
+    const index = ownArgs.indexOf(flag);
+    return index >= 0 ? ownArgs[index + 1] : null;
   };
-  const command = args[0] || 'help';
-  const rawId = args[1] && !args[1].startsWith('--') ? args[1] : null;
+  const command = ownArgs[0] || 'help';
+  const rawId = ownArgs[1] && !ownArgs[1].startsWith('--') ? ownArgs[1] : null;
   return {
     command,
     id: rawId || null,
@@ -66,7 +70,8 @@ function parseArgs(argv) {
     source: value('--from') ? resolve(value('--from')) : null,
     displayName: value('--name'),
     browserPort: value('--browser-port'),
-    batch: args.includes('--batch'),
+    batch: ownArgs.includes('--batch'),
+    commandArgs: separator >= 0 ? args.slice(separator + 1) : [],
   };
 }
 
@@ -77,6 +82,8 @@ function pathsFor(root) {
     profilesRoot: resolve(stateRoot, 'profiles'),
     activePath: resolve(stateRoot, 'active-profile'),
     browserPath: resolve(stateRoot, 'active-browser.json'),
+    profileStatePath: resolve(stateRoot, 'profile-state.json'),
+    operationLockPath: resolve(stateRoot, 'operation.lock'),
   };
 }
 
@@ -112,6 +119,89 @@ function readActiveId(root) {
   if (!existsSync(activePath)) return null;
   const id = readFileSync(activePath, 'utf8').trim();
   return id ? assertId(id) : null;
+}
+
+function readProfileState(root) {
+  const { profileStatePath } = pathsFor(root);
+  if (!existsSync(profileStatePath)) return null;
+  try {
+    return readJson(profileStatePath);
+  } catch {
+    return null;
+  }
+}
+
+function nextGeneration(root) {
+  const previous = Number(readProfileState(root)?.generation) || 0;
+  return Math.max(Date.now(), previous + 1);
+}
+
+function writeProfileState(root, value) {
+  writeJson(pathsFor(root).profileStatePath, {
+    schema_version: 1,
+    ...value,
+    updated_at: new Date().toISOString(),
+  });
+}
+
+function processIsAlive(pid) {
+  if (!Number.isInteger(pid) || pid <= 0) return false;
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch (error) {
+    return error?.code === 'EPERM';
+  }
+}
+
+function acquireOperationLock(root, purpose, waitMs = 0) {
+  const { operationLockPath } = pathsFor(root);
+  mkdirSync(dirname(operationLockPath), { recursive: true });
+  const deadline = Date.now() + Math.max(0, waitMs);
+  const sleeper = new Int32Array(new SharedArrayBuffer(4));
+  while (true) {
+    try {
+      const fd = openSync(operationLockPath, 'wx');
+      const token = `${process.pid}-${Date.now()}`;
+      writeFileSync(fd, `${JSON.stringify({ pid: process.pid, purpose, token, created_at: new Date().toISOString() }, null, 2)}\n`);
+      return () => {
+        closeSync(fd);
+        try {
+          const current = readJson(operationLockPath);
+          if (current.token === token) rmSync(operationLockPath, { force: true });
+        } catch {
+          // The lock may already have been removed after an interrupted process.
+        }
+      };
+    } catch (error) {
+      if (error?.code !== 'EEXIST') throw error;
+      let existing = null;
+      try {
+        existing = readJson(operationLockPath);
+      } catch {
+        // A malformed lock is stale and safe to replace.
+      }
+      if (!processIsAlive(Number(existing?.pid))) {
+        rmSync(operationLockPath, { force: true });
+        continue;
+      }
+      if (Date.now() < deadline) {
+        Atomics.wait(sleeper, 0, 0, Math.min(100, deadline - Date.now()));
+        continue;
+      }
+      const owner = existing?.purpose ? ` (${existing.purpose})` : '';
+      throw new Error(`Another Career-Ops profile operation is running${owner}. Wait for it to finish before switching profiles.`);
+    }
+  }
+}
+
+function withOperationLock(root, purpose, callback, waitMs = 0) {
+  const release = acquireOperationLock(root, purpose, waitMs);
+  try {
+    return callback();
+  } finally {
+    release();
+  }
 }
 
 function trackedPaths(root) {
@@ -256,37 +346,64 @@ function activateProfile(root, requestedId, browserPort) {
   const id = assertId(requestedId || currentId);
   const { metadataPath, workspaceRoot } = profilePaths(root, id);
   if (!existsSync(metadataPath)) throw new Error(`Profile ${id} does not exist.`);
+  const metadata = readJson(metadataPath);
+  const generation = nextGeneration(root);
   const tracked = trackedPaths(root);
 
-  if (currentId !== id) {
-    if (currentId) {
-      saveActive(root);
-    } else {
-      const orphaned = activeOverlayStats(root, tracked);
-      if (orphaned.files) {
-        throw new Error('Unmanaged user data exists in the workspace. Import or adopt it before activating a profile.');
-      }
-    }
-    clearActiveWorkspace(root, tracked);
-    copyManaged(workspaceRoot, root, tracked);
-    const { activePath } = pathsFor(root);
-    mkdirSync(dirname(activePath), { recursive: true });
-    writeFileSync(activePath, `${id}\n`, 'utf8');
-  }
-
-  const metadata = readJson(metadataPath);
-  metadata.browser_port = parsePort(browserPort, metadata.browser_port || 9222);
-  metadata.last_activated_at = new Date().toISOString();
-  metadata.updated_at = metadata.last_activated_at;
-  writeJson(metadataPath, metadata);
-  const browser = {
+  writeProfileState(root, {
+    status: 'switching',
     profile_id: id,
-    port: metadata.browser_port,
-    user_data_dir: browserDirectory(id),
-    updated_at: metadata.updated_at,
-  };
-  writeJson(pathsFor(root).browserPath, browser);
-  return { profile: metadata, browser };
+    display_name: metadata.display_name || id,
+    previous_profile_id: currentId,
+    generation,
+  });
+
+  try {
+    if (currentId !== id) {
+      if (currentId) {
+        saveActive(root);
+      } else {
+        const orphaned = activeOverlayStats(root, tracked);
+        if (orphaned.files) {
+          throw new Error('Unmanaged user data exists in the workspace. Import or adopt it before activating a profile.');
+        }
+      }
+      clearActiveWorkspace(root, tracked);
+      copyManaged(workspaceRoot, root, tracked);
+      const { activePath } = pathsFor(root);
+      mkdirSync(dirname(activePath), { recursive: true });
+      writeFileSync(activePath, `${id}\n`, 'utf8');
+    }
+
+    metadata.browser_port = parsePort(browserPort, metadata.browser_port || 9222);
+    metadata.last_activated_at = new Date().toISOString();
+    metadata.updated_at = metadata.last_activated_at;
+    writeJson(metadataPath, metadata);
+    const browser = {
+      profile_id: id,
+      port: metadata.browser_port,
+      user_data_dir: browserDirectory(id),
+      updated_at: metadata.updated_at,
+    };
+    writeJson(pathsFor(root).browserPath, browser);
+    writeProfileState(root, {
+      status: 'ready',
+      profile_id: id,
+      display_name: metadata.display_name || id,
+      generation,
+    });
+    return { profile: metadata, browser };
+  } catch (error) {
+    writeProfileState(root, {
+      status: 'error',
+      profile_id: id,
+      display_name: metadata.display_name || id,
+      previous_profile_id: currentId,
+      generation,
+      error: error.message,
+    });
+    throw error;
+  }
 }
 
 function createProfile(root, id, displayName, browserPort) {
@@ -321,6 +438,30 @@ function print(value, batch = false) {
   console.log(JSON.stringify(value, null, 2));
 }
 
+function runForProfile(root, id, browserPort, commandArgs) {
+  if (commandArgs.length === 0) throw new Error('Run requires a command after --.');
+  return withOperationLock(root, `run ${id}`, () => {
+    const activated = activateProfile(root, id, browserPort);
+    let command = commandArgs[0];
+    if (process.platform === 'win32' && ['npm', 'npx', 'pnpm', 'yarn'].includes(command.toLowerCase())) {
+      command = `${command}.cmd`;
+    }
+    const result = spawnSync(command, commandArgs.slice(1), {
+      cwd: root,
+      env: {
+        ...process.env,
+        CAREER_OPS_PROFILE_ID: activated.profile.id,
+        CAREER_OPS_CHROME_PORT: String(activated.browser.port),
+        CAREER_OPS_CHROME_PROFILE: activated.browser.user_data_dir,
+      },
+      stdio: 'inherit',
+    });
+    if (result.error) throw result.error;
+    if (result.signal) throw new Error(`Profile command stopped by signal ${result.signal}.`);
+    return result.status ?? 1;
+  }, 15 * 60 * 1000);
+}
+
 function usage() {
   console.log(`Usage:
   node scripts/profile.mjs list
@@ -328,7 +469,8 @@ function usage() {
   node scripts/profile.mjs create <id> --name "Display Name" [--browser-port 9222]
   node scripts/profile.mjs import <id> --name "Display Name" --from <workspace> [--browser-port 9222]
   node scripts/profile.mjs activate [id] [--browser-port 9222] [--batch]
-  node scripts/profile.mjs save`);
+  node scripts/profile.mjs save
+  node scripts/profile.mjs run <id> -- <command> [args...]`);
 }
 
 function main() {
@@ -343,10 +485,15 @@ function main() {
     const { metadataPath } = profilePaths(args.root, id);
     return print({ active: id, profile: readJson(metadataPath) });
   }
-  if (args.command === 'create') return print(createProfile(args.root, assertId(args.id), args.displayName, args.browserPort));
-  if (args.command === 'import') return print(importProfile(args.root, assertId(args.id), args.source, args.displayName, args.browserPort));
-  if (args.command === 'activate') return print(activateProfile(args.root, args.id, args.browserPort), args.batch);
-  if (args.command === 'save') return print(saveActive(args.root));
+  if (args.command === 'create') return print(withOperationLock(args.root, `create ${args.id}`, () => createProfile(args.root, assertId(args.id), args.displayName, args.browserPort)));
+  if (args.command === 'import') return print(withOperationLock(args.root, `import ${args.id}`, () => importProfile(args.root, assertId(args.id), args.source, args.displayName, args.browserPort)));
+  if (args.command === 'activate') return print(withOperationLock(args.root, `activate ${args.id || 'current'}`, () => activateProfile(args.root, args.id, args.browserPort)), args.batch);
+  if (args.command === 'save') return print(withOperationLock(args.root, 'save active profile', () => saveActive(args.root)));
+  if (args.command === 'run') {
+    const status = runForProfile(args.root, assertId(args.id), args.browserPort, args.commandArgs);
+    if (status !== 0) process.exitCode = status;
+    return;
+  }
   throw new Error(`Unknown profile command: ${args.command}`);
 }
 

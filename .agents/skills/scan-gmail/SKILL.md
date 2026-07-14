@@ -9,7 +9,7 @@ Run the deterministic scanner in the current session. Do not spawn subagents and
 
 ## Preflight
 
-1. Run `node scripts/profile.mjs current`. If no profile is active, list profiles and activate the requested one before reading or writing user data. Never mix data between profiles.
+1. Run `node scripts/profile.mjs current`. If no profile is active, list profiles and activate the requested one before reading or writing user data. Record the active `<profile-id>` and never mix data between profiles.
 2. Run `node doctor.mjs --json`. Complete normal Career-Ops onboarding for the active profile if required.
 3. Read the active `config/profile.yml`. Use `target_roles` as the default classifier. Treat `gmail_classifier.match_keywords` and `match_excludes` as optional user overrides; never insert profession-specific defaults into system files.
 4. Check the active profile's `.env` for `GMAIL_CLIENT_ID`, `GMAIL_CLIENT_SECRET`, and `GMAIL_REFRESH_TOKEN` without printing their values.
@@ -24,7 +24,7 @@ Map the requested window directly: no argument or `24h`/`today` -> `1d`; `48h` -
 Run a dry scan first:
 
 ```bash
-node scripts/gmail-scan.mjs --window <window>
+node scripts/profile.mjs run <profile-id> -- node scripts/gmail-scan.mjs --window <window>
 ```
 
 If `warnings` is non-empty, do not commit. Inspect the sender configuration or retry tracker resolution. A sender marked `untested` requires inspecting one real message and updating `config/gmail-senders.yml` before enabling it.
@@ -32,8 +32,10 @@ If `warnings` is non-empty, do not commit. Inspect the sender configuration or r
 When the dry run is clean, commit the scan output:
 
 ```bash
-node scripts/gmail-scan.mjs --window <window> --commit
+node scripts/profile.mjs run <profile-id> -- node scripts/gmail-scan.mjs --window <window> --commit
 ```
+
+The profile runner activates the requested owner and locks the workspace for the full scan. Use it for every automated scan so jobs for different people serialize safely.
 
 Use `--no-follow` only when the user accepts losing tracker-wrapped job URLs.
 
