@@ -5,7 +5,13 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 import { chromium } from 'playwright';
-import { loadProfile, resolveProfileTemplate, resumeForLanguage } from './profile-config.mjs';
+import {
+  applicationSubmissionPolicy,
+  captchaWaitMilliseconds,
+  loadProfile,
+  resolveProfileTemplate,
+  resumeForLanguage,
+} from './profile-config.mjs';
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, '..');
@@ -13,13 +19,26 @@ const CONFIG_PATH = resolve(ROOT, 'config/gmail-apply-portals.yml');
 const ERROR_LOG = resolve(ROOT, 'data/gmail-apply-errors.ndjson');
 const port = process.env.CAREER_OPS_CHROME_PORT || '9222';
 const CDP_ENDPOINT = process.env.CHROME_CDP || `http://localhost:${port}`;
+const CAPTCHA_MARKERS = [
+  "iframe[src*='recaptcha']",
+  "iframe[src*='hcaptcha']",
+  "iframe[src*='challenges.cloudflare.com']",
+  '.g-recaptcha',
+  '.h-captcha',
+  '.cf-turnstile',
+];
+const CAPTCHA_RESPONSES = [
+  "textarea[name='g-recaptcha-response']",
+  "textarea[name='h-captcha-response']",
+  "input[name='cf-turnstile-response']",
+];
 
 function output(value) {
   console.log(JSON.stringify(value, null, 2));
 }
 
 function fail(message, extra = {}, code = 1) {
-  output({ ok: false, error: message, ...extra });
+  output({ ...extra, ok: false, error: message });
   process.exit(code);
 }
 
@@ -72,6 +91,38 @@ async function hasAnySelector(page, step, timeout = 500) {
     }
   }
   return false;
+}
+
+async function visibleCaptcha(page) {
+  for (const selector of CAPTCHA_MARKERS) {
+    const locator = page.locator(selector).first();
+    if (await locator.isVisible().catch(() => false)) return true;
+  }
+  return false;
+}
+
+async function captchaHasResponse(page) {
+  for (const selector of CAPTCHA_RESPONSES) {
+    const value = await page.locator(selector).first().inputValue().catch(() => '');
+    if (value.trim()) return true;
+  }
+  for (const frame of page.frames()) {
+    const checked = await frame.locator('#recaptcha-anchor').first().getAttribute('aria-checked').catch(() => null);
+    if (checked === 'true') return true;
+  }
+  return false;
+}
+
+async function waitForCaptchaExtension(page, timeoutMs) {
+  if (!await visibleCaptcha(page)) return { detected: false, solved: true, waited_ms: 0 };
+  const started = Date.now();
+  while (Date.now() - started < timeoutMs) {
+    if (await captchaHasResponse(page) || !await visibleCaptcha(page)) {
+      return { detected: true, solved: true, waited_ms: Date.now() - started };
+    }
+    await page.waitForTimeout(1000);
+  }
+  throw new Error(`CAPTCHA extension did not finish within ${Math.round(timeoutMs / 1000)} seconds.`);
 }
 
 async function getOrOpenPage(browser, url) {
@@ -157,12 +208,11 @@ async function main() {
   }
   if (!args.url) fail('A job URL is required.');
   if (process.argv.includes('--force')) fail('--force is not supported; application steps must validate before submission.');
-  if (args.submit && !args.reviewed) {
-    fail('--submit requires --reviewed after the user has reviewed the completed form.');
-  }
   if (!existsSync(CONFIG_PATH)) fail('config/gmail-apply-portals.yml is missing.');
 
   const profile = loadProfile(ROOT);
+  const { autoSubmit, shouldSubmit } = applicationSubmissionPolicy(profile, args);
+  const captchaTimeoutMs = captchaWaitMilliseconds(profile);
   const resume = resumeForLanguage(profile, profile.language?.output, ROOT);
   if (!resume) {
     fail('No resume is configured under application.resumes in config/profile.yml.');
@@ -189,6 +239,9 @@ async function main() {
       takeover_required: true,
       reason: 'no portal recipe',
       url: page.url(),
+      auto_submit: autoSubmit,
+      submit_when_complete: shouldSubmit,
+      captcha_wait_seconds: captchaTimeoutMs / 1000,
       resume: { path: resume.path, language: resume.language },
     });
     process.exit(2);
@@ -210,6 +263,8 @@ async function main() {
       const execution = await executeStep(opened.context, page, step, profile, portal.data || {}, resume);
       page = execution.page;
       results.push({ index, ...execution.result });
+      const captcha = await waitForCaptchaExtension(page, captchaTimeoutMs);
+      if (captcha.detected) results.push({ index, action: 'wait_captcha_extension', ok: true, ...captcha });
       const stillOnPortal = (portal.match || []).some(match => page.url().includes(match));
       if (execution.external || !stillOnPortal) {
         takeover = { reason: 'external ATS or portal redirect', url: page.url() };
@@ -234,6 +289,25 @@ async function main() {
       prepared: false,
       takeover_required: true,
       takeover,
+      auto_submit: autoSubmit,
+      submit_when_complete: shouldSubmit,
+      captcha_wait_seconds: captchaTimeoutMs / 1000,
+      resume: { path: resume.path, language: resume.language },
+      steps: results,
+    });
+    process.exit(2);
+  }
+
+  if (failure) {
+    output({
+      ok: false,
+      portal: portal.name,
+      prepared: false,
+      takeover_required: true,
+      takeover: { reason: 'stable recipe could not finish the form', url: page.url() },
+      auto_submit: autoSubmit,
+      submit_when_complete: shouldSubmit,
+      captcha_wait_seconds: captchaTimeoutMs / 1000,
       resume: { path: resume.path, language: resume.language },
       steps: results,
     });
@@ -247,23 +321,43 @@ async function main() {
     portal: portal.name,
     url: page.url(),
     prepared: valid,
-    requires_review: !args.submit,
+    auto_submit: autoSubmit,
+    submit_when_complete: shouldSubmit,
+    requires_review: !shouldSubmit,
+    captcha_wait_seconds: captchaTimeoutMs / 1000,
     submitted: false,
     resume: { path: resume.path, language: resume.language },
     steps: results,
     verification: checks,
   };
 
-  if (args.submit) {
+  if (shouldSubmit) {
     const successSelectors = Array.isArray(portal.success_selector)
       ? portal.success_selector
       : (portal.success_selector ? [portal.success_selector] : []);
     if (!valid) fail('Form validation failed; refusing to submit.', result);
     if (!portal.submit_selector || !successSelectors.length) {
-      fail('Portal lacks strict submit confirmation selectors; refusing to submit.', result);
+      output({
+        ...result,
+        ok: false,
+        takeover_required: true,
+        takeover: {
+          reason: 'portal requires browser submission and strict confirmation',
+          url: page.url(),
+        },
+      });
+      process.exit(2);
     }
     try {
+      const beforeSubmitCaptcha = await waitForCaptchaExtension(page, captchaTimeoutMs);
+      if (beforeSubmitCaptcha.detected) {
+        result.steps.push({ action: 'wait_captcha_extension', ok: true, ...beforeSubmitCaptcha });
+      }
       await page.locator(portal.submit_selector).first().click({ timeout: 8000 });
+      const afterSubmitCaptcha = await waitForCaptchaExtension(page, captchaTimeoutMs);
+      if (afterSubmitCaptcha.detected) {
+        result.steps.push({ action: 'wait_captcha_extension', ok: true, ...afterSubmitCaptcha });
+      }
       const timeout = Number(portal.success_timeout_ms) || 10000;
       let matched = null;
       for (const selector of successSelectors) {
@@ -279,9 +373,15 @@ async function main() {
       result.submitted_confirmed = Boolean(matched);
       result.success_selector = matched;
       result.ok = Boolean(matched);
-      if (!matched) logError({ portal: portal.name, url: args.url, phase: 'submit-unconfirmed' });
+      if (!matched) {
+        result.takeover_required = true;
+        result.takeover = { reason: 'submission is not yet strictly confirmed', url: page.url() };
+        logError({ portal: portal.name, url: args.url, phase: 'submit-unconfirmed' });
+      }
     } catch (error) {
       result.ok = false;
+      result.takeover_required = true;
+      result.takeover = { reason: 'scripted submission needs browser continuation', url: page.url() };
       result.submit_error = error.message;
       logError({ portal: portal.name, url: args.url, phase: 'submit', error: error.message });
     }

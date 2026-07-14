@@ -7,7 +7,15 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { deflateSync } from 'node:zlib';
 import { appendPending, canonicalizeUrl, extractSenderUrls, parseWindow } from './gmail-scan.mjs';
-import { classifierSources, classifyText, resolveProfileTemplate, resumeForLanguage } from './profile-config.mjs';
+import {
+  applicationSubmissionPolicy,
+  autoSubmitEnabled,
+  captchaWaitMilliseconds,
+  classifierSources,
+  classifyText,
+  resolveProfileTemplate,
+  resumeForLanguage,
+} from './profile-config.mjs';
 import { ADDITIONAL_SKILL_GROUPS, materializeSkillEntrypoints } from '../scaffolder/bin/skill-entrypoints.mjs';
 
 const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -70,6 +78,34 @@ test('resume selection uses the user language mapping and verifies the file', ()
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+test('application policy separates form completion from final submission', () => {
+  assert.equal(autoSubmitEnabled({}), false);
+  assert.equal(autoSubmitEnabled({ application: { auto_submit: false } }), false);
+  assert.equal(autoSubmitEnabled({ application: { auto_submit: true } }), true);
+  assert.deepEqual(applicationSubmissionPolicy({ application: { auto_submit: false } }), {
+    autoSubmit: false,
+    shouldSubmit: false,
+  });
+  assert.deepEqual(applicationSubmissionPolicy({ application: { auto_submit: true } }), {
+    autoSubmit: true,
+    shouldSubmit: true,
+  });
+  assert.throws(
+    () => applicationSubmissionPolicy({ application: { auto_submit: false } }, { submit: true }),
+    /requires --reviewed/,
+  );
+  assert.equal(
+    applicationSubmissionPolicy(
+      { application: { auto_submit: false } },
+      { submit: true, reviewed: true },
+    ).shouldSubmit,
+    true,
+  );
+  assert.equal(captchaWaitMilliseconds({}), 300_000);
+  assert.equal(captchaWaitMilliseconds({ application: { captcha_wait_seconds: 10 } }), 30_000);
+  assert.equal(captchaWaitMilliseconds({ application: { captcha_wait_seconds: 1200 } }), 900_000);
 });
 
 test('sender extraction supports direct, base64, and zlib formats', () => {
@@ -180,10 +216,4 @@ portals:
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
-});
-
-test('apply script refuses submit without an explicit reviewed flag before browser access', () => {
-  const result = spawnSync(process.execPath, [join(REPO_ROOT, 'scripts', 'gmail-apply.mjs'), 'https://jobs.example/1', '--submit'], { encoding: 'utf8' });
-  assert.equal(result.status, 1);
-  assert.match(result.stdout, /requires --reviewed/);
 });

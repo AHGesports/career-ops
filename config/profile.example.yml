@@ -101,6 +101,13 @@ language:
 # gmail-apply-smilified selects by the form language, then falls back to default.
 application:
   minimum_score: 4.0
+  # The skill always completes eligible forms. Set this to true to grant
+  # standing permission to submit immediately after validation; false stops at
+  # the fully completed form for review.
+  auto_submit: false
+  # When a CAPTCHA appears, wait for the solver extension in the same Chrome
+  # profile instead of abandoning the application (30-900 seconds; default 300).
+  captcha_wait_seconds: 300
   resumes:
     default: ""
     by_language:

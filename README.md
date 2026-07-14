@@ -296,10 +296,10 @@ Optional profile-backed skills:
 
 ```
 /scan-gmail 1d             → Read job-alert emails into the evaluation pipeline (Gmail remains read-only)
-/gmail-apply-smilified     → Prepare evaluated applications in your own Chrome profile; review is required before submit
+/gmail-apply-smilified     → Complete evaluated applications in your own Chrome profile; auto-submit when enabled
 ```
 
-Both use the normal `config/profile.yml`, `cv.md`, `portals.yml`, and `data/blacklist.md` user layer. They do not ship a candidate identity, profession, CV, cookies, or portal login. See [Setup](docs/SETUP.md#optional-gmail-alert-and-form-automation).
+Both use the normal `config/profile.yml`, `cv.md`, `portals.yml`, and `data/blacklist.md` user layer. Submission is controlled by `application.auto_submit`, and CAPTCHA waits use the extension installed in that user's dedicated Chrome profile. They do not ship a candidate identity, profession, CV, cookies, or portal login. See [Setup](docs/SETUP.md#optional-gmail-alert-and-form-automation).
 
 Or just paste a job URL or description directly -- career-ops auto-detects it and runs the full pipeline.
 

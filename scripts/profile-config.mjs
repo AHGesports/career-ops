@@ -91,6 +91,24 @@ export function minimumApplicationScore(profile) {
   return Number.isFinite(configured) ? configured : 4;
 }
 
+export function autoSubmitEnabled(profile) {
+  return profile.application?.auto_submit === true;
+}
+
+export function applicationSubmissionPolicy(profile, { submit = false, reviewed = false } = {}) {
+  const autoSubmit = autoSubmitEnabled(profile);
+  if (submit && !autoSubmit && !reviewed) {
+    throw new Error('--submit requires --reviewed when application.auto_submit is off.');
+  }
+  return { autoSubmit, shouldSubmit: autoSubmit || submit };
+}
+
+export function captchaWaitMilliseconds(profile) {
+  const configured = Number(profile.application?.captcha_wait_seconds);
+  const seconds = Number.isFinite(configured) && configured > 0 ? configured : 300;
+  return Math.min(Math.max(seconds, 30), 900) * 1000;
+}
+
 export function resumeForLanguage(profile, language, repoRoot = process.cwd()) {
   const resumes = profile.application?.resumes || {};
   const code = String(language || profile.language?.output || 'en').toLowerCase().split(/[-_]/)[0];

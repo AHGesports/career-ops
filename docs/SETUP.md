@@ -90,9 +90,10 @@ The two optional skills reuse the same first-run profile as the rest of Career-O
 1. Set your Gmail OAuth Desktop client id and secret in `.env`, then run `node scripts/gmail-auth.mjs`. The token is read-only and `.env` is gitignored.
 2. Add any title aliases or exclusions to `gmail_classifier` in `config/profile.yml`. If omitted, Gmail classification derives phrases from `target_roles`.
 3. Configure PDF resume paths under `application.resumes` in `config/profile.yml`.
-4. On Windows, run `launch-chrome.bat` and sign into job portals in that window. Its profile defaults to `%LOCALAPPDATA%\career-ops\chrome-profile`, outside the repository and separate for every Windows user.
+4. Set `application.auto_submit: true` to grant standing submission permission, or leave it `false` to stop at a fully completed form. Configure the solver-extension wait with `application.captcha_wait_seconds`.
+5. On Windows, run `launch-chrome.bat`, install the user's CAPTCHA extension in that Chrome profile, and sign into job portals in that window. Its profile defaults to `%LOCALAPPDATA%\career-ops\chrome-profile`, outside the repository and separate for every Windows user.
 
-The apply skill prepares forms first. Career-Ops still requires the user to review the completed application before any submission.
+The apply skill always finishes eligible applications. It submits without another prompt only when the user's profile explicitly enables `application.auto_submit`.
 
 ## Verify Setup
 

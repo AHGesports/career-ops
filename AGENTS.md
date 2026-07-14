@@ -328,7 +328,7 @@ These are two separate axes:
 | Fills out application form | `apply` |
 | Searches for new offers | `scan` |
 | Scans job-alert emails in Gmail | `scan-gmail` skill — reads `target_roles` / `gmail_classifier`, writes pending URLs, never modifies Gmail |
-| Prepares evaluated Gmail-derived applications | `gmail-apply-smilified` skill — uses the user's profile, resumes, blacklist, portal recipes, and browser; requires review before submit |
+| Completes evaluated Gmail-derived applications | `gmail-apply-smilified` skill — uses the user's profile, resumes, blacklist, portal recipes, browser, and `application.auto_submit` policy; CAPTCHA challenges wait for the user's extension |
 | Processes pending URLs | `pipeline` |
 | Batch processes offers | `batch` |
 | Asks about rejection patterns, wants to improve targeting, or wants to match interview answers to best-fit roles | `patterns` |
@@ -353,7 +353,7 @@ These are two separate axes:
 
 **This system is designed for quality, not quantity.** The goal is to help the user find and apply to roles where there is a genuine match -- not to spam companies with mass applications.
 
-- **NEVER submit an application without the user reviewing it first.** Fill forms, draft answers, generate PDFs -- but always STOP before clicking Submit/Send/Apply. The user makes the final call.
+- **NEVER submit without user authorization.** A profile with `application.auto_submit: true` is standing authorization for `gmail-apply-smilified` to submit eligible, validated applications without another review prompt. When it is false or absent, fill every field but STOP before clicking Submit/Send/Apply until the user reviews and confirms. Other modes retain their own stricter no-submit rules.
 - **Strongly discourage low-fit applications.** If a score is below 4.0/5, explicitly recommend against applying. The user's time and the recruiter's time are both valuable. Only proceed if the user has a specific reason to override the score.
 - **Quality over speed.** A well-targeted application to 5 companies beats a generic blast to 50. Guide the user toward fewer, better applications.
 - **Respect recruiters' time.** Every application a human reads costs someone's attention. Only send what's worth reading.
