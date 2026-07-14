@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -176,6 +176,48 @@ test('scaffolder materializes portable skill pointers on Windows-style checkouts
     assert.equal(readFileSync(pointer, 'utf8'), 'portable scan skill\n');
   } finally {
     rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('named profiles isolate and restore complete user workspaces', () => {
+  const base = mkdtempSync(join(tmpdir(), 'career-ops-profiles-'));
+  const root = join(base, 'repo');
+  const source = join(base, 'source');
+  const script = join(REPO_ROOT, 'scripts', 'profile.mjs');
+  const run = args => {
+    const result = spawnSync(process.execPath, [script, ...args, '--cwd', root], { encoding: 'utf8' });
+    assert.equal(result.status, 0, result.stderr);
+    return JSON.parse(result.stdout);
+  };
+  try {
+    mkdirSync(join(source, 'config'), { recursive: true });
+    mkdirSync(join(source, 'data'), { recursive: true });
+    mkdirSync(join(source, 'assets', 'cv'), { recursive: true });
+    writeFileSync(join(source, 'cv.md'), 'Arshia CV');
+    writeFileSync(join(source, '.env'), 'GMAIL_REFRESH_TOKEN=private');
+    writeFileSync(join(source, 'config', 'profile.yml'), 'candidate: { full_name: Arshia }');
+    writeFileSync(join(source, 'data', 'applications.md'), '# applications');
+    writeFileSync(join(source, 'assets', 'cv', 'resume.pdf'), 'pdf');
+
+    const imported = run(['import', 'arshia-hemati', '--name', 'Arshia Hemati', '--from', source, '--browser-port', '9222']);
+    assert.equal(imported.imported.files, 5);
+    run(['create', 'hannah-aghaei', '--name', 'Hannah Aghaei', '--browser-port', '9223']);
+    run(['activate', 'arshia-hemati']);
+    assert.equal(readFileSync(join(root, 'cv.md'), 'utf8'), 'Arshia CV');
+    assert.equal(readFileSync(join(root, '.env'), 'utf8'), 'GMAIL_REFRESH_TOKEN=private');
+
+    writeFileSync(join(root, 'cv.md'), 'Arshia CV updated');
+    run(['activate', 'hannah-aghaei']);
+    assert.equal(existsSync(join(root, 'cv.md')), false);
+    assert.equal(existsSync(join(root, '.env')), false);
+
+    run(['activate', 'arshia-hemati']);
+    assert.equal(readFileSync(join(root, 'cv.md'), 'utf8'), 'Arshia CV updated');
+    const browser = JSON.parse(readFileSync(join(root, '.career-ops', 'active-browser.json'), 'utf8'));
+    assert.equal(browser.profile_id, 'arshia-hemati');
+    assert.equal(browser.port, 9222);
+  } finally {
+    rmSync(base, { recursive: true, force: true });
   }
 });
 

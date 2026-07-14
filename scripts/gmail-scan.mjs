@@ -8,7 +8,7 @@ import yaml from 'js-yaml';
 import { chromium } from 'playwright';
 import { companyFromUrl, isAuthenticEmail, parseRoleAtCompany } from '../plugins/gmail/_helpers.mjs';
 import { getAccessToken } from '../plugins/gmail/index.mjs';
-import { classifyText, loadProfile } from './profile-config.mjs';
+import { activeProfile, classifyText, loadProfile } from './profile-config.mjs';
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT = resolve(SCRIPT_DIR, '..');
@@ -367,6 +367,7 @@ export async function runScan(options) {
   }
 
   return {
+    profile_id: activeProfile(root),
     window: window.label,
     messages_seen: ids.length,
     messages_processed: history.length,

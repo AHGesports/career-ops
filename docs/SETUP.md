@@ -87,11 +87,15 @@ npx playwright install chromium
 
 The two optional skills reuse the same first-run profile as the rest of Career-Ops. They do not ship a candidate identity, profession, CV, cookies, or portal login.
 
-1. Set your Gmail OAuth Desktop client id and secret in `.env`, then run `node scripts/gmail-auth.mjs`. The token is read-only and `.env` is gitignored.
-2. Add any title aliases or exclusions to `gmail_classifier` in `config/profile.yml`. If omitted, Gmail classification derives phrases from `target_roles`.
-3. Configure PDF resume paths under `application.resumes` in `config/profile.yml`.
-4. Set `application.auto_submit: true` to grant standing submission permission, or leave it `false` to stop at a fully completed form. Configure the solver-extension wait with `application.captcha_wait_seconds`.
-5. On Windows, run `launch-chrome.bat`, install the user's CAPTCHA extension in that Chrome profile, and sign into job portals in that window. Its profile defaults to `%LOCALAPPDATA%\career-ops\chrome-profile`, outside the repository and separate for every Windows user.
+1. Create a named profile with `node scripts/profile.mjs create <profile-id> --name "Display Name"`, or import an existing Career-Ops user layer with `node scripts/profile.mjs import <profile-id> --name "Display Name" --from <old-workspace>`.
+2. Activate it with `node scripts/profile.mjs activate <profile-id>`. Switching profiles saves the current user layer before materializing the selected one. List or inspect them with `node scripts/profile.mjs list` and `node scripts/profile.mjs current`.
+3. Set that profile's Gmail OAuth Desktop client id and secret in `.env`, then run `node scripts/gmail-auth.mjs`. The token is read-only and `.env` is stored separately with the active profile.
+4. Add title aliases or exclusions to `gmail_classifier` in the active `config/profile.yml`. If omitted, Gmail classification derives phrases from `target_roles`.
+5. Configure PDF resume paths under `application.resumes` in the active `config/profile.yml`.
+6. Set `application.auto_submit: true` to grant standing submission permission, or leave it `false` to stop at a fully completed form. Configure the solver-extension wait with `application.captcha_wait_seconds`.
+7. On Windows, run `launch-chrome.bat <profile-id> [debug-port]`, install the CAPTCHA extension in that named Chrome profile, and sign into its job portals. Browser data defaults to `%LOCALAPPDATA%\career-ops\chrome-profiles\<profile-id>`.
+
+One workspace data profile is active at a time. Multiple named Chrome profiles can remain open concurrently when they use different debug ports; launching or activating a profile selects which data, CV, tracker, Gmail credentials, and browser endpoint the skills use.
 
 The apply skill always finishes eligible applications. It submits without another prompt only when the user's profile explicitly enables `application.auto_submit`.
 

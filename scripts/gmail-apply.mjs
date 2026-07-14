@@ -6,6 +6,8 @@ import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 import { chromium } from 'playwright';
 import {
+  activeBrowser,
+  activeProfile,
   applicationSubmissionPolicy,
   captchaWaitMilliseconds,
   loadProfile,
@@ -17,8 +19,6 @@ const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, '..');
 const CONFIG_PATH = resolve(ROOT, 'config/gmail-apply-portals.yml');
 const ERROR_LOG = resolve(ROOT, 'data/gmail-apply-errors.ndjson');
-const port = process.env.CAREER_OPS_CHROME_PORT || '9222';
-const CDP_ENDPOINT = process.env.CHROME_CDP || `http://localhost:${port}`;
 const CAPTCHA_MARKERS = [
   "iframe[src*='recaptcha']",
   "iframe[src*='hcaptcha']",
@@ -211,8 +211,17 @@ async function main() {
   if (!existsSync(CONFIG_PATH)) fail('config/gmail-apply-portals.yml is missing.');
 
   const profile = loadProfile(ROOT);
+  const profileId = activeProfile(ROOT);
   const { autoSubmit, shouldSubmit } = applicationSubmissionPolicy(profile, args);
   const captchaTimeoutMs = captchaWaitMilliseconds(profile);
+  const browserState = activeBrowser(ROOT);
+  if (profileId && browserState?.profile_id && profileId !== browserState.profile_id) {
+    fail(`Active data profile ${profileId} does not match browser profile ${browserState.profile_id}.`, {
+      hint: `Run launch-chrome.bat ${profileId} before applying.`,
+    });
+  }
+  const cdpEndpoint = process.env.CHROME_CDP
+    || `http://localhost:${process.env.CAREER_OPS_CHROME_PORT || browserState?.port || 9222}`;
   const resume = resumeForLanguage(profile, profile.language?.output, ROOT);
   if (!resume) {
     fail('No resume is configured under application.resumes in config/profile.yml.');
@@ -224,9 +233,12 @@ async function main() {
   const portal = matchPortal(args.url, config);
   let browser;
   try {
-    browser = await chromium.connectOverCDP(CDP_ENDPOINT);
+    browser = await chromium.connectOverCDP(cdpEndpoint);
   } catch (error) {
-    fail(`Cannot connect to Chrome at ${CDP_ENDPOINT}: ${error.message}`, { hint: 'Run launch-chrome.bat first.' });
+    fail(`Cannot connect to Chrome at ${cdpEndpoint}: ${error.message}`, {
+      active_profile: browserState?.profile_id || null,
+      hint: 'Run launch-chrome.bat <profile-id> first.',
+    });
   }
   const opened = await getOrOpenPage(browser, args.url);
   let page = opened.page;
@@ -235,6 +247,7 @@ async function main() {
   if (!portal) {
     output({
       ok: false,
+      profile_id: profileId,
       prepared: false,
       takeover_required: true,
       reason: 'no portal recipe',
@@ -249,7 +262,7 @@ async function main() {
 
   for (const selector of portal.unavailable_selectors || []) {
     if (await hasAnySelector(page, { selector }, 500)) {
-      output({ ok: false, job_unavailable: true, portal: portal.name, url: page.url() });
+      output({ ok: false, profile_id: profileId, job_unavailable: true, portal: portal.name, url: page.url() });
       return;
     }
   }
@@ -284,6 +297,7 @@ async function main() {
   if (takeover) {
     output({
       ok: false,
+      profile_id: profileId,
       portal: portal.name,
       original_url: args.url,
       prepared: false,
@@ -301,6 +315,7 @@ async function main() {
   if (failure) {
     output({
       ok: false,
+      profile_id: profileId,
       portal: portal.name,
       prepared: false,
       takeover_required: true,
@@ -318,6 +333,7 @@ async function main() {
   const valid = !failure && checks.every(check => check.ok);
   const result = {
     ok: valid,
+    profile_id: profileId,
     portal: portal.name,
     url: page.url(),
     prepared: valid,

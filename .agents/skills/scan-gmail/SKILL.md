@@ -9,10 +9,11 @@ Run the deterministic scanner in the current session. Do not spawn subagents and
 
 ## Preflight
 
-1. Run `node doctor.mjs --json`. Complete normal Career-Ops onboarding if required.
-2. Read `config/profile.yml`. Use `target_roles` as the default classifier. Treat `gmail_classifier.match_keywords` and `match_excludes` as optional user overrides; never insert profession-specific defaults into system files.
-3. Check `.env` for `GMAIL_CLIENT_ID`, `GMAIL_CLIENT_SECRET`, and `GMAIL_REFRESH_TOKEN` without printing their values.
-4. If the refresh token is missing, ask the user to create a Google OAuth Desktop client, put the client id and secret in `.env`, and run `node scripts/gmail-auth.mjs`.
+1. Run `node scripts/profile.mjs current`. If no profile is active, list profiles and activate the requested one before reading or writing user data. Never mix data between profiles.
+2. Run `node doctor.mjs --json`. Complete normal Career-Ops onboarding for the active profile if required.
+3. Read the active `config/profile.yml`. Use `target_roles` as the default classifier. Treat `gmail_classifier.match_keywords` and `match_excludes` as optional user overrides; never insert profession-specific defaults into system files.
+4. Check the active profile's `.env` for `GMAIL_CLIENT_ID`, `GMAIL_CLIENT_SECRET`, and `GMAIL_REFRESH_TOKEN` without printing their values.
+5. If the refresh token is missing, ask the user to create a Google OAuth Desktop client, put the client id and secret in `.env`, and run `node scripts/gmail-auth.mjs`.
 
 Gmail access must remain `gmail.readonly`. Never mark messages read, label, archive, delete, or send mail.
 
@@ -51,4 +52,4 @@ Add only extraction mechanics to `config/gmail-senders.yml`; keep candidate pref
 
 ## Final response
 
-Report the requested window, messages processed, new matched/deferred/list URLs, tracker failures, warnings, and whether files were committed.
+Report the active profile id, requested window, messages processed, new matched/deferred/list URLs, tracker failures, warnings, and whether files were committed.

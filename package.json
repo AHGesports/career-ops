@@ -30,6 +30,7 @@
     "gmail:auth": "node scripts/gmail-auth.mjs",
     "gmail:scan": "node scripts/gmail-scan.mjs",
     "gmail:apply": "node scripts/gmail-apply.mjs",
+    "profile": "node scripts/profile.mjs",
     "test:gmail-automation": "node --test scripts/gmail-automation.test.mjs",
     "scan:full": "node scan-ats-full.mjs",
     "scan:seeds": "node scan-ats-full.mjs --seeds yc,a16z",

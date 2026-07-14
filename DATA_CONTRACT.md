@@ -8,6 +8,8 @@ These files contain your personal data, customizations, and work product. Update
 
 | File | Purpose |
 |------|---------|
+| `.career-ops/profiles/*` | Local named-profile store; each profile mirrors its own user layer and is never committed |
+| `.career-ops/active-profile` / `.career-ops/active-browser.json` | Local active-profile and Chrome-routing state |
 | `cv.md` | Your CV in markdown |
 | `config/profile.yml` | Your identity, targets, comp range |
 | `config/cv-facts.json` | Your CV fact-check allowlist and forbidden phrases |
@@ -40,9 +42,12 @@ These files contain your personal data, customizations, and work product. Update
 | `data/blacklist.md` | Your do-not-apply company list (opt-in — absence = no filtering; never auto-populated: only you, or the agent on your explicit instruction, write to it. Respected by `scan.mjs` and the `auto-pipeline`/`oferta`/`apply` gates; never a scoring input) |
 | `data/assessments.tsv` | Your append-only skills-assessment log: `{date}\t{company}\t{report#\|-}\t{platform}\t{subject}\t{threshold%\|-}\t{score%\|-}\t{stale_note}`. Appended by `node assessment-log.mjs add`; never edited in place. Empty stale_note = no staleness observed. Read by `assessment-log.mjs` |
 | `writing-samples/*` | Your personal writing samples for style calibration (except `writing-samples/README.md`, which is system-owned documentation delivered by updates) |
+| `assets/cv/*` | Your imported résumé/CV files when a named profile uses existing PDFs |
 | `reports/*` | Your evaluation reports |
 | `output/*` | Your generated PDFs |
 | `jds/*` | Your saved job descriptions |
+| `batch/logs/*`, `batch/pipeline-updates/*`, `batch/tracker-additions/*` | Profile-owned batch work products |
+| `mcp/gmail-html/runs/*` | Legacy Gmail scan run evidence retained during profile migration |
 
 ## System Layer (safe to auto-update)
 

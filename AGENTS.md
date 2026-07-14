@@ -99,6 +99,7 @@ AI-powered, CLI-agnostic job search automation: pipeline tracking, offer evaluat
 | `data/pipeline.md` | Inbox of pending URLs |
 | `data/pipeline-deferred.md` | Gmail leads outside the current profile match rules |
 | `data/gmail-scan-history.tsv` | Read-only Gmail scan cursor |
+| `.career-ops/profiles/` | Gitignored named-profile store for isolated user layers |
 | `data/scan-history.tsv` | Scanner dedup history |
 | `portals.yml` | Query and company config |
 | `templates/cv-template.html` | HTML template for CVs |

@@ -301,6 +301,8 @@ Optional profile-backed skills:
 
 Both use the normal `config/profile.yml`, `cv.md`, `portals.yml`, and `data/blacklist.md` user layer. Submission is controlled by `application.auto_submit`, and CAPTCHA waits use the extension installed in that user's dedicated Chrome profile. They do not ship a candidate identity, profession, CV, cookies, or portal login. See [Setup](docs/SETUP.md#optional-gmail-alert-and-form-automation).
 
+Named profiles let one installation serve multiple people without sharing data or browser sessions. Use `node scripts/profile.mjs create|import|activate|list`, then launch the matching browser with `launch-chrome.bat <profile-id> [debug-port]`. Each profile keeps its own CV, configuration, tracker, Gmail credentials, generated work, Chrome cookies, and extensions.
+
 Or just paste a job URL or description directly -- career-ops auto-detects it and runs the full pipeline.
 
 In Codex, slash commands are not guaranteed. Use the same mode names in a prompt instead, or call them from `codex exec`.

@@ -9,13 +9,14 @@ Use the current user's profile and browser. Reuse the tracker, portal recipes, a
 
 ## Preflight
 
-1. Run `node doctor.mjs --json` and complete onboarding if needed.
-2. Read `config/profile.yml`, `cv.md`, and `data/blacklist.md` when it exists.
-3. Use `target_roles`, `gmail_classifier.match_excludes`, the evaluated report, and `data/blacklist.md` as the role/company guardrails. Do not substitute software-development rules or any other profession-specific policy.
-4. Require an evaluated score at or above `application.minimum_score` (default `4.0`). For a direct unevaluated URL, run the normal Career-Ops evaluation first.
-5. Resolve the resume from `application.resumes.by_language.<language>` and then `application.resumes.default`. Refuse to fabricate a path; if the configured file is missing, ask the user to provide a PDF or generate one through the normal PDF mode.
-6. Read `application.auto_submit`. The skill always completes an eligible application. This flag controls only the final submission: `true` is standing permission to submit after validation; `false` stops at the fully completed form.
-7. Read `application.captcha_wait_seconds` (default `300`) for the CAPTCHA-extension wait.
+1. Run `node scripts/profile.mjs current`. If no profile is active, list profiles and activate the requested one. Never read one profile's CV or tracker while another profile is active.
+2. Run `node doctor.mjs --json` and complete onboarding for the active profile if needed.
+3. Read the active `config/profile.yml`, `cv.md`, and `data/blacklist.md` when it exists.
+4. Use `target_roles`, `gmail_classifier.match_excludes`, the evaluated report, and `data/blacklist.md` as the role/company guardrails. Do not substitute software-development rules or any other profession-specific policy.
+5. Require an evaluated score at or above `application.minimum_score` (default `4.0`). For a direct unevaluated URL, run the normal Career-Ops evaluation first.
+6. Resolve the resume from `application.resumes.by_language.<language>` and then `application.resumes.default`. Refuse to fabricate a path; if the configured file is missing, ask the user to provide a PDF or generate one through the normal PDF mode.
+7. Read `application.auto_submit`. The skill always completes an eligible application. This flag controls only the final submission: `true` is standing permission to submit after validation; `false` stops at the fully completed form.
+8. Read `application.captcha_wait_seconds` (default `300`) for the CAPTCHA-extension wait.
 
 ## Select URLs
 
@@ -29,7 +30,7 @@ Without an amount, use 10. The picker reads the latest tracker layout, minimum s
 
 ## Browser
 
-Ask the user to run `launch-chrome.bat` before the apply flow. It creates a per-Windows-user profile outside the repository; every user signs into their own job portals and owns their own cookies.
+Ask the user to run `launch-chrome.bat <profile-id>` before the apply flow. It activates the matching Career-Ops data profile and opens that profile's own Chrome directory and debug port. Every named profile owns separate portal logins, cookies, and extensions even under the same Windows account.
 
 If Chrome/CDP is closed or unreachable, stop. Do not launch or restart it from the skill. Do not use the browser to test code changes; use it only for the requested live application.
 
@@ -75,4 +76,4 @@ Never create a tracker row. Leave blocked or unconfirmed attempts in their curre
 
 ## Final response
 
-Report planned count, completed-form count, confirmed submissions, skipped or blocked roles with reasons, and URLs still requiring user action.
+Report the active profile id, planned count, completed-form count, confirmed submissions, skipped or blocked roles with reasons, and URLs still requiring user action.

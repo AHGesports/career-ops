@@ -14,6 +14,25 @@ export function loadProfile(repoRoot = process.cwd()) {
   return profile;
 }
 
+export function activeProfile(repoRoot = process.cwd()) {
+  const path = resolve(repoRoot, '.career-ops/active-profile');
+  if (!existsSync(path)) return null;
+  return readFileSync(path, 'utf8').trim() || null;
+}
+
+export function activeBrowser(repoRoot = process.cwd()) {
+  const path = resolve(repoRoot, '.career-ops/active-browser.json');
+  if (!existsSync(path)) return null;
+  try {
+    const browser = JSON.parse(readFileSync(path, 'utf8'));
+    const port = Number(browser.port);
+    if (!browser.profile_id || !Number.isInteger(port)) return null;
+    return { ...browser, port };
+  } catch {
+    return null;
+  }
+}
+
 function escapeRegex(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }

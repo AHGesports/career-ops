@@ -1,19 +1,32 @@
 @echo off
 setlocal
 
-REM Launch a dedicated Chrome profile for Career-Ops CDP automation.
-REM The profile lives outside Git and is unique to the current Windows user.
+REM Usage: launch-chrome.bat [profile-id] [debug-port]
+REM Each Career-Ops profile gets its own persistent Chrome data directory.
 
-if defined CAREER_OPS_CHROME_PROFILE (
-  set "PROFILE=%CAREER_OPS_CHROME_PROFILE%"
+set "PROFILE_ID=%~1"
+set "PORT_ARG=%~2"
+set "CAREER_OPS_PROFILE_ID="
+
+if defined PROFILE_ID (
+  if defined PORT_ARG (
+    for /f "tokens=1,* delims==" %%A in ('node scripts\profile.mjs activate "%PROFILE_ID%" --browser-port "%PORT_ARG%" --batch') do set "%%A=%%B"
+  ) else (
+    for /f "tokens=1,* delims==" %%A in ('node scripts\profile.mjs activate "%PROFILE_ID%" --batch') do set "%%A=%%B"
+  )
 ) else (
-  set "PROFILE=%LOCALAPPDATA%\career-ops\chrome-profile"
+  if defined PORT_ARG (
+    for /f "tokens=1,* delims==" %%A in ('node scripts\profile.mjs activate --browser-port "%PORT_ARG%" --batch') do set "%%A=%%B"
+  ) else (
+    for /f "tokens=1,* delims==" %%A in ('node scripts\profile.mjs activate --batch') do set "%%A=%%B"
+  )
 )
 
-if defined CAREER_OPS_CHROME_PORT (
-  set "PORT=%CAREER_OPS_CHROME_PORT%"
-) else (
-  set "PORT=9222"
+if not defined CAREER_OPS_PROFILE_ID (
+  echo Could not activate a Career-Ops profile.
+  echo Create one with: node scripts\profile.mjs create ^<profile-id^> --name "Display Name"
+  echo List profiles with: node scripts\profile.mjs list
+  exit /b 1
 )
 
 if defined CAREER_OPS_CHROME_PATH (
@@ -29,15 +42,15 @@ if defined CAREER_OPS_CHROME_PATH (
   exit /b 1
 )
 
-if not exist "%PROFILE%" mkdir "%PROFILE%"
+if not exist "%CAREER_OPS_CHROME_PROFILE%" mkdir "%CAREER_OPS_CHROME_PROFILE%"
 
-echo Launching Career-Ops Chrome on port %PORT%.
-echo Profile: %PROFILE%
-echo Sign in to job portals in this window. Close it to end browser access.
+echo Launching Career-Ops profile "%CAREER_OPS_PROFILE_ID%" on port %CAREER_OPS_CHROME_PORT%.
+echo Chrome data: %CAREER_OPS_CHROME_PROFILE%
+echo Sign in and install the CAPTCHA extension separately for this profile.
 
-start "Career-Ops Chrome" "%CHROME%" ^
-  --remote-debugging-port=%PORT% ^
-  --user-data-dir="%PROFILE%" ^
+start "Career-Ops - %CAREER_OPS_PROFILE_ID%" "%CHROME%" ^
+  --remote-debugging-port=%CAREER_OPS_CHROME_PORT% ^
+  --user-data-dir="%CAREER_OPS_CHROME_PROFILE%" ^
   --no-first-run ^
   --no-default-browser-check
 

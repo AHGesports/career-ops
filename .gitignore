@@ -1,5 +1,17 @@
 # Personal data (user fills these)
+.career-ops/
 cv.md
+voice-dna.md
+article-digest.md
+assets/cv/
+data/*
+!data/.gitkeep
+!data/parser-output/
+!data/parser-output/.gitkeep
+!data/parser-output/**/
+!data/parser-output/**/.gitkeep
+!data/offers/
+!data/offers/.gitkeep
 data/applications.md
 data/applications.db
 data/follow-ups.md
@@ -32,10 +44,12 @@ output/*
 !output/.gitkeep
 batch/logs/*
 !batch/logs/.gitkeep
+batch/pipeline-updates/
 batch/batch-state.tsv
 batch/batch-input.tsv
 batch/tracker-additions/**/*.tsv
 !batch/tracker-additions/.gitkeep
+mcp/gmail-html/runs/
 jds/*
 !jds/.gitkeep
 
