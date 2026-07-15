@@ -56,7 +56,8 @@ senders:
 
   - email: jobs@mail.xing.com
     extraction: tracker
-    pattern: 'https?://(?:www\.)?xing\.com/m/[A-Za-z0-9_-]+'
+    pattern: '<a(?=[^>]*class="DarkmodePetrolLink")[^>]*href="(https?://(?:www\.)?xing\.com/m/[A-Za-z0-9_-]+)"[^>]*>'
+    url_template: '{1}'
     decoded_must_match: 'xing\.com/jobs/[^/]+-\d+'
     subject_count_pattern: '^(\d+)\s+new\s+job\s+ads?\b'
 

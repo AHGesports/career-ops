@@ -124,7 +124,7 @@ export function extractSenderUrls(sender, bodies, stripPatterns = []) {
       }
       const canonical = canonicalizeUrl(candidate, stripPatterns);
       if (!canonical) continue;
-      if (sender.decoded_must_match && !new RegExp(sender.decoded_must_match, 'iu').test(canonical)) continue;
+      if (sender.decoded_must_match && sender.extraction !== 'tracker' && !new RegExp(sender.decoded_must_match, 'iu').test(canonical)) continue;
       if (sender.extraction === 'tracker') trackers.push(canonical);
       else urls.push(canonical);
     } catch {
