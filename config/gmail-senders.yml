@@ -49,6 +49,18 @@ senders:
     pattern: 'https?://(?:www\.)?linkedin\.com/comm/jobs/view/\d+'
     decoded_must_match: 'linkedin\.com/jobs/view/\d+'
 
+  - email: no-reply@englishjobs.de
+    extraction: direct
+    pattern: 'https?://(?:www\.)?englishjobs\.de/clickout(?:_alt)?/[a-f0-9]+(?:\?[^"\s<>]+)?'
+    decoded_must_match: 'englishjobs\.de/clickout(?:_alt)?/[a-f0-9]+'
+    subject_count_pattern: '^(\d+)\s+new\s+jobs?\b'
+    subject_count_is_summary: true
+
+  - email: no-reply@make-it-in-germany.com
+    extraction: direct
+    pattern: 'https?://www\.make-it-in-germany\.com/en/working-in-germany/job-listings/job/job-[A-Za-z0-9.-]+'
+    decoded_must_match: 'make-it-in-germany\.com/en/working-in-germany/job-listings/job/job-'
+
   - email: alerts@welcometothejungle.com
     extraction: tracker
     pattern: 'https?://t\.welcometothejungle\.com/ls/click\?upn=[^"\s)]+'
@@ -71,6 +83,12 @@ senders:
   - email: notifications@app.instaffo.com
     extraction: plaintext
     pattern: 'https?://app\.instaffo\.com/candidate/job/[0-9a-f-]+'
+
+  - email: jobupdates@info.kununu.com
+    extraction: tracker
+    pattern: 'https?://click\.kununu\.com/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
+    anchor_text_exclude: '^(?:\s*$|Weitere neue Stellenanzeigen\b|hier\b|Kontakt\b|Impressum\b)'
+    decoded_must_match: 'kununu\.com/(?:de|at)/job/[0-9a-f-]+'
 
   - email: info@email.stepstone.at
     extraction: tracker
@@ -98,6 +116,14 @@ senders:
     decoded_list_match: '^https://www\.stepstone\.(?:de|at)/jobs/'
     external_destination_kind: list
     single_job_subject_pattern: '^(?:Deine Chancen stehen gut für diese Stelle|Du hast gute Chancen auf ein Interview für diesen Job)$'
+
+  - email: info@jobagent.stepstone.at
+    extraction: tracker
+    pattern: 'https?://click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
+    anchor_text_exclude: '^(?:\s*$|mehr\b|hier\b|Diesen Job melden\b|E-Mail-Einstellungen verwalten\b|Diese E-Mail abbestellen\b|Nutzungsbedingungen\b|Datenschutzerklärung\b|Kontakt\b|Alle passenden Jobs anzeigen\b|Weitere passende Jobs anzeigen\b)'
+    decoded_must_match: 'stepstone\.(?:de|at)/(?:stellenangebote----\d+|job/\d+)'
+    decoded_list_match: '^https://www\.stepstone\.(?:de|at)/jobs/'
+    external_destination_kind: list
 
   # Keep unknown formats disabled until one real message has been inspected.
   - email: jobagent@arbeitsagentur.de

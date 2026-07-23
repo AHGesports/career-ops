@@ -6,7 +6,13 @@ import { dirname, join, resolve } from 'node:path';
 import { spawn, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { deflateSync } from 'node:zlib';
-import { appendPending, canonicalizeUrl, extractSenderUrls, parseWindow } from './gmail-scan.mjs';
+import {
+  appendPending,
+  canonicalizeUrl,
+  extractSenderUrls,
+  parseWindow,
+  trackerDestination,
+} from './gmail-scan.mjs';
 import {
   applicationSubmissionPolicy,
   autoSubmitEnabled,
@@ -180,6 +186,17 @@ test('canonicalization preserves job identity while removing tracking', () => {
   assert.equal(
     canonicalizeUrl('http://www.linkedin.com/comm/jobs/view/123?utm_source=mail', ['utm_*']),
     'https://www.linkedin.com/jobs/view/123',
+  );
+});
+
+test('Stepstone tracker destinations normalize German and Austrian job routes', () => {
+  assert.equal(
+    trackerDestination('https://www.stepstone.at/job/123456/application/redirection?source=email'),
+    'https://www.stepstone.at/job/123456',
+  );
+  assert.equal(
+    trackerDestination('https://www.stepstone.at/v2/magiclink/exchange?returnUrl=%2Fjob%2F654321%2Fapplication%2Fredirection%3Fsource%3Demail'),
+    'https://www.stepstone.at/job/654321',
   );
 });
 

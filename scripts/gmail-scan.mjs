@@ -142,17 +142,18 @@ export function extractSenderUrls(sender, bodies, stripPatterns = []) {
   return { urls: [...new Set(urls)], trackers: [...new Set(trackers)] };
 }
 
-function trackerDestination(raw) {
+export function trackerDestination(raw) {
   try {
     const url = new URL(raw);
-    if (url.hostname.endsWith('stepstone.de') && /^\/job\/\d+\/application\/redirection$/u.test(url.pathname)) {
+    const stepstoneCountry = url.hostname.match(/(?:^|\.)stepstone\.(de|at)$/iu)?.[1]?.toLowerCase();
+    if (stepstoneCountry && /^\/job\/\d+\/application\/redirection$/u.test(url.pathname)) {
       url.pathname = url.pathname.replace(/\/application\/redirection$/u, '');
       url.search = '';
       return url.toString();
     }
-    if (url.hostname.endsWith('stepstone.de') && url.pathname.startsWith('/v2/magiclink/exchange')) {
+    if (stepstoneCountry && url.pathname.startsWith('/v2/magiclink/exchange')) {
       const target = url.searchParams.get('returnUrl');
-      if (target) return `https://www.stepstone.de${decodeURIComponent(target).split('?')[0]}`;
+      if (target) return trackerDestination(`https://www.stepstone.${stepstoneCountry}${decodeURIComponent(target)}`);
     }
     if (url.hostname.endsWith('metajob.at') && url.pathname === '/' && url.searchParams.has('q')) return url.toString();
     url.hash = '';
