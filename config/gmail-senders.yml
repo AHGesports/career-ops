@@ -75,17 +75,29 @@ senders:
   - email: info@email.stepstone.at
     extraction: tracker
     pattern: 'https?://click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
-    decoded_must_match: 'stepstone\.(?:de|at)/stellenangebote----\d+'
+    anchor_text_exclude: '^(?:\s*$|hier\b|Diesen Job melden\b|E-Mail-Einstellungen verwalten\b|Diese E-Mail abbestellen\b|Nutzungsbedingungen\b|Datenschutzerklärung\b|Kontakt\b|Weitere passende Jobs anzeigen\b)'
+    decoded_must_match: 'stepstone\.(?:de|at)/(?:stellenangebote----\d+|job/\d+)'
+    decoded_list_match: '^https://www\.stepstone\.(?:de|at)/jobs/'
+    external_destination_kind: list
+    single_job_subject_pattern: '^(?:Deine Chancen stehen gut für diese Stelle|Du hast gute Chancen auf ein Interview für diesen Job)$'
 
   - email: info@email.stepstone.de
     extraction: tracker
     pattern: 'https?://click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
-    decoded_must_match: 'stepstone\.(?:de|at)/stellenangebote----\d+'
+    anchor_text_exclude: '^(?:\s*$|hier\b|Diesen Job melden\b|E-Mail-Einstellungen verwalten\b|Diese E-Mail abbestellen\b|Nutzungsbedingungen\b|Datenschutzerklärung\b|Kontakt\b|Weitere passende Jobs anzeigen\b)'
+    decoded_must_match: 'stepstone\.(?:de|at)/(?:stellenangebote----\d+|job/\d+)'
+    decoded_list_match: '^https://www\.stepstone\.(?:de|at)/jobs/'
+    external_destination_kind: list
+    single_job_subject_pattern: '^(?:Deine Chancen stehen gut für diese Stelle|Du hast gute Chancen auf ein Interview für diesen Job)$'
 
   - email: info@jobagent.stepstone.de
     extraction: tracker
     pattern: 'https?://click\.stepstone\.(?:at|de)/f/a/[^/\s]+/[^/\s]+/[^\s")]+'
-    decoded_must_match: 'stepstone\.(?:de|at)/stellenangebote----\d+'
+    anchor_text_exclude: '^(?:\s*$|hier\b|Diesen Job melden\b|E-Mail-Einstellungen verwalten\b|Diese E-Mail abbestellen\b|Nutzungsbedingungen\b|Datenschutzerklärung\b|Kontakt\b|Weitere passende Jobs anzeigen\b)'
+    decoded_must_match: 'stepstone\.(?:de|at)/(?:stellenangebote----\d+|job/\d+)'
+    decoded_list_match: '^https://www\.stepstone\.(?:de|at)/jobs/'
+    external_destination_kind: list
+    single_job_subject_pattern: '^(?:Deine Chancen stehen gut für diese Stelle|Du hast gute Chancen auf ein Interview für diesen Job)$'
 
   # Keep unknown formats disabled until one real message has been inspected.
   - email: jobagent@arbeitsagentur.de

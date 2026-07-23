@@ -108,7 +108,15 @@ export function canonicalizeUrl(raw, stripPatterns = []) {
 
 export function extractSenderUrls(sender, bodies, stripPatterns = []) {
   const source = sender.extraction === 'plaintext' ? bodies.plain : bodies.html;
-  const matches = allMatches(sender.pattern || sender.pattern_guess || '(?!)', source);
+  const sources = sender.anchor_text_exclude
+    ? [...source.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/giu)]
+      .filter(match => {
+        const text = match[0].replace(/<[^>]+>/gu, ' ').replace(/\s+/gu, ' ').trim();
+        return !new RegExp(sender.anchor_text_exclude, 'iu').test(text);
+      })
+      .map(match => match[0])
+    : [source];
+  const matches = sources.flatMap(value => allMatches(sender.pattern || sender.pattern_guess || '(?!)', value));
   const urls = [];
   const trackers = [];
   for (const match of matches) {
@@ -137,6 +145,11 @@ export function extractSenderUrls(sender, bodies, stripPatterns = []) {
 function trackerDestination(raw) {
   try {
     const url = new URL(raw);
+    if (url.hostname.endsWith('stepstone.de') && /^\/job\/\d+\/application\/redirection$/u.test(url.pathname)) {
+      url.pathname = url.pathname.replace(/\/application\/redirection$/u, '');
+      url.search = '';
+      return url.toString();
+    }
     if (url.hostname.endsWith('stepstone.de') && url.pathname.startsWith('/v2/magiclink/exchange')) {
       const target = url.searchParams.get('returnUrl');
       if (target) return `https://www.stepstone.de${decodeURIComponent(target).split('?')[0]}`;
@@ -152,29 +165,70 @@ function trackerDestination(raw) {
 
 async function followTrackers(items, senderMap, stripPatterns) {
   if (!items.length) return { resolved: [], failed: [] };
-  const browser = await chromium.launch({ headless: true });
-  const context = await browser.newContext();
+  let browser;
+  try {
+    browser = await chromium.launch({ channel: 'chrome', headless: true });
+  } catch {
+    browser = await chromium.launch({ headless: true });
+  }
+  const context = await browser.newContext({
+    locale: 'de-DE',
+    userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${browser.version()} Safari/537.36`,
+  });
   const resolved = [];
   const failed = [];
   try {
-    const page = await context.newPage();
     for (const item of items) {
       const config = senderMap.get(item.sender);
+      let page = await context.newPage();
       try {
-        await page.goto(item.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+        let response;
+        for (let attempt = 1; attempt <= 3; attempt += 1) {
+          try {
+            response = await page.goto(item.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            break;
+          } catch (error) {
+            const connectionReset = String(error.message || error).includes('net::ERR_CONNECTION_RESET');
+            if (!connectionReset) throw error;
+            if (attempt === 3) {
+              await page.waitForTimeout(1000);
+              const current = page.url();
+              if (current !== item.url && !current.startsWith('chrome-error:')) break;
+              throw error;
+            }
+            await page.close();
+            page = await context.newPage();
+          }
+        }
         await page.waitForTimeout(1000);
         const final = canonicalizeUrl(trackerDestination(page.url()), stripPatterns);
-        if (!final || final === item.url) throw new Error('tracker did not redirect');
+        if (!final || final === item.url) {
+          const title = (await page.title()).replace(/\s+/g, ' ').trim().slice(0, 80);
+          throw new Error(`tracker did not redirect (status ${response?.status() ?? 'unknown'}, title ${JSON.stringify(title)})`);
+        }
         if (config?.decoded_must_match && !new RegExp(config.decoded_must_match, 'iu').test(final)) {
           if (config.decoded_list_match && new RegExp(config.decoded_list_match, 'iu').test(final)) {
             resolved.push({ ...item, url: final, kind: 'list' });
             continue;
           }
-          throw new Error('resolved URL did not match expected job shape');
+          const destination = new URL(final);
+          if (config?.external_destination_kind && !destination.hostname.endsWith('stepstone.de') && !destination.hostname.endsWith('stepstone.at')) {
+            resolved.push({ ...item, url: final, kind: config.external_destination_kind });
+            continue;
+          }
+          throw new Error(`resolved URL did not match expected job shape (${destination.hostname}${destination.pathname})`);
         }
         resolved.push({ ...item, url: final, kind: config?.result_kind || 'job' });
       } catch (error) {
-        failed.push({ ...item, error: error.message });
+        const message = String(error.message || error);
+        const category = message.includes('net::ERR_CONNECTION_RESET')
+          ? 'connection reset'
+          : message.includes('is interrupted by another navigation')
+            ? 'navigation interrupted'
+            : message.split('\n')[0].replace(/https?:\/\/\S+/giu, '[tracker-url]').slice(0, 300);
+        failed.push({ ...item, error: category });
+      } finally {
+        await page.close();
       }
     }
   } finally {
@@ -332,6 +386,17 @@ export async function runScan(options) {
   let followed = { resolved: [], failed: [] };
   if (trackers.length && !options.noFollow) followed = await followTrackers(trackers, senderMap, stripPatterns);
   if (trackers.length && options.noFollow) warnings.push(`${trackers.length} tracker URLs were skipped by --no-follow.`);
+  const recoveredTrackerFailures = followed.failed.filter(item => {
+    const config = senderMap.get(item.sender);
+    return (item.error === 'connection reset' || item.error.includes('status 429'))
+      && config?.single_job_subject_pattern
+      && new RegExp(config.single_job_subject_pattern, 'iu').test(item.message.subject)
+      && followed.resolved.some(resolved => resolved.message.id === item.message.id && resolved.kind === 'job');
+  });
+  if (recoveredTrackerFailures.length) {
+    const recovered = new Set(recoveredTrackerFailures);
+    followed = { ...followed, failed: followed.failed.filter(item => !recovered.has(item)) };
+  }
   if (followed.failed.length) warnings.push(`${followed.failed.length} tracker URLs failed to resolve.`);
 
   const leads = [];
@@ -350,6 +415,11 @@ export async function runScan(options) {
   const matched = unique.filter(lead => lead.classification.tag === 'match');
   const deferred = unique.filter(lead => lead.classification.tag === 'deferred');
   const lists = unique.filter(lead => lead.classification.tag === 'list');
+  const countBy = (items, keyFor) => items.reduce((counts, item) => {
+    const key = keyFor(item);
+    counts[key] = (counts[key] || 0) + 1;
+    return counts;
+  }, {});
 
   if (options.commit && warnings.length) {
     throw new Error(`Refusing to commit because capture warnings require review:\n- ${warnings.join('\n- ')}`);
@@ -376,8 +446,19 @@ export async function runScan(options) {
     matched: matched.length,
     deferred: deferred.length,
     lists: lists.length,
+    trackers_found_by_sender: countBy(trackers, item => item.sender),
     trackers_resolved: followed.resolved.length,
+    trackers_recovered: recoveredTrackerFailures.length,
     trackers_failed: followed.failed.length,
+    tracker_failures_by_sender: countBy(followed.failed, item => item.sender),
+    tracker_failure_reasons: countBy(followed.failed, item => item.error),
+    tracker_failures: followed.failed.slice(0, 20).map(item => ({
+      sender: item.sender,
+      message_id: item.message.id,
+      subject: item.message.subject,
+      snippet: item.message.snippet.replace(/\s+/gu, ' ').trim().slice(0, 200),
+      error: item.error,
+    })),
     committed: options.commit,
     warnings,
   };

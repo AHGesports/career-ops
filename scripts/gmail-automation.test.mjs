@@ -156,6 +156,26 @@ test('sender extraction supports direct, base64, and zlib formats', () => {
   assert.deepEqual(zlib.urls, [target]);
 });
 
+test('tracker extraction can exclude navigation and empty anchors by visible text', () => {
+  const extracted = extractSenderUrls(
+    {
+      extraction: 'tracker',
+      pattern: 'https?://click\\.example/[^"\\s]+',
+      anchor_text_exclude: '^(?:\\s*$|Manage settings\\b|Show more jobs\\b)',
+    },
+    {
+      html: [
+        '<a href="https://click.example/job-1">Laboratory Technician</a>',
+        '<a href="https://click.example/image"><img src="logo.png"></a>',
+        '<a href="https://click.example/settings">Manage settings</a>',
+        '<a href="https://click.example/list">Show more jobs</a>',
+      ].join(''),
+      plain: '',
+    },
+  );
+  assert.deepEqual(extracted.trackers, ['https://click.example/job-1']);
+});
+
 test('canonicalization preserves job identity while removing tracking', () => {
   assert.equal(
     canonicalizeUrl('http://www.linkedin.com/comm/jobs/view/123?utm_source=mail', ['utm_*']),
